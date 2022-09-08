@@ -1,0 +1,16 @@
+{
+  "name": "@arkjs/ui",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ArkUI ui",
+  "keywords": [
+    "ArkUI",
+    "ui"
+  ],
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "module",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  }
+}

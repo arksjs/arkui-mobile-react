@@ -1,4 +1,4 @@
-# Rfox
+# arkui-mobile-react
 
 基于 React 移动端组件库。
 
@@ -6,18 +6,18 @@
 
 ### 前言
 
-1. 该组件库是基于 [Vfox](https://github.com/godxiaoji/vfox) 的 React 实现。
+1. 该组件库是基于 [ArkUI](https://github.com/arksjs/arkui-mobile-vue) 的 React 实现。
 2. 现阶段现学现写的，所以不具备用于生产的条件，组件库会不断完善。
-3. 该版本会尽量抽出非框架逻辑，以做到和 Vfox 的共用。
-4. 该版本尽量属性参数和接口的设计对齐 Vfox，但是由于框架不同，使用有些许不同：
+3. 该版本会尽量抽出非框架逻辑，以做到和 arkui-mobile-vue 的共用。
+4. 该版本尽量属性参数和接口的设计对齐 arkui-mobile-vue，但是由于框架不同，使用有些许不同：
 
 | 属性           | Vue                                                                | React                                                                                             |
 | -------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 事件           | `<FxCell @closeClick="foo" />`                                     | `<FxCell onCloseClick={foo} />`                                                                   |
-| 默认插槽       | `<FxCell>插槽内容</FxCell>`                                        | `<FxCell>插槽内容</FxCell>`                                                                       |
-| 其他插槽       | `<FxCell><template #icon>插槽内容</template></FxCell>`             | `<FxCell renderIcon={() => (<>{ '插槽内容' }</>)} />`                                             |
-| 带参数默认插槽 | `<FxCell><template #default="data">{{ data }}</template></FxCell>` | `<FxCell>{(data) => (<>{ data }</>)}</FxCell>` \| `<FxCell render={(data) => (<>{ data }</>)} />` |
-| 带参数其他插槽 | `<FxCell><template #icon="data">{{ data }}</template></FxCell>`    | `<FxCell renderIcon={(data) => (<>{ data }</>)} />`                                               |
+| 事件           | `<AkCell @closeClick="foo" />`                                     | `<AkCell onCloseClick={foo} />`                                                                   |
+| 默认插槽       | `<AkCell>插槽内容</AkCell>`                                        | `<AkCell>插槽内容</AkCell>`                                                                       |
+| 其他插槽       | `<AkCell><template #icon>插槽内容</template></AkCell>`             | `<AkCell renderIcon={() => (<>{ '插槽内容' }</>)} />`                                             |
+| 带参数默认插槽 | `<AkCell><template #default="data">{{ data }}</template></AkCell>` | `<AkCell>{(data) => (<>{ data }</>)}</AkCell>` \| `<AkCell render={(data) => (<>{ data }</>)} />` |
+| 带参数其他插槽 | `<AkCell><template #icon="data">{{ data }}</template></AkCell>`    | `<AkCell renderIcon={(data) => (<>{ data }</>)} />`                                               |
 
 ### 特性
 
@@ -35,28 +35,28 @@
 
 ## 框架版本
 
-- react >= 16.9.0
-- react-dom >= 16.9.0
+- react >= 16.9.0 & < 18.0.0
+- react-dom >= 16.9.0 & < 18.0.0
 
 ## 安装
 
 ```sh
 # npm
-npm i -S @fox2/rfox
+npm i -S arkui-mobile-react
 
 # yarn
-yarn add @fox2/rfox
+yarn add arkui-mobile-react
 
 # pnpm
-pnpm add @fox2/rfox
+pnpm add arkui-mobile-react
 ```
 
 ## 参考文档
 
-[Docs](https://godxiaoji.github.io/rfox/)
+[Docs](https://arksjs.github.io/arkui-mobile-react/)
 
-[Demo](https://godxiaoji.github.io/rfox/demo)
+[Demo](https://arksjs.github.io/arkui-mobile-react/demo)
 
 ## LICENSE
 
-[MIT](https://github.com/godxiaoji/rfox/blob/main/LICENSE)
+[MIT](https://github.com/arksjs/arkui-mobile-react/blob/main/LICENSE)

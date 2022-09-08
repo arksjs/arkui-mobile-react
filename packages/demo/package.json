@@ -1,0 +1,28 @@
+{
+  "name": "@arksjs/demo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ArkUI demo",
+  "keywords": [
+    "ArkUI",
+    "demo"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@formily/core": "^2.0.17",
+    "@formily/react": "^2.0.17",
+    "@arksjs/ui-icons": "^0.0.1",
+    "classnames": "^2.3.1",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@vitejs/plugin-react": "^1.2.0",
+    "rollup-plugin-svg-sprites": "^1.2.4"
+  }
+}
