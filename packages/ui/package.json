@@ -2,10 +2,10 @@
   "name": "@arkjs/ui",
   "private": true,
   "version": "0.0.0",
-  "description": "ArkUI ui",
+  "description": "ArkUI",
   "keywords": [
     "ArkUI",
-    "ui"
+    "UI"
   ],
   "main": "index.ts",
   "module": "index.ts",

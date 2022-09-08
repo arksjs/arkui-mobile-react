@@ -42,7 +42,7 @@ export default function ExpHome() {
     <div className="exp-home">
       <div className="exp-home-header">
         <Logo className="exp-home-logo" />
-        <h1 className="exp-home-title">RFOX</h1>
+        <h1 className="exp-home-title">ArkUI</h1>
       </div>
       <div className="exp-home-body">{renderGroupList()}</div>
     </div>
