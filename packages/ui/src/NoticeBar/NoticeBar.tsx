@@ -20,7 +20,11 @@ const modeMaps = new Map<Mode, IconData | null>([
   ['closable', CloseOutlined]
 ])
 
-const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = props => {
+const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = ({
+  title = '',
+  marquee = false,
+  ...props
+}) => {
   const [marqueeX, setMarqueeX] = useState(0)
   const [marqueeDuration, setMarqueeDuration] = useState(0)
   const marqueeTimer = useRef<number>()
@@ -28,7 +32,7 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = props => {
 
   const classes = classNames(getClasses(props.type), props.className)
   const styles = getStyles(props.color)
-  const contentClasses = classNames(getContentClasses(props.marquee))
+  const contentClasses = classNames(getContentClasses(marquee))
   const contentStyles = getContentStyles({ marqueeX, marqueeDuration })
 
   function marqueeStep(x: number, pW: number) {
@@ -66,10 +70,10 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = props => {
   }
 
   function resetMarquee() {
-    props.marquee ? startMarquee() : stopMarquee()
+    marquee ? startMarquee() : stopMarquee()
   }
 
-  useEffect(resetMarquee, [props.marquee, props.title])
+  useEffect(resetMarquee, [marquee, title])
   useEffect(() => stopMarquee, [])
 
   const rightIcon2 =
@@ -98,7 +102,7 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = props => {
       )}
       <div className="ak-notice-bar_content">
         <div ref={contentEl} className={contentClasses} style={contentStyles}>
-          {props.children || props.title}
+          {props.children || title}
         </div>
       </div>
       {rightIcon2 ? (
@@ -110,11 +114,6 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = props => {
       )}
     </div>
   )
-}
-
-AkNoticeBar.defaultProps = {
-  title: '',
-  marquee: false
 }
 
 export default AkNoticeBar

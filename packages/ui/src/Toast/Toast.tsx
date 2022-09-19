@@ -12,7 +12,10 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { useDelay } from '../hooks/use-delay'
 import type { PopupRef } from '../popup/types'
 
-const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (props, ref) => {
+const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
+  { title = '', ...props },
+  ref
+) => {
   const { addDelayTask, removeDelayTask } = useDelay(() => {
     customCancel('auto', true)
   }, props.duration)
@@ -64,7 +67,7 @@ const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (props, ref) => {
     <div className={classes} style={popupStyles}>
       <div className={boxClasses}>
         {renderIcon()}
-        <div className="ak-toast_text">{props.title}</div>
+        <div className="ak-toast_text">{title}</div>
       </div>
     </div>,
     document.body

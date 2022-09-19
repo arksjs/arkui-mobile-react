@@ -14,7 +14,7 @@ export default function ExpStepper() {
           <AkStepper min="5" max="10" />
         </AkCell>
         <AkCell label="限制输入整数">
-          <AkStepper allowDecimal={false} />
+          <AkStepper decimalLength="0" />
         </AkCell>
         <AkCell label="禁用状态">
           <AkStepper disabled />

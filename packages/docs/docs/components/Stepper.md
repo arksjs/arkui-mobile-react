@@ -20,19 +20,19 @@ import { AkStepper } from 'arkui-mobile-react'
 
 ## Props
 
-| 属性          | 类型    | 默认值   | 必填 | 说明                                     |
-| ------------- | ------- | -------- | ---- | ---------------------------------------- |
+| 属性          | 类型    | 默认值   | 必填 | 说明                                                |
+| ------------- | ------- | -------- | ---- | --------------------------------------------------- |
 | value         | number  |          | 否   |
-| name          | string  |          | 否   | 标识                                     |
-| min           | number  | 0        | 否   | 最小值                                   |
-| max           | number  | Infinity | 否   | 最大值                                   |
-| step          | number  | 1        | 否   | 步长                                     |
-| disabled      | boolean | false    | 否   | 是否禁用                                 |
-| disabledPlus  | boolean | false    | 否   | 是否禁用增加按钮                         |
-| disabledMinus | boolean | false    | 否   | 是否禁用减少按钮                         |
-| disabledInput | boolean | false    | 否   | 是否禁用输入框输入                       |
-| showValue     | boolean | false    | 否   | 是否显示当前 value                       |
-| allowDecimal  | boolean | true     | 否   | 是否允许输入小数，`false` 限制只允许整数 |
+| name          | string  |          | 否   | 标识                                                |
+| min           | number  | 0        | 否   | 最小值                                              |
+| max           | number  | Infinity | 否   | 最大值                                              |
+| disabled      | boolean | false    | 否   | 是否禁用                                            |
+| disabledPlus  | boolean | false    | 否   | 是否禁用增加按钮                                    |
+| disabledMinus | boolean | false    | 否   | 是否禁用减少按钮                                    |
+| disabledInput | boolean | false    | 否   | 是否禁用输入框输入                                  |
+| showValue     | boolean | false    | 否   | 是否显示当前 value                                  |
+| decimalLength | number  |          | 否   | 格式化到小数点后固定位数，设置为 0 表示格式化到整数 |
+| step          | number  | 1        | 否   | 步长，可以为小数                                    |
 
 ## Events
 

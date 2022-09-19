@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import type { StepperEmits, StepperProps } from './types'
 import type { FC, OnClick } from '../helpers/types'
-import { formateNumber, getRangeNumber, getClasses } from './util'
+import { formatNumber, getRangeNumber, getClasses } from './util'
 import { getNumber } from '../helpers/util'
 import { useInput } from '../Form/use-form'
 import { Button } from '../Button'
@@ -13,7 +13,6 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
   value,
   disabled,
   decimalLength,
-  allowDecimal = true,
   ...props
 }) => {
   const step = getNumber(props.step, 1)
@@ -30,7 +29,6 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
       {
         min,
         max,
-        allowDecimal,
         decimalLength
       },
       val
@@ -52,7 +50,7 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
   }
 
   function onInput() {
-    const val = formateNumber(getInputValue(), decimalLength)
+    const val = formatNumber(getInputValue(), decimalLength)
 
     setInputValue(val)
 
@@ -96,8 +94,8 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
       />
       <input
         className="ak-stepper_input"
-        type={allowDecimal ? 'text' : 'tel'}
-        inputMode={allowDecimal ? 'decimal' : 'numeric'}
+        type={decimalLength != 0 ? 'text' : 'tel'}
+        inputMode={decimalLength != 0 ? 'decimal' : 'numeric'}
         name={props.name}
         disabled={disabled}
         readOnly={props.disabledInput}
