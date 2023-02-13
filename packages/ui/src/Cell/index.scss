@@ -13,10 +13,12 @@
   &:not(:last-child)::after {
     content: '';
     margin-left: 16px;
+    width: calc(100% - 16px);
   }
 
   &.has--icon::after {
     margin-left: 48px;
+    width: calc(100% - 48px);
   }
 
   &_header {
@@ -125,19 +127,12 @@
     cursor: not-allowed;
   }
 
-  .ak {
+  .ta {
     &-input {
       height: 32px;
-      border-left-width: 0;
-      border-right-width: 0;
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-      padding: 3px 0;
+      border-width: 0;
+      padding: 4px 0;
       border-radius: 0;
-
-      &.focus {
-        border-color: transparent;
-      }
 
       &_input {
         text-align: right;

@@ -9,7 +9,7 @@ import {
   removeComponentFromLazy,
   withCheckInView
 } from './load-image'
-import type { TypeException, VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import ImageOutlined from '../Icon/icons/ImageOutlined'
 import ImageBreakOutlined from '../Icon/icons/ImageBreakOutlined'
 import { Icon } from '../Icon'
@@ -74,7 +74,7 @@ const TaImage: VFC<
       })
   }
 
-  function _onError(e: TypeException) {
+  function _onError(e: Error) {
     if (!mounted.current) {
       return
     }

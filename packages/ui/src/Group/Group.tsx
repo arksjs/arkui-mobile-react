@@ -1,8 +1,8 @@
-import classNames from 'classnames'
 import type { HTMLAttributes } from 'react'
+import classNames from 'classnames'
 import type { GroupProps } from './types'
 import { getClasses } from './util'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 
 const TaGroup: FC<
   HTMLAttributes<HTMLDivElement> &
