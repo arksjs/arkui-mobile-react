@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AkBuiltInSVG(props: React.SVGProps<SVGSVGElement>) {
+export default function TaBuiltInSVG(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

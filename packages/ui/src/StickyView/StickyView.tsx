@@ -23,13 +23,13 @@ import {
   getSizeValue,
   querySelector,
   scrollTo as _scrollTo
-} from '../helpers/dom'
+} from '../helpers'
 import { useScroll } from '../hooks/use-scroll'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getFilteredChildren } from '../helpers/react'
 import { isSameArray } from '../helpers/util'
 
-const AkStickyView: FRFC<StickyViewRef, StickyViewProps & StickyViewEmits> = (
+const TaStickyView: FRFC<StickyViewRef, StickyViewProps & StickyViewEmits> = (
   { activeIndex = 0, onUpdateActiveIndex, onChange, ...props },
   ref
 ) => {
@@ -56,7 +56,7 @@ const AkStickyView: FRFC<StickyViewRef, StickyViewProps & StickyViewEmits> = (
   function getItems(): HTMLDivElement[] {
     return listEl.current
       ? [].slice.call(
-          listEl.current.querySelectorAll('.ak-sticky-view-item'),
+          listEl.current.querySelectorAll('.ta-sticky-view-item'),
           0
         )
       : []
@@ -232,7 +232,7 @@ const AkStickyView: FRFC<StickyViewRef, StickyViewProps & StickyViewEmits> = (
   useEffect(() => {
     const newItemNames: string[] = []
 
-    getFilteredChildren(props.children, 'AkStickyViewItem').forEach(child => {
+    getFilteredChildren(props.children, 'TaStickyViewItem').forEach(child => {
       newItemNames.push(child.props.name ?? '')
 
       return child
@@ -247,21 +247,21 @@ const AkStickyView: FRFC<StickyViewRef, StickyViewProps & StickyViewEmits> = (
 
   return (
     <div className={classes} ref={root}>
-      <div className="ak-sticky-view_list" ref={listEl}>
+      <div className="ta-sticky-view_list" ref={listEl}>
         {props.children}
       </div>
       <Sticky
         offsetTop={props.offsetTop}
         disabled={props.disabled}
-        className="ak-sticky-view_top"
+        className="ta-sticky-view_top"
         ref={stickyRef}
       >
-        <div className="ak-sticky-view_fixed">
-          <div className="ak-sticky-view_fixed-inner" ref={fixedEl}></div>
+        <div className="ta-sticky-view_fixed">
+          <div className="ta-sticky-view_fixed-inner" ref={fixedEl}></div>
         </div>
       </Sticky>
     </div>
   )
 }
 
-export default forwardRef(AkStickyView)
+export default forwardRef(TaStickyView)

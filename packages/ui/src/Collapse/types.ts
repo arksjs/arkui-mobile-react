@@ -1,18 +1,11 @@
-import { GroupContextValue, GroupContextItemRef } from '../hooks/types'
 import type { IconData } from '../Icon/types'
-import { Noop } from '../helpers/types'
 
-export type ActiveName = string | number
+export type OnChange = (activeNames: string[]) => void
 
-export type OnChange = (activeNames: ActiveName[]) => void
-
-export type ItemOnToggle = (payload: {
-  name: ActiveName
-  spread: boolean
-}) => void
+export type ItemOnToggle = (payload: { name: string; spread: boolean }) => void
 
 export interface CollapseProps {
-  activeNames?: ActiveName | ActiveName[]
+  value?: string | string[]
   accordion?: boolean
 }
 
@@ -30,6 +23,14 @@ export interface CollapseItemProps {
 export interface CollapseItemEmits {
   onToggle?: ItemOnToggle
 }
+
+export type {
+  OnChange as CollapseOnChange,
+  ItemOnToggle as CollapseItemOnToggle
+}
+
+import { GroupContextValue, GroupContextItemRef } from '../hooks/types'
+import { Noop } from '../helpers/types'
 
 export interface CollapseContextValue extends GroupContextValue {
   onChange?: (uid: symbol) => void

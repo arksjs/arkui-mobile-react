@@ -1,4 +1,3 @@
-import React from 'react'
 import type { UnionToIntersection } from '../helpers/types'
 
 export type UseEmitFn<
@@ -40,6 +39,8 @@ export interface SafeAreaInsets {
   right: number
   bottom: number
 }
+
+import React from 'react'
 
 export type GroupContextValue = {
   hasGroup: boolean

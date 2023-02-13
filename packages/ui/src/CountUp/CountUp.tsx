@@ -13,7 +13,7 @@ import {
 import { useFrameTask } from '../hooks/use-frame-task'
 import { thousands as handleThousands } from '../helpers/digital-conversion'
 
-const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
+const TaCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   {
     initialNumber = 0,
     number = 0,
@@ -28,7 +28,7 @@ const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   const numberCache = useRef(getNumber(initialNumber))
   const [content, setContent] = useState('')
 
-  const classes = classNames('ak-count-up', props.className)
+  const classes = classNames('ta-count-up', props.className)
 
   const { frameStart, frameStop, frameTask } = useFrameTask()
 
@@ -88,4 +88,4 @@ const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   return <div className={classes}>{content}</div>
 }
 
-export default forwardRef(AkCountUp)
+export default forwardRef(TaCountUp)

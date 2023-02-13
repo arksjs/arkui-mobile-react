@@ -14,7 +14,7 @@ import type { OnCancel, OnVisibleStateChange, PopupRef } from '../popup/types'
 import type { NumberKeyboardItem } from './types'
 import BackspaceOutlined from '../Icon/icons/BackspaceOutlined'
 import KeyboardOutlined from '../Icon/icons/KeyboardOutlined'
-import { isString, stringMix2StringArray } from '../helpers/util'
+import { isString, string2StringArray } from '../helpers/util'
 
 const backspaceItem: NumberKeyboardItem = {
   text: 'backspace',
@@ -22,7 +22,7 @@ const backspaceItem: NumberKeyboardItem = {
   icon: BackspaceOutlined
 }
 
-const AkNumberKeyboard: FRVFC<
+const TaNumberKeyboard: FRVFC<
   PopupRef,
   NumberKeyboardProps & NumberKeyboardEmits
 > = ({ onUpdateValue, ...props }, ref) => {
@@ -34,7 +34,7 @@ const AkNumberKeyboard: FRVFC<
     type: props.type,
     customKey: props.customKey
   })
-  const classes = classNames('ak-number-keyboard', props.className)
+  const classes = classNames('ta-number-keyboard', props.className)
   const bodyClasses = classNames(
     getBodyClasses({ type: props.type, title: props.title }, showHeaderConfirm)
   )
@@ -108,7 +108,7 @@ const AkNumberKeyboard: FRVFC<
       })
     }
 
-    const customKey = stringMix2StringArray(props.customKey)
+    const customKey = string2StringArray(props.customKey)
 
     if (props.type === 'rightColumn') {
       if (customKey.length > 1) {
@@ -160,13 +160,13 @@ const AkNumberKeyboard: FRVFC<
     return list.map((item, index) => (
       <li
         className={classNames(
-          'ak-number-keyboard_item',
+          'ta-number-keyboard_item',
           'span-' + (item.span || 1)
         )}
         key={index}
       >
         <div
-          className="ak-number-keyboard_button"
+          className="ta-number-keyboard_button"
           onClick={() => onNumberClick(item)}
         >
           {item.icon ? <Icon icon={item.icon} /> : <>{item.text}</>}
@@ -191,20 +191,20 @@ const AkNumberKeyboard: FRVFC<
       onUpdateVisible={props.onUpdateVisible}
     >
       <div className={bodyClasses}>
-        <ul className="ak-number-keyboard_list">{renderItems}</ul>
+        <ul className="ta-number-keyboard_list">{renderItems}</ul>
         {props.type === 'rightColumn' ? (
-          <div className="ak-number-keyboard_right-column">
-            <div className="ak-number-keyboard_backspace">
+          <div className="ta-number-keyboard_right-column">
+            <div className="ta-number-keyboard_backspace">
               <div
-                className="ak-number-keyboard_button"
+                className="ta-number-keyboard_button"
                 onClick={() => onNumberClick(backspaceItem)}
               >
                 <Icon icon={BackspaceOutlined} />
               </div>
             </div>
-            <div className="ak-number-keyboard_confirm">
+            <div className="ta-number-keyboard_confirm">
               <div
-                className="ak-number-keyboard_confirm-button"
+                className="ta-number-keyboard_confirm-button"
                 onClick={onConfirmClick}
               >
                 {locale.numberKeyboardConfirmText}
@@ -219,4 +219,4 @@ const AkNumberKeyboard: FRVFC<
   )
 }
 
-export default forwardRef(AkNumberKeyboard)
+export default forwardRef(TaNumberKeyboard)

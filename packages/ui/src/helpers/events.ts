@@ -1,5 +1,17 @@
-import { isMobile } from '../helpers/device'
-import { LongPressEventCallback } from './types'
+import { isMobile } from './device'
+
+export type OnError = (e: Error) => void
+export type OnClick<T extends HTMLElement = HTMLElement> =
+  React.MouseEventHandler<T>
+export type OnFocus = React.FocusEventHandler<
+  HTMLInputElement | HTMLTextAreaElement
+>
+export type OnSVGClick = React.MouseEventHandler<SVGSVGElement>
+export type OnChange = React.ChangeEventHandler<HTMLInputElement>
+
+export interface LongPressEventCallback {
+  (res: { type: 'long-press' | 'click' }): void
+}
 
 export function addEvent(
   type: string,
@@ -58,6 +70,7 @@ export const touchEvent = {
     if (touchend === 'mouseup') {
       $el.addEventListener('mouseleave', object, touchOptions)
     }
+    $el.addEventListener('dragstart', object, touchOptions)
   },
   removeListeners($el: HTMLElement | Document, object: EventListenerObject) {
     $el.removeEventListener(touchstart, object, false)
@@ -67,6 +80,7 @@ export const touchEvent = {
     if (touchend === 'mouseup') {
       $el.removeEventListener('mouseleave', object, false)
     }
+    $el.removeEventListener('dragstart', object, false)
   },
   getTouch(e: Event) {
     const { pageX, pageY, clientX, clientY } =

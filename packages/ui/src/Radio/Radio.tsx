@@ -7,14 +7,14 @@ import CircleOutlined from '../Icon/icons/CircleOutlined'
 import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
 import { getCheckClasses } from '../Checkbox/util'
 
-const AkRadio: FC<RadioProps & RadioEmits> = ({ children, ...props }) => {
+const TaRadio: FC<RadioProps & RadioEmits> = ({ children, ...props }) => {
   const { disabled2, name2, styles, onChange, inputEl } = useCheck(
     props,
     'radio'
   )
 
   const classes = classNames(
-    'ak-radio',
+    'ta-radio',
     getCheckClasses(disabled2),
     props.className
   )
@@ -22,7 +22,7 @@ const AkRadio: FC<RadioProps & RadioEmits> = ({ children, ...props }) => {
   return (
     <label className={classes} style={styles}>
       <input
-        className="ak-radio_input ak-form-input"
+        className="ta-radio_input ta-form-input"
         type="radio"
         name={name2}
         value={props.value}
@@ -30,13 +30,13 @@ const AkRadio: FC<RadioProps & RadioEmits> = ({ children, ...props }) => {
         onChange={onChange}
         ref={inputEl}
       />
-      <div className="ak-radio_box">
-        <Icon className="ak-radio_icon" icon={CircleOutlined} />
-        <Icon className="ak-radio_checked-icon" icon={CheckCircleFilled} />
-        {children ? <span className="ak-radio_text">{children}</span> : <></>}
+      <div className="ta-radio_box">
+        <Icon className="ta-radio_icon" icon={CircleOutlined} />
+        <Icon className="ta-radio_checked-icon" icon={CheckCircleFilled} />
+        {children ? <span className="ta-radio_text">{children}</span> : <></>}
       </div>
     </label>
   )
 }
 
-export default AkRadio
+export default TaRadio

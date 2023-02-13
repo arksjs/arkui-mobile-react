@@ -1,5 +1,5 @@
 import { cloneData, isObject } from '../helpers/util'
-import { Option } from './types'
+import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {
   const newOptions: Option[] = []
@@ -21,8 +21,8 @@ export const getOptions = (options?: Option[]) => {
 
 export const getItemClasses = (option: Option) => {
   return [
-    'ak-action-sheet_item',
-    'ak-horizontal-hairline',
+    'ta-action-sheet_item',
+    'ta-horizontal-hairline',
     { disabled: !!option.disabled, highlight: !!option.highlight }
   ]
 }

@@ -1,4 +1,4 @@
-import { AkNoticeBar, AkGroup, showToast } from '@/index'
+import { TaNoticeBar, TaGroup, showToast } from '@/index'
 
 const text1 = '简单不先于复杂，而是在复杂之后。'
 const text2 =
@@ -7,62 +7,62 @@ const text2 =
 export default function ExpNoticeBar() {
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkNoticeBar className="exp-noticeBar-item" title={text1} />
-        <AkNoticeBar className="exp-noticeBar-item" title={text2} />
-      </AkGroup>
-      <AkGroup title="跑马灯">
-        <AkNoticeBar className="exp-noticeBar-item" marquee title={text2} />
-      </AkGroup>
-      <AkGroup title="左侧图标">
-        <AkNoticeBar
+      <TaGroup title="基础用法">
+        <TaNoticeBar className="exp-noticeBar-item" title={text1} />
+        <TaNoticeBar className="exp-noticeBar-item" title={text2} />
+      </TaGroup>
+      <TaGroup title="跑马灯">
+        <TaNoticeBar className="exp-noticeBar-item" marquee title={text2} />
+      </TaGroup>
+      <TaGroup title="左侧图标">
+        <TaNoticeBar
           className="exp-noticeBar-item"
           left-icon="SoundOutlined"
           title={text1}
         />
-      </AkGroup>
-      <AkGroup title="mode closable/clickable">
-        <AkNoticeBar
+      </TaGroup>
+      <TaGroup title="mode closable/clickable">
+        <TaNoticeBar
           className="exp-noticeBar-item"
           mode="closable"
           title={text1}
           onCloseClick={() => showToast('点击了关闭按钮')}
         />
-        <AkNoticeBar
+        <TaNoticeBar
           className="exp-noticeBar-item"
           mode="clickable"
           title={text1}
           onClick={() => showToast('点击了通告栏')}
         />
-      </AkGroup>
-      <AkGroup title="type=success/primary/danger">
-        <AkNoticeBar
+      </TaGroup>
+      <TaGroup title="type=success/primary/danger">
+        <TaNoticeBar
           left-icon="SoundOutlined"
           className="exp-noticeBar-item"
           type="success"
           title={text1}
         />
-        <AkNoticeBar
+        <TaNoticeBar
           left-icon="SoundOutlined"
           className="exp-noticeBar-item"
           type="primary"
           title={text1}
         />
-        <AkNoticeBar
+        <TaNoticeBar
           left-icon="SoundOutlined"
           className="exp-noticeBar-item"
           type="danger"
           title={text1}
         />
-      </AkGroup>
-      <AkGroup title="自定义颜色(#000000)">
-        <AkNoticeBar
+      </TaGroup>
+      <TaGroup title="自定义颜色(#000000)">
+        <TaNoticeBar
           className="exp-noticeBar-item"
           left-icon="SoundOutlined"
           title={text1}
           color="#000000"
         />
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

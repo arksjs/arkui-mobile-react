@@ -1,7 +1,7 @@
 import {
-  AkPicker,
-  AkNoticeBar,
-  AkGroup,
+  TaPicker,
+  TaNoticeBar,
+  TaGroup,
   showToast,
   SelectorModelValue
 } from '@/index'
@@ -23,35 +23,35 @@ export default function ExpPickerView() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 Picker"
       />
-      <AkGroup title="单列">
-        <AkPicker.View
+      <TaGroup title="单列">
+        <TaPicker.View
           value={simpleValue}
           options={options}
           onChange={v => setSimpleValue(v as number[])}
-        ></AkPicker.View>
-      </AkGroup>
-      <AkGroup title="多列">
-        <AkPicker.View
+        ></TaPicker.View>
+      </TaGroup>
+      <TaGroup title="多列">
+        <TaPicker.View
           options={multiOptions}
           onChange={onChange}
-        ></AkPicker.View>
-      </AkGroup>
-      <AkGroup title="级联">
-        <AkPicker.View
+        ></TaPicker.View>
+      </TaGroup>
+      <TaGroup title="级联">
+        <TaPicker.View
           options={cascadeOptions}
           onChange={onChange}
-        ></AkPicker.View>
-      </AkGroup>
-      <AkGroup title="change 事件">
-        <AkPicker.View
+        ></TaPicker.View>
+      </TaGroup>
+      <TaGroup title="change 事件">
+        <TaPicker.View
           options={multiOptions}
           onChange={onChangeEvent}
-        ></AkPicker.View>
-      </AkGroup>
+        ></TaPicker.View>
+      </TaGroup>
     </>
   )
 }

@@ -32,7 +32,7 @@ interface TargetObject {
   fixedOffsetY: number
 }
 
-const AkOrder: FC<
+const TaOrder: FC<
   OrderProps &
     OrderEmits & {
       render?: RenderProp<{
@@ -315,7 +315,7 @@ const AkOrder: FC<
   useTouch({
     el: root,
     onTouchStart(e) {
-      const target = getParentTarget(e.target, 'ak-order_item')
+      const target = getParentTarget(e.target, 'ta-order_item')
 
       if (!target || drag.current.on) {
         return
@@ -458,10 +458,10 @@ const AkOrder: FC<
       key={item.id}
     >
       <span
-        className="ak-order_item-ratio"
+        className="ta-order_item-ratio"
         style={getItemRatioStyles(props.aspectRatio)}
       ></span>
-      <div className="ak-order_item-inner">
+      <div className="ta-order_item-inner">
         {props.render && props.render({ id: item.id, index })}
       </div>
     </div>
@@ -473,13 +473,13 @@ const AkOrder: FC<
         {renderItems}
       </div>
       <Drawer
-        className="ak-order_delete"
+        className="ta-order_delete"
         placement="bottom"
         visible={dragDelete}
         showMask={false}
         onVisibleStateChange={onVisibleStateChange}
       >
-        <div className="ak-order_delete-button" ref={deleteButtonEl}>
+        <div className="ta-order_delete-button" ref={deleteButtonEl}>
           <Icon icon={DeleteOutlined} />
           <span>
             {deleting
@@ -492,4 +492,4 @@ const AkOrder: FC<
   )
 }
 
-export default AkOrder
+export default TaOrder

@@ -1,7 +1,7 @@
 import {
-  AkCascader,
-  AkNoticeBar,
-  AkGroup,
+  TaCascader,
+  TaNoticeBar,
+  TaGroup,
   showToast,
   SelectorModelValue,
   CascaderOnSelect
@@ -23,22 +23,22 @@ export default function ExpCascaderView() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 Cascader"
       />
-      <AkGroup title="家电">
-        <AkCascader.View options={cascadeOptions} v-model="baseValue" />
-      </AkGroup>
-      <AkGroup title="空数据">
-        <AkCascader.View options={[]} />
-      </AkGroup>
-      <AkGroup title="change 事件">
-        <AkCascader.View options={cascadeOptions} onChange={onChange} />
-      </AkGroup>
-      <AkGroup title="select 事件（跟 change 的区别是重复选一样的也触发）">
-        <AkCascader.View options={cascadeOptions} onSelect={onSelect} />
-      </AkGroup>
+      <TaGroup title="家电">
+        <TaCascader.View options={cascadeOptions} v-model="baseValue" />
+      </TaGroup>
+      <TaGroup title="空数据">
+        <TaCascader.View options={[]} />
+      </TaGroup>
+      <TaGroup title="change 事件">
+        <TaCascader.View options={cascadeOptions} onChange={onChange} />
+      </TaGroup>
+      <TaGroup title="select 事件（跟 change 的区别是重复选一样的也触发）">
+        <TaCascader.View options={cascadeOptions} onSelect={onSelect} />
+      </TaGroup>
     </>
   )
 }

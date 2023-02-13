@@ -59,7 +59,7 @@ const ImagePreviewItem: FC<{
   const [zoomAnimated, setZoomAnimated] = useState(false)
   const coords = useRef<ImageCoords | null>(null)
 
-  const classes = classNames('ak-preview-image_image-container', {
+  const classes = classNames('ta-preview-image_image-container', {
     animated: zoomAnimated
   })
 
@@ -296,7 +296,7 @@ const ImagePreviewItem: FC<{
   )
 
   return (
-    <div className="ak-swiper-item">
+    <div className="ta-swiper-item">
       <div className={classes} ref={imageWrapperEl}>
         {renderImage}
       </div>

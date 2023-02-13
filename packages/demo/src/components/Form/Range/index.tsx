@@ -1,4 +1,4 @@
-import { AkRange, AkCell, AkGroup, showToast } from '@/index'
+import { TaRange, TaCell, TaGroup, showToast } from '@/index'
 import { useState } from 'react'
 
 export default function ExpRange() {
@@ -20,70 +20,70 @@ export default function ExpRange() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell className="exp-range-box" label={'value: ' + value}>
-          <AkRange value={value} onInput={v => setValue(v)} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="显示数值 showValue=true">
-        <AkCell className="exp-range-box" label={'value: ' + value2}>
-          <AkRange showValue value={value2} onInput={v => setValue2(v)} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="自定义颜色 color=#ff7875">
-        <AkCell className="exp-range-box" label={'value: ' + value3}>
-          <AkRange
+      <TaGroup title="基础用法">
+        <TaCell className="exp-range-box" label={'value: ' + value}>
+          <TaRange value={value} onInput={v => setValue(v)} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="显示数值 showValue=true">
+        <TaCell className="exp-range-box" label={'value: ' + value2}>
+          <TaRange showValue value={value2} onInput={v => setValue2(v)} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="自定义颜色 color=#ff7875">
+        <TaCell className="exp-range-box" label={'value: ' + value3}>
+          <TaRange
             color="#ff7875"
             value={value3}
             showValue
             onInput={v => setValue3(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="返回不允许重叠 allowSameValue=false">
-        <AkCell className="exp-range-box" label={'value: ' + value4}>
-          <AkRange
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="返回不允许重叠 allowSameValue=false">
+        <TaCell className="exp-range-box" label={'value: ' + value4}>
+          <TaRange
             showValue
             value={value4}
             allowSameValue={false}
             onInput={v => setValue4(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="设置步进（step=5）">
-        <AkCell className="exp-range-box" label={'value: ' + value5}>
-          <AkRange
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="设置步进（step=5）">
+        <TaCell className="exp-range-box" label={'value: ' + value5}>
+          <TaRange
             showValue
             value={value5}
             step="5"
             onInput={v => setValue5(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="限制范围 min=50 & max=150">
-        <AkCell className="exp-range-box" label={'value: ' + value6}>
-          <AkRange
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="限制范围 min=50 & max=150">
+        <TaCell className="exp-range-box" label={'value: ' + value6}>
+          <TaRange
             showValue
             min="50"
             max="150"
             value={value6}
             onInput={v => setValue6(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="禁用">
-        <AkCell className="exp-range-box" label={'value: ' + value7}>
-          <AkRange disabled value={value7} onInput={v => setValue7(v)} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell className="exp-range-box" label="input">
-          <AkRange onInput={onInput} />
-        </AkCell>
-        <AkCell className="exp-range-box" label="change">
-          <AkRange onChange={onChange} />
-        </AkCell>
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="禁用">
+        <TaCell className="exp-range-box" label={'value: ' + value7}>
+          <TaRange disabled value={value7} onInput={v => setValue7(v)} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell className="exp-range-box" label="input">
+          <TaRange onInput={onInput} />
+        </TaCell>
+        <TaCell className="exp-range-box" label="change">
+          <TaRange onChange={onChange} />
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

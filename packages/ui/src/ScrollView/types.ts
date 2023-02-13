@@ -53,5 +53,13 @@ export interface PullIndicatorSafeArea {
 export interface ScrollViewRef {
   scrollTo: ScrollToOffset
   scrollToEnd: ScrollToEnd
-  getScrollEl: () => HTMLDivElement | null
+  getScrollEl: () => HTMLElement | null
+}
+
+export type {
+  PullDirection as ScrollViewPullDirection,
+  OnScrollToUpper as ScrollViewOnScrollToUpper,
+  OnScrollToLower as ScrollViewOnScrollToLower,
+  OnRefreshing as ScrollViewOnRefreshing,
+  OnScroll as ScrollViewOnScroll
 }

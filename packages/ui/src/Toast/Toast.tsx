@@ -12,7 +12,7 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { useDelay } from '../hooks/use-delay'
 import type { PopupRef } from '../popup/types'
 
-const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
+const TaToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
   { title = '', ...props },
   ref
 ) => {
@@ -27,7 +27,7 @@ const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
   })
 
   const classes = classNames([
-    'ak-toast',
+    'ta-toast',
     { 'forbid-click': !!props.showMask },
     popupClasses
   ])
@@ -41,21 +41,21 @@ const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
       case 'loading':
         icon = (
           <ActivityIndicator
-            className="ak-toast_icon"
+            className="ta-toast_icon"
             size="21"
             color="#ffffff"
           />
         )
         break
       case 'success':
-        icon = <Icon className="ak-toast_icon" icon={CheckOutlined} />
+        icon = <Icon className="ta-toast_icon" icon={CheckOutlined} />
         break
       case 'fail':
-        icon = <Icon className="ak-toast_icon" icon={CloseOutlined} />
+        icon = <Icon className="ta-toast_icon" icon={CloseOutlined} />
         break
       default:
         if (props.icon) {
-          icon = <Icon className="ak-toast_icon" icon={props.icon} />
+          icon = <Icon className="ta-toast_icon" icon={props.icon} />
         }
         break
     }
@@ -67,11 +67,11 @@ const AkToast: FRVFC<PopupRef, ToastProps & ToastEmits> = (
     <div className={classes} style={popupStyles}>
       <div className={boxClasses}>
         {renderIcon()}
-        <div className="ak-toast_text">{title}</div>
+        <div className="ta-toast_text">{title}</div>
       </div>
     </div>,
     document.body
   )
 }
 
-export default forwardRef(AkToast)
+export default forwardRef(TaToast)

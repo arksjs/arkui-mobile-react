@@ -1,4 +1,4 @@
-import { AkSlider, AkCell, AkGroup, showToast } from '@/index'
+import { TaSlider, TaCell, TaGroup, showToast } from '@/index'
 import { useState } from 'react'
 
 export default function ExpSlider() {
@@ -21,60 +21,60 @@ export default function ExpSlider() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell className="exp-slider-box" label={'value: ' + value}>
-          <AkSlider value={value} onInput={v => setValue(v)} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="显示数值 showValue=true">
-        <AkCell className="exp-slider-box" label={'value: ' + value2}>
-          <AkSlider showValue value={value2} onInput={v => setValue2(v)} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="自定义颜色 color=#ff7875">
-        <AkCell className="exp-slider-box" label={'value: ' + value3}>
-          <AkSlider
+      <TaGroup title="基础用法">
+        <TaCell className="exp-slider-box" label={'value: ' + value}>
+          <TaSlider value={value} onInput={v => setValue(v)} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="显示数值 showValue=true">
+        <TaCell className="exp-slider-box" label={'value: ' + value2}>
+          <TaSlider showValue value={value2} onInput={v => setValue2(v)} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="自定义颜色 color=#ff7875">
+        <TaCell className="exp-slider-box" label={'value: ' + value3}>
+          <TaSlider
             color="#ff7875"
             value={value3}
             showValue
             onInput={v => setValue3(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="设置步进（step=5）">
-        <AkCell className="exp-slider-box" label={'value: ' + value4}>
-          <AkSlider
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="设置步进（step=5）">
+        <TaCell className="exp-slider-box" label={'value: ' + value4}>
+          <TaSlider
             showValue
             value={value4}
             step="5"
             onInput={v => setValue4(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="限制范围 min=40 & max=140">
-        <AkCell className="exp-slider-box" label={'value: ' + value5}>
-          <AkSlider
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="限制范围 min=40 & max=140">
+        <TaCell className="exp-slider-box" label={'value: ' + value5}>
+          <TaSlider
             showValue
             min="40"
             max="140"
             value={value5}
             onInput={v => setValue5(v)}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="禁用">
-        <AkCell className="exp-slider-box" label={'value: ' + value6}>
-          <AkSlider disabled value={value6} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell className="exp-slider-box" label="input">
-          <AkSlider value={value7} onInput={onInput} />
-        </AkCell>
-        <AkCell className="exp-slider-box" label="change">
-          <AkSlider value={value8} onChange={onChange} />
-        </AkCell>
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="禁用">
+        <TaCell className="exp-slider-box" label={'value: ' + value6}>
+          <TaSlider disabled value={value6} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell className="exp-slider-box" label="input">
+          <TaSlider value={value7} onInput={onInput} />
+        </TaCell>
+        <TaCell className="exp-slider-box" label="change">
+          <TaSlider value={value8} onChange={onChange} />
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

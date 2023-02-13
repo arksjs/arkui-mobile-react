@@ -25,7 +25,7 @@ interface SelectedTabs {
   value: number | string
 }
 
-const AkCascaderView: FRVFC<
+const TaCascaderView: FRVFC<
   CascaderViewRef,
   CascaderViewProps & CascaderViewEmits
 > = (props, ref) => {
@@ -128,7 +128,7 @@ const AkCascaderView: FRVFC<
     }
   }, [tabOptions])
 
-  const classes = classNames('ak-cascader-view', props.className)
+  const classes = classNames('ta-cascader-view', props.className)
 
   const renderGroups = useMemo(() => {
     return cols.map((colItem, listIndex) => (
@@ -154,13 +154,13 @@ const AkCascaderView: FRVFC<
   return (
     <div className={classes}>
       <Tab
-        className="ak-cascader-view_header"
+        className="ta-cascader-view_header"
         options={tabOptions}
         scrollThreshold={0}
         onChange={onTabChange}
         ref={tabRef}
       />
-      <div className="ak-cascader-view_body">
+      <div className="ta-cascader-view_body">
         {renderGroups}
         {cols.length === 0 ? (
           <Empty description={locale.cascaderEmptyText} />
@@ -172,4 +172,4 @@ const AkCascaderView: FRVFC<
   )
 }
 
-export default forwardRef(AkCascaderView)
+export default forwardRef(TaCascaderView)

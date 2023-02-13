@@ -1,12 +1,12 @@
+import { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { FixedProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getInnerClasses, getInnerStyles, getStyles } from './util'
-import { useEffect, useRef, useState } from 'react'
 import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
 import { useResizeObserver } from '../hooks/use-resize-observer'
 
-const AkFixed: FC<FixedProps> = props => {
+const TaFixed: FC<FixedProps> = props => {
   const root = useRef<HTMLDivElement>(null)
   const innerEl = useRef<HTMLDivElement>(null)
   const contentEl = useRef<HTMLDivElement>(null)
@@ -53,21 +53,20 @@ const AkFixed: FC<FixedProps> = props => {
   useResizeObserver(contentEl, updateSize)
 
   return (
-    <div className="ak-fixed" style={styles} ref={root}>
+    <div className="ta-fixed" style={styles} ref={root}>
       <div className={innerClasses} style={innerStyles} ref={innerEl}>
-        <div className="ak-fixed_content-wrapper" ref={contentEl}>
+        <div className="ta-fixed_content-wrapper" ref={contentEl}>
           {props.children}
         </div>
       </div>
     </div>
   )
 }
-
-AkFixed.defaultProps = {
+TaFixed.defaultProps = {
   fixed: true,
   enableSafeAreaInsets: true,
   zIndex: 1,
   spaceHold: true
 }
 
-export default AkFixed
+export default TaFixed

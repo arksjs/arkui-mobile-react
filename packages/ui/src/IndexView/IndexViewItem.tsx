@@ -3,10 +3,10 @@ import type { IndexViewItemProps } from './types'
 import type { FC } from '../helpers/types'
 import { Group } from '../Group'
 
-const AkIndexViewItem: FC<IndexViewItemProps> = ({ name = '', ...props }) => {
+const TaIndexViewItem: FC<IndexViewItemProps> = ({ name = '', ...props }) => {
   const classes = classNames(
-    'ak-sticky-view-item',
-    'ak-index-view-item',
+    'ta-sticky-view-item',
+    'ta-index-view-item',
     props.className
   )
 
@@ -17,6 +17,6 @@ const AkIndexViewItem: FC<IndexViewItemProps> = ({ name = '', ...props }) => {
   )
 }
 
-AkIndexViewItem.displayName = 'AkStickyViewItem'
+TaIndexViewItem.displayName = 'TaStickyViewItem'
 
-export default AkIndexViewItem
+export default TaIndexViewItem

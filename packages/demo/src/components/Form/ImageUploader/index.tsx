@@ -1,6 +1,6 @@
 import {
-  AkImageUploader,
-  AkGroup,
+  TaImageUploader,
+  TaGroup,
   ImageUploaderBeforeUpload,
   ImageUploaderOnDelete,
   ImageUploaderUploadReady,
@@ -64,8 +64,8 @@ export default function ExpImageUploader() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkImageUploader
+      <TaGroup title="基础用法">
+        <TaImageUploader
           uploadReady={hookUploadOrFail}
           onChange={onChange}
           onDelete={onDelete}
@@ -73,26 +73,26 @@ export default function ExpImageUploader() {
           maxCount="9"
           multiple
         />
-      </AkGroup>
-      <AkGroup title="上传前置处理">
-        <AkImageUploader
+      </TaGroup>
+      <TaGroup title="上传前置处理">
+        <TaImageUploader
           beforeUpload={hookBeforeUpload}
           uploadReady={hookUpload}
           accept={['png', 'jpg']}
           maxCount="9"
           multiple
         />
-      </AkGroup>
-      <AkGroup title="禁用删除">
-        <AkImageUploader
+      </TaGroup>
+      <TaGroup title="禁用删除">
+        <TaImageUploader
           value={imageList2}
           deletable={false}
           uploadReady={hookUpload}
         />
-      </AkGroup>
-      <AkGroup title="禁用上传">
-        <AkImageUploader disabled />
-      </AkGroup>
+      </TaGroup>
+      <TaGroup title="禁用上传">
+        <TaImageUploader disabled />
+      </TaGroup>
     </>
   )
 }

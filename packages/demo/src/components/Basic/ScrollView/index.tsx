@@ -1,6 +1,6 @@
 import {
-  AkScrollView,
-  AkGroup,
+  TaScrollView,
+  TaGroup,
   ScrollViewOnRefreshing,
   ScrollViewOnScrollToLower,
   ScrollViewOnScrollToUpper,
@@ -24,23 +24,23 @@ export default function ExpScrollView() {
 
   return (
     <>
-      <AkGroup title="垂直滚动">
-        <AkScrollView className="exp-scrollView-box" scrollY>
+      <TaGroup title="垂直滚动">
+        <TaScrollView className="exp-scrollView-box" scrollY>
           <div className="exp-scrollView-h-400">
             <p>垂直滚动条</p>
             <p>scrollY="true"</p>
           </div>
-        </AkScrollView>
-      </AkGroup>
-      <AkGroup title="水平滚动">
-        <AkScrollView className="exp-scrollView-box" scrollX>
+        </TaScrollView>
+      </TaGroup>
+      <TaGroup title="水平滚动">
+        <TaScrollView className="exp-scrollView-box" scrollX>
           <div className="exp-scrollView-w-750">
             <p>水平滚动条 scrollX="true"</p>
           </div>
-        </AkScrollView>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkScrollView
+        </TaScrollView>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaScrollView
           className="exp-scrollView-box"
           scrollX
           scrollY
@@ -53,10 +53,10 @@ export default function ExpScrollView() {
             <p>scrollX="true"</p>
             <p>监听到顶/底/最左/最右的事件</p>
           </div>
-        </AkScrollView>
-      </AkGroup>
-      <AkGroup title="下拉刷新">
-        <AkScrollView
+        </TaScrollView>
+      </TaGroup>
+      <TaGroup title="下拉刷新">
+        <TaScrollView
           className="exp-scrollView-box"
           enablePullDirections={['down', 'right', 'up', 'left']}
           scrollY
@@ -68,10 +68,10 @@ export default function ExpScrollView() {
             <p>enablePullDirections="['down', 'right', 'up', 'left']"</p>
             <p>由于有 scrollY，上拉刷新要先滚到最底部</p>
           </div>
-        </AkScrollView>
-      </AkGroup>
-      <AkGroup title="下拉刷新（自定义指示器）">
-        <AkScrollView
+        </TaScrollView>
+      </TaGroup>
+      <TaGroup title="下拉刷新（自定义指示器）">
+        <TaScrollView
           className="exp-scrollView-box"
           enablePullDirections="down"
           scrollY
@@ -87,8 +87,8 @@ export default function ExpScrollView() {
             <p>scrollY="true"</p>
             <p>enablePullDirections="down"</p>
           </div>
-        </AkScrollView>
-      </AkGroup>
+        </TaScrollView>
+      </TaGroup>
     </>
   )
 }

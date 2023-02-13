@@ -20,7 +20,7 @@ const modeMaps = new Map<Mode, IconData | null>([
   ['closable', CloseOutlined]
 ])
 
-const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = ({
+const TaNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = ({
   title = '',
   marquee = false,
   ...props
@@ -94,19 +94,19 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = ({
   return (
     <div className={classes} style={styles} onClick={onClick}>
       {props.leftIcon ? (
-        <div className="ak-notice-bar_left-icon">
+        <div className="ta-notice-bar_left-icon">
           <Icon icon={props.leftIcon} />
         </div>
       ) : (
         <></>
       )}
-      <div className="ak-notice-bar_content">
+      <div className="ta-notice-bar_content">
         <div ref={contentEl} className={contentClasses} style={contentStyles}>
           {props.children || title}
         </div>
       </div>
       {rightIcon2 ? (
-        <div className="ak-notice-bar_right-icon" onClick={onRightIconClick}>
+        <div className="ta-notice-bar_right-icon" onClick={onRightIconClick}>
           <Icon icon={rightIcon2} />
         </div>
       ) : (
@@ -116,4 +116,4 @@ const AkNoticeBar: FC<NoticeBarProps & NoticeBarEmits> = ({
   )
 }
 
-export default AkNoticeBar
+export default TaNoticeBar

@@ -19,7 +19,7 @@ interface RateCoords {
   isChange: boolean
 }
 
-const AkRate: VFC<RateProps & RateEmits> = ({
+const TaRate: VFC<RateProps & RateEmits> = ({
   icon = StarOutlined,
   activeIcon = StarFilled,
   count = 5,
@@ -160,7 +160,7 @@ const AkRate: VFC<RateProps & RateEmits> = ({
       items.push(
         <div
           className={classNames([
-            'ak-rate_item',
+            'ta-rate_item',
             {
               active: num - 0.5 <= inputValue,
               half: inputValue - num === -0.5
@@ -169,10 +169,10 @@ const AkRate: VFC<RateProps & RateEmits> = ({
           key={num}
           data-value={num}
         >
-          <i className="ak-rate_icon">
+          <i className="ta-rate_icon">
             <Icon icon={icon} />
           </i>
-          <i className="ak-rate_active-icon">
+          <i className="ta-rate_active-icon">
             <Icon icon={activeIcon} />
           </i>
         </div>
@@ -195,4 +195,4 @@ const AkRate: VFC<RateProps & RateEmits> = ({
   )
 }
 
-export default AkRate
+export default TaRate

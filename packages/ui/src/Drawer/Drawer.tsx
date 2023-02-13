@@ -10,7 +10,7 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { forwardRef, useEffect } from 'react'
 import type { PopupRef } from '../popup/types'
 
-const AkDrawer: FRFC<
+const TaDrawer: FRFC<
   PopupRef,
   DrawerProps &
     DrawerEmits & {
@@ -48,13 +48,13 @@ const AkDrawer: FRFC<
 
   return createPortal(
     <div className={classes} style={popupStyles}>
-      {showMask ? <div className="ak-mask" onClick={onMaskClick}></div> : <></>}
+      {showMask ? <div className="ta-mask" onClick={onMaskClick}></div> : <></>}
       <div className={innerClasses} style={innerStyles} onClick={onStopBlur}>
         {props.renderHeader ? (
           props.renderHeader()
         ) : hasHeader ? (
           <NavBar
-            className="ak-drawer_header"
+            className="ta-drawer_header"
             title={props.title}
             rightButtons={
               props.showClose ? [{ icon: CloseOutlined, text: 'close' }] : []
@@ -65,11 +65,11 @@ const AkDrawer: FRFC<
         ) : (
           <></>
         )}
-        <div className="ak-drawer_body">{props.children}</div>
+        <div className="ta-drawer_body">{props.children}</div>
       </div>
     </div>,
     document.body
   )
 }
 
-export default forwardRef(AkDrawer)
+export default forwardRef(TaDrawer)

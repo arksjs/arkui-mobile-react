@@ -1,8 +1,8 @@
 import {
-  AkButton,
-  AkCell,
-  AkGroup,
-  AkPopDialog,
+  TaButton,
+  TaCell,
+  TaGroup,
+  TaPopDialog,
   PlacementType,
   PopupOnCancel,
   PopupOnVisibleStateChange,
@@ -93,18 +93,18 @@ export default function ExpPopDialog() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="基础">
-          <AkButton
+      <TaGroup title="基础用法">
+        <TaCell label="基础">
+          <TaButton
             size="small"
             id="popDialog"
             shape="circle"
             icon="DeleteOutlined"
             onClick={() => onShow({ selector: '#popDialog' })}
-          ></AkButton>
-        </AkCell>
-        <AkCell label="不展示取消按钮">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="不展示取消按钮">
+          <TaButton
             size="small"
             id="popDialogNoCancel"
             shape="circle"
@@ -112,10 +112,10 @@ export default function ExpPopDialog() {
             onClick={() =>
               onShow({ selector: '#popDialogNoCancel', showCancel: false })
             }
-          ></AkButton>
-        </AkCell>
-        <AkCell label="设置按钮文案">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="设置按钮文案">
+          <TaButton
             size="small"
             id="popDialogButtonText"
             shape="circle"
@@ -128,22 +128,22 @@ export default function ExpPopDialog() {
                 cancelText: '拒绝'
               })
             }
-          ></AkButton>
-        </AkCell>
-        <AkCell label="不展示蒙层">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="不展示蒙层">
+          <TaButton
             size="small"
             id="popDialogNoMask"
             shape="circle"
             icon="DeleteOutlined"
             onClick={() => setVisible2(true)}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="方向 placement=top/bottom/left/right">
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="方向 placement=top/bottom/left/right">
         <div className="exp-popover-box2">
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popDialogTop2"
               shape="circle"
@@ -153,10 +153,10 @@ export default function ExpPopDialog() {
               }
             >
               上
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popDialogLeft2"
               shape="circle"
@@ -166,8 +166,8 @@ export default function ExpPopDialog() {
               }
             >
               左
-            </AkButton>
-            <AkButton
+            </TaButton>
+            <TaButton
               className="exp-popover-box2-ml"
               size="small"
               id="popDialogRight2"
@@ -178,10 +178,10 @@ export default function ExpPopDialog() {
               }
             >
               右
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popDialogBottom2"
               shape="circle"
@@ -191,13 +191,13 @@ export default function ExpPopDialog() {
               }
             >
               下
-            </AkButton>
+            </TaButton>
           </div>
         </div>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="confirm/cancel">
-          <AkButton
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="confirm/cancel">
+          <TaButton
             size="small"
             id="popDialogEvent"
             shape="circle"
@@ -205,10 +205,10 @@ export default function ExpPopDialog() {
             onClick={() =>
               onShow({ confirmEvent: true, selector: '#popDialogEvent' })
             }
-          ></AkButton>
-        </AkCell>
-        <AkCell label="onVisibleStateChange">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="onVisibleStateChange">
+          <TaButton
             size="small"
             id="popDialogEvent2"
             shape="circle"
@@ -216,21 +216,21 @@ export default function ExpPopDialog() {
             onClick={() =>
               onShow({ visibleEvent: true, selector: '#popDialogEvent2' })
             }
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showPopDialog">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showPopDialog">
+          <TaButton
             size="small"
             id="popDialogApi"
             shape="circle"
             icon="DeleteOutlined"
             onClick={() => onCallApi('#popDialogApi')}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkPopDialog
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaPopDialog
         placement={placement}
         content={content}
         selector={selector}
@@ -243,7 +243,7 @@ export default function ExpPopDialog() {
         onCancel={onCancel}
         onConfirm={onConfirm}
       />
-      <AkPopDialog
+      <TaPopDialog
         visible={visible2}
         selector="#popDialogNoMask"
         showMask={false}

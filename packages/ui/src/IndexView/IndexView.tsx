@@ -23,7 +23,7 @@ interface Coords {
   isChange: boolean
 }
 
-const AkIndexView: FRFC<
+const TaIndexView: FRFC<
   IndexViewRef,
   IndexViewProps &
     IndexViewEmits & {
@@ -32,7 +32,7 @@ const AkIndexView: FRFC<
 > = (props, ref) => {
   const navEl = useRef<HTMLUListElement>(null)
   const bodyRef = useRef<StickyViewRef>(null)
-  const classes = classNames('ak-index-view', props.className)
+  const classes = classNames('ta-index-view', props.className)
 
   const [indexList, setIndexList] = useState<
     {
@@ -181,12 +181,12 @@ const AkIndexView: FRFC<
 
   return (
     <div className={classes} style={props.style}>
-      <div className="ak-index-view_sidebar">
-        <ul className="ak-index-view_list" ref={navEl}>
+      <div className="ta-index-view_sidebar">
+        <ul className="ta-index-view_list" ref={navEl}>
           {renderIndexItems}
         </ul>
       </div>
-      <div className="ak-index-view_body">
+      <div className="ta-index-view_body">
         <StickyView
           offsetTop={props.stickyOffsetTop}
           onResetItems={onResetItems}
@@ -200,4 +200,4 @@ const AkIndexView: FRFC<
   )
 }
 
-export default forwardRef(AkIndexView)
+export default forwardRef(TaIndexView)

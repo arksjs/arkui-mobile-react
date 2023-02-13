@@ -8,7 +8,7 @@ import SkeletonParagraph from './SkeletonParagraph'
 import { getClasses } from './util'
 import { SkeletonContext } from './context'
 
-const AkSkeleton: FC<
+const TaSkeleton: FC<
   SkeletonProps & {
     renderLayout?: RenderProp
   }
@@ -22,15 +22,15 @@ const AkSkeleton: FC<
           {props.renderLayout ? (
             props.renderLayout()
           ) : (
-            <div className="ak-skeleton_layout">
+            <div className="ta-skeleton_layout">
               {props.avatar ? (
-                <div className="ak-skeleton_layout-left">
+                <div className="ta-skeleton_layout-left">
                   <SkeletonAvatar />
                 </div>
               ) : (
                 <></>
               )}
-              <div className="ak-skeleton_layout-right">
+              <div className="ta-skeleton_layout-right">
                 <SkeletonTitle />
                 <SkeletonParagraph />
               </div>
@@ -44,10 +44,10 @@ const AkSkeleton: FC<
   )
 }
 
-AkSkeleton.defaultProps = {
+TaSkeleton.defaultProps = {
   ...skeletonDefaultProps,
   loading: true,
   avatar: false
 }
 
-export default AkSkeleton
+export default TaSkeleton

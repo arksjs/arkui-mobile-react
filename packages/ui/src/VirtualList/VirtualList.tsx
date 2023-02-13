@@ -37,7 +37,7 @@ import type { ScrollToOffsetOptions } from '../hooks/types'
 // 对数据进行分割，以50个为一组
 const calcGroupCount = 50
 
-const AkVirtualList: FRFC<
+const TaVirtualList: FRFC<
   VirtualListRef,
   HTMLAttributes<HTMLDivElement> &
     VirtualListProps &
@@ -554,7 +554,7 @@ const AkVirtualList: FRFC<
   const renderItems = useMemo(() => {
     return renderList.map(item => (
       <li
-        className="ak-virtual-list_item"
+        className="ta-virtual-list_item"
         key={item.id}
         data-index={item.index}
         style={item.style}
@@ -568,7 +568,7 @@ const AkVirtualList: FRFC<
   const renderPoolItems = useMemo(() => {
     return renderPoolList.map(item => (
       <li
-        className="ak-virtual-list_item"
+        className="ta-virtual-list_item"
         key={item.id}
         data-index={item.index}
       >
@@ -632,14 +632,14 @@ const AkVirtualList: FRFC<
 
   return (
     <div {...attrs} className={classes} ref={root}>
-      <ul className="ak-virtual-list_list" style={listStyles} ref={listEl}>
+      <ul className="ta-virtual-list_list" style={listStyles} ref={listEl}>
         {renderItems}
       </ul>
-      <ul className="ak-virtual-list_list pool" ref={poolEl}>
+      <ul className="ta-virtual-list_list pool" ref={poolEl}>
         {renderPoolItems}
       </ul>
     </div>
   )
 }
 
-export default forwardRef(AkVirtualList)
+export default forwardRef(TaVirtualList)

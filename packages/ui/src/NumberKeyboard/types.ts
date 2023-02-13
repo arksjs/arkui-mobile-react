@@ -29,5 +29,10 @@ export interface NumberKeyboardEmits extends PopupEmits {
   onDelete?: OnDelete
   onClose?: OnClose
   onConfirm?: OnConfirm
-  onUpdateValue?: (text: string) => void
+}
+
+export type {
+  OnDelete as NumberKeyboardOnDelete,
+  OnClose as NumberKeyboardOnClose,
+  KeyboardType as NumberKeyboardType
 }

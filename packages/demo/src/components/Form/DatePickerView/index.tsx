@@ -1,7 +1,7 @@
 import {
-  AkDatePicker,
-  AkNoticeBar,
-  AkGroup,
+  TaDatePicker,
+  TaNoticeBar,
+  TaGroup,
   showToast,
   SelectorModelValue
 } from '@/index'
@@ -14,16 +14,16 @@ export default function ExpDatePickerView() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 DatePicker"
       />
-      <AkGroup title="initialMode=datetime">
-        <AkDatePicker.View initialMode="datetime" />
-      </AkGroup>
-      <AkGroup title="change 事件">
-        <AkDatePicker.View initialMode="date" onChange={onChange} />
-      </AkGroup>
+      <TaGroup title="initialMode=datetime">
+        <TaDatePicker.View initialMode="datetime" />
+      </TaGroup>
+      <TaGroup title="change 事件">
+        <TaDatePicker.View initialMode="date" onChange={onChange} />
+      </TaGroup>
     </>
   )
 }

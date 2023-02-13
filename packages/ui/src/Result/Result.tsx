@@ -18,30 +18,30 @@ const iconMap = new Map<ResultType, IconData>([
   ['fail', CloseCircleFilled]
 ])
 
-const AkResult: FC<ResultProps & ResultEmits> = props => {
+const TaResult: FC<ResultProps & ResultEmits> = props => {
   const typeClass = getTypeClass(props.type)
-  const classes = classNames('ak-result', typeClass, props.className)
-  const iconClasses = classNames('ak-result_icon', typeClass)
+  const classes = classNames('ta-result', typeClass, props.className)
+  const iconClasses = classNames('ta-result_icon', typeClass)
   const icon = iconMap.get(getType(props.type)) as IconData
   const { locale } = useLocale()
 
   return (
     <div className={classes}>
-      <div className="ak-result_header">
+      <div className="ta-result_header">
         <Icon className={iconClasses} icon={icon} />
         {props.title ? (
-          <div className="ak-result_title">{props.title}</div>
+          <div className="ta-result_title">{props.title}</div>
         ) : (
           <></>
         )}
         {props.description ? (
-          <div className="ak-result_description">{props.description}</div>
+          <div className="ta-result_description">{props.description}</div>
         ) : (
           <></>
         )}
       </div>
       {props.children}
-      <div className="ak-result_footer">
+      <div className="ta-result_footer">
         <Button type="primary" onClick={props.onConfirm}>
           {props.confirmText || locale.resultConfirmText}
         </Button>
@@ -57,10 +57,10 @@ const AkResult: FC<ResultProps & ResultEmits> = props => {
   )
 }
 
-AkResult.defaultProps = {
+TaResult.defaultProps = {
   title: '',
   description: '',
   showBack: true
 }
 
-export default AkResult
+export default TaResult

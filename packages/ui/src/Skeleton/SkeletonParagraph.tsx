@@ -10,7 +10,7 @@ import {
 } from './util'
 import { skeletonDefaultProps } from './props'
 
-const AkSkeletonParagraph: VFC<SkeletonParagraphProps> = props => {
+const TaSkeletonParagraph: VFC<SkeletonParagraphProps> = props => {
   const consumer = useContext(SkeletonContext)
   const classes = classNames(
     getParagraphClasses(props, consumer),
@@ -26,9 +26,9 @@ const AkSkeletonParagraph: VFC<SkeletonParagraphProps> = props => {
   return <ul className={classes}>{renderRowList()}</ul>
 }
 
-AkSkeletonParagraph.defaultProps = {
+TaSkeletonParagraph.defaultProps = {
   ...skeletonDefaultProps,
   row: PARAGRAPH_DEFAULT_ROW
 }
 
-export default AkSkeletonParagraph
+export default TaSkeletonParagraph

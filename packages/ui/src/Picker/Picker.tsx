@@ -8,8 +8,8 @@ import PickerPopup from './PickerPopup'
 import { useContext } from 'react'
 import { PickerContext } from './context'
 
-const AkPicker: VFC<PickerProps & PickerEmits> = props => {
-  const classes = classNames('ak-picker', props.className)
+const TaPicker: VFC<PickerProps & PickerEmits> = props => {
+  const classes = classNames('ta-picker', props.className)
   const handlers = useContext(PickerContext)
 
   const {
@@ -62,4 +62,4 @@ const AkPicker: VFC<PickerProps & PickerEmits> = props => {
   )
 }
 
-export default AkPicker
+export default TaPicker

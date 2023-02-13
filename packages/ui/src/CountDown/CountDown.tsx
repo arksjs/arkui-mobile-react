@@ -16,7 +16,7 @@ import {
 import { useCountTime } from './use-count-time'
 import { useLocale } from '../ConfigProvider/context'
 
-const AkCountDown: FRVFC<
+const TaCountDown: FRVFC<
   CountDownRef,
   CountDownProps &
     CountDownEmits & {
@@ -35,7 +35,7 @@ const AkCountDown: FRVFC<
   ref
 ) => {
   const { locale } = useLocale()
-  const classes = classNames('ak-count-down', props.className)
+  const classes = classNames('ta-count-down', props.className)
 
   const startTime = useRef(0)
   const expiredTime = useRef(0)
@@ -138,4 +138,4 @@ const AkCountDown: FRVFC<
   return <div className={classes}>{renderChildren()}</div>
 }
 
-export default forwardRef(AkCountDown)
+export default forwardRef(TaCountDown)

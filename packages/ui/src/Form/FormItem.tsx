@@ -3,11 +3,11 @@ import type { FormItemProps } from './types'
 import type { FC } from '../helpers/types'
 import { useMemo } from 'react'
 
-const AkFormItem: FC<FormItemProps> = props => {
+const TaFormItem: FC<FormItemProps> = props => {
   const classes = classNames(
-    'ak-form-item',
-    'ak-cell',
-    'ak-horizontal-hairline',
+    'ta-form-item',
+    'ta-cell',
+    'ta-horizontal-hairline',
     props.className,
     props.validateStatus
   )
@@ -39,12 +39,12 @@ const AkFormItem: FC<FormItemProps> = props => {
 
   return (
     <label className={classes}>
-      <div className="ak-cell_header">
+      <div className="ta-cell_header">
         {props.label ? (
-          <div className="ak-cell_label">
+          <div className="ta-cell_label">
             {props.label}
             {props.required ? (
-              <span className="ak-form-item_required">*</span>
+              <span className="ta-form-item_required">*</span>
             ) : (
               <></>
             )}
@@ -52,10 +52,10 @@ const AkFormItem: FC<FormItemProps> = props => {
         ) : (
           <></>
         )}
-        <div className="ak-cell_content">{props.children}</div>
+        <div className="ta-cell_content">{props.children}</div>
       </div>
       {errors.length > 0 ? (
-        <ol className="ak-cell_body">{renderErrorItems}</ol>
+        <ol className="ta-cell_body">{renderErrorItems}</ol>
       ) : (
         <></>
       )}
@@ -63,4 +63,4 @@ const AkFormItem: FC<FormItemProps> = props => {
   )
 }
 
-export default AkFormItem
+export default TaFormItem

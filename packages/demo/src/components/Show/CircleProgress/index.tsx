@@ -1,4 +1,4 @@
-import { AkCircleProgress, AkStepper, AkGroup } from '@/index'
+import { TaCircleProgress, TaStepper, TaGroup } from '@/index'
 import { useState } from 'react'
 
 export default function ExpCircleProgress() {
@@ -6,43 +6,43 @@ export default function ExpCircleProgress() {
 
   return (
     <>
-      <AkGroup title="基础用法">
+      <TaGroup title="基础用法">
         <div className="exp-circleProgress-box">
-          <AkCircleProgress percentage={percentage} />
-          <AkStepper
+          <TaCircleProgress percentage={percentage} />
+          <TaStepper
             min="0"
             max="100"
             value={percentage}
             onChange={p => setPercentage(parseInt(p))}
           />
         </div>
-      </AkGroup>
-      <AkGroup title="参数设置">
+      </TaGroup>
+      <TaGroup title="参数设置">
         <ul className="exp-circleProgress-list">
           <li>
-            <AkCircleProgress percentage={percentage} color="#ff4d4f">
+            <TaCircleProgress percentage={percentage} color="#ff4d4f">
               color
-            </AkCircleProgress>
+            </TaCircleProgress>
           </li>
           <li>
-            <AkCircleProgress percentage={percentage} strokeWidth="2">
+            <TaCircleProgress percentage={percentage} strokeWidth="2">
               strokeWidth
-            </AkCircleProgress>
+            </TaCircleProgress>
           </li>
           <li>
-            <AkCircleProgress percentage={percentage} size="80">
+            <TaCircleProgress percentage={percentage} size="80">
               size
-            </AkCircleProgress>
+            </TaCircleProgress>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="Render Props">
+      </TaGroup>
+      <TaGroup title="Render Props">
         <div className="exp-circleProgress-box">
-          <AkCircleProgress percentage={percentage}>
+          <TaCircleProgress percentage={percentage}>
             {({ progress }) => <>{'已抢' + progress}</>}
-          </AkCircleProgress>
+          </TaCircleProgress>
         </div>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

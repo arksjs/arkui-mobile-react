@@ -9,7 +9,7 @@ import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
 import { useEffect, useState } from 'react'
 
-const AkStepper: FC<StepperProps & StepperEmits> = ({
+const TaStepper: FC<StepperProps & StepperEmits> = ({
   value,
   disabled,
   decimalLength,
@@ -93,7 +93,7 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
         onClick={onMinusClick}
       />
       <input
-        className="ak-stepper_input"
+        className="ta-stepper_input"
         type={decimalLength != 0 ? 'text' : 'tel'}
         inputMode={decimalLength != 0 ? 'decimal' : 'numeric'}
         name={props.name}
@@ -118,4 +118,4 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
   )
 }
 
-export default AkStepper
+export default TaStepper

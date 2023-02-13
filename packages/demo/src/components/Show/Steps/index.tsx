@@ -1,4 +1,4 @@
-import { AkSteps, AkIcon, AkFixed, AkButton, AkGroup } from '@/index'
+import { TaSteps, TaIcon, TaFixed, TaButton, TaGroup } from '@/index'
 import { useState } from 'react'
 
 const steps = [
@@ -39,29 +39,29 @@ export default function ExpSteps() {
 
   const renderItems = () => {
     return steps.map((item, index) => (
-      <AkSteps.Step key={index} title={item.title}>
+      <TaSteps.Step key={index} title={item.title}>
         {item.content}
-      </AkSteps.Step>
+      </TaSteps.Step>
     ))
   }
 
   const renderOrderItems = () => {
     return orderSteps.map((item, index) => (
-      <AkSteps.Step key={index}>{item.content}</AkSteps.Step>
+      <TaSteps.Step key={index}>{item.content}</TaSteps.Step>
     ))
   }
 
   const renderIconItems = () => {
     return steps.map((item, index) => (
-      <AkSteps.Step
+      <TaSteps.Step
         key={index}
         title={item.title}
         renderStep={({ finish, active }) => (
           <>
             {finish ? (
-              <AkIcon icon="CheckOutlined"></AkIcon>
+              <TaIcon icon="CheckOutlined"></TaIcon>
             ) : active ? (
-              <AkIcon icon="LoadingOutlined" spin></AkIcon>
+              <TaIcon icon="LoadingOutlined" spin></TaIcon>
             ) : (
               <></>
             )}
@@ -69,39 +69,39 @@ export default function ExpSteps() {
         )}
       >
         {item.content}
-      </AkSteps.Step>
+      </TaSteps.Step>
     ))
   }
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkSteps activeIndex={stepIndex}>{renderItems()}</AkSteps>
-      </AkGroup>
-      <AkGroup title="小点模式">
-        <AkSteps activeIndex={stepIndex} dot>
+      <TaGroup title="基础用法">
+        <TaSteps activeIndex={stepIndex}>{renderItems()}</TaSteps>
+      </TaGroup>
+      <TaGroup title="小点模式">
+        <TaSteps activeIndex={stepIndex} dot>
           {renderItems()}
-        </AkSteps>
-      </AkGroup>
-      <AkGroup title="自定义图标">
-        <AkSteps activeIndex={stepIndex}>{renderIconItems()}</AkSteps>
-      </AkGroup>
-      <AkGroup title="横向">
-        <AkSteps activeIndex={stepIndex} horizontal>
+        </TaSteps>
+      </TaGroup>
+      <TaGroup title="自定义图标">
+        <TaSteps activeIndex={stepIndex}>{renderIconItems()}</TaSteps>
+      </TaGroup>
+      <TaGroup title="横向">
+        <TaSteps activeIndex={stepIndex} horizontal>
           {renderItems()}
-        </AkSteps>
-      </AkGroup>
-      <AkGroup title="横向（不要标题 & 小点）">
-        <AkSteps activeIndex={1} horizontal dot>
+        </TaSteps>
+      </TaGroup>
+      <TaGroup title="横向（不要标题 & 小点）">
+        <TaSteps activeIndex={1} horizontal dot>
           {renderOrderItems()}
-        </AkSteps>
-      </AkGroup>
-      <AkGroup title="renderTitle">
-        <AkSteps>
-          <AkSteps.Step title="【珠海市】快件已送达【正方云创园】，感谢您使用中通快递">
+        </TaSteps>
+      </TaGroup>
+      <TaGroup title="renderTitle">
+        <TaSteps>
+          <TaSteps.Step title="【珠海市】快件已送达【正方云创园】，感谢您使用中通快递">
             2021-04-13 12:42:57
-          </AkSteps.Step>
-          <AkSteps.Step
+          </TaSteps.Step>
+          <TaSteps.Step
             renderTitle={() => (
               <>
                 【珠海市】【珠海一部】快递小哥正在派件（
@@ -110,24 +110,24 @@ export default function ExpSteps() {
             )}
           >
             2021-04-13 11:22:16
-          </AkSteps.Step>
-          <AkSteps.Step title="【珠海市】快件离开【珠海中心】已发往【珠海一部】">
+          </TaSteps.Step>
+          <TaSteps.Step title="【珠海市】快件离开【珠海中心】已发往【珠海一部】">
             2021-04-13 09:04:03
-          </AkSteps.Step>
-        </AkSteps>
-      </AkGroup>
-      <AkFixed>
+          </TaSteps.Step>
+        </TaSteps>
+      </TaGroup>
+      <TaFixed>
         <div className="exp-steps-next">
-          <AkButton
+          <TaButton
             onClick={() =>
               setStepIndex(stepIndex => (stepIndex + 1) % steps.length)
             }
             type="primary"
           >
             下一步
-          </AkButton>
+          </TaButton>
         </div>
-      </AkFixed>
+      </TaFixed>
     </>
   )
 }

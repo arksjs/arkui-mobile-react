@@ -5,10 +5,10 @@ import {
   PickerOnConfirm,
   PopupOnVisibleStateChange,
   PopupOnCancel,
-  AkCell,
-  AkGroup,
-  AkNoticeBar,
-  AkCascader
+  TaCell,
+  TaGroup,
+  TaNoticeBar,
+  TaCascader
 } from '@/index'
 import { useRef, useState } from 'react'
 
@@ -76,33 +76,33 @@ export default function ExpCascaderPopup() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 Cascader"
       />
-      <AkGroup title="基础用法">
-        <AkCell label="默认" isLink onClick={() => onShow({})}>
+      <TaGroup title="基础用法">
+        <TaCell label="默认" isLink onClick={() => onShow({})}>
           {popupValue}
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="onChange"
           isLink
           onClick={() => onShow({ changeEvent: true })}
         />
-        <AkCell
+        <TaCell
           label="onConfirm/onCancel"
           isLink
           onClick={() => onShow({ clickEvent: true })}
         />
-        <AkCell
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() => onShow({ visibleEvent: true })}
         />
-      </AkGroup>
-      <AkCascader.Popup
+      </TaGroup>
+      <TaCascader.Popup
         visible={visible}
         options={cascadeOptions}
         value={popupValue}

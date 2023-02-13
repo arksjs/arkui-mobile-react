@@ -3,9 +3,9 @@ import {
   PopupOnCancel,
   showDialog,
   PopupOnVisibleStateChange,
-  AkCell,
-  AkGroup,
-  AkDialog
+  TaCell,
+  TaGroup,
+  TaDialog
 } from '@/index'
 import { useRef, useState } from 'react'
 
@@ -85,8 +85,8 @@ export default function ExpDialog() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell
           label="默认"
           isLink
           onClick={() =>
@@ -95,8 +95,8 @@ export default function ExpDialog() {
             })
           }
         />
-        <AkCell label="不带标题" isLink onClick={() => onShow()} />
-        <AkCell
+        <TaCell label="不带标题" isLink onClick={() => onShow()} />
+        <TaCell
           label="不显示取消按钮"
           isLink
           onClick={() =>
@@ -106,7 +106,7 @@ export default function ExpDialog() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="自定义按钮文案"
           isLink
           onClick={() =>
@@ -118,9 +118,9 @@ export default function ExpDialog() {
             })
           }
         />
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="confirm/cancel"
           isLink
           onClick={() =>
@@ -130,7 +130,7 @@ export default function ExpDialog() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() =>
@@ -140,11 +140,11 @@ export default function ExpDialog() {
             })
           }
         />
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showDialog" isLink onClick={() => onCallApi()} />
-      </AkGroup>
-      <AkDialog
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showDialog" isLink onClick={() => onCallApi()} />
+      </TaGroup>
+      <TaDialog
         visible={visible}
         title={title}
         content={content}
@@ -155,7 +155,7 @@ export default function ExpDialog() {
         onVisibleStateChange={onVisibleStateChange}
         onCancel={onCancel}
         onConfirm={onConfirm}
-      ></AkDialog>
+      ></TaDialog>
     </>
   )
 }

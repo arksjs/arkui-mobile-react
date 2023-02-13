@@ -2,21 +2,19 @@ import type {
   BadgeOption,
   BadgeProps as HandleBadgeOption
 } from '../Badge/types'
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import type { IconData } from '../Icon/types'
-
-export type ActiveValue = number | string
 
 export interface OptionItem {
   label: string
-  value: ActiveValue
+  value: string | number
   icon?: string | IconData
   activeIcon?: string | IconData
   badge?: BadgeOption
   subLabel?: string
 }
 
-export type OptionList = (ActiveValue | OptionItem)[]
+export type OptionList = (string | number | OptionItem)[]
 
 export interface HandleOptionItem extends OptionItem {
   badge?: HandleBadgeOption
@@ -24,10 +22,10 @@ export interface HandleOptionItem extends OptionItem {
   activeIconLink?: string
 }
 
-export type OnChange = (value: ActiveValue, index: number) => void
+export type OnChange = (value: string | number, index: number) => void
 
 export interface TabCommonProps {
-  activeValue?: ActiveValue
+  activeValue?: string | number
   options: OptionList
   color?: string
   activeColor?: string
@@ -45,6 +43,12 @@ export interface TabProps extends TabCommonProps {
 export type TabEmits = TabCommonEmits
 
 export interface TabRef {
-  switchTo: (value: ActiveValue) => void
+  switchTo: (value: string | number) => void
   switchToIndex: (index: number) => void
+}
+
+export type {
+  OnChange as TabOnChange,
+  OptionList as TabOptions,
+  OptionItem as TabOption
 }

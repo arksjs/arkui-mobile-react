@@ -7,7 +7,7 @@ import { useTab } from './use-tab'
 import { Badge } from '../Badge'
 import { Icon } from '../Icon'
 
-const AkTab: FRVFC<TabRef, TabProps & TabEmits> = (
+const TaTab: FRVFC<TabRef, TabProps & TabEmits> = (
   { scrollThreshold = 4, className, ...tabProps },
   ref
 ) => {
@@ -35,16 +35,16 @@ const AkTab: FRVFC<TabRef, TabProps & TabEmits> = (
         key={item.value}
         onClick={() => onChange(item.value)}
       >
-        <Badge className="ak-tab_item-inner" {...item.badge}>
+        <Badge className="ta-tab_item-inner" {...item.badge}>
           {item.icon && item.activeIcon ? (
             <Icon icon={index === activeIndex ? item.activeIcon : item.icon} />
           ) : (
             <></>
           )}
-          <span className="ak-tab_item-text">{item.label}</span>
+          <span className="ta-tab_item-text">{item.label}</span>
         </Badge>
         {hasSub ? (
-          <span className="ak-tab_item-sub-text">{item.subLabel}</span>
+          <span className="ta-tab_item-sub-text">{item.subLabel}</span>
         ) : (
           <></>
         )}
@@ -54,12 +54,12 @@ const AkTab: FRVFC<TabRef, TabProps & TabEmits> = (
 
   return (
     <div className={classes} style={styles}>
-      <ul className="ak-tab_list" ref={listEl}>
+      <ul className="ta-tab_list" ref={listEl}>
         {renderItems()}
       </ul>
-      <span className="ak-tab_underline" ref={underlineEl}></span>
+      <span className="ta-tab_underline" ref={underlineEl}></span>
     </div>
   )
 }
 
-export default forwardRef(AkTab)
+export default forwardRef(TaTab)

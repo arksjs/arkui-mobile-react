@@ -5,7 +5,7 @@ import type { PopupRef } from '../popup/types'
 import { forwardRef } from 'react'
 import { usePopover } from './use-popover'
 
-const AkPopover: FRFC<PopupRef, PopoverProps & PopoverEmits> = (
+const TaPopover: FRFC<PopupRef, PopoverProps & PopoverEmits> = (
   { content = '', ...props },
   ref
 ) => {
@@ -13,10 +13,10 @@ const AkPopover: FRFC<PopupRef, PopoverProps & PopoverEmits> = (
 
   return createPortal(
     <PopoverWrapper>
-      {props.children || <div className="ak-popover_text">{content}</div>}
+      {props.children || <div className="ta-popover_text">{content}</div>}
     </PopoverWrapper>,
     document.body
   )
 }
 
-export default forwardRef(AkPopover)
+export default forwardRef(TaPopover)

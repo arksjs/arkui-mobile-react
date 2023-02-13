@@ -1,37 +1,37 @@
-import { AkSwitch, AkCell, AkGroup, showToast } from '@/index'
+import { TaSwitch, TaCell, TaGroup, showToast } from '@/index'
 
 export default function ExpSwitch() {
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="开关">
-          <AkSwitch />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="自定义颜色/大小">
-        <AkCell label="红色">
-          <AkSwitch activeColor="#8b1721" color="#d79996" />
-        </AkCell>
-        <AkCell label="40px">
-          <AkSwitch size="40" />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="禁用">
-        <AkCell label="关">
-          <AkSwitch disabled />
-        </AkCell>
-        <AkCell label="开">
-          <AkSwitch disabled value={true} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="change">
-          <AkSwitch
+      <TaGroup title="基础用法">
+        <TaCell label="开关">
+          <TaSwitch />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="自定义颜色/大小">
+        <TaCell label="红色">
+          <TaSwitch activeColor="#8b1721" color="#d79996" />
+        </TaCell>
+        <TaCell label="40px">
+          <TaSwitch size="40" />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="禁用">
+        <TaCell label="关">
+          <TaSwitch disabled />
+        </TaCell>
+        <TaCell label="开">
+          <TaSwitch disabled value={true} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="change">
+          <TaSwitch
             v-model="value"
             onChange={value => showToast(value ? '开' : '关')}
           />
-        </AkCell>
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

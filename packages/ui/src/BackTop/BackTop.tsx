@@ -10,7 +10,7 @@ import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
 import { Icon } from '../Icon'
 import { getNumber } from '../helpers/util'
 
-const AkBackTop: FC<
+const TaBackTop: FC<
   BackTopProps & {
     onClick?: OnClick
   }
@@ -25,7 +25,7 @@ const AkBackTop: FC<
   const [isShow, setIsShow] = useState(false)
   const { safeAreaInsets } = useSafeAreaInsets(enableSafeAreaInsets)
 
-  const classes = classNames('ak-back-top', props.className)
+  const classes = classNames('ta-back-top', props.className)
   const styles = getStyles(offset, isShow, safeAreaInsets)
 
   useScroll(docEl, e => {
@@ -52,4 +52,4 @@ const AkBackTop: FC<
   )
 }
 
-export default AkBackTop
+export default TaBackTop

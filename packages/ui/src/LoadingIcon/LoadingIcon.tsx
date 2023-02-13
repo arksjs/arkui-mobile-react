@@ -3,8 +3,8 @@ import type { LoadingIconProps } from './types'
 import type { VFC } from '../helpers/types'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH, getRealStrokeWidth } from './util'
 
-const AkLoadingIcon: VFC<LoadingIconProps> = props => {
-  const classes = classNames('ak-loading-icon', props.className)
+const TaLoadingIcon: VFC<LoadingIconProps> = props => {
+  const classes = classNames('ta-loading-icon', props.className)
   const strokeWidth = getRealStrokeWidth(props)
 
   return (
@@ -15,7 +15,7 @@ const AkLoadingIcon: VFC<LoadingIconProps> = props => {
       viewBox="0 0 1024 1024"
     >
       <circle
-        className="ak-loading-icon_track"
+        className="ta-loading-icon_track"
         r="448"
         cx="512"
         cy="512"
@@ -24,7 +24,7 @@ const AkLoadingIcon: VFC<LoadingIconProps> = props => {
         style={{ stroke: props.backgroundColor }}
       ></circle>
       <circle
-        className="ak-loading-icon_thumb"
+        className="ta-loading-icon_thumb"
         r="448"
         cx="512"
         cy="512"
@@ -40,10 +40,10 @@ const AkLoadingIcon: VFC<LoadingIconProps> = props => {
   )
 }
 
-AkLoadingIcon.defaultProps = {
+TaLoadingIcon.defaultProps = {
   rate: 0,
   size: DEFAULT_SIZE,
   strokeWidth: DEFAULT_STROKE_WIDTH
 }
 
-export default AkLoadingIcon
+export default TaLoadingIcon

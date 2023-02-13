@@ -1,100 +1,100 @@
-import { AkAvatar, AkCell, AkGroup } from '@/index'
+import { TaAvatar, TaCell, TaGroup } from '@/index'
 
 export default function ExpAvatar() {
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认">
-          <AkAvatar />
-        </AkCell>
-        <AkCell label="图片（src=xxx）">
-          <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
-        </AkCell>
-        <AkCell label="文字">
-          <AkAvatar>曹</AkAvatar>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="色彩（color）">
+      <TaGroup title="基础用法">
+        <TaCell label="默认">
+          <TaAvatar />
+        </TaCell>
+        <TaCell label="图片（src=xxx）">
+          <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
+        </TaCell>
+        <TaCell label="文字">
+          <TaAvatar>曹</TaAvatar>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="色彩（color）">
         <div className="exp-avatar-custom-list">
-          <AkAvatar color="#ff4d4f">DR</AkAvatar>
-          <AkAvatar color="#ff7a45">V</AkAvatar>
-          <AkAvatar color="#fa8c16">SO</AkAvatar>
-          <AkAvatar color="#faad14">CG</AkAvatar>
-          <AkAvatar color="#fadb14">SY</AkAvatar>
-          <AkAvatar color="#597ef7">GB</AkAvatar>
-          <AkAvatar color="#1890ff">DB</AkAvatar>
-          <AkAvatar color="#36cfc9">C</AkAvatar>
-          <AkAvatar color="#52c41a">PG</AkAvatar>
-          <AkAvatar color="#a0d911">L</AkAvatar>
-          <AkAvatar color="#9254de">GP</AkAvatar>
-          <AkAvatar color="#f759ab">M</AkAvatar>
+          <TaAvatar color="#ff4d4f">DR</TaAvatar>
+          <TaAvatar color="#ff7a45">V</TaAvatar>
+          <TaAvatar color="#fa8c16">SO</TaAvatar>
+          <TaAvatar color="#faad14">CG</TaAvatar>
+          <TaAvatar color="#fadb14">SY</TaAvatar>
+          <TaAvatar color="#597ef7">GB</TaAvatar>
+          <TaAvatar color="#1890ff">DB</TaAvatar>
+          <TaAvatar color="#36cfc9">C</TaAvatar>
+          <TaAvatar color="#52c41a">PG</TaAvatar>
+          <TaAvatar color="#a0d911">L</TaAvatar>
+          <TaAvatar color="#9254de">GP</TaAvatar>
+          <TaAvatar color="#f759ab">M</TaAvatar>
         </div>
-      </AkGroup>
-      <AkGroup title="形状（shape）">
-        <AkCell label="circle">
-          <AkAvatar shape="circle" />
-        </AkCell>
-        <AkCell label="square">
-          <AkAvatar shape="square" />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="尺寸（size）">
+      </TaGroup>
+      <TaGroup title="形状（shape）">
+        <TaCell label="circle">
+          <TaAvatar shape="circle" />
+        </TaCell>
+        <TaCell label="square">
+          <TaAvatar shape="square" />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="尺寸（size）">
         <div className="exp-avatar-custom-list">
-          <AkAvatar size={24}>24</AkAvatar>
-          <AkAvatar size="small">SM</AkAvatar>
-          <AkAvatar size="middle">MD</AkAvatar>
-          <AkAvatar size="large">LG</AkAvatar>
+          <TaAvatar size={24}>24</TaAvatar>
+          <TaAvatar size="small">SM</TaAvatar>
+          <TaAvatar size="middle">MD</TaAvatar>
+          <TaAvatar size="large">LG</TaAvatar>
         </div>
-      </AkGroup>
-      <AkGroup title="角标">
-        <AkCell label="gender">
+      </TaGroup>
+      <TaGroup title="角标">
+        <TaCell label="gender">
           <div className="exp-avatar-list">
-            <AkAvatar
+            <TaAvatar
               shape="square"
               gender="man"
               src="https://cdn.fox2.cn/vfox/avatar/1.png"
             />
-            <AkAvatar
+            <TaAvatar
               shape="square"
               gender="woman"
               src="https://cdn.fox2.cn/vfox/avatar/2.png"
             />
-            <AkAvatar
+            <TaAvatar
               shape="circle"
               gender="man"
               src="https://cdn.fox2.cn/vfox/avatar/3.png"
             />
-            <AkAvatar
+            <TaAvatar
               shape="circle"
               gender="woman"
               src="https://cdn.fox2.cn/vfox/avatar/4.png"
             />
           </div>
-        </AkCell>
-        <AkCell label="badge">
+        </TaCell>
+        <TaCell label="badge">
           <div className="exp-avatar-list">
-            <AkAvatar shape="square" badge="99" />
-            <AkAvatar shape="square" badge={{ content: 1, dot: true }} />
+            <TaAvatar shape="square" badge="99" />
+            <TaAvatar shape="square" badge={{ content: 1, dot: true }} />
           </div>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="头像组">
-        <AkCell label="size=small">
-          <AkAvatar.Group size="small">
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
-          </AkAvatar.Group>
-        </AkCell>
-        <AkCell label="totalCount=123456">
-          <AkAvatar.Group size="small" totalCount="123456" countColor="#6667AB">
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/1.png" />
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/2.png" />
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/3.png" />
-            <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/4.png" />
-          </AkAvatar.Group>
-        </AkCell>
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="头像组">
+        <TaCell label="size=small">
+          <TaAvatar.Group size="small">
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
+          </TaAvatar.Group>
+        </TaCell>
+        <TaCell label="totalCount=123456">
+          <TaAvatar.Group size="small" totalCount="123456" countColor="#6667AB">
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/1.png" />
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/2.png" />
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/3.png" />
+            <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/4.png" />
+          </TaAvatar.Group>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

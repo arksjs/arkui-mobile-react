@@ -1,9 +1,9 @@
-import { AkBackTop, AkGroup } from '@/index'
+import { TaBackTop, TaGroup } from '@/index'
 
 export default function ExpBackTop() {
   return (
     <>
-      <AkGroup title="基础用法">
+      <TaGroup title="基础用法">
         <ul className="exp-backTop-box">
           <li>Scroll to bottom 往下滑</li>
           <li>Scroll to bottom 往下滑</li>
@@ -17,9 +17,9 @@ export default function ExpBackTop() {
           <li>Scroll to bottom 往下滑</li>
           <li>Scroll to bottom 往下滑</li>
         </ul>
-      </AkGroup>
-      <AkBackTop />
-      <AkBackTop offset={[0, -50]}>UP</AkBackTop>
+      </TaGroup>
+      <TaBackTop />
+      <TaBackTop offset={[0, -50]}>UP</TaBackTop>
     </>
   )
 }

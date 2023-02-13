@@ -16,10 +16,10 @@ interface SwipeCellCoords {
   isSwipe: boolean
 }
 
-const AkSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
+const TaSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
   const classes = classNames(
-    'ak-swipe-cell',
-    'ak-horizontal-hairline',
+    'ta-swipe-cell',
+    'ta-horizontal-hairline',
     props.className
   )
 
@@ -155,11 +155,11 @@ const AkSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
   return (
     <div className={classes} ref={root}>
       <div
-        className="ak-swipe-cell_inner"
+        className="ta-swipe-cell_inner"
         style={getInnerStyles({ duration, translateX })}
       >
         {props.children}
-        <div className="ak-swipe-cell_buttons" ref={buttonsEl}>
+        <div className="ta-swipe-cell_buttons" ref={buttonsEl}>
           {renderButtons}
         </div>
       </div>
@@ -167,4 +167,4 @@ const AkSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
   )
 }
 
-export default AkSwipeCell
+export default TaSwipeCell

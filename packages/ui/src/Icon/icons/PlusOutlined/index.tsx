@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AkBuiltInSVG(props: React.SVGProps<SVGSVGElement>) {
+export default function TaBuiltInSVG(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} viewBox="0 0 1024 1024" focusable="false">
       <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z" />

@@ -2,43 +2,43 @@ import classNames from 'classnames'
 import type { TimelineItemProps } from './types'
 import type { FC, RenderProp } from '../helpers/types'
 
-const AkTimelineItem: FC<
+const TaTimelineItem: FC<
   TimelineItemProps & {
     renderTitle?: RenderProp
     renderDot?: RenderProp
   }
 > = props => {
   const classes = classNames(
-    'ak-timeline-item',
-    'ak-horizontal-hairline',
+    'ta-timeline-item',
+    'ta-horizontal-hairline',
     props.className
   )
 
   return (
     <div className={classes}>
-      <div className="ak-timeline-item_line"></div>
-      <div className="ak-timeline-item_index">
+      <div className="ta-timeline-item_line"></div>
+      <div className="ta-timeline-item_index">
         {props.renderDot ? (
           props.renderDot()
         ) : (
           <i
-            className="ak-timeline-item_dot"
+            className="ta-timeline-item_dot"
             style={{ borderColor: props.dotColor }}
           ></i>
         )}
       </div>
-      <div className="ak-timeline-item_inner">
+      <div className="ta-timeline-item_inner">
         {props.title || props.renderTitle ? (
-          <div className="ak-timeline-item_title">
+          <div className="ta-timeline-item_title">
             {props.renderTitle ? props.renderTitle() : props.title}
           </div>
         ) : (
           <></>
         )}
-        <div className="ak-timeline-item_content">{props.children}</div>
+        <div className="ta-timeline-item_content">{props.children}</div>
       </div>
     </div>
   )
 }
 
-export default AkTimelineItem
+export default TaTimelineItem

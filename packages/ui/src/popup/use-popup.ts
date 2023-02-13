@@ -84,7 +84,7 @@ export function usePopup(
 
     // 如果禁止滚动
     if (forbidScroll.current) {
-      addClassName(document.body, 'ak-overflow-hidden')
+      addClassName(document.body, 'ta-overflow-hidden')
     } else {
       setAbsTop(getScrollTop())
     }
@@ -111,7 +111,7 @@ export function usePopup(
     }
     hiding.current = true
     showing.current = false
-    removeClassName(document.body, 'ak-overflow-hidden')
+    removeClassName(document.body, 'ta-overflow-hidden')
     setVisible2(false)
 
     clearVisibleTimer()
@@ -177,7 +177,7 @@ export function usePopup(
     [zIndex, absTop, isShow]
   )
   const popupClasses = useMemo(
-    () => ['ak-popup', { visible: visible2 }],
+    () => ['ta-popup', { visible: visible2 }],
     [visible2]
   )
 

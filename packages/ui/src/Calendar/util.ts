@@ -1,7 +1,7 @@
 import type { CalendarOriginalDetail, Mode } from './types'
 import Exception from '../helpers/exception'
 import { getNumber, isInNumberRange } from '../helpers/util'
-import dayjs from '../helpers/day'
+import { dayjs } from '../helpers'
 
 const DEFAULT_MONTH_RANGE = 6
 export const MODE_NAMES: Mode[] = ['single', 'range']

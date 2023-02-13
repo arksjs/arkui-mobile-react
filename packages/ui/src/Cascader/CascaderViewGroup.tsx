@@ -5,7 +5,7 @@ import { Icon } from '../Icon'
 import CheckOutlined from '../Icon/icons/CheckOutlined'
 import type { ColRow } from '../Picker/types'
 
-const AkCascaderViewGroup: VFC<{
+const TaCascaderViewGroup: VFC<{
   tabIndex: number
   list: ColRow[]
   listIndex: number
@@ -13,19 +13,19 @@ const AkCascaderViewGroup: VFC<{
 }> = ({ tabIndex, list, listIndex, onItemClick }) => {
   return (
     <div
-      className="ak-cascader-view_group ak-vertical-hairline"
+      className="ta-cascader-view_group ta-vertical-hairline"
       style={{ zIndex: tabIndex == listIndex ? 2 : 1 }}
     >
       <VirtualList
-        className="ak-cascader-view_list"
+        className="ta-cascader-view_list"
         ids={list.map(v => v.value)}
         data-index={listIndex}
         itemSize={44}
         render={({ index }) => {
           const item = list[index]
           const itemClasses = classNames(
-            'ak-cascader-view_item',
-            'ak-horizontal-hairline',
+            'ta-cascader-view_item',
+            'ta-horizontal-hairline',
             {
               selected: item.selected,
               disabled: item.disabled
@@ -39,7 +39,7 @@ const AkCascaderViewGroup: VFC<{
               data-index={index}
               onClick={() => onItemClick(item)}
             >
-              <span className="ak-cascader-view_item-text">{item.label}</span>
+              <span className="ta-cascader-view_item-text">{item.label}</span>
               {item.selected ? <Icon icon={CheckOutlined} /> : <></>}
             </div>
           )
@@ -49,4 +49,4 @@ const AkCascaderViewGroup: VFC<{
   )
 }
 
-export default AkCascaderViewGroup
+export default TaCascaderViewGroup

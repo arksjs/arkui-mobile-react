@@ -7,7 +7,7 @@ import { usePopover } from '../Popover/use-popover'
 import { Button } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 
-const AkPopDialog: FRFC<PopupRef, PopDialogProps & PopDialogEmits> = (
+const TaPopDialog: FRFC<PopupRef, PopDialogProps & PopDialogEmits> = (
   { content = '', showCancel = true, ...props },
   ref
 ) => {
@@ -23,19 +23,19 @@ const AkPopDialog: FRFC<PopupRef, PopDialogProps & PopDialogEmits> = (
   }
 
   return createPortal(
-    <PopoverWrapper className="ak-pop-dialog">
-      <div className="ak-pop-dialog_body">
-        {props.children || <div className="ak-popover_text">{content}</div>}
+    <PopoverWrapper className="ta-pop-dialog">
+      <div className="ta-pop-dialog_body">
+        {props.children || <div className="ta-popover_text">{content}</div>}
       </div>
-      <div className="ak-pop-dialog_footer ak-horizontal-hairline">
+      <div className="ta-pop-dialog_footer ta-horizontal-hairline">
         <Button.Group
-          className="ak-pop-dialog_footer-inner"
+          className="ta-pop-dialog_footer-inner"
           pattern="borderless"
           size="middle"
         >
           {showCancel ? (
             <Button
-              className="ak-dialog_button"
+              className="ta-dialog_button"
               type="default"
               onClick={onCancelClick}
             >
@@ -45,7 +45,7 @@ const AkPopDialog: FRFC<PopupRef, PopDialogProps & PopDialogEmits> = (
             <></>
           )}
           <Button
-            className="ak-dialog_button"
+            className="ta-dialog_button"
             type="primary"
             onClick={onConfirmClick}
           >
@@ -58,4 +58,4 @@ const AkPopDialog: FRFC<PopupRef, PopDialogProps & PopDialogEmits> = (
   )
 }
 
-export default forwardRef(AkPopDialog)
+export default forwardRef(TaPopDialog)

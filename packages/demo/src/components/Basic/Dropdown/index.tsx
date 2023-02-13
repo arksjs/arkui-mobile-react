@@ -1,9 +1,9 @@
 import {
   showToast,
   PopupOnVisibleStateChange,
-  AkCell,
-  AkGroup,
-  AkDropdown
+  TaCell,
+  TaGroup,
+  TaDropdown
 } from '@/index'
 import { useRef, useState } from 'react'
 
@@ -39,29 +39,29 @@ export default function ExpDropdown() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell
           label="基础"
           isLink
           id="dropdownCell"
           onClick={() => onShow({ selector: '#dropdownCell' })}
         />
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="onVisibleStateChange"
           id="dropdownCellEvent"
           onClick={() =>
             onShow({ selector: '#dropdownCellEvent', visibleEvent: true })
           }
         />
-      </AkGroup>
-      <AkDropdown
+      </TaGroup>
+      <TaDropdown
         selector={selector}
         visible={visible}
         onUpdateVisible={v => setVisible(v)}
         onVisibleStateChange={onVisibleStateChange}
-      ></AkDropdown>
+      ></TaDropdown>
     </>
   )
 }

@@ -1,6 +1,5 @@
-import type { Dayjs } from '../helpers/types'
 import type { TimeAgoProps } from './types'
-import dayjs from '../helpers/day'
+import { dayjs, type Dayjs } from '../helpers'
 
 export function getDate(props: TimeAgoProps) {
   let djs: Dayjs | null = null

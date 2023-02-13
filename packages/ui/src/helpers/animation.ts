@@ -1,9 +1,11 @@
-import { EasingType } from './types'
+import type { Noop } from './util'
+
+type EasingType = 'linear' | 'swing'
 
 type TaskRef = {
   idle: number | null
   id: number
-  done: () => void
+  done: Noop
 }
 
 const Easing = {

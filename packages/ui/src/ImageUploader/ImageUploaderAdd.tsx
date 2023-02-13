@@ -3,13 +3,13 @@ import { Icon } from '../Icon'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import classNames from 'classnames'
 
-const AkImageUploaderAdd: VFC<{
+const TaImageUploaderAdd: VFC<{
   accept: string
   disabled?: boolean
   multiple?: boolean
   onAddFiles: OnChange
 }> = ({ accept, disabled, multiple, onAddFiles }) => {
-  const classes = classNames('ak-image-uploader_upload-button', {
+  const classes = classNames('ta-image-uploader_upload-button', {
     disabled: !!disabled
   })
 
@@ -31,4 +31,4 @@ const AkImageUploaderAdd: VFC<{
   )
 }
 
-export default AkImageUploaderAdd
+export default TaImageUploaderAdd

@@ -1,8 +1,8 @@
 import {
-  AkCalendar,
-  AkNoticeBar,
-  AkCell,
-  AkGroup,
+  TaCalendar,
+  TaNoticeBar,
+  TaCell,
+  TaGroup,
   CalendarOnSelect,
   showToast
 } from '@/index'
@@ -21,32 +21,32 @@ export default function ExpCalendarView() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 Calendar"
       />
-      <AkGroup title="initialMode=single">
-        <AkCell label="value:"> {viewValue} </AkCell>
-        <AkCalendar.View
+      <TaGroup title="initialMode=single">
+        <TaCell label="value:"> {viewValue} </TaCell>
+        <TaCalendar.View
           value={viewValue}
           onChange={v => setViewValue(v as string)}
           formatter={formatter}
           parser={parser}
         />
-      </AkGroup>
-      <AkGroup title="initialMode=range">
-        <AkCell label="value:"> {viewRangeValue} </AkCell>
-        <AkCalendar.View
+      </TaGroup>
+      <TaGroup title="initialMode=range">
+        <TaCell label="value:"> {viewRangeValue} </TaCell>
+        <TaCalendar.View
           initialMode="range"
           value={viewRangeValue}
           onChange={v => setViewRangeValue(v as string)}
           formatter={formatter}
           parser={parser}
         />
-      </AkGroup>
-      <AkGroup title="select 事件">
-        <AkCalendar.View onSelect={onSelect} />
-      </AkGroup>
+      </TaGroup>
+      <TaGroup title="select 事件">
+        <TaCalendar.View onSelect={onSelect} />
+      </TaGroup>
     </>
   )
 }

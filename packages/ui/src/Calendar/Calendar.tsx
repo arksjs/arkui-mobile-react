@@ -12,7 +12,7 @@ import CalendarPopup from './CalendarPopup'
 import { useHandlers } from './use-calendar'
 import { cloneDetail, isSameValue } from '../Picker/util'
 
-const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
+const TaCalendar: VFC<CalendarProps & CalendarEmits> = props => {
   const { formatter, parser, getDefaultDetail } = useHandlers(props)
   const [isInitPopup, setIsInitPopup] = useState(false)
   const [popupVisible, setPopupVisible] = useState(true)
@@ -79,7 +79,7 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
     }
   }, [isInitPopup, popupVisible])
 
-  const classes = classNames('ak-calendar', props.className)
+  const classes = classNames('ta-calendar', props.className)
 
   return (
     <div className={classes}>
@@ -118,4 +118,4 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
   )
 }
 
-export default AkCalendar
+export default TaCalendar

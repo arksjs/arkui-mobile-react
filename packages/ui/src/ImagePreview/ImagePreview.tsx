@@ -12,7 +12,7 @@ import { OnChange as SwiperOnChange, SwiperRef } from '../Swiper/types'
 import PreviewItem from './ImagePreviewItem'
 import { useStableState } from '../hooks/use'
 
-const AkImagePreview: FRVFC<
+const TaImagePreview: FRVFC<
   PopupRef,
   ImagePreviewProps &
     ImagePreviewEmits & {
@@ -37,7 +37,7 @@ const AkImagePreview: FRVFC<
   )
 
   const classes = classNames([
-    'ak-preview-image',
+    'ta-preview-image',
     popupClasses,
     props.className
   ])
@@ -78,7 +78,7 @@ const AkImagePreview: FRVFC<
 
   return createPortal(
     <div className={classes} style={popupStyles}>
-      <div className="ak-mask"></div>
+      <div className="ta-mask"></div>
       <Swiper
         ref={swiperRef}
         navigationButtons={props.navigationButtons}
@@ -87,10 +87,10 @@ const AkImagePreview: FRVFC<
       >
         {renderImages}
       </Swiper>
-      <div className="ak-preview-image_pagination">
+      <div className="ta-preview-image_pagination">
         {getActiveIndex2() + 1} / {urls.length}
       </div>
-      <div className="ak-preview-image_close">
+      <div className="ta-preview-image_close">
         {props.renderClose ? (
           props.renderClose({
             activeIndex: getActiveIndex2()
@@ -113,4 +113,4 @@ const AkImagePreview: FRVFC<
   )
 }
 
-export default forwardRef(AkImagePreview)
+export default forwardRef(TaImagePreview)

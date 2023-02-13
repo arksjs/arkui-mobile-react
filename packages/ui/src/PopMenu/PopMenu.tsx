@@ -8,7 +8,7 @@ import { usePopover } from '../Popover/use-popover'
 import { getItemClasses, getOptions } from './util'
 import { Icon } from '../Icon'
 
-const AkPopMenu: FRFC<PopupRef, PopMenuProps & PopMenuEmits> = (
+const TaPopMenu: FRFC<PopupRef, PopMenuProps & PopMenuEmits> = (
   { options = [], ...props },
   ref
 ) => {
@@ -31,14 +31,14 @@ const AkPopMenu: FRFC<PopupRef, PopMenuProps & PopMenuEmits> = (
 
   const renderOptions = useMemo(
     () => (
-      <ul className="ak-pop-menu_list">
+      <ul className="ta-pop-menu_list">
         {getOptions(options).map((item, index) => (
           <li
             className={classNames(getItemClasses(item))}
             key={index}
             onClick={() => onItemClick(index)}
           >
-            <div className="ak-pop-menu_item-inner">
+            <div className="ta-pop-menu_item-inner">
               {item.icon ? <Icon icon={item.icon} /> : <></>}
               <span>{item.name}</span>
             </div>
@@ -50,9 +50,9 @@ const AkPopMenu: FRFC<PopupRef, PopMenuProps & PopMenuEmits> = (
   )
 
   return createPortal(
-    <PopoverWrapper className="ak-pop-menu">{renderOptions}</PopoverWrapper>,
+    <PopoverWrapper className="ta-pop-menu">{renderOptions}</PopoverWrapper>,
     document.body
   )
 }
 
-export default forwardRef(AkPopMenu)
+export default forwardRef(TaPopMenu)

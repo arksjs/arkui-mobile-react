@@ -1,6 +1,5 @@
 import type { FormItemCommonProps } from '../Form/types'
-import type { Mode as ImageMode } from '../Image/types'
-export type { Mode as ImageMode } from '../Image/types'
+import type { ImageMode } from '../Image/types'
 
 interface BeforeUploadHandlers {
   formatSize(size: number): string
@@ -58,4 +57,11 @@ export interface ImageUploaderProps extends FormItemCommonProps {
 export interface ImageUploaderEmits {
   onChange?: OnChange
   onDelete?: OnDelete
+}
+
+export type {
+  Accept as ImageUploaderAccept,
+  BeforeUpload as ImageUploaderBeforeUpload,
+  UploadReady as ImageUploaderUploadReady,
+  OnDelete as ImageUploaderOnDelete
 }

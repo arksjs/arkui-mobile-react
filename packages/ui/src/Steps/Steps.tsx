@@ -5,7 +5,7 @@ import { getStepsClasses } from './util'
 import { toArray } from '../helpers/react'
 import { cloneElement } from 'react'
 
-const AkSteps: FC<
+const TaSteps: FC<
   StepsProps & {
     style?: CSSProperties
   }
@@ -29,4 +29,4 @@ const AkSteps: FC<
   )
 }
 
-export default AkSteps
+export default TaSteps

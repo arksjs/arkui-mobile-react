@@ -1,8 +1,8 @@
 import {
-  AkSkeleton,
-  AkGroup,
-  AkIcon,
-  AkSwitch,
+  TaSkeleton,
+  TaGroup,
+  TaIcon,
+  TaSwitch,
   SkeletonAvatarShape,
   SkeletonButtonShape
 } from '@/index'
@@ -16,51 +16,51 @@ export default function ExpSkeleton() {
 
   return (
     <>
-      <AkGroup title="基础用法">
+      <TaGroup title="基础用法">
         <div className="exp-skeleton-panel">
-          <AkSkeleton />
+          <TaSkeleton />
         </div>
-      </AkGroup>
-      <AkGroup title="显示头像">
+      </TaGroup>
+      <TaGroup title="显示头像">
         <div className="exp-skeleton-panel">
-          <AkSkeleton avatar />
+          <TaSkeleton avatar />
         </div>
-      </AkGroup>
-      <AkGroup title="带动画">
+      </TaGroup>
+      <TaGroup title="带动画">
         <div className="exp-skeleton-panel">
-          <AkSkeleton avatar animated={animated} avatarShape={avatarShape} />
+          <TaSkeleton avatar animated={animated} avatarShape={avatarShape} />
         </div>
-      </AkGroup>
-      <AkGroup title="显示子组件">
+      </TaGroup>
+      <TaGroup title="显示子组件">
         <div className="exp-skeleton-panel">
           <div className="exp-skeleton-switch">
-            <AkSwitch value={loading} onChange={setLoading} />
+            <TaSwitch value={loading} onChange={setLoading} />
           </div>
-          <AkSkeleton avatar loading={!loading}>
+          <TaSkeleton avatar loading={!loading}>
             <div className="exp-skeleton-sub-component">
-              <AkIcon icon="HeartFilled" size="32" />
+              <TaIcon icon="HeartFilled" size="32" />
               <h4 className="title">hello World</h4>
               <p className="paragraph">简单不先于复杂，而是在复杂之后。</p>
             </div>
-          </AkSkeleton>
+          </TaSkeleton>
         </div>
-      </AkGroup>
-      <AkGroup title="自由组合">
+      </TaGroup>
+      <TaGroup title="自由组合">
         <div className="exp-skeleton-panel">
-          <AkSkeleton
+          <TaSkeleton
             className="exp-skeleton-custom"
             buttonShape={buttonShape}
             renderLayout={() => (
               <>
-                <AkSkeleton.Image />
-                <AkSkeleton.Title />
-                <AkSkeleton.Paragraph row={2} />
-                <AkSkeleton.Button />
+                <TaSkeleton.Image />
+                <TaSkeleton.Title />
+                <TaSkeleton.Paragraph row={2} />
+                <TaSkeleton.Button />
               </>
             )}
-          ></AkSkeleton>
+          ></TaSkeleton>
         </div>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

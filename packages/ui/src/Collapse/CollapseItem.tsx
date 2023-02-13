@@ -13,7 +13,7 @@ import Exception from '../helpers/exception'
 import { getItemClasses } from './util'
 import { Cell } from '../Cell'
 
-const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
+const TaCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
   name = '',
   ...props
 }) => {
@@ -123,7 +123,7 @@ const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
   return (
     <div className={classes}>
       <Cell
-        className="ak-collapse-item_header"
+        className="ta-collapse-item_header"
         label={props.title}
         icon={props.icon}
         disabled={props.disabled}
@@ -132,14 +132,14 @@ const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
         onClick={onClick}
       />
       <div
-        className="ak-collapse-item_body ak-horizontal-hairline"
+        className="ta-collapse-item_body ta-horizontal-hairline"
         style={{ display: 'none' }}
         ref={bodyEl}
       >
-        <div className="ak-collapse-item_content">{props.children}</div>
+        <div className="ta-collapse-item_content">{props.children}</div>
       </div>
     </div>
   )
 }
 
-export default AkCollapseItem
+export default TaCollapseItem

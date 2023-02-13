@@ -16,7 +16,7 @@ import {
 } from './util'
 import type { FRFC, OnClick } from '../helpers/types'
 import { useTouch } from '../hooks/use-touch'
-import { CSSProperties2CssText } from '../helpers/dom'
+import { CSSProperties2CssText } from '../helpers'
 import { getNumber, isNumber } from '../helpers/util'
 import Exception from '../helpers/exception'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
@@ -36,7 +36,7 @@ interface SwiperCoords {
   timeStamp: number
 }
 
-const AkSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
+const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   {
     initialVertical = false,
     indicatorDots = false,
@@ -75,7 +75,7 @@ const AkSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
 
   function getItems(): HTMLDivElement[] {
     return listEl.current
-      ? [].slice.call(listEl.current.querySelectorAll('.ak-swiper-item'), 0)
+      ? [].slice.call(listEl.current.querySelectorAll('.ta-swiper-item'), 0)
       : []
   }
 
@@ -593,10 +593,10 @@ const AkSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   const renderNavigation = useMemo(() => {
     return navigationButtons && pagination.length > 1 ? (
       <>
-        <button className="ak-swiper_prev" onClick={() => prev(true)}>
+        <button className="ta-swiper_prev" onClick={() => prev(true)}>
           <Icon icon={LeftOutlined} />
         </button>
-        <button className="ak-swiper_next" onClick={() => next(true)}>
+        <button className="ta-swiper_next" onClick={() => next(true)}>
           <Icon icon={RightOutlined} />
         </button>
       </>
@@ -644,7 +644,7 @@ const AkSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
 
   return (
     <div className={classes} onClick={onClick} ref={root}>
-      <div className="ak-swiper_list" ref={listEl}>
+      <div className="ta-swiper_list" ref={listEl}>
         {props.children}
       </div>
       {renderPagination}
@@ -653,4 +653,4 @@ const AkSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   )
 }
 
-export default forwardRef(AkSwiper)
+export default forwardRef(TaSwiper)

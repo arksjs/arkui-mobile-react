@@ -7,7 +7,7 @@ import { getNumber } from '../helpers/util'
 
 const DEFAULT_SIZE = 20
 
-const AkActivityIndicator: VFC<ActivityIndicatorProps> = ({
+const TaActivityIndicator: VFC<ActivityIndicatorProps> = ({
   animated = true,
   ...props
 }) => {
@@ -28,4 +28,4 @@ const AkActivityIndicator: VFC<ActivityIndicatorProps> = ({
   )
 }
 
-export default AkActivityIndicator
+export default TaActivityIndicator

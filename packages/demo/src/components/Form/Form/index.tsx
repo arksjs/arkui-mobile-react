@@ -1,18 +1,18 @@
 import {
-  AkForm,
-  AkGroup,
-  AkInput,
-  AkPicker,
-  AkCalendar,
-  AkCascader,
-  AkSwitch,
-  AkRate,
-  AkSlider,
-  AkStepper,
-  AkRadioGroup,
-  AkCheckboxGroup,
-  AkImageUploader,
-  AkButton,
+  TaForm,
+  TaGroup,
+  TaInput,
+  TaPicker,
+  TaCalendar,
+  TaCascader,
+  TaSwitch,
+  TaRate,
+  TaSlider,
+  TaStepper,
+  TaRadioGroup,
+  TaCheckboxGroup,
+  TaImageUploader,
+  TaButton,
   showToast,
   ImageUploaderUploadReady
 } from '@/index'
@@ -55,14 +55,14 @@ export default function ExpForm() {
 
   return (
     <>
-      <AkGroup title="Formily">
+      <TaGroup title="Formily">
         <FormProvider form={form}>
           <Field
             name="nickname"
             title="昵称"
             required
             component={[
-              AkInput,
+              TaInput,
               { placeholder: '请输入昵称', showClear: true }
             ]}
             decorator={[FormilyFormItem]}
@@ -72,7 +72,7 @@ export default function ExpForm() {
             title="头像"
             required
             component={[
-              AkImageUploader,
+              TaImageUploader,
               { uploadReady: hookUpload, columnNumber: 1, maxCount: 1 }
             ]}
             decorator={[FormilyFormItem]}
@@ -82,7 +82,7 @@ export default function ExpForm() {
             title="性别"
             required
             component={[
-              AkRadioGroup,
+              TaRadioGroup,
               {
                 options: genderOptions
               }
@@ -93,7 +93,7 @@ export default function ExpForm() {
             name="weight"
             title="体重Kg"
             required
-            component={[AkSlider, { showValue: true, min: 35, max: 120 }]}
+            component={[TaSlider, { showValue: true, min: 35, max: 120 }]}
             decorator={[FormilyFormItem]}
           />
           <Field
@@ -101,7 +101,7 @@ export default function ExpForm() {
             title="季节"
             required
             component={[
-              AkPicker,
+              TaPicker,
               { options: multiOptions, placeholder: '选择季节' }
             ]}
             decorator={[FormilyFormItem]}
@@ -110,14 +110,14 @@ export default function ExpForm() {
             name="birthday"
             title="生日"
             required
-            component={[AkCalendar, { placeholder: '选择生日' }]}
+            component={[TaCalendar, { placeholder: '选择生日' }]}
             decorator={[FormilyFormItem]}
           />
           <Field
             name="character"
             title="性格"
             required
-            component={[AkCheckboxGroup, { options: characters }]}
+            component={[TaCheckboxGroup, { options: characters }]}
             decorator={[FormilyFormItem]}
           />
           <Field
@@ -125,7 +125,7 @@ export default function ExpForm() {
             title="地区"
             required
             component={[
-              AkCascader,
+              TaCascader,
               {
                 placeholder: '选择地区',
                 fieldNames: { value: 'label' },
@@ -138,21 +138,21 @@ export default function ExpForm() {
             name="happinessIndex"
             title="幸福指数"
             required
-            component={[AkRate, { allowHalf: true }]}
+            component={[TaRate, { allowHalf: true }]}
             decorator={[FormilyFormItem]}
           />
           <Field
             name="stepper"
             title="步进器"
             required
-            component={[AkStepper, { max: 10, step: 0.2, decimalLength: 1 }]}
+            component={[TaStepper, { max: 10, step: 0.2, decimalLength: 1 }]}
             decorator={[FormilyFormItem]}
           />
           <Field
             name="agree"
             title="认可"
             required
-            component={[AkSwitch]}
+            component={[TaSwitch]}
             decorator={[FormilyFormItem]}
           />
           <FormConsumer>
@@ -161,21 +161,21 @@ export default function ExpForm() {
                 <pre className="exp-form-json">
                   {JSON.stringify(form.values, null, 2)}
                 </pre>
-                <AkForm.Footer>
-                  <AkButton
+                <TaForm.Footer>
+                  <TaButton
                     type="primary"
                     onClick={() => {
                       form.submit(onSubmit)
                     }}
                   >
                     提交
-                  </AkButton>
-                </AkForm.Footer>
+                  </TaButton>
+                </TaForm.Footer>
               </>
             )}
           </FormConsumer>
         </FormProvider>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

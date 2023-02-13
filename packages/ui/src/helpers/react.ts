@@ -1,6 +1,43 @@
 import * as React from 'react'
 import { isFragment } from 'react-is'
 
+export type FC<T = Record<string, unknown>> = React.FC<
+  T & {
+    className?: string
+  }
+>
+export type VFC<T = Record<string, unknown>> = React.VFC<
+  T & {
+    className?: string
+  }
+>
+export type FRFC<
+  T,
+  P = Record<string, unknown>
+> = React.ForwardRefRenderFunction<
+  T,
+  P & {
+    className?: string
+    children?: React.ReactNode | undefined
+  }
+>
+export type FRVFC<
+  T,
+  P = Record<string, unknown>
+> = React.ForwardRefRenderFunction<
+  T,
+  P & {
+    className?: string
+  }
+>
+
+export type RenderProp<T = void> = T extends void
+  ? () => React.ReactNode
+  : (data: T) => React.ReactNode
+export type RenderChildren<T> =
+  | ((payload: T) => React.ReactNode)
+  | React.ReactNode
+
 export const getFilteredChildren = (
   children: React.ReactNode | undefined,
   displayName: string

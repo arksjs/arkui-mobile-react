@@ -1,7 +1,7 @@
 import type { SVGAttributes } from 'react'
-import type { CSSProperties, VFC } from '../helpers/types'
+import type { CSSProperties, VFC } from '../helpers'
 
-const AkSpriteSVG: VFC<
+const TaSpriteSVG: VFC<
   Omit<SVGAttributes<SVGSVGElement>, 'style'> & {
     iconName: string
     style?: CSSProperties
@@ -14,4 +14,4 @@ const AkSpriteSVG: VFC<
   )
 }
 
-export default AkSpriteSVG
+export default TaSpriteSVG

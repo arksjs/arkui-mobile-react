@@ -1,12 +1,12 @@
 import type { HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import type { CellEmits, CellProps } from './types'
-import type { FC, OnClick, RenderProp } from '../helpers/types'
+import type { FC, OnClick, RenderProp } from '../helpers'
 import { getCellClasses, getCellArrowClasses } from './util'
 import { Icon } from '../Icon'
 import RightOutlined from '../Icon/icons/RightOutlined'
 
-const AkCell: FC<
+const TaCell: FC<
   Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> &
     CellProps &
     CellEmits & {
@@ -47,11 +47,11 @@ const AkCell: FC<
 
   return (
     <div {...attrs} className={classes} onClick={handleClick}>
-      <div className="ak-cell_header">
+      <div className="ta-cell_header">
         {renderIcon ? (
-          <div className="ak-cell_icon">{renderIcon()}</div>
+          <div className="ta-cell_icon">{renderIcon()}</div>
         ) : icon ? (
-          <div className="ak-cell_icon">
+          <div className="ta-cell_icon">
             <Icon icon={icon} />
           </div>
         ) : (
@@ -59,14 +59,14 @@ const AkCell: FC<
         )}
 
         {label ? (
-          <div className="ak-cell_label">
+          <div className="ta-cell_label">
             {label}
-            {required ? <span className="ak-cell_required"> *</span> : <></>}
+            {required ? <span className="ta-cell_required"> *</span> : <></>}
           </div>
         ) : (
           <></>
         )}
-        <div className="ak-cell_content">{children || content}</div>
+        <div className="ta-cell_content">{children || content}</div>
 
         {isLink ? (
           <Icon className={arrowClasses} icon={RightOutlined} />
@@ -74,12 +74,11 @@ const AkCell: FC<
           <></>
         )}
       </div>
-      {description ? <div className="ak-cell_body">{description}</div> : <></>}
+      {description ? <div className="ta-cell_body">{description}</div> : <></>}
     </div>
   )
 }
-
-AkCell.defaultProps = {
+TaCell.defaultProps = {
   label: '',
   description: '',
   content: '',
@@ -89,4 +88,4 @@ AkCell.defaultProps = {
   disabled: false
 }
 
-export default AkCell
+export default TaCell

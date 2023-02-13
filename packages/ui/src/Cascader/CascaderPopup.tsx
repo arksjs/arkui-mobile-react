@@ -12,11 +12,11 @@ import type { OnVisibleStateChange } from '../popup/types'
 import { usePickerPopup } from '../Picker/use-picker'
 import { mergeHandlers } from '../Picker/util'
 
-const AkCascaderPopup: FRVFC<
+const TaCascaderPopup: FRVFC<
   CascaderPopupRef,
   CascaderPopupProps & CascaderPopupEmits
 > = (props, ref) => {
-  const classes = classNames('ak-cascader-popup', props.className)
+  const classes = classNames('ta-cascader-popup', props.className)
 
   const { popupRef, viewRef, onConfirmClick } = usePickerPopup(props, ref, {
     handlers: mergeHandlers({
@@ -56,4 +56,4 @@ const AkCascaderPopup: FRVFC<
   )
 }
 
-export default forwardRef(AkCascaderPopup)
+export default forwardRef(TaCascaderPopup)

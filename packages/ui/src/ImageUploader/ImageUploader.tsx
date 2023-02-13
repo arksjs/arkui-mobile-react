@@ -35,7 +35,7 @@ import UploaderItem from './ImageUploaderItem'
 
 const addButtonID = -1
 
-const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
+const TaImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
   uploadReady = noop,
   beforeUpload = returnTrue,
   preview = true,
@@ -447,7 +447,7 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
     ]
   )
 
-  const classes = classNames('ak-image-uploader', props.className)
+  const classes = classNames('ta-image-uploader', props.className)
 
   return (
     <>
@@ -467,7 +467,7 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
         />
       </div>
       <ImagePreview
-        className="ak-image-uploader_preview"
+        className="ta-image-uploader_preview"
         urls={getFormValue()}
         visible={previewVisible}
         current={previewCurrent}
@@ -488,4 +488,4 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
   )
 }
 
-export default AkImageUploader
+export default TaImageUploader

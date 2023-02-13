@@ -3,7 +3,7 @@ import type { StepProps } from './types'
 import type { FC, RenderProp } from '../helpers/types'
 import { getStepClasses } from './util'
 
-const AkStep: FC<
+const TaStep: FC<
   StepProps & {
     renderTitle?: RenderProp
     renderStep?: RenderProp<{
@@ -19,8 +19,8 @@ const AkStep: FC<
 
   return (
     <div className={classes}>
-      <div className="ak-step_line"></div>
-      <div className="ak-step_index">
+      <div className="ta-step_line"></div>
+      <div className="ta-step_index">
         {props.renderStep ? (
           props.renderStep({
             active,
@@ -30,20 +30,20 @@ const AkStep: FC<
           <>{index + 1}</>
         )}
       </div>
-      <div className="ak-step_inner">
+      <div className="ta-step_inner">
         {props.title || props.renderTitle ? (
-          <div className="ak-step_title">
+          <div className="ta-step_title">
             {props.renderTitle ? props.renderTitle() : props.title}
           </div>
         ) : (
           <></>
         )}
-        <div className="ak-step_content">{props.children}</div>
+        <div className="ta-step_content">{props.children}</div>
       </div>
     </div>
   )
 }
 
-AkStep.displayName = 'AkStep'
+TaStep.displayName = 'TaStep'
 
-export default AkStep
+export default TaStep

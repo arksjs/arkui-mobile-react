@@ -7,7 +7,7 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { Icon } from '../Icon'
 import { useStop, useLongPress } from '../hooks/use-event'
 
-const AkTag: FC<TagProps & TagEmits> = props => {
+const TaTag: FC<TagProps & TagEmits> = props => {
   const root = useRef<HTMLDivElement>(null)
   const closeEl = useRef<HTMLButtonElement>(null)
 
@@ -41,7 +41,7 @@ const AkTag: FC<TagProps & TagEmits> = props => {
     <div className={classes} style={styles} ref={root}>
       {props.children}
       {props.closable ? (
-        <button className="ak-tag_close" ref={closeEl}>
+        <button className="ta-tag_close" ref={closeEl}>
           <Icon icon={CloseOutlined} onClick={onClose} />
         </button>
       ) : (
@@ -51,9 +51,9 @@ const AkTag: FC<TagProps & TagEmits> = props => {
   )
 }
 
-AkTag.defaultProps = {
+TaTag.defaultProps = {
   closable: false,
   disabled: false
 }
 
-export default AkTag
+export default TaTag

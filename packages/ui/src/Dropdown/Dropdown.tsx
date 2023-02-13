@@ -9,7 +9,7 @@ import Exception from '../helpers/exception'
 import { querySelector } from '../helpers/dom'
 import { useResizeObserver } from '../hooks/use-resize-observer'
 
-const AkDropdown: FRFC<
+const TaDropdown: FRFC<
   PopupRef,
   DropdownProps &
     DropdownEmits & {
@@ -27,7 +27,7 @@ const AkDropdown: FRFC<
     }
   })
 
-  const classes = classNames(['ak-dropdown', popupClasses, props.className])
+  const classes = classNames(['ta-dropdown', popupClasses, props.className])
 
   const styles = Object.assign(
     {
@@ -69,11 +69,11 @@ const AkDropdown: FRFC<
 
   return createPortal(
     <div className={classes} style={styles} ref={root}>
-      <div className="ak-mask" onClick={onMaskClick}></div>
-      <div className="ak-dropdown_inner">{renderChildren}</div>
+      <div className="ta-mask" onClick={onMaskClick}></div>
+      <div className="ta-dropdown_inner">{renderChildren}</div>
     </div>,
     document.body
   )
 }
 
-export default forwardRef(AkDropdown)
+export default forwardRef(TaDropdown)

@@ -1,12 +1,11 @@
+import type { SVGAttributes } from 'react'
 import classNames from 'classnames'
 import type { IconProps } from './types'
 import { getIconStyles } from './util'
-import AkSpriteSVG from './SpriteSVG'
-import type { VFC, CSSProperties } from '../helpers/types'
-import { isString } from '../helpers/util'
-import type { SVGAttributes } from 'react'
+import TaSpriteSVG from './SpriteSVG'
+import { isString, type VFC, type CSSProperties } from '../helpers'
 
-const AkIcon: VFC<
+const TaIcon: VFC<
   Omit<SVGAttributes<SVGSVGElement>, 'style'> &
     IconProps & { style?: CSSProperties }
 > = ({
@@ -29,12 +28,12 @@ const AkIcon: VFC<
     }),
     style ?? {}
   )
-  const classes = classNames('ak-icon', { spin }, className)
+  const classes = classNames('ta-icon', { spin }, className)
 
   return (
     <>
       {isString(icon) ? (
-        <AkSpriteSVG
+        <TaSpriteSVG
           {...attrs}
           className={classes}
           iconName={icon}
@@ -47,8 +46,8 @@ const AkIcon: VFC<
   )
 }
 
-AkIcon.defaultProps = {
+TaIcon.defaultProps = {
   spin: false
 }
 
-export default AkIcon
+export default TaIcon

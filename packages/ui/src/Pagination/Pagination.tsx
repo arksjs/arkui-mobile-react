@@ -13,7 +13,7 @@ import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { getTotal } from './util'
 
-const AkPagination: VFC<
+const TaPagination: VFC<
   PaginationProps &
     PaginationEmits & {
       children?: RenderChildren<{
@@ -25,7 +25,7 @@ const AkPagination: VFC<
       style?: CSSProperties
     }
 > = ({ current, onChange, ...props }) => {
-  const classes = classNames('ak-pagination', props.className)
+  const classes = classNames('ta-pagination', props.className)
   const [pageNum, setPageNum] = useState(-1)
   const totalNum = getTotal(props.total)
 
@@ -61,17 +61,17 @@ const AkPagination: VFC<
   return (
     <div className={classes} style={props.style}>
       <button
-        className="ak-pagination_prev"
+        className="ta-pagination_prev"
         disabled={pageNum <= 1}
         onClick={() => onClick('prev')}
       >
         {props.renderPrev ? props.renderPrev() : <Icon icon={LeftOutlined} />}
       </button>
-      <div className="ak-pagination_content">
+      <div className="ta-pagination_content">
         {children || `${pageNum} / ${totalNum}`}
       </div>
       <button
-        className="ak-pagination_next"
+        className="ta-pagination_next"
         disabled={pageNum >= totalNum}
         onClick={() => onClick('next')}
       >
@@ -81,9 +81,9 @@ const AkPagination: VFC<
   )
 }
 
-AkPagination.defaultProps = {
+TaPagination.defaultProps = {
   current: 1,
   total: 1
 }
 
-export default AkPagination
+export default TaPagination

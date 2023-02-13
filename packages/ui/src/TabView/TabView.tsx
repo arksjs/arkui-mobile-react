@@ -24,7 +24,7 @@ interface TabItem {
   subLabel: string
 }
 
-const AkTabView: FRFC<
+const TaTabView: FRFC<
   TabViewRef,
   TabViewProps &
     TabViewEmits & {
@@ -97,7 +97,7 @@ const AkTabView: FRFC<
 
   return (
     <div className={classes} style={props.style}>
-      <div className="ak-tab-view_header ak-horizontal-hairline">
+      <div className="ta-tab-view_header ta-horizontal-hairline">
         {vertical ? (
           <SideTab options={tabList} onChange={onChange} ref={tabRef} />
         ) : (
@@ -109,7 +109,7 @@ const AkTabView: FRFC<
           />
         )}
       </div>
-      <div className="ak-tab-view_body">
+      <div className="ta-tab-view_body">
         <Swiper
           initialActiveIndex={0}
           initialVertical={vertical}
@@ -125,4 +125,4 @@ const AkTabView: FRFC<
   )
 }
 
-export default forwardRef(AkTabView)
+export default forwardRef(TaTabView)

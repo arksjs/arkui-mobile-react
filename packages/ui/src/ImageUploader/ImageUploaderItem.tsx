@@ -5,20 +5,20 @@ import { ActivityIndicator } from '../ActivityIndicator'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 import { FileItem, ImageMode } from './types'
 
-const AkImageUploaderItem: VFC<{
+const TaImageUploaderItem: VFC<{
   item: FileItem
   imageMode?: ImageMode
   onClick: (item: FileItem) => void
 }> = ({ item, imageMode, onClick }) => {
   return (
     <div
-      className="ak-image-uploader_item"
+      className="ta-image-uploader_item"
       onClick={() => onClick(item)}
       onContextMenu={e => e.nativeEvent.preventDefault()}
     >
       <Image src={item.url} draggable={false} mode={imageMode} />
       {item.status !== 'uploaded' && item.status !== 'reading' ? (
-        <div className="ak-image-uploader_item-status">
+        <div className="ta-image-uploader_item-status">
           {item.status === 'uploading' ? (
             <ActivityIndicator size="40" color="#ffffff" />
           ) : item.status === 'failed' ? (
@@ -35,4 +35,4 @@ const AkImageUploaderItem: VFC<{
   )
 }
 
-export default AkImageUploaderItem
+export default TaImageUploaderItem

@@ -14,9 +14,17 @@ import type {
   CalendarViewRef,
   DayInfo
 } from './types'
-import type { OnClick, Dayjs, FRVFC } from '../helpers/types'
-import dayjs from '../helpers/day'
-import { cloneData, getNumber, isSameArray } from '../helpers/util'
+import {
+  dayjs,
+  type Dayjs,
+  CSSProperties2CssText,
+  getScrollTop,
+  cloneData,
+  getNumber,
+  isSameArray,
+  type OnClick,
+  type FRVFC
+} from '../helpers'
 import { showToast } from '../Toast'
 import {
   getFirstDayOfWeek,
@@ -31,7 +39,6 @@ import { useLocale } from '../ConfigProvider/context'
 
 import ViewMonth from './CalendarViewMonth'
 import { useStableState } from '../hooks/use'
-import { CSSProperties2CssText, getScrollTop } from '../helpers/dom'
 import VirtualList from '../VirtualList'
 
 type WeekDay = '0' | '1' | '2' | '3' | '4' | '5' | '6'
@@ -62,7 +69,7 @@ function getDefaultSelectDay(): SelectDay {
   }
 }
 
-const AkCalendarView: FRVFC<
+const TaCalendarView: FRVFC<
   CalendarViewRef,
   CalendarViewProps & CalendarViewEmits
 > = (props, ref) => {
@@ -542,7 +549,7 @@ const AkCalendarView: FRVFC<
     const h = 28
     const $items: HTMLDivElement[] = bodyEl.current
       ? [].slice.call(
-          bodyEl.current.querySelectorAll('.ak-virtual-list_item'),
+          bodyEl.current.querySelectorAll('.ta-virtual-list_item'),
           0
         )
       : []
@@ -624,7 +631,7 @@ const AkCalendarView: FRVFC<
   const renderWeekdays = useMemo(
     () =>
       weekDays.map(weekDay => {
-        const weekDayClasses = classNames('ak-calendar-view_weekday', {
+        const weekDayClasses = classNames('ta-calendar-view_weekday', {
           highlight: weekDay === '0' || weekDay === '6'
         })
         return (
@@ -659,7 +666,7 @@ const AkCalendarView: FRVFC<
     [getMonths(), onDaysClick]
   )
 
-  const classes = classNames('ak-calendar-view', props.className)
+  const classes = classNames('ta-calendar-view', props.className)
 
   useImperativeHandle(
     ref,
@@ -671,13 +678,13 @@ const AkCalendarView: FRVFC<
 
   return (
     <div className={classes}>
-      <div className="ak-calendar-view_header">
-        <div className="ak-calendar-view_weekdays">{renderWeekdays}</div>
+      <div className="ta-calendar-view_header">
+        <div className="ta-calendar-view_weekdays">{renderWeekdays}</div>
       </div>
-      <div className="ak-calendar-view_body" ref={bodyEl}>
+      <div className="ta-calendar-view_body" ref={bodyEl}>
         {renderMonths}
         <div
-          className="ak-calendar-view_month-caption fixed"
+          className="ta-calendar-view_month-caption fixed"
           ref={bodyTitleEl}
         ></div>
       </div>
@@ -685,4 +692,4 @@ const AkCalendarView: FRVFC<
   )
 }
 
-export default forwardRef(AkCalendarView)
+export default forwardRef(TaCalendarView)

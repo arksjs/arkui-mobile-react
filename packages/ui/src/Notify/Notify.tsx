@@ -8,7 +8,7 @@ import { useDelay } from '../hooks/use-delay'
 import { NoticeBar } from '../NoticeBar'
 import type { PopupRef } from '../popup/types'
 
-const AkNotify: FRVFC<PopupRef, NotifyProps & NotifyEmits> = (props, ref) => {
+const TaNotify: FRVFC<PopupRef, NotifyProps & NotifyEmits> = (props, ref) => {
   const { addDelayTask, removeDelayTask } = useDelay(() => {
     customCancel('auto', true)
   }, props.duration)
@@ -23,12 +23,12 @@ const AkNotify: FRVFC<PopupRef, NotifyProps & NotifyEmits> = (props, ref) => {
     }
   )
 
-  const classes = classNames(['ak-notify', popupClasses])
+  const classes = classNames(['ta-notify', popupClasses])
 
   return createPortal(
     <div className={classes} style={popupStyles}>
       <NoticeBar
-        className="ak-notify_inner"
+        className="ta-notify_inner"
         type={props.type ?? 'primary'}
         leftIcon={props.icon}
         title={props.title}
@@ -41,4 +41,4 @@ const AkNotify: FRVFC<PopupRef, NotifyProps & NotifyEmits> = (props, ref) => {
   )
 }
 
-export default forwardRef(AkNotify)
+export default forwardRef(TaNotify)

@@ -9,7 +9,7 @@ import type {
   UserSizeType
 } from './types'
 import { simpleNumber } from '../helpers/digital-conversion'
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import { getColorObject } from '../helpers/color'
 import type { BadgeProps } from '../Badge/types'
 import { handleBadge } from '../Badge/util'
@@ -32,12 +32,12 @@ export const getAvatarShape = (props: AvatarProps, hasGroup?: boolean) =>
   getEnumsValue(AVATAR_SHAPE_TYPES, hasGroup ? 'circle' : props.shape)
 
 export const getGroupClasses = (count: number) => [
-  'ak-avatar-group',
+  'ta-avatar-group',
   'count--' + (count || 1)
 ]
 
 export const getGroupCountClasses = (showCount: string) => [
-  'ak-avatar-group_count-number',
+  'ta-avatar-group_count-number',
   'size--' + showCount.length
 ]
 
@@ -49,7 +49,7 @@ export const getAvatarClasses = (
   size: UserSizeType,
   shape: ShapeType
 ) => [
-  'ak-avatar',
+  'ta-avatar',
   'size--' + size,
   'shape--' + shape,
   {
@@ -69,8 +69,8 @@ export const getAvatarStyles = (props: AvatarProps, size: UserSizeType) => {
 
   const colorObj = getColorObject(props.color)
   if (colorObj.hasColor) {
-    styles[`--ak-color`] = colorObj.varBackgroundColor
-    styles[`--ak-front-color`] = colorObj.varFrontColor
+    styles[`--ta-color`] = colorObj.varBackgroundColor
+    styles[`--ta-front-color`] = colorObj.varFrontColor
   }
 
   return styles

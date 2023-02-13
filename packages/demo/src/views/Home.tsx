@@ -1,4 +1,4 @@
-import { AkGroup, AkCell } from '@/index'
+import { TaGroup, TaCell } from '@/index'
 import { useNavigate } from 'react-router-dom'
 import { navConfig } from './data'
 import Logo from '../assets/logo.svg?jsx'
@@ -18,12 +18,12 @@ export default function ExpHome() {
   function renderList(group: { list: NavItem[] }) {
     return group.list.map(item => {
       return (
-        <AkCell
+        <TaCell
           clickable
           label={item.name + ' ' + item.zhName}
           key={item.name}
           onClick={() => onItemClick(item)}
-        ></AkCell>
+        ></TaCell>
       )
     })
   }
@@ -31,9 +31,9 @@ export default function ExpHome() {
   function renderGroupList() {
     return navConfig.map(group => {
       return (
-        <AkGroup title={group.name + ' ' + group.zhName} key={group.name}>
+        <TaGroup title={group.name + ' ' + group.zhName} key={group.name}>
           {renderList(group)}
-        </AkGroup>
+        </TaGroup>
       )
     })
   }

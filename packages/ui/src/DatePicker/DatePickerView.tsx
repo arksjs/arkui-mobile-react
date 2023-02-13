@@ -3,7 +3,7 @@ import type { VFC } from '../helpers/types'
 import { PickerView } from '../Picker'
 import { useHandlers } from './use-date-picker'
 
-const AkDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
+const TaDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
   formatTemplate,
   initialMode,
   minDate,
@@ -26,4 +26,4 @@ const AkDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
   )
 }
 
-export default AkDatePickerView
+export default TaDatePickerView

@@ -3,9 +3,9 @@ import {
   showDatePicker,
   SelectorModelValue,
   DatePickerOptionFilter,
-  AkGroup,
-  AkCell,
-  AkDatePicker
+  TaGroup,
+  TaCell,
+  TaDatePicker
 } from '@/index'
 import dayjs from 'dayjs'
 
@@ -44,80 +44,80 @@ export default function ExpDatePicker() {
 
   return (
     <>
-      <AkGroup title="initialMode">
-        <AkCell label="日期 date">
-          <AkDatePicker initialMode="date" />
-        </AkCell>
-        <AkCell label="时间 time">
-          <AkDatePicker initialMode="time" />
-        </AkCell>
-        <AkCell label="日期时间 datetime">
-          <AkDatePicker initialMode="datetime" />
-        </AkCell>
-        <AkCell label="分秒 minute-second">
-          <AkDatePicker initialMode="minute-second" />
-        </AkCell>
-        <AkCell label="时分 hour-minute">
-          <AkDatePicker initialMode="hour-minute" />
-        </AkCell>
-        <AkCell label="天时 day-hour">
-          <AkDatePicker initialMode="day-hour" />
-        </AkCell>
-        <AkCell label="月日 month-day">
-          <AkDatePicker initialMode="month-day" />
-        </AkCell>
-        <AkCell label="月日时 month-day-hour">
-          <AkDatePicker initialMode="month-day-hour" />
-        </AkCell>
-        <AkCell label="月日时分 month-day-hour-minute">
-          <AkDatePicker initialMode="month-day-hour-minute" />
-        </AkCell>
-        <AkCell label="年月 year-month">
-          <AkDatePicker initialMode="year-month" />
-        </AkCell>
-        <AkCell label="年月日时 year-month-day-hour">
-          <AkDatePicker initialMode="year-month-day-hour" />
-        </AkCell>
-        <AkCell label="年月日时分 year-month-day-hour-minute">
-          <AkDatePicker initialMode="year-month-day-hour-minute" />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="minDate & maxDate">
-        <AkCell label="-5year ~ 5year">
-          <AkDatePicker
+      <TaGroup title="initialMode">
+        <TaCell label="日期 date">
+          <TaDatePicker initialMode="date" />
+        </TaCell>
+        <TaCell label="时间 time">
+          <TaDatePicker initialMode="time" />
+        </TaCell>
+        <TaCell label="日期时间 datetime">
+          <TaDatePicker initialMode="datetime" />
+        </TaCell>
+        <TaCell label="分秒 minute-second">
+          <TaDatePicker initialMode="minute-second" />
+        </TaCell>
+        <TaCell label="时分 hour-minute">
+          <TaDatePicker initialMode="hour-minute" />
+        </TaCell>
+        <TaCell label="天时 day-hour">
+          <TaDatePicker initialMode="day-hour" />
+        </TaCell>
+        <TaCell label="月日 month-day">
+          <TaDatePicker initialMode="month-day" />
+        </TaCell>
+        <TaCell label="月日时 month-day-hour">
+          <TaDatePicker initialMode="month-day-hour" />
+        </TaCell>
+        <TaCell label="月日时分 month-day-hour-minute">
+          <TaDatePicker initialMode="month-day-hour-minute" />
+        </TaCell>
+        <TaCell label="年月 year-month">
+          <TaDatePicker initialMode="year-month" />
+        </TaCell>
+        <TaCell label="年月日时 year-month-day-hour">
+          <TaDatePicker initialMode="year-month-day-hour" />
+        </TaCell>
+        <TaCell label="年月日时分 year-month-day-hour-minute">
+          <TaDatePicker initialMode="year-month-day-hour-minute" />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="minDate & maxDate">
+        <TaCell label="-5year ~ 5year">
+          <TaDatePicker
             initialMode="date"
             minDate={maxDate}
             maxDate={minDate}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="filter">
-        <AkCell label="秒步进5">
-          <AkDatePicker initialMode="datetime" filter={filter} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="formatTemplate">
-        <AkCell label="YYYY年MM月DD日">
-          <AkDatePicker
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="filter">
+        <TaCell label="秒步进5">
+          <TaDatePicker initialMode="datetime" filter={filter} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="formatTemplate">
+        <TaCell label="YYYY年MM月DD日">
+          <TaDatePicker
             initialMode="date"
             formatTemplate="YYYY年MM月DD日"
             v-model="formatValue"
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="disabled">
-        <AkCell label="禁用">
-          <AkDatePicker initialMode="date" disabled value={disableValue} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="change">
-          <AkDatePicker initialMode="datetime" onChange={onChange} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showDatePicker" isLink onClick={() => onCallApi()} />
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="disabled">
+        <TaCell label="禁用">
+          <TaDatePicker initialMode="date" disabled value={disableValue} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="change">
+          <TaDatePicker initialMode="datetime" onChange={onChange} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showDatePicker" isLink onClick={() => onCallApi()} />
+      </TaGroup>
     </>
   )
 }

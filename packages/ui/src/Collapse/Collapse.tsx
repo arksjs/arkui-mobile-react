@@ -10,19 +10,19 @@ import type { FC } from '../helpers/types'
 import {
   cloneData,
   isSameArray,
-  isStringNumberMix,
-  isStringNumberMixArray
+  isStringOrNumber,
+  isStringOrNumberArray
 } from '../helpers/util'
 import { useEffect, useRef } from 'react'
 import { useGroup } from '../hooks/use-group'
 import { CollapseContext } from './context'
 
-const AkCollapse: FC<CollapseProps & CollapseEmits> = ({
+const TaCollapse: FC<CollapseProps & CollapseEmits> = ({
   activeNames = [],
   accordion = false,
   ...props
 }) => {
-  const classes = classNames('ak-collapse', props.className)
+  const classes = classNames('ta-collapse', props.className)
 
   const activeNames2 = useRef<ActiveName[]>([])
 
@@ -60,7 +60,7 @@ const AkCollapse: FC<CollapseProps & CollapseEmits> = ({
 
   function updateValue(val: ActiveName | ActiveName[]) {
     let values = cloneData(
-      isStringNumberMixArray(val) ? val : isStringNumberMix(val) ? [val] : []
+      isStringOrNumberArray(val) ? val : isStringOrNumber(val) ? [val] : []
     )
 
     if (accordion) {
@@ -97,4 +97,4 @@ const AkCollapse: FC<CollapseProps & CollapseEmits> = ({
   )
 }
 
-export default AkCollapse
+export default TaCollapse

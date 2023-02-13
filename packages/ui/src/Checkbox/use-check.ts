@@ -1,4 +1,4 @@
-import { isStringNumberMix } from '../helpers/util'
+import { isStringOrNumber } from '../helpers/util'
 import { useGroup, useGroupItem } from '../hooks/use-group'
 import type {
   CheckCommonEmits,
@@ -155,7 +155,7 @@ export function useCheckGroup<T>(
 
     if (Array.isArray(props.options)) {
       props.options.forEach(v => {
-        if (isStringNumberMix(v)) {
+        if (isStringOrNumber(v)) {
           ret.push({
             value: v,
             label: v.toString()

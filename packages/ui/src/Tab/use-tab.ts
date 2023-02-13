@@ -1,4 +1,4 @@
-import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
+import { isNumber, isObject, isStringOrNumber, isURL } from '../helpers/util'
 import Exception from '../helpers/exception'
 import { handleBadge } from '../Badge/util'
 import type {
@@ -154,7 +154,7 @@ export function useTab(
 
     if (tabName === 'Tab' && underlineEl.current) {
       const $inner = $activeItem.querySelector(
-        '.ak-tab_item-inner'
+        '.ta-tab_item-inner'
       ) as HTMLElement
 
       underlineEl.current.style.width = $inner.offsetWidth + 'px'
@@ -191,7 +191,7 @@ export function useTab(
         } else if (isObject(item)) {
           item = item as OptionItem
 
-          if (isStringNumberMix(item.value)) {
+          if (isStringOrNumber(item.value)) {
             option = {
               label:
                 typeof item.label === 'string'
@@ -245,7 +245,7 @@ export function useTab(
   useEffect(() => {
     const newVal = props.activeValue
 
-    if (isStringNumberMix(newVal) && newVal !== activeValue2.current) {
+    if (isStringOrNumber(newVal) && newVal !== activeValue2.current) {
       // 如果设置了value，优先判断value
       onChange(newVal)
     }

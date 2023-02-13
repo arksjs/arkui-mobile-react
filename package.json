@@ -13,7 +13,9 @@
     "build:site": "node build/build.site.mjs",
     "semantic-release": "semantic-release",
     "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "demo:dev": "pnpm --filter demo run dev",
+    "demo:build": "pnpm --filter demo run build"
   },
   "repository": {
     "type": "git",

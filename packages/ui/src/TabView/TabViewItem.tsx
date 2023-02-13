@@ -13,13 +13,13 @@ interface TabViewItemCoords {
   stop: boolean
 }
 
-const AkTabViewItem: FC<TabViewItemProps> = ({
+const TaTabViewItem: FC<TabViewItemProps> = ({
   vertical = false,
   ...props
 }) => {
   const classes = classNames(
-    'ak-swiper-item',
-    'ak-tab-view-item',
+    'ta-swiper-item',
+    'ta-tab-view-item',
     props.className
   )
   const root = useRef<HTMLDivElement>(null)
@@ -112,4 +112,4 @@ const AkTabViewItem: FC<TabViewItemProps> = ({
   )
 }
 
-export default AkTabViewItem
+export default TaTabViewItem

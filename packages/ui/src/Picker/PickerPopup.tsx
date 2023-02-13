@@ -15,13 +15,13 @@ import { OnVisibleStateChange } from '../popup/types'
 import { mergeHandlers } from './util'
 import { PickerContext } from './context'
 
-const AkPickerPopup: FRVFC<
+const TaPickerPopup: FRVFC<
   PickerPopupRef,
   PickerPopupProps & PickerPopupEmits
 > = (props, ref) => {
   const { locale } = useLocale()
   const handlers = useContext(PickerContext)
-  const classes = classNames('ak-picker-popup', props.className)
+  const classes = classNames('ta-picker-popup', props.className)
 
   const { popupRef, viewRef, onCancelClick, onConfirmClick } = usePickerPopup(
     props,
@@ -56,7 +56,7 @@ const AkPickerPopup: FRVFC<
       onUpdateVisible={props.onUpdateVisible}
       renderHeader={() => (
         <NavBar
-          className="ak-drawer_header"
+          className="ta-drawer_header"
           title={props.title}
           leftButtons={[{ text: locale.pickerCancelText, type: 'primary' }]}
           rightButtons={[{ text: locale.pickerConfirmText, type: 'primary' }]}
@@ -78,4 +78,4 @@ const AkPickerPopup: FRVFC<
   )
 }
 
-export default forwardRef(AkPickerPopup)
+export default forwardRef(TaPickerPopup)

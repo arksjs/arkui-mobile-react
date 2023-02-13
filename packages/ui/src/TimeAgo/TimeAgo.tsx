@@ -7,8 +7,8 @@ import { format } from 'timeago.js'
 import { useLocale } from '../ConfigProvider/context'
 import { useTimer } from '../hooks/use-timer'
 
-const AkTimeAgo: VFC<TimeAgoProps> = props => {
-  const classes = classNames('ak-time-ago', props.className)
+const TaTimeAgo: VFC<TimeAgoProps> = props => {
+  const classes = classNames('ta-time-ago', props.className)
   const [timeAgo, setTimeAgo] = useState('')
   const { locale } = useLocale()
 
@@ -25,8 +25,8 @@ const AkTimeAgo: VFC<TimeAgoProps> = props => {
   return <div className={classes}>{timeAgo}</div>
 }
 
-AkTimeAgo.defaultProps = {
+TaTimeAgo.defaultProps = {
   interval: 60
 }
 
-export default AkTimeAgo
+export default TaTimeAgo

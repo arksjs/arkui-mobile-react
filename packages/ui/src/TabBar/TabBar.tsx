@@ -9,7 +9,7 @@ import { Image } from '../Image'
 import { getItemClasses } from './util'
 import type { TabRef } from '../Tab/types'
 
-const AkTabBar: FRVFC<TabRef, TabBarProps & TabBarEmits> = (
+const TaTabBar: FRVFC<TabRef, TabBarProps & TabBarEmits> = (
   { className, ...tabProps },
   ref
 ) => {
@@ -21,7 +21,7 @@ const AkTabBar: FRVFC<TabRef, TabBarProps & TabBarEmits> = (
     }
   )
 
-  const classes = classNames('ak-tab-bar', 'ak-horizontal-hairline', className)
+  const classes = classNames('ta-tab-bar', 'ta-horizontal-hairline', className)
 
   const renderItems = useCallback(() => {
     return options2.map((item, index) => (
@@ -30,7 +30,7 @@ const AkTabBar: FRVFC<TabRef, TabBarProps & TabBarEmits> = (
         key={item.value}
         onClick={() => onChange(item.value)}
       >
-        <Badge className="ak-tab-bar_item-icon" {...item.badge}>
+        <Badge className="ta-tab-bar_item-icon" {...item.badge}>
           {item.iconLink ? (
             <Image
               src={index === activeIndex ? item.activeIconLink : item.iconLink}
@@ -41,18 +41,18 @@ const AkTabBar: FRVFC<TabRef, TabBarProps & TabBarEmits> = (
             <></>
           )}
         </Badge>
-        <span className="ak-tab-bar_item-text">{item.label}</span>
+        <span className="ta-tab-bar_item-text">{item.label}</span>
       </li>
     ))
   }, [options2, activeIndex, onChange])
 
   return (
     <div className={classes} style={styles}>
-      <ul className="ak-tab-bar_list" ref={listEl}>
+      <ul className="ta-tab-bar_list" ref={listEl}>
         {renderItems()}
       </ul>
     </div>
   )
 }
 
-export default forwardRef(AkTabBar)
+export default forwardRef(TaTabBar)

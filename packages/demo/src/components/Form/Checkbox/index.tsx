@@ -1,22 +1,22 @@
-import { AkCheckbox, AkCell, AkGroup, showToast } from '@/index'
+import { TaCheckbox, TaCell, TaGroup, showToast } from '@/index'
 
 const groups = ['A', 'B', 'C']
 
 export default function ExpCheckbox() {
   function renderItems() {
     return groups.map(item => (
-      <AkCheckbox key={item} value={item}>
+      <TaCheckbox key={item} value={item}>
         {item}
-      </AkCheckbox>
+      </TaCheckbox>
     ))
   }
 
   function renderCellItems() {
     return groups.map(item => (
-      <AkCell
+      <TaCell
         key={item}
         label={'单元格 ' + item}
-        renderIcon={() => <AkCheckbox circle value={item} />}
+        renderIcon={() => <TaCheckbox circle value={item} />}
       />
     ))
   }
@@ -28,55 +28,55 @@ export default function ExpCheckbox() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认">
-          <AkCheckbox />
-        </AkCell>
-        <AkCell label="带文案">
-          <AkCheckbox>勾选</AkCheckbox>
-        </AkCell>
-        <AkCell label="默认激活">
-          <AkCheckbox checked>勾选</AkCheckbox>
-        </AkCell>
-        <AkCell label="自定义颜色">
-          <AkCheckbox checked activeColor="#8b1721">
+      <TaGroup title="基础用法">
+        <TaCell label="默认">
+          <TaCheckbox />
+        </TaCell>
+        <TaCell label="带文案">
+          <TaCheckbox>勾选</TaCheckbox>
+        </TaCell>
+        <TaCell label="默认激活">
+          <TaCheckbox checked>勾选</TaCheckbox>
+        </TaCell>
+        <TaCell label="自定义颜色">
+          <TaCheckbox checked activeColor="#8b1721">
             勾选
-          </AkCheckbox>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkCheckbox disabled>勾选</AkCheckbox>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="CheckboxGroup">
-        <AkCell label="默认">
-          <AkCheckbox.Group>{renderItems()}</AkCheckbox.Group>
-        </AkCell>
-        <AkCell label="内联">
-          <AkCheckbox.Group inline activeColor="#8b1721">
+          </TaCheckbox>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaCheckbox disabled>勾选</TaCheckbox>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="CheckboxGroup">
+        <TaCell label="默认">
+          <TaCheckbox.Group>{renderItems()}</TaCheckbox.Group>
+        </TaCell>
+        <TaCell label="内联">
+          <TaCheckbox.Group inline activeColor="#8b1721">
             {renderItems()}
-          </AkCheckbox.Group>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkCheckbox.Group value={['A']} disabled>
+          </TaCheckbox.Group>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaCheckbox.Group value={['A']} disabled>
             {renderItems()}
-          </AkCheckbox.Group>
-        </AkCell>
-        <AkCell label="通过options设置">
-          <AkCheckbox.Group options={groups} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="CheckboxGroup + Cell">
-        <AkCheckbox.Group>{renderCellItems()}</AkCheckbox.Group>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="change">
-          <AkCheckbox.Group onChange={onChange}>
-            <AkCheckbox value="A">A</AkCheckbox>
-            <AkCheckbox value="B">B</AkCheckbox>
-            <AkCheckbox value="C">C</AkCheckbox>
-          </AkCheckbox.Group>
-        </AkCell>
-      </AkGroup>
+          </TaCheckbox.Group>
+        </TaCell>
+        <TaCell label="通过options设置">
+          <TaCheckbox.Group options={groups} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="CheckboxGroup + Cell">
+        <TaCheckbox.Group>{renderCellItems()}</TaCheckbox.Group>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="change">
+          <TaCheckbox.Group onChange={onChange}>
+            <TaCheckbox value="A">A</TaCheckbox>
+            <TaCheckbox value="B">B</TaCheckbox>
+            <TaCheckbox value="C">C</TaCheckbox>
+          </TaCheckbox.Group>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

@@ -9,7 +9,7 @@ import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
 import BorderOutlined from '../Icon/icons/BorderOutlined'
 import CheckSquareFilled from '../Icon/icons/CheckSquareFilled'
 
-const AkCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
+const TaCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
   circle = false,
   children,
   ...props
@@ -20,7 +20,7 @@ const AkCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
   )
 
   const classes = classNames(
-    'ak-checkbox',
+    'ta-checkbox',
     getCheckClasses(disabled2),
     props.className
   )
@@ -28,7 +28,7 @@ const AkCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
   return (
     <label className={classes} style={styles}>
       <input
-        className="ak-checkbox_input ak-form-input"
+        className="ta-checkbox_input ta-form-input"
         type="checkbox"
         name={name2}
         value={props.value}
@@ -36,17 +36,17 @@ const AkCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
         onChange={onChange}
         ref={inputEl}
       />
-      <div className="ak-checkbox_box">
+      <div className="ta-checkbox_box">
         <Icon
-          className="ak-checkbox_icon"
+          className="ta-checkbox_icon"
           icon={circle ? CircleOutlined : BorderOutlined}
         />
         <Icon
-          className="ak-checkbox_checked-icon"
+          className="ta-checkbox_checked-icon"
           icon={circle ? CheckCircleFilled : CheckSquareFilled}
         />
         {children ? (
-          <span className="ak-checkbox_text">{children}</span>
+          <span className="ta-checkbox_text">{children}</span>
         ) : (
           <></>
         )}
@@ -55,4 +55,4 @@ const AkCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
   )
 }
 
-export default AkCheckbox
+export default TaCheckbox

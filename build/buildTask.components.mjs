@@ -4,7 +4,6 @@ import fs from 'fs'
 import { getCoreDeps, getJSON, getPath } from './utils.mjs'
 
 const { resolveCore, resolve } = getPath(import.meta.url)
-const config = await getJSON(resolveCore('./src/components/config.json'))
 
 const getDeps = async () => {
   const pkg = await getJSON(resolve('./package.json'))
@@ -101,9 +100,12 @@ export const buildComps = async () => {
 }
 
 export const buildSrcCompEntry = async () => {
+  const config = await getJSON(resolveCore('./src/components/config.json'))
+
+  // index.ts
   const imports = []
   for (const name of config.components) {
-    imports.push(`export { default as Ak${name} } from '../${name}'\n`)
+    imports.push(`export { default as Ta${name} } from '../${name}'\n`)
   }
 
   await fs.promises.writeFile(
@@ -112,6 +114,7 @@ export const buildSrcCompEntry = async () => {
     'utf-8'
   )
 
+  // api.ts
   const apiImports = []
   for (const array of config.apis) {
     const name = array.shift()

@@ -26,7 +26,7 @@ import { cloneDetail, isSameDetail } from '../Picker/util'
 import { useLocale } from '../ConfigProvider/context'
 import { useHandlers } from './use-calendar'
 
-const AkCalendarPopup: FRVFC<
+const TaCalendarPopup: FRVFC<
   CalendarPopupRef,
   CalendarPopupProps & CalendarPopupEmits
 > = (props, ref) => {
@@ -93,7 +93,7 @@ const AkCalendarPopup: FRVFC<
     detail.current = getViewDetail()
   }, [props.value])
 
-  const classes = classNames('ak-calendar-popup', props.className)
+  const classes = classNames('ta-calendar-popup', props.className)
 
   useImperativeHandle(
     ref,
@@ -133,7 +133,7 @@ const AkCalendarPopup: FRVFC<
         onSelect={onViewSelect}
       />
       {props.showConfirm ? (
-        <div className="ak-calendar-popup_confirm">
+        <div className="ta-calendar-popup_confirm">
           <Button
             type="primary"
             onClick={onConfirmClick}
@@ -149,4 +149,4 @@ const AkCalendarPopup: FRVFC<
   )
 }
 
-export default forwardRef(AkCalendarPopup)
+export default forwardRef(TaCalendarPopup)

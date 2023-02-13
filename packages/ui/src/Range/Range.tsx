@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useSlide } from '../Slider/use-slide'
 import { cloneData, isNumberArray, isSameArray } from '../helpers/util'
 
-const AkRange: VFC<RangeProps & RangeEmits> = ({
+const TaRange: VFC<RangeProps & RangeEmits> = ({
   allowSameValue = true,
   value,
   onInput,
@@ -119,21 +119,21 @@ const AkRange: VFC<RangeProps & RangeEmits> = ({
     [props.min, props.max]
   )
 
-  const classes = classNames('ak-range', slideClasses, props.className)
+  const classes = classNames('ta-range', slideClasses, props.className)
 
   return (
     <div className={classes} style={slideStyles}>
-      <div className="ak-slider_inner" ref={sliderEl}>
-        <div className="ak-slider_box">
+      <div className="ta-slider_inner" ref={sliderEl}>
+        <div className="ta-slider_box">
           <div
-            className="ak-slider_track"
+            className="ta-slider_track"
             style={{
               left: Math.min(progress[0], progress[1]) * 100 + '%',
               width: Math.abs(progress[1] - progress[0]) * 100 + '%'
             }}
           ></div>
           <div
-            className="ak-slider_thumb"
+            className="ta-slider_thumb"
             data-thumb="true"
             data-index="0"
             style={{ left: progress[0] * 100 + '%' }}
@@ -141,7 +141,7 @@ const AkRange: VFC<RangeProps & RangeEmits> = ({
             {props.showValue ? progressValue[0] : ''}
           </div>
           <div
-            className="ak-slider_thumb"
+            className="ta-slider_thumb"
             data-thumb="true"
             data-index="1"
             style={{ left: progress[1] * 100 + '%' }}
@@ -160,4 +160,4 @@ const AkRange: VFC<RangeProps & RangeEmits> = ({
   )
 }
 
-export default AkRange
+export default TaRange

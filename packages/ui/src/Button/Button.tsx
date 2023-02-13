@@ -1,16 +1,14 @@
-import type { HTMLAttributes } from 'react'
-import { useCallback, useContext } from 'react'
+import { useCallback, useContext, type HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import type { ButtonEmits, ButtonProps } from './types'
 import { FORM_TYPES, getButtonClasses, getButtonStyles } from './util'
-import { getEnumsValue } from '../helpers/validator'
+import { getEnumsValue, type FC } from '../helpers'
 import { GroupContext } from './context'
 import { createDefaultProps } from './props'
 import { Icon } from '../Icon'
 import LoadingOutlined from '../Icon/icons/LoadingOutlined'
-import type { FC } from '../helpers/types'
 
-const AkButton: FC<
+const TaButton: FC<
   Omit<HTMLAttributes<HTMLButtonElement>, 'onClick'> & ButtonProps & ButtonEmits
 > = ({
   size,
@@ -79,6 +77,6 @@ const AkButton: FC<
   )
 }
 
-AkButton.defaultProps = createDefaultProps()
+TaButton.defaultProps = createDefaultProps()
 
-export default AkButton
+export default TaButton

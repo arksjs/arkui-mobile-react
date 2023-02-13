@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import dayjs from '../helpers/day'
+import { dayjs } from '../helpers'
 import { getDefaultDetail, MODE_NAMES } from './util'
 import type { Mode, CalendarDetail, CalendarCommonProps } from './types'
 import type { SelectorModelValue, SelectorDetail } from '../SelectorField/types'

@@ -7,7 +7,7 @@ import Radio from './Radio'
 import type { ModelValue } from '../Checkbox/types'
 import { getCheckGroupClasses } from '../Checkbox/util'
 
-const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
+const TaRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   inline = false,
   onChange,
   children,
@@ -57,7 +57,7 @@ const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   })
 
   const classes = classNames(
-    'ak-radio-group',
+    'ta-radio-group',
     getCheckGroupClasses({ inline, disabled: props.disabled }),
     props.className
   )
@@ -83,4 +83,4 @@ const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   )
 }
 
-export default AkRadioGroup
+export default TaRadioGroup

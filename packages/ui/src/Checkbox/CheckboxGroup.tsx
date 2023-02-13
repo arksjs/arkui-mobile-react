@@ -7,11 +7,11 @@ import type {
 } from './types'
 import type { FC } from '../helpers/types'
 import { getCheckGroupClasses } from './util'
-import { isSameArray, isStringNumberMixArray } from '../helpers/util'
+import { isSameArray, isStringOrNumberArray } from '../helpers/util'
 import { useCheckGroup } from './use-check'
 import Checkbox from './Checkbox'
 
-const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
+const TaCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
   inline = false,
   onChange,
   children,
@@ -41,7 +41,7 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
     },
     watchValue({ children, value }) {
       if (
-        isStringNumberMixArray(value) &&
+        isStringOrNumberArray(value) &&
         !isSameArray(value, inputValue.current)
       ) {
         const newVal: ModelValue[] = []
@@ -59,7 +59,7 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
   })
 
   const classes = classNames(
-    'ak-checkbox-group',
+    'ta-checkbox-group',
     getCheckGroupClasses({ inline, disabled: props.disabled }),
     props.className
   )
@@ -85,4 +85,4 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
   )
 }
 
-export default AkCheckboxGroup
+export default TaCheckboxGroup

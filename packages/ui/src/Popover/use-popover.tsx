@@ -86,7 +86,7 @@ export function usePopover(
 
   const PopoverWrapper: FC = ({ children, className }) => {
     const classes = classNames([
-      'ak-popover',
+      'ta-popover',
       popup.popupClasses,
       props.className,
       className,
@@ -95,15 +95,15 @@ export function usePopover(
 
     return (
       <div className={classes} style={popup.popupStyles}>
-        <div className="ak-mask" onClick={popup.onMaskClick}></div>
+        <div className="ta-mask" onClick={popup.onMaskClick}></div>
         <div
-          className="ak-popover_inner"
+          className="ta-popover_inner"
           ref={innerEl}
           style={innerStyles}
           onClick={popup.onStopBlur}
         >
-          <i className="ak-popover_arrow" style={arrowStyles}></i>
-          <div className="ak-popover_content">{children}</div>
+          <i className="ta-popover_arrow" style={arrowStyles}></i>
+          <div className="ta-popover_content">{children}</div>
         </div>
       </div>
     )

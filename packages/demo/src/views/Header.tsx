@@ -1,4 +1,4 @@
-import { AkNavBar, AkFixed } from '@/index'
+import { TaNavBar, TaFixed } from '@/index'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Header() {
@@ -20,9 +20,9 @@ export default function Header() {
   }
 
   return (
-    <AkFixed placement="top">
+    <TaFixed placement="top">
       {isShowNavBar ? (
-        <AkNavBar
+        <TaNavBar
           title={navBarTitle}
           showBack
           showHome
@@ -32,6 +32,6 @@ export default function Header() {
       ) : (
         <></>
       )}
-    </AkFixed>
+    </TaFixed>
   )
 }

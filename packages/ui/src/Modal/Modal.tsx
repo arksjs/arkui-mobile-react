@@ -9,23 +9,23 @@ import { Icon } from '../Icon'
 import type { PopupRef } from '../popup/types'
 import { forwardRef } from 'react'
 
-const AkModal: FRFC<PopupRef, ModalProps & ModalEmits> = (props, ref) => {
+const TaModal: FRFC<PopupRef, ModalProps & ModalEmits> = (props, ref) => {
   const { popupStyles, popupClasses, onMaskClick, onCloseClick } = usePopup(
     props,
     ref,
     {}
   )
 
-  const classes = classNames(['ak-modal', popupClasses, props.className])
+  const classes = classNames(['ta-modal', popupClasses, props.className])
   const boxStyles = getBoxStyles(props.width)
 
   return createPortal(
     <div className={classes} style={popupStyles}>
-      <div className="ak-mask" onClick={onMaskClick}></div>
-      <div className="ak-modal_box" style={boxStyles}>
-        <div className="ak-modal_box-inner">{props.children}</div>
+      <div className="ta-mask" onClick={onMaskClick}></div>
+      <div className="ta-modal_box" style={boxStyles}>
+        <div className="ta-modal_box-inner">{props.children}</div>
         {props.showClose !== false ? (
-          <i className="ak-modal_close" onClick={onCloseClick}>
+          <i className="ta-modal_close" onClick={onCloseClick}>
             <Icon icon={CloseCircleFilled} />
           </i>
         ) : (
@@ -37,4 +37,4 @@ const AkModal: FRFC<PopupRef, ModalProps & ModalEmits> = (props, ref) => {
   )
 }
 
-export default forwardRef(AkModal)
+export default forwardRef(TaModal)

@@ -16,7 +16,7 @@ import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
 
-const AkScrollTab: FRFC<
+const TaScrollTab: FRFC<
   ScrollTabRef,
   ScrollTabProps &
     ScrollTabEmits & {
@@ -26,7 +26,7 @@ const AkScrollTab: FRFC<
   const sideRef = useRef<StickyRef>(null)
   const tabRef = useRef<TabRef>(null)
   const bodyRef = useRef<StickyViewRef>(null)
-  const classes = classNames('ak-scroll-tab', props.className)
+  const classes = classNames('ta-scroll-tab', props.className)
 
   const [tabList, setTabList] = useState<
     {
@@ -87,7 +87,7 @@ const AkScrollTab: FRFC<
 
   return (
     <div className={classes} style={props.style}>
-      <div className="ak-scroll-tab_sidebar">
+      <div className="ta-scroll-tab_sidebar">
         <Sticky
           offsetTop={props.stickyOffsetTop}
           offsetBottom={props.stickyOffsetBottom}
@@ -96,7 +96,7 @@ const AkScrollTab: FRFC<
           <SideTab options={tabList} onChange={onChange} ref={tabRef} />
         </Sticky>
       </div>
-      <div className="ak-scroll-tab_body">
+      <div className="ta-scroll-tab_body">
         <StickyView
           offsetTop={props.stickyOffsetTop}
           onResetItems={onResetItems}
@@ -110,4 +110,4 @@ const AkScrollTab: FRFC<
   )
 }
 
-export default forwardRef(AkScrollTab)
+export default forwardRef(TaScrollTab)

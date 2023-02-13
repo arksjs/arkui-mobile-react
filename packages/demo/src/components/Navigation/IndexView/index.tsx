@@ -1,4 +1,4 @@
-import { AkIndexView, AkCell, AkGroup, IndexViewOnChange } from '@/index'
+import { TaIndexView, TaCell, TaGroup, IndexViewOnChange } from '@/index'
 
 const offsetTop = 52
 const indexList = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
@@ -10,22 +10,22 @@ export default function ExpIndexView() {
 
   const renderItems = () =>
     indexList.map(item => (
-      <AkIndexView.Item name={item} key={item}>
-        <AkCell label="单元格" />
-        <AkCell label="单元格" />
-        <AkCell label="单元格" />
-        <AkCell label="单元格" />
-        <AkCell label="单元格" />
-      </AkIndexView.Item>
+      <TaIndexView.Item name={item} key={item}>
+        <TaCell label="单元格" />
+        <TaCell label="单元格" />
+        <TaCell label="单元格" />
+        <TaCell label="单元格" />
+        <TaCell label="单元格" />
+      </TaIndexView.Item>
     ))
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkIndexView stickyOffsetTop={offsetTop} onChange={onChange}>
+      <TaGroup title="基础用法">
+        <TaIndexView stickyOffsetTop={offsetTop} onChange={onChange}>
           {renderItems()}
-        </AkIndexView>
-      </AkGroup>
+        </TaIndexView>
+      </TaGroup>
     </>
   )
 }

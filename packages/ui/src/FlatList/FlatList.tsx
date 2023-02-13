@@ -22,7 +22,7 @@ import {
 } from 'react'
 import { getClasses } from './util'
 
-const AkFlatList: FRFC<
+const TaFlatList: FRFC<
   FlatListRef,
   FlatListProps &
     FlatListEmits & {
@@ -139,7 +139,7 @@ const AkFlatList: FRFC<
       style={props.style}
     >
       {props.renderHeader ? (
-        <div className="ak-flat-list_header">{props.renderHeader()}</div>
+        <div className="ta-flat-list_header">{props.renderHeader()}</div>
       ) : (
         <></>
       )}
@@ -158,7 +158,7 @@ const AkFlatList: FRFC<
       />
       {props.lowerLoading && ids.length > 0 ? (
         <LoadMore
-          className="ak-flat-list_indicator"
+          className="ta-flat-list_indicator"
           loading
           vertical={horizontal}
         >
@@ -168,14 +168,14 @@ const AkFlatList: FRFC<
         <></>
       )}
       {ids.length === 0 ? (
-        <div className="ak-flat-list_empty">
+        <div className="ta-flat-list_empty">
           {props.renderEmpty && props.renderEmpty()}
         </div>
       ) : (
         <></>
       )}
       {props.renderFooter ? (
-        <div className="ak-flat-list_footer">{props.renderFooter()}</div>
+        <div className="ta-flat-list_footer">{props.renderFooter()}</div>
       ) : (
         <></>
       )}
@@ -183,4 +183,4 @@ const AkFlatList: FRFC<
   )
 }
 
-export default forwardRef(AkFlatList)
+export default forwardRef(TaFlatList)

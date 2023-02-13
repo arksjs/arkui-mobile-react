@@ -1,4 +1,4 @@
-import { AkOrder, AkGroup } from '@/index'
+import { TaOrder, TaGroup } from '@/index'
 import { useState } from 'react'
 
 const items = [
@@ -33,9 +33,9 @@ export default function ExpOrder() {
 
   return (
     <>
-      {/* <AkGroup title="基础用法">
+      {/* <TaGroup title="基础用法">
         <div className="exp-order-box">
-          <AkOrder
+          <TaOrder
             items={items1}
             onUpdateItems={setItems1 as any}
             render={({ id }) => (
@@ -43,10 +43,10 @@ export default function ExpOrder() {
             )}
           />
         </div>
-      </AkGroup> */}
-      <AkGroup title="设置列数">
+      </TaGroup> */}
+      <TaGroup title="设置列数">
         <div className="exp-order-box">
-          <AkOrder
+          <TaOrder
             columnNumber="4"
             items={items2}
             onUpdateItems={setItems2 as any}
@@ -55,10 +55,10 @@ export default function ExpOrder() {
             )}
           />
         </div>
-      </AkGroup>
-      <AkGroup title="允许删除">
+      </TaGroup>
+      <TaGroup title="允许删除">
         <div className="exp-order-box">
-          <AkOrder
+          <TaOrder
             deletable
             items={items3}
             onUpdateItems={setItems3 as any}
@@ -67,7 +67,7 @@ export default function ExpOrder() {
             )}
           />
         </div>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

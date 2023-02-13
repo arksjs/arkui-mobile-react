@@ -5,7 +5,7 @@ import { getGroupClasses, getGroupCountClasses, getShowCount } from './util'
 import Avatar from './Avatar'
 import { toArray } from '../helpers/react'
 
-const AkAvatarGroup: FC<AvatarGroupProps> = props => {
+const TaAvatarGroup: FC<AvatarGroupProps> = props => {
   const childCount = toArray(props.children).length
   const showCount = getShowCount(props.totalCount)
   const classes = classNames(getGroupClasses(childCount), props.className)
@@ -15,7 +15,7 @@ const AkAvatarGroup: FC<AvatarGroupProps> = props => {
     <div className={classes}>
       {props.children}
       {props.totalCount != null ? (
-        <Avatar className="ak-avatar-group_count" color={props.countColor}>
+        <Avatar className="ta-avatar-group_count" color={props.countColor}>
           <span className={countClasses}>{showCount}</span>
         </Avatar>
       ) : (
@@ -25,6 +25,4 @@ const AkAvatarGroup: FC<AvatarGroupProps> = props => {
   )
 }
 
-AkAvatarGroup.defaultProps = {}
-
-export default AkAvatarGroup
+export default TaAvatarGroup

@@ -5,7 +5,7 @@ import { useHandlers } from './use-date-picker'
 import type { PickerPopupRef } from '../Picker/types'
 import { forwardRef } from 'react'
 
-const AkDatePickerPopup: FRVFC<
+const TaDatePickerPopup: FRVFC<
   PickerPopupRef,
   DatePickerPopupProps & DatePickerPopupEmits
 > = (
@@ -27,4 +27,4 @@ const AkDatePickerPopup: FRVFC<
   )
 }
 
-export default forwardRef(AkDatePickerPopup)
+export default forwardRef(TaDatePickerPopup)
