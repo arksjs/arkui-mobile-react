@@ -1,6 +1,6 @@
 import type { ConfigProviderProps } from './types'
 import { ConfigContext, defaultValue } from './context'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 
 const TaConfigProvider: FC<ConfigProviderProps> = props => {
   return (

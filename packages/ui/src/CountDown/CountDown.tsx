@@ -1,11 +1,3 @@
-import classNames from 'classnames'
-import type {
-  CountDownEmits,
-  CountDownProps,
-  CountDownRef,
-  CountTime
-} from './types'
-import type { FRVFC, RenderProp } from '../helpers/types'
 import {
   forwardRef,
   useCallback,
@@ -13,6 +5,14 @@ import {
   useImperativeHandle,
   useRef
 } from 'react'
+import classNames from 'classnames'
+import type {
+  CountDownEmits,
+  CountDownProps,
+  CountDownRef,
+  CountTime
+} from './types'
+import type { FRVFC, RenderProp } from '../helpers'
 import { useCountTime } from './use-count-time'
 import { useLocale } from '../ConfigProvider/context'
 

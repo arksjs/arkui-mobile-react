@@ -1,8 +1,7 @@
 import classNames from 'classnames'
 import type { CountUpEmits, CountUpProps, CountUpRef } from './types'
-import type { FRVFC } from '../helpers/types'
+import { getNumber, thousands as handleThousands, type FRVFC } from '../helpers'
 import { getDuration } from './util'
-import { getNumber } from '../helpers/util'
 import {
   forwardRef,
   useEffect,
@@ -11,7 +10,6 @@ import {
   useState
 } from 'react'
 import { useFrameTask } from '../hooks/use-frame-task'
-import { thousands as handleThousands } from '../helpers/digital-conversion'
 
 const TaCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   {
@@ -30,16 +28,15 @@ const TaCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
 
   const classes = classNames('ta-count-up', props.className)
 
-  const { frameStart, frameStop, frameTask } = useFrameTask()
+  const { frameStart, frameStop, getRunFrameTaskId } = useFrameTask()
 
   function cancel() {
-    if (frameTask.current) {
+    if (getRunFrameTaskId() !== null) {
+      frameStop()
       onCancel &&
         onCancel({
           number: numberCache.current
         })
-
-      frameStop()
     }
   }
 

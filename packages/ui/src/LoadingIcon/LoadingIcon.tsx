@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { LoadingIconProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH, getRealStrokeWidth } from './util'
 
 const TaLoadingIcon: VFC<LoadingIconProps> = props => {

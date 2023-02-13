@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { LoadMoreProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getClasses } from './util'
 import { ActivityIndicator } from '../ActivityIndicator'
 

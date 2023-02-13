@@ -1,7 +1,7 @@
+import { useContext } from 'react'
 import classNames from 'classnames'
 import type { SkeletonParagraphProps } from './types'
-import type { VFC } from '../helpers/types'
-import { useContext } from 'react'
+import type { VFC } from '../helpers'
 import { SkeletonContext } from './context'
 import {
   getParagraphRowList,

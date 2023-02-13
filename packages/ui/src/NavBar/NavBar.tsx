@@ -1,12 +1,11 @@
+import { useRef, type MouseEvent } from 'react'
 import classNames from 'classnames'
 import type { ButtonOption, NavBarEmits, NavBarProps } from './types'
-import type { OnClick, RenderProp, VFC } from '../helpers/types'
+import type { OnClick, RenderProp, VFC } from '../helpers'
 import { Button } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import HomeOutlined from '../Icon/icons/HomeOutlined'
-import { useRef } from 'react'
-import type { MouseEvent } from 'react'
 import { useDbclick } from '../hooks/use-event'
 
 type ButtonMouseEvent = MouseEvent<HTMLButtonElement>

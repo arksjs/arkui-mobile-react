@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { NoticeBarEmits, NoticeBarProps } from './types'
 import {
@@ -6,8 +7,7 @@ import {
   getContentStyles,
   getStyles
 } from './util'
-import type { FC, OnClick } from '../helpers/types'
-import { useEffect, useRef, useState } from 'react'
+import type { FC, OnClick } from '../helpers'
 import type { Mode } from './types'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'

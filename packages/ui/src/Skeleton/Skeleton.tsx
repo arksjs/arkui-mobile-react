@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import type { SkeletonProps } from './types'
 import { skeletonDefaultProps } from './props'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 import SkeletonAvatar from './SkeletonAvatar'
 import SkeletonTitle from './SkeletonTitle'
 import SkeletonParagraph from './SkeletonParagraph'

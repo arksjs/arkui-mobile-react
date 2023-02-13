@@ -10,7 +10,9 @@ const props = defineProps({
 })
 
 // const demoLink = computed(() => `http://localhost:3001/#/${props.name}?docs=1`)
-const demoLink = computed(() => `/arkui-mobile-react/demo/#/${props.name}?docs=1`)
+const demoLink = computed(
+  () => `/arkui-mobile-react/demo/#/${props.name}?docs=1`
+)
 </script>
 
 <template>

@@ -1,9 +1,8 @@
 import classNames from 'classnames'
 import type { AvatarGroupProps } from './types'
-import type { FC } from '../helpers/types'
 import { getGroupClasses, getGroupCountClasses, getShowCount } from './util'
 import Avatar from './Avatar'
-import { toArray } from '../helpers/react'
+import { toArray, type FC } from '../helpers'
 
 const TaAvatarGroup: FC<AvatarGroupProps> = props => {
   const childCount = toArray(props.children).length

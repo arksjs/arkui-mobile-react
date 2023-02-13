@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-import type { MutableRefObject } from 'react'
+import { useEffect, useRef, type MutableRefObject } from 'react'
 
 type Callback = (rect: DOMRectReadOnly, resizeCount: number) => void
 

@@ -18,5 +18,4 @@ const showActionSheet = createShowPopup<
 })
 
 export { ActionSheet, showActionSheet }
-
 export default ActionSheet

@@ -1,4 +1,4 @@
-import type { UnionToIntersection } from '../helpers/types'
+import type { UnionToIntersection } from '../helpers'
 
 export type UseEmitFn<
   Options,
@@ -10,35 +10,6 @@ export type UseEmitFn<
       : (event: key, ...args: any[]) => void
   }[Event]
 >
-
-export interface ScrollToOffsetOptions {
-  x?: number
-  y?: number
-  animated?: boolean
-}
-
-export interface ScrollToOffset {
-  (xpos: number, ypos?: number): void
-  (options: ScrollToOffsetOptions): void
-}
-
-export interface ScrollToEndOptions {
-  x?: boolean
-  y?: boolean
-  animated?: boolean
-}
-
-export interface ScrollToEnd {
-  (options: ScrollToEndOptions): void
-}
-
-export interface SafeAreaInsets {
-  support: boolean
-  top: number
-  left: number
-  right: number
-  bottom: number
-}
 
 import React from 'react'
 

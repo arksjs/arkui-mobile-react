@@ -1,6 +1,7 @@
+import { useContext } from 'react'
 import classNames from 'classnames'
 import type { AvatarProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import {
   GENDER_TYPES,
   getAvatarClasses,
@@ -11,7 +12,6 @@ import {
 } from './util'
 import { Badge } from '../Badge'
 import { GroupContext } from './context'
-import { useContext } from 'react'
 import { Image } from '../Image'
 import { Icon } from '../Icon'
 import ManOutlined from '../Icon/icons/ManOutlined'

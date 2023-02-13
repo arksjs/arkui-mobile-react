@@ -1,9 +1,8 @@
 import classNames from 'classnames'
 import type { ActivityIndicatorProps } from './types'
-import type { VFC } from '../helpers/types'
 import { getActivityIndicatorClasses } from './util'
 import { LoadingIcon } from '../LoadingIcon'
-import { getNumber } from '../helpers/util'
+import { getNumber, type VFC } from '../helpers'
 
 const DEFAULT_SIZE = 20
 

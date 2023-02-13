@@ -6,5 +6,4 @@ const Steps = Object.assign(_Steps, {
 })
 
 export { Steps, Step }
-
 export default Steps

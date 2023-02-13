@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { ProgressProps } from './types'
-import type { RenderChildren, VFC } from '../helpers/types'
+import type { RenderChildren, VFC } from '../helpers'
 import {
   getProgress,
   getClasses,

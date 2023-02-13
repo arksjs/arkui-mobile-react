@@ -1,9 +1,8 @@
+import { cloneElement } from 'react'
 import classNames from 'classnames'
 import type { StepsProps } from './types'
-import type { CSSProperties, FC } from '../helpers/types'
 import { getStepsClasses } from './util'
-import { toArray } from '../helpers/react'
-import { cloneElement } from 'react'
+import { toArray, type CSSProperties, type FC } from '../helpers'
 
 const TaSteps: FC<
   StepsProps & {

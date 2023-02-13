@@ -6,5 +6,4 @@ const Avatar = Object.assign(_Avatar, {
 })
 
 export { Avatar, AvatarGroup }
-
 export default Avatar

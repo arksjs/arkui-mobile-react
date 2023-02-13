@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { ResultType, ResultProps, ResultEmits } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getType, getTypeClass } from './util'
 import InfoCircleFilled from '../Icon/icons/InfoCircleFilled'
 import WarningFilled from '../Icon/icons/WarningFilled'

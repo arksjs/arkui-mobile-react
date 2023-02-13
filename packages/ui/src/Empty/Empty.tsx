@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { EmptyProps } from './types'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 import { getImageUrl } from './util'
 
 const TaEmpty: FC<

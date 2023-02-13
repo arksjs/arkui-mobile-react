@@ -6,5 +6,4 @@ const Collapse = Object.assign(_Collapse, {
 })
 
 export { Collapse, CollapseItem }
-
 export default Collapse

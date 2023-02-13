@@ -1,9 +1,8 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
 import type { CopyEmits, CopyProps } from './types'
-import type { FC } from '../helpers'
+import { type FC, Exception } from '../helpers'
 import { copy } from './util'
-import Exception from '../helpers/exception'
 import { useLocale } from '../ConfigProvider/context'
 
 const TaCopy: FC<CopyProps & CopyEmits> = props => {

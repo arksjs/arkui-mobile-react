@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { TimelineItemProps } from './types'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 
 const TaTimelineItem: FC<
   TimelineItemProps & {

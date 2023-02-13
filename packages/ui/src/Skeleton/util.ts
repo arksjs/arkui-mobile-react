@@ -1,5 +1,4 @@
-import { getNumber, isNumber } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
+import { getNumber, isNumber, getEnumsValue } from '../helpers'
 import type {
   AvatarShape,
   ButtonShape,
@@ -39,7 +38,7 @@ export const getButtonClasses = (
     'ta-skeleton-button',
     { animated: !!(parentProps?.animated || props.animated) },
     'shape--' +
-      getEnumsValue(AVATAR_SHAPE_NAMES, props.shape ?? parentProps?.buttonShape)
+      getEnumsValue(BUTTON_SHAPE_NAMES, props.shape ?? parentProps?.buttonShape)
   ]
 }
 

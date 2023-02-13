@@ -1,7 +1,5 @@
-import { touchEvent } from '../helpers/events'
-import { useEffect, useRef } from 'react'
-import type { RefObject } from 'react'
-import { noop } from '../helpers/util'
+import { useEffect, useRef, type RefObject } from 'react'
+import { noop, touchEvent } from '../helpers'
 
 interface UseTouchEvent extends TouchEvent {
   touchObject: {
@@ -41,22 +39,34 @@ export function useTouch({
   onTouchEnd
 }: UseOptions) {
   const object = useRef({ handleEvent: (e: UseTouchEvent) => noop() })
+  const isTouching = useRef(false)
 
   object.current.handleEvent = (e: UseTouchEvent) => {
     e.touchObject = getTouch(e)
 
     switch (e.type) {
       case touchstart:
+        isTouching.current = true
         onTouchStart(e)
         break
       case touchmove:
-        onTouchMove(e)
+        isTouching.current && onTouchMove(e)
         break
       case touchend:
-        onTouchEnd(e)
+        if (isTouching.current) {
+          isTouching.current = false
+          onTouchEnd(e)
+        }
         break
       case 'mouseleave':
-        onTouchEnd(e)
+        if (isTouching.current) {
+          isTouching.current = false
+          onTouchEnd(e)
+        }
+        break
+      case 'dragstart':
+        // 禁用拖拽事件
+        e.preventDefault()
         break
       default:
         break

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { PriceProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getPrice } from './util'
 
 const TaPrice: FC<PriceProps> = ({

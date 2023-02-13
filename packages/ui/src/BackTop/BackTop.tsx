@@ -2,13 +2,17 @@ import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { BackTopProps } from './types'
 import { getStyles, DEFAULT_VISIBLE_HEIGHT } from './util'
-import type { FC, OnClick } from '../helpers/types'
-import { getScrollTop, scrollTo } from '../helpers/dom'
 import UpCircleOutlined from '../Icon/icons/UpCircleOutlined'
 import { useScroll } from '../hooks/use-scroll'
 import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
 import { Icon } from '../Icon'
-import { getNumber } from '../helpers/util'
+import {
+  getNumber,
+  getScrollTop,
+  scrollTo,
+  type FC,
+  type OnClick
+} from '../helpers'
 
 const TaBackTop: FC<
   BackTopProps & {
