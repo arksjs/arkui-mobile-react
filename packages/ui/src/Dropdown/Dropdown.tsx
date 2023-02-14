@@ -1,13 +1,11 @@
+import { forwardRef, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import type { DropdownEmits, DropdownProps } from './types'
-import type { FRFC, RenderProp } from '../helpers/types'
 import { usePopup } from '../popup/use-popup'
 import type { PopupRef } from '../popup/types'
-import { forwardRef, useMemo, useRef, useState } from 'react'
-import Exception from '../helpers/exception'
-import { querySelector } from '../helpers/dom'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import { querySelector, type FRFC, type RenderProp } from '../helpers'
+import { useException, useResizeObserver } from '../hooks'
 
 const TaDropdown: FRFC<
   PopupRef,
@@ -16,6 +14,7 @@ const TaDropdown: FRFC<
       render?: RenderProp<{ height: number }>
     }
 > = (props, ref) => {
+  const { printPropError } = useException('Dropdown')
   const root = useRef<HTMLDivElement>(null)
   const [top, setTop] = useState(-1)
   const [height, setHeight] = useState(0)
@@ -40,13 +39,7 @@ const TaDropdown: FRFC<
     const $target = querySelector(props.selector)
 
     if (!$target) {
-      console.error(
-        new Exception(
-          'Cannot find element through "selector"',
-          Exception.TYPE.PROP_ERROR,
-          'Dropdown'
-        )
-      )
+      printPropError(`Cannot find element through "selector"`)
       return
     }
 

@@ -1,13 +1,13 @@
+import { forwardRef } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import type { ModalEmits, ModalProps } from './types'
-import type { FRFC } from '../helpers/types'
+import type { FRFC } from '../helpers'
 import { usePopup } from '../popup/use-popup'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import { getBoxStyles } from './util'
 import { Icon } from '../Icon'
 import type { PopupRef } from '../popup/types'
-import { forwardRef } from 'react'
 
 const TaModal: FRFC<PopupRef, ModalProps & ModalEmits> = (props, ref) => {
   const { popupStyles, popupClasses, onMaskClick, onCloseClick } = usePopup(

@@ -1,9 +1,9 @@
-import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import classNames from 'classnames'
 import type { SliderProps, SliderEmits } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { useSlide } from './use-slide'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 
 const TaSlider: VFC<SliderProps & SliderEmits> = ({
   value,

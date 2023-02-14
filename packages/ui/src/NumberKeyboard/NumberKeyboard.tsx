@@ -1,11 +1,10 @@
-import classNames from 'classnames'
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react'
+import classNames from 'classnames'
 import type {
   NumberKeyboardEmits,
   NumberKeyboardProps,
   OnConfirm
 } from './types'
-import type { FRVFC } from '../helpers/types'
 import { getBodyClasses, isShowHeaderConfirm } from './util'
 import { Drawer } from '../Drawer'
 import { Icon } from '../Icon'
@@ -14,7 +13,7 @@ import type { OnCancel, OnVisibleStateChange, PopupRef } from '../popup/types'
 import type { NumberKeyboardItem } from './types'
 import BackspaceOutlined from '../Icon/icons/BackspaceOutlined'
 import KeyboardOutlined from '../Icon/icons/KeyboardOutlined'
-import { isString, string2StringArray } from '../helpers/util'
+import { isString, string2StringArray, type FRVFC } from '../helpers'
 
 const backspaceItem: NumberKeyboardItem = {
   text: 'backspace',
@@ -25,7 +24,7 @@ const backspaceItem: NumberKeyboardItem = {
 const TaNumberKeyboard: FRVFC<
   PopupRef,
   NumberKeyboardProps & NumberKeyboardEmits
-> = ({ onUpdateValue, ...props }, ref) => {
+> = (props, ref) => {
   const { locale } = useLocale()
   const popupRef = useRef<PopupRef>(null)
   const valueCache = useRef('')
@@ -52,7 +51,7 @@ const TaNumberKeyboard: FRVFC<
       valueCache.current += item.text
 
       props.onInput && props.onInput(item.text)
-      onUpdateValue && onUpdateValue(valueCache.current)
+      // onUpdateValue && onUpdateValue(valueCache.current)
     } else if (item.type === 'backspace') {
       const deleteKey = valueCache.current.substring(
         valueCache.current.length - 1
@@ -66,7 +65,7 @@ const TaNumberKeyboard: FRVFC<
         props.onDelete({
           deleteKey
         })
-      onUpdateValue && onUpdateValue(valueCache.current)
+      // onUpdateValue && onUpdateValue(valueCache.current)
     } else if (item.type === 'confirm') {
       popupRef.current?.customConfirm({})
     }

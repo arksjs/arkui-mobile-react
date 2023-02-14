@@ -1,9 +1,9 @@
+import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames'
 import type { ActionSheetEmits, ActionSheetProps } from './types'
-import type { FRVFC } from '../helpers/types'
+import type { FRVFC } from '../helpers'
 import { getItemClasses, getOptions } from './util'
 import { Drawer } from '../Drawer'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 import { useLocale } from '../ConfigProvider/context'
 import type { PopupRef } from '../popup/types'
 

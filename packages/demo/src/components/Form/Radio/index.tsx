@@ -8,7 +8,7 @@ const groups = [
 export default function ExpRadio() {
   function renderItems() {
     return groups.map(item => (
-      <TaRadio key={item.value} value={item.value}>
+      <TaRadio key={item.value} checkedValue={item.value}>
         {item.label}
       </TaRadio>
     ))

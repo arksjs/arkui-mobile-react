@@ -1,13 +1,12 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import type { StepperEmits, StepperProps } from './types'
-import type { FC, OnClick } from '../helpers/types'
 import { formatNumber, getRangeNumber, getClasses } from './util'
-import { getNumber } from '../helpers/util'
+import { getNumber, type FC, type OnClick } from '../helpers'
 import { useInput } from '../Form/use-form'
 import { Button } from '../Button'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
-import { useEffect, useState } from 'react'
 
 const TaStepper: FC<StepperProps & StepperEmits> = ({
   value,

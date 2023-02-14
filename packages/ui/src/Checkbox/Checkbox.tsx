@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { CheckboxEmits, CheckboxProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getCheckClasses } from './util'
 import { Icon } from '../Icon'
 import { useCheck } from './use-check'
@@ -31,7 +31,7 @@ const TaCheckbox: FC<CheckboxProps & CheckboxEmits> = ({
         className="ta-checkbox_input ta-form-input"
         type="checkbox"
         name={name2}
-        value={props.value}
+        value={props.checkedValue}
         disabled={disabled2}
         onChange={onChange}
         ref={inputEl}

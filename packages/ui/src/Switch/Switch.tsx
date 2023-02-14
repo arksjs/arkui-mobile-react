@@ -1,9 +1,8 @@
-import classNames from 'classnames'
 import { useCallback, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import type { SwitchProps, SwitchEmits } from './types'
-import type { VFC } from '../helpers/types'
 import { getClasses, getStyles } from './util'
-import { isBoolean } from '../helpers/util'
+import { isBoolean, type VFC } from '../helpers'
 import { useInput } from '../Form/use-form'
 
 const TaSwitch: VFC<SwitchProps & SwitchEmits> = props => {

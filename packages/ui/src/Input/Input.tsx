@@ -1,10 +1,16 @@
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEventHandler
+} from 'react'
 import classNames from 'classnames'
 import type { InputEmits, InputProps } from './types'
 import type { CSSProperties, OnFocus, RenderProp, VFC } from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { MouseEventHandler } from 'react'
 import { Icon } from '../Icon'
 
 const TaInput: VFC<
@@ -165,7 +171,7 @@ const TaInput: VFC<
   }, [formValue, active])
 
   return (
-    <label className={classes} style={props.style} onClick={props.onClick}>
+    <label className={classes} style={props.style}>
       {renderPrepend ? (
         <div className="ta-input_prepend">{renderPrepend()}</div>
       ) : (

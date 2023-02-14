@@ -112,7 +112,6 @@ export default function ExpNumberKeyboard() {
         visible={visible2}
         value={inputValue}
         onUpdateVisible={v => setVisible2(v)}
-        onUpdateValue={v => setInputValue(v)}
       />
     </>
   )

@@ -1,13 +1,13 @@
+import { forwardRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import type { DrawerEmits, DrawerProps } from './types'
-import type { FRFC, RenderProp } from '../helpers/types'
+import type { FRFC, RenderProp } from '../helpers'
 import { usePopup } from '../popup/use-popup'
-import { getClasses, getInnerClasses, getInnerStyles } from './util'
+import { getInnerClasses, getInnerStyles } from './util'
 import { NavBar } from '../NavBar'
 import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
-import { forwardRef, useEffect } from 'react'
 import type { PopupRef } from '../popup/types'
 
 const TaDrawer: FRFC<
@@ -29,11 +29,7 @@ const TaDrawer: FRFC<
 
   const hasHeader = !!(props.title || props.showClose || props.renderHeader)
 
-  const classes = classNames([
-    getClasses(showMask),
-    popupClasses,
-    props.className
-  ])
+  const classes = classNames(['ta-drawer', popupClasses, props.className])
   const innerClasses = classNames(
     getInnerClasses({ placement: props.placement, hasHeader })
   )

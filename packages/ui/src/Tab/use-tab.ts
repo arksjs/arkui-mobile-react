@@ -290,7 +290,7 @@ export function useTab(
     })
   }
 
-  // useResizeObserver(listEl, updateUnderline)
+  useResizeObserver(listEl, updateUnderline)
 
   useEffect(updateOptions, [props.options])
 

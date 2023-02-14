@@ -1,7 +1,13 @@
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ForwardedRef
+} from 'react'
 import classNames from 'classnames'
-import type { ForwardedRef } from 'react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { querySelector } from '../helpers/dom'
+import { querySelector, type FC } from '../helpers'
 import { usePopup } from '../popup/use-popup'
 import {
   getDefaultPos,
@@ -11,8 +17,7 @@ import {
 } from './util'
 import type { PopoverProps } from './types'
 import type { PopupRef } from '../popup/types'
-import { useResizeObserver } from '../hooks/use-resize-observer'
-import type { FC } from '../helpers/types'
+import { useResizeObserver } from '../hooks'
 
 export function usePopover(
   {

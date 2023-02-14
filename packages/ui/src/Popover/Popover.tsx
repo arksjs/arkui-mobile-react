@@ -1,8 +1,8 @@
+import { forwardRef } from 'react'
 import { createPortal } from 'react-dom'
 import type { PopoverEmits, PopoverProps } from './types'
-import type { FRFC } from '../helpers/types'
+import type { FRFC } from '../helpers'
 import type { PopupRef } from '../popup/types'
-import { forwardRef } from 'react'
 import { usePopover } from './use-popover'
 
 const TaPopover: FRFC<PopupRef, PopoverProps & PopoverEmits> = (

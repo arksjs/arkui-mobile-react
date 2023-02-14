@@ -1,4 +1,19 @@
-import { addClassName, getScrollTop, removeClassName } from '../helpers/dom'
+import {
+  type ForwardedRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
+import {
+  addClassName,
+  getScrollTop,
+  removeClassName,
+  capitalize,
+  type Noop,
+  type OnClick
+} from '../helpers'
 import type {
   VisibleState,
   PopupCustomCancel,
@@ -7,18 +22,8 @@ import type {
   PopupEmits,
   PopupRef
 } from './types'
-import {
-  ForwardedRef,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
 import { getNewZIndex, getPopupStyles } from './util'
-import type { Noop, OnClick } from '../helpers/types'
-import { useBlur } from '../hooks/use-event'
-import { capitalize } from '../helpers/util'
+import { useDocumentBlur } from '../hooks'
 
 type LifeName =
   | 'afterConfirm'
@@ -36,7 +41,10 @@ type UseOptions = Partial<
 >
 
 export function usePopup(
-  props: PopupProps & PopupEmits,
+  props: PopupProps &
+    PopupEmits & {
+      showMask?: boolean
+    },
   ref: ForwardedRef<PopupRef>,
   {
     initialEnableBlurCancel = false,
@@ -177,7 +185,10 @@ export function usePopup(
     [zIndex, absTop, isShow]
   )
   const popupClasses = useMemo(
-    () => ['ta-popup', { visible: visible2 }],
+    () => [
+      'ta-popup',
+      { visible: visible2, dismask: props.showMask === false }
+    ],
     [visible2]
   )
 
@@ -187,7 +198,7 @@ export function usePopup(
 
   useEffect(() => clearVisibleTimer, [])
 
-  useBlur(() => {
+  useDocumentBlur(() => {
     if (enableBlurCancel.current && isShow) {
       customCancel('blur')
     }

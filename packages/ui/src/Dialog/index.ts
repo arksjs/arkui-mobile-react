@@ -1,7 +1,7 @@
 import Dialog from './Dialog'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject } from '../helpers'
 
 const showDialog = createShowPopup<
   {
@@ -21,5 +21,4 @@ const showDialog = createShowPopup<
 })
 
 export { Dialog, showDialog }
-
 export default Dialog

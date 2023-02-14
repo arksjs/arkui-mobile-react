@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { RadioEmits, RadioProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { Icon } from '../Icon'
 import { useCheck } from '../Checkbox/use-check'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
@@ -25,7 +25,7 @@ const TaRadio: FC<RadioProps & RadioEmits> = ({ children, ...props }) => {
         className="ta-radio_input ta-form-input"
         type="radio"
         name={name2}
-        value={props.value}
+        value={props.checkedValue}
         disabled={disabled2}
         onChange={onChange}
         ref={inputEl}

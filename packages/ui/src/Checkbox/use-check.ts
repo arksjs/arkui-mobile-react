@@ -11,7 +11,7 @@ import type {
 } from './types'
 import { useEffect, useMemo, useRef } from 'react'
 import { CheckboxContext } from './context'
-import { getCheckStyles } from './util'
+import { getCheckGroupClasses, getCheckStyles } from './util'
 
 export function useCheck(
   props: CheckCommonProps & CheckCommonEmits,
@@ -22,7 +22,7 @@ export function useCheck(
   const inputEl = useRef<HTMLInputElement>(null)
 
   function getValue() {
-    return props.value
+    return props.checkedValue
   }
 
   function getInputEl() {
@@ -51,7 +51,7 @@ export function useCheck(
     if (groupOptions.hasGroup) {
       groupOptions.onChange && groupOptions.onChange(uid.current)
     } else {
-      props.onChange && props.onChange(getInputChecked())
+      props.onCheckedChange && props.onCheckedChange(getInputChecked())
     }
   }
 
@@ -63,12 +63,14 @@ export function useCheck(
 
     let checked: boolean
     if (groupOptions.hasGroup) {
+      const groupValues = groupOptions.value
+
       checked =
-        !!props.value &&
+        !!props.checkedValue &&
         (name === 'checkbox'
-          ? Array.isArray(groupOptions.value) &&
-            groupOptions.value.includes(props.value)
-          : props.value === groupOptions.value)
+          ? Array.isArray(groupValues) &&
+            groupValues.includes(props.checkedValue)
+          : props.checkedValue === groupValues)
     } else {
       checked = !!props.checked
     }
@@ -174,10 +176,16 @@ export function useCheckGroup<T>(
 
   // useEffect(() => _updateValue(false), [])
 
+  const groupClasses = getCheckGroupClasses({
+    inline: !!props.inline,
+    disabled: !!props.disabled
+  })
+
   return {
     root,
     onChange,
     options2,
-    GroupProvider
+    GroupProvider,
+    groupClasses
   }
 }

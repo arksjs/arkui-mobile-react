@@ -9,7 +9,7 @@ export default function ExpPagination() {
   return (
     <>
       <TaGroup title="基础用法">
-        <TaPagination current={current} total={total} onChange={setCurrent} />
+        <TaPagination value={current} total={total} onChange={setCurrent} />
       </TaGroup>
       <TaGroup title="自定义展示">
         <TaPagination total={total}>

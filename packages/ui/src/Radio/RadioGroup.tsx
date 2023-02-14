@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react'
 import classNames from 'classnames'
 import type { RadioGroupEmits, RadioGroupProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { useCheckGroup } from '../Checkbox/use-check'
 import Radio from './Radio'
 import type { ModelValue } from '../Checkbox/types'
@@ -68,7 +68,7 @@ const TaRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
         ? children
         : options2.map(item => {
             return (
-              <Radio key={item.value} value={item.value}>
+              <Radio key={item.value} checkedValue={item.value}>
                 {item.label}
               </Radio>
             )

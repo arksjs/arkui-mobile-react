@@ -5,7 +5,7 @@ const groups = ['A', 'B', 'C']
 export default function ExpCheckbox() {
   function renderItems() {
     return groups.map(item => (
-      <TaCheckbox key={item} value={item}>
+      <TaCheckbox key={item} checkedValue={item}>
         {item}
       </TaCheckbox>
     ))
@@ -16,7 +16,7 @@ export default function ExpCheckbox() {
       <TaCell
         key={item}
         label={'单元格 ' + item}
-        renderIcon={() => <TaCheckbox circle value={item} />}
+        renderIcon={() => <TaCheckbox circle checkedValue={item} />}
       />
     ))
   }
@@ -71,9 +71,9 @@ export default function ExpCheckbox() {
       <TaGroup title="事件监听">
         <TaCell label="change">
           <TaCheckbox.Group onChange={onChange}>
-            <TaCheckbox value="A">A</TaCheckbox>
-            <TaCheckbox value="B">B</TaCheckbox>
-            <TaCheckbox value="C">C</TaCheckbox>
+            <TaCheckbox checkedValue="A">A</TaCheckbox>
+            <TaCheckbox checkedValue="B">B</TaCheckbox>
+            <TaCheckbox checkedValue="C">C</TaCheckbox>
           </TaCheckbox.Group>
         </TaCell>
       </TaGroup>

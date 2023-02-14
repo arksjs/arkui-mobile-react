@@ -6,5 +6,4 @@ const Checkbox = Object.assign(_Checkbox, {
 })
 
 export { Checkbox, CheckboxGroup }
-
 export default Checkbox

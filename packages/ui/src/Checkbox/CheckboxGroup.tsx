@@ -5,21 +5,18 @@ import type {
   CheckboxGroupProps,
   ModelValue
 } from './types'
-import type { FC } from '../helpers/types'
-import { getCheckGroupClasses } from './util'
-import { isSameArray, isStringOrNumberArray } from '../helpers/util'
+import { isSameArray, isStringOrNumberArray, type FC } from '../helpers'
 import { useCheckGroup } from './use-check'
 import Checkbox from './Checkbox'
 
 const TaCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
-  inline = false,
   onChange,
   children,
   ...props
 }) => {
   const inputValue = useRef<ModelValue[]>([])
 
-  const { root, options2, GroupProvider } = useCheckGroup(props, {
+  const { root, options2, GroupProvider, groupClasses } = useCheckGroup(props, {
     name: 'checkbox',
     updateValue({ isChange, children }) {
       const newVal: ModelValue[] = []
@@ -58,11 +55,7 @@ const TaCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
     }
   })
 
-  const classes = classNames(
-    'ta-checkbox-group',
-    getCheckGroupClasses({ inline, disabled: props.disabled }),
-    props.className
-  )
+  const classes = classNames('ta-checkbox-group', groupClasses, props.className)
 
   const renderChildren = useCallback(
     () =>
@@ -70,7 +63,7 @@ const TaCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
         ? children
         : options2.map(item => {
             return (
-              <Checkbox key={item.value} value={item.value}>
+              <Checkbox key={item.value} checkedValue={item.value}>
                 {item.label}
               </Checkbox>
             )

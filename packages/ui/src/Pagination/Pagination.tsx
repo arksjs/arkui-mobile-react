@@ -1,13 +1,14 @@
-import classNames from 'classnames'
 import { useEffect, useState } from 'react'
-import type { OnChange, PaginationEmits, PaginationProps } from './types'
-import type {
-  CSSProperties,
-  RenderChildren,
-  RenderProp,
-  VFC
-} from '../helpers/types'
-import { isNumeric, rangeInteger } from '../helpers/util'
+import classNames from 'classnames'
+import type { PaginationEmits, PaginationProps } from './types'
+import {
+  isNumeric,
+  rangeInteger,
+  type CSSProperties,
+  type RenderChildren,
+  type RenderProp,
+  type VFC
+} from '../helpers'
 import { Icon } from '../Icon'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
@@ -24,7 +25,7 @@ const TaPagination: VFC<
       renderNext?: RenderProp
       style?: CSSProperties
     }
-> = ({ current, onChange, ...props }) => {
+> = ({ value = 1, onChange, ...props }) => {
   const classes = classNames('ta-pagination', props.className)
   const [pageNum, setPageNum] = useState(-1)
   const totalNum = getTotal(props.total)
@@ -45,13 +46,13 @@ const TaPagination: VFC<
   }
 
   useEffect(() => {
-    if (isNumeric(current)) {
-      setPageNum(rangeInteger(current, 0, totalNum))
+    if (isNumeric(value)) {
+      setPageNum(rangeInteger(value, 1, totalNum))
     } else if (pageNum === -1) {
       // 首次不传值的时候
-      change(1)
+      setPageNum(1)
     }
-  }, [current])
+  }, [value])
 
   const children =
     typeof props.children === 'function'
@@ -82,7 +83,7 @@ const TaPagination: VFC<
 }
 
 TaPagination.defaultProps = {
-  current: 1,
+  value: 1,
   total: 1
 }
 
