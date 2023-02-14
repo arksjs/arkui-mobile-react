@@ -29,7 +29,7 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 | activeIndex          | number  | 0                          | 否   | 当前所在滑块的 index                     |
 | indicatorDots        | boolean | false                      | 否   | 是否显示面板指示点                       |
 | indicatorColor       | color   | 'rgba(0, 0, 0, 0.4)'       | 否   | 指示点颜色                               |
-| indicatorCctiveColor | color   | 'rgba(255, 255, 255, 0.8)' | 否   | 当前选中的指示点颜色                     |
+| indicatorActiveColor | color   | 'rgba(255, 255, 255, 0.8)' | 否   | 当前选中的指示点颜色                     |
 | autoplay             | boolean | false                      | 否   | 是否自动切换                             |
 | interval             | number  | 5000                       | 否   | 自动切换时间间隔                         |
 | duration             | number  |                            | 否   | 滑动动画时长，没有设置时使用内置调优时长 |

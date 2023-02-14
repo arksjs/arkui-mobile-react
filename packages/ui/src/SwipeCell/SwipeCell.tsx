@@ -1,12 +1,15 @@
-import classNames from 'classnames'
 import { useMemo, useRef, useState } from 'react'
+import classNames from 'classnames'
 import type { ButtonOption, SwipeCellEmits, SwipeCellProps } from './types'
-import type { FC } from '../helpers/types'
 import { getButtons, getInnerStyles } from './util'
-import { cloneData, getSameValueArray, rangeNumber } from '../helpers/util'
-import { getStretchOffset } from '../helpers/animation'
-import { useBlur } from '../hooks/use-event'
-import { useTouch } from '../hooks/use-touch'
+import {
+  cloneData,
+  getSameValueArray,
+  rangeNumber,
+  getStretchOffset,
+  type FC
+} from '../helpers'
+import { useTouch, useDocumentBlur, useStop } from '../hooks'
 import SwipeCellButton from './SwipeCellButton'
 
 interface SwipeCellCoords {
@@ -29,7 +32,7 @@ const TaSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
   const [duration, setDuration] = useState(0)
   const [buttonTranslateXs, setButtonTranslateXs] = useState<number[]>([])
   const coords = useRef<SwipeCellCoords | null>(null)
-  const enableBlur = useRef(false)
+  const isShow = useRef(false)
 
   function show(x: number) {
     setTranslateX(x)
@@ -37,21 +40,23 @@ const TaSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
 
     setButtonTranslateXs(xs => getSameValueArray(0, xs.length))
 
-    enableBlur.current = true
+    isShow.current = true
   }
 
-  function hide() {
+  function hide(focus: boolean, source: string) {
+    // TODO: 有个bug，有两套事件冒泡，没法阻止
+    // console.log(source)
+    if (!isShow.current && !focus) {
+      return
+    }
+
+    isShow.current = false
+
     setTranslateX(0)
     setDuration(0.6)
 
     setButtonTranslateXs(xs => getSameValueArray(0, xs.length))
-
-    enableBlur.current = false
   }
-
-  useBlur(() => {
-    enableBlur.current && hide()
-  })
 
   function onButtonClick(item: Required<ButtonOption>, index: number) {
     props.onButtonClick &&
@@ -60,7 +65,7 @@ const TaSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
         index
       })
 
-    hide()
+    hide(false, 'buttonClick')
   }
 
   useTouch({
@@ -122,22 +127,24 @@ const TaSwipeCell: FC<SwipeCellProps & SwipeCellEmits> = props => {
     },
     onTouchEnd(e) {
       if (coords.current) {
-        if (!coords.current.isShow) {
-          const { isSwipe, buttonsW } = coords.current
+        const { isSwipe, buttonsW } = coords.current
 
-          if (isSwipe && translateX > buttonsW / 2) {
-            // 展示
-            show(buttonsW)
-          } else {
-            hide()
-          }
+        if (isSwipe && translateX > buttonsW / 2) {
+          // 展示
+          show(buttonsW)
+        } else {
+          // 画出来不够，要强制收回去
+          hide(true, 'touch')
         }
 
         coords.current = null
         e.stopPropagation()
+      } else {
       }
     }
   })
+
+  useDocumentBlur(() => hide(false, 'blur'))
 
   const renderButtons = useMemo(() => {
     return getButtons(props.buttons).map((item, index) => (

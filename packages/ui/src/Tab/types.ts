@@ -2,7 +2,7 @@ import type {
   BadgeOption,
   BadgeProps as HandleBadgeOption
 } from '../Badge/types'
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export interface OptionItem {
@@ -25,7 +25,7 @@ export interface HandleOptionItem extends OptionItem {
 export type OnChange = (value: string | number, index: number) => void
 
 export interface TabCommonProps {
-  activeValue?: string | number
+  value?: string | number
   options: OptionList
   color?: string
   activeColor?: string

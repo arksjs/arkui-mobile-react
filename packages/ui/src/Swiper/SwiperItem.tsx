@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import type { SwiperItemProps } from './types'
 
 const TaSwiperItem: FC<SwiperItemProps> = ({ index = -1, ...props }) => {

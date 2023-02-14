@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { onBeforeUnmount } from 'vue'
 import type { Noop } from '../helpers'
 
 export function useOnce(interval = 0) {

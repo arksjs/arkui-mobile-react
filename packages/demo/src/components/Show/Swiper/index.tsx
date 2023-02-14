@@ -3,7 +3,7 @@ import {
   TaGroup,
   TaImage,
   showToast,
-  SwiperOnChange,
+  SwiperOnActiveIndexChange,
   SwiperOnAnimated
 } from '@/index'
 
@@ -46,7 +46,7 @@ export default function ExpSwiper() {
     )
   }
 
-  const onChange: SwiperOnChange = activeIndex => {
+  const onChange: SwiperOnActiveIndexChange = activeIndex => {
     showToast(`change 到第 ${activeIndex + 1} 张`)
     console.log('change', activeIndex)
   }
@@ -110,7 +110,7 @@ export default function ExpSwiper() {
         <TaSwiper
           className="exp-swiper-box"
           indicatorDots
-          onChange={onChange}
+          onActiveIndexChange={onChange}
           onAnimated={onAnimated}
           onClick={() => showToast('click 触发')}
         >

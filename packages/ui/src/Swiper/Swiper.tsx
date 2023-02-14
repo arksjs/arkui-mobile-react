@@ -7,25 +7,30 @@ import {
   useState
 } from 'react'
 import classNames from 'classnames'
-import type { SwiperEmits, SwiperProps, SwiperRef, SwipeTo } from './types'
+import type { SwiperEmits, SwiperProps, SwiperRef } from './types'
 import {
   getPaginationItemClasses,
   getPaginationItemStyles,
   getClasses,
   getIndicatorsClasses
 } from './util'
-import type { FRFC, OnClick } from '../helpers/types'
-import { useTouch } from '../hooks/use-touch'
-import { CSSProperties2CssText } from '../helpers'
-import { getNumber, isNumber } from '../helpers/util'
-import Exception from '../helpers/exception'
+import {
+  toArray,
+  getNumber,
+  isNumber,
+  getStretchOffset,
+  CSSProperties2CssText,
+  type FRFC
+} from '../helpers'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
-import { useResizeObserver } from '../hooks/use-resize-observer'
-import { getStretchOffset } from '../helpers/animation'
 import { Icon } from '../Icon'
-import { useStableState } from '../hooks/use'
-import { toArray } from '../helpers/react'
+import {
+  useStableState,
+  useException,
+  useResizeObserver,
+  useTouch
+} from '../hooks'
 
 interface SwiperCoords {
   offset: boolean | null
@@ -43,12 +48,12 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
     initialCircular = false,
     navigationButtons = false,
     bounces = true,
-    initialActiveIndex = 0,
     ...props
   },
   ref
 ) => {
   // 设置初始化数据
+  const { printListItemNotFoundError } = useException('TaSwiper')
   const circular = useRef(!!initialCircular)
   const direction = useRef(initialVertical ? 'y' : 'x')
   const directionGroup = useRef(
@@ -60,7 +65,6 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   const root = useRef<HTMLDivElement>(null)
   const listEl = useRef<HTMLDivElement>(null)
   const coords = useRef<SwiperCoords | null>(null)
-  const inMove = useRef(false)
   const playing = useRef(false)
   const horizontal = useRef<boolean | null>(null)
   // const index = useRef(0)
@@ -70,7 +74,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   const prevTranSize = useRef(0)
   const [getActiveIndex, setActiveIndex] = useStableState(0)
   const itemCount = useRef(0)
-
+  const isEmitChange = useRef(true)
   const [pagination, setPagination] = useState<boolean[]>([])
 
   function getItems(): HTMLDivElement[] {
@@ -83,45 +87,43 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
 
   /**
    * 切换到
-   * @param newIndex 索引
+   * @param activeIndex 索引
    */
-  const swipeTo: SwipeTo = newIndex => {
+  function _swipeTo(activeIndex: number, isProp = false) {
     const len = itemCount.current
 
-    if (isNumber(newIndex) && newIndex >= 0 && newIndex <= len) {
-      if (len !== 0 && newIndex !== getActiveIndex(true)) {
-        to(newIndex, false)
+    if (len === 0) {
+      goTo(0)
+    } else if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < len) {
+      if (activeIndex !== getActiveIndex(true)) {
+        // 通过props设置的activeIndex不emit change
+        isEmitChange.current = !isProp
+        goTo(activeIndex, false)
+        isEmitChange.current = true
       }
     } else {
-      console.error(
-        new Exception(
-          'This value of "activeIndex" is out of range.',
-          Exception.TYPE.PROP_ERROR,
-          'Swiper'
-        )
-      )
+      printListItemNotFoundError('activeIndex', isProp)
     }
   }
 
   /**
    * 跳转到上一项
    */
-  function prev(useCircular = false) {
-    to(useCircular ? getCircleIndex(-1) : getActiveIndex(true) - 1)
+  function prev() {
+    goTo(getCircleIndex(-1))
   }
   /**
    * 跳转到下一项
    */
-  function next(useCircular = false) {
-    to(useCircular ? getCircleIndex(1) : getActiveIndex(true) + 1)
+  function next() {
+    goTo(getCircleIndex(1))
   }
-
   /**
    * 获取循环的索引
    */
   function getCircleIndex(step: number) {
-    const length = itemCount.current
-    return (getActiveIndex(true) + length + (step % length)) % length
+    const len = itemCount.current
+    return len === 0 ? 0 : (getActiveIndex(true) + len + (step % len)) % len
   }
 
   function updateSwipeLoop(offset?: number) {
@@ -196,28 +198,22 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   }
 
   function onBeforeSlide(toIndex: number, fromIndex: number) {
-    if (toIndex !== fromIndex) {
-      props.onChange && props.onChange(toIndex, fromIndex)
+    if (toIndex !== fromIndex && isEmitChange.current) {
+      props.onActiveIndexChange && props.onActiveIndexChange(toIndex, fromIndex)
     }
 
     setActiveIndex(toIndex)
-    udpatePagination()
+    updatePagination()
   }
 
   function onSlide(toIndex: number, fromIndex: number) {
     props.onAnimated && props.onAnimated(toIndex, fromIndex)
   }
 
-  const onClick: OnClick = e => {
-    if (!horizontal.current) {
-      props.onClick && props.onClick(e)
-    }
-  }
-
   /**
    *  到指定项
    */
-  function to(toIndex: number, animated = true) {
+  function goTo(toIndex: number, animated = true) {
     const lastIndex = getLastIndex()
     let slideIndex = toIndex
 
@@ -337,7 +333,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
     const last = getLastIndex()
 
     if (getActiveIndex(true) > last) {
-      to(last)
+      goTo(last)
     }
   }
 
@@ -384,7 +380,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
     })
   }
 
-  function udpatePagination() {
+  function updatePagination() {
     setPagination(pg =>
       pg.map((item, i) => {
         return i === getActiveIndex(true)
@@ -399,7 +395,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
     stop()
     props.autoplay &&
       (autoplayTimer.current = window.setInterval(() => {
-        to(getCircleIndex(1))
+        goTo(getCircleIndex(1))
       }, getNumber(props.interval)))
   }
 
@@ -418,13 +414,6 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
     el: root,
     // 滑动开始事件-记录坐标
     onTouchStart(e) {
-      // 禁止图片拖拽
-      if (e.target.tagName === 'IMG') {
-        e.target.ondragstart = function () {
-          return false
-        }
-      }
-      // e.preventDefault()
       if (playing.current) {
         return
       }
@@ -432,7 +421,6 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
       // 清除幻灯片
       stop()
 
-      inMove.current = true
       horizontal.current = null
       // 记录坐标
 
@@ -449,7 +437,8 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
      * 滑动过程事件-判断横竖向，跟随滑动
      */
     onTouchMove(e) {
-      if (!inMove.current || !coords.current) {
+      if (!coords.current || horizontal.current === false) {
+        // 确定非水平移动，就不需要计算数据了
         return
       }
 
@@ -468,12 +457,6 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
       const absY = Math.abs(offsetY)
 
       if (horizontal.current === null) {
-        // 首次
-        if (offsetX !== 0) {
-          // bug hack
-          e.preventDefault()
-        }
-      } else {
         // 首次move确认是否水平移动
         if (absX > absY) {
           horizontal.current = true
@@ -481,7 +464,6 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
             e.preventDefault()
           }
         } else {
-          coords.current = null
           horizontal.current = false
           return
         }
@@ -516,13 +498,10 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
      * 滑动结束事件-滑到指定位置，重置状态
      */
     onTouchEnd(e) {
-      if (!inMove.current) {
-        return
-      }
-
-      inMove.current = false
-
-      if (coords.current) {
+      if (!horizontal.current) {
+        // 未确定或者非水平移动情况，返回click事件
+        props.onClick && props.onClick()
+      } else if (coords.current) {
         const offsetX =
           direction.current === 'x'
             ? coords.current.startX - coords.current.stopX
@@ -545,10 +524,10 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
           } else {
             transIndex = active
           }
-
-          to(transIndex)
-          coords.current = null
+          goTo(transIndex)
         }
+
+        coords.current = null
       }
 
       start()
@@ -557,7 +536,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
 
   useEffect(start, [props.autoplay, props.interval])
 
-  useResizeObserver(root, () => setSlideStyle())
+  useResizeObserver(root, setSlideStyle)
 
   /**
    * 渲染小点导航
@@ -593,10 +572,10 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   const renderNavigation = useMemo(() => {
     return navigationButtons && pagination.length > 1 ? (
       <>
-        <button className="ta-swiper_prev" onClick={() => prev(true)}>
+        <button className="ta-swiper_prev" onClick={prev}>
           <Icon icon={LeftOutlined} />
         </button>
-        <button className="ta-swiper_next" onClick={() => next(true)}>
+        <button className="ta-swiper_next" onClick={next}>
           <Icon icon={RightOutlined} />
         </button>
       </>
@@ -621,16 +600,25 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   }, [props.children])
 
   useEffect(() => {
-    if (initialActiveIndex !== 0) {
-      swipeTo(initialActiveIndex)
-    }
     start()
+
+    // if (props.activeIndex != null && props.activeIndex !== 0) {
+    //   // 首次设置索引处理
+    //   _swipeTo(getNumber(props.activeIndex), true)
+    // }
 
     return () => {
       clearTimeout(durationTimer.current)
       stop()
     }
   }, [])
+
+  useEffect(
+    () => _swipeTo(getNumber(props.activeIndex), true),
+    [props.activeIndex]
+  )
+
+  const swipeTo = (newIndex: number) => _swipeTo(newIndex, false)
 
   useImperativeHandle(
     ref,
@@ -643,7 +631,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   )
 
   return (
-    <div className={classes} onClick={onClick} ref={root}>
+    <div className={classes} ref={root}>
       <div className="ta-swiper_list" ref={listEl}>
         {props.children}
       </div>

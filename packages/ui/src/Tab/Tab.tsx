@@ -1,7 +1,7 @@
-import classNames from 'classnames'
 import { forwardRef, useCallback } from 'react'
+import classNames from 'classnames'
 import type { TabProps, TabEmits, TabRef } from './types'
-import type { FRVFC } from '../helpers/types'
+import type { FRVFC } from '../helpers'
 import { getItemClasses, getClasses } from './util'
 import { useTab } from './use-tab'
 import { Badge } from '../Badge'
@@ -11,6 +11,7 @@ const TaTab: FRVFC<TabRef, TabProps & TabEmits> = (
   { scrollThreshold = 4, className, ...tabProps },
   ref
 ) => {
+  console.log(tabProps)
   const {
     options2,
     hasSub,

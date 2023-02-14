@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useRef } from 'react'
 import type { ButtonOption } from './types'
 import { getButtonStyles } from './util'
-import type { OnClick, VFC } from '../helpers/types'
+import type { OnClick, VFC } from '../helpers'
 
 const TaSwipeCellButton: VFC<{
   item: Required<ButtonOption>

@@ -21,7 +21,7 @@ export default function ExpTab() {
       </TaGroup>
       <TaGroup title="Mix">
         <div className="exp-tab-box">
-          <TaTab options={mixTabList} activeValue={2} />
+          <TaTab options={mixTabList} value={2} />
         </div>
       </TaGroup>
       <TaGroup title="带副标签">
