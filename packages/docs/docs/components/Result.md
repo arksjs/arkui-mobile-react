@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkResult } from 'arkui-mobile-react'
+import { TaResult } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkResult } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { ResultType } from 'arkui-mobile-react'
+import type { ResultType } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -45,7 +45,7 @@ import type { ResultType } from 'arkui-mobile-react'
 ### 附加内容（children）
 
 ```tsx
-<AkResult
+<TaResult
   type="fail"
   title="支付失败"
   description="内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现。"
@@ -53,5 +53,5 @@ import type { ResultType } from 'arkui-mobile-react'
   <div className="exp-result-extra">
     在这里可以附加组件元素或者相应的提示文案，样式自定。
   </div>
-</AkResult>
+</TaResult>
 ```

@@ -7,7 +7,11 @@
 ## Import
 
 ```js
-import { AkCascader, AkCascaderPopup, AkCascaderView } from 'arkui-mobile-react'
+import {
+  TaCascader,
+  TaCascaderPopup,
+  TaCascaderView
+} from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -27,7 +31,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## 公共 Props

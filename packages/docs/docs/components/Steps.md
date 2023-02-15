@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSteps, AkStep } from 'arkui-mobile-react'
+import { TaSteps, TaStep } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,9 +28,9 @@ import { AkSteps, AkStep } from 'arkui-mobile-react'
 注：其中只可放置 [Step](./Steps.md#step-props) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkSteps>
-  <AkSteps.Step title="标题">自定义内容</AkSteps.Step>
-</AkSteps>
+<TaSteps>
+  <TaSteps.Step title="标题">自定义内容</TaSteps.Step>
+</TaSteps>
 ```
 
 ## Step Props
@@ -44,13 +44,13 @@ import { AkSteps, AkStep } from 'arkui-mobile-react'
 ### 内容（children）
 
 ```tsx
-<AkSteps.Step title="标题">自定义内容</AkSteps.Step>
+<TaSteps.Step title="标题">自定义内容</TaSteps.Step>
 ```
 
 ### 标题（renderTitle）
 
 ```tsx
-<AkSteps.Step
+<TaSteps.Step
   renderTitle={() => (
     <>
       【珠海市】【珠海一部】快递小哥正在派件（
@@ -59,7 +59,7 @@ import { AkSteps, AkStep } from 'arkui-mobile-react'
   )}
 >
   2021-04-13 11:22:16
-</AkSteps.Step>
+</TaSteps.Step>
 ```
 
 注：优先级高于 Props `title`。
@@ -67,15 +67,15 @@ import { AkSteps, AkStep } from 'arkui-mobile-react'
 ### 步骤标（renderStep）
 
 ```tsx
-<AkSteps.Step
+<TaSteps.Step
   key={index}
   title={item.title}
   renderStep={({ finish, active }) => (
     <>
       {finish ? (
-        <AkIcon icon="CheckOutlined"></AkIcon>
+        <TaIcon icon="CheckOutlined"></TaIcon>
       ) : active ? (
-        <AkIcon icon="LoadingOutlined" spin></AkIcon>
+        <TaIcon icon="LoadingOutlined" spin></TaIcon>
       ) : (
         <></>
       )}
@@ -83,7 +83,7 @@ import { AkSteps, AkStep } from 'arkui-mobile-react'
   )}
 >
   {item.content}
-</AkSteps.Step>
+</TaSteps.Step>
 ```
 
 注：只推荐写入 text 和 [Icon](./Icon.md) 组件，其他元素或组件可能会导致未定义的行为。

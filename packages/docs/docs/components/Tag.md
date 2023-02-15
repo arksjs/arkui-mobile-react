@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTag } from 'arkui-mobile-react'
+import { TaTag } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkTag } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { StateType, SizeType, TagPattern } from 'arkui-mobile-react'
+import type { StateType, SizeType, TagPattern } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -70,5 +70,5 @@ import type { StateType, SizeType, TagPattern } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkTag>标签</AkTag>
+<TaTag>标签</TaTag>
 ```

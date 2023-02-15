@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkFixed } from 'arkui-mobile-react'
+import { TaFixed } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -40,5 +40,5 @@ import { AkFixed } from 'arkui-mobile-react'
 ### 底部（children）
 
 ```tsx
-<AkFixed placement="bottom">固定内容</AkFixed>
+<TaFixed placement="bottom">固定内容</TaFixed>
 ```

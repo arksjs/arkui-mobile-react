@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import {
   forwardRef,
   useContext,
@@ -6,10 +5,10 @@ import {
   useMemo,
   useRef
 } from 'react'
+import classNames from 'classnames'
 import type { PickerViewEmits, PickerViewProps, PickerViewRef } from './types'
-import type { FRVFC } from '../helpers/types'
 import { Empty } from '../Empty'
-import { frameTo } from '../helpers/animation'
+import { frameTo, type FRVFC } from '../helpers'
 import { mergeHandlers, DEFAULT_ITEM_HEIGHT } from './util'
 import { usePickerView } from './use-picker'
 import { useLocale } from '../ConfigProvider/context'

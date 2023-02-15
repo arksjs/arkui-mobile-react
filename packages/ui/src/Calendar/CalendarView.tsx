@@ -1,11 +1,11 @@
-import type { UIEventHandler } from 'react'
 import {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
-  useState
+  useState,
+  type UIEventHandler
 } from 'react'
 import classNames from 'classnames'
 import type {
@@ -32,13 +32,12 @@ import {
   getMinTime,
   getTimeByDate,
   getViewBodyTitleStyles,
-  printError
+  getSourceDetail
 } from './util'
 import { useHandlers } from './use-calendar'
 import { useLocale } from '../ConfigProvider/context'
-
 import ViewMonth from './CalendarViewMonth'
-import { useStableState } from '../hooks/use'
+import { useStableState, useException } from '../hooks'
 import VirtualList from '../VirtualList'
 
 type WeekDay = '0' | '1' | '2' | '3' | '4' | '5' | '6'
@@ -69,18 +68,21 @@ function getDefaultSelectDay(): SelectDay {
   }
 }
 
+const VALUE_KEY = 'modelValue'
+
 const TaCalendarView: FRVFC<
   CalendarViewRef,
   CalendarViewProps & CalendarViewEmits
 > = (props, ref) => {
+  const { printPropError } = useException('Calendar')
   const { locale } = useLocale()
   const { formatter, parser, mode } = useHandlers(props)
+  const bodyEl = useRef<HTMLDivElement>(null)
+  const bodyTitleEl = useRef<HTMLDivElement>(null)
   const [weekDays, setWeekDays] = useState<WeekDay[]>([])
   const [getMonths, setMonths] = useStableState<Month[]>([])
   const start = useRef(getDefaultSelectDay())
   const end = useRef(getDefaultSelectDay())
-  const bodyEl = useRef<HTMLDivElement>(null)
-  const bodyTitleEl = useRef<HTMLDivElement>(null)
 
   const maxRange = getNumber(props.maxRange, Infinity)
   const firstDayOfWeek = getFirstDayOfWeek(props.firstDayOfWeek)
@@ -120,7 +122,7 @@ const TaCalendarView: FRVFC<
     if (
       !isSameArray(timeArr, [start.current.timestamp, end.current.timestamp])
     ) {
-      if (timeArr.length === 0) {
+      if (timeArr.length === 0 || timeArr[0] === 0) {
         setSelected('start', null)
         setSelected('end', null)
         updateStates()
@@ -132,10 +134,12 @@ const TaCalendarView: FRVFC<
           const { rangeCount, hasDisabled } = getRangeInfo(_start, _end)
 
           if (hasDisabled) {
-            printError('The range of "value" contains disabled days.')
+            printPropError(
+              `The range of "${VALUE_KEY}" contains disabled days.`
+            )
           } else if (rangeCount > maxRange) {
-            printError(
-              `The range of "value" contains ${rangeCount} days, no more than ${maxRange} days.`
+            printPropError(
+              `The range of "${VALUE_KEY}" contains ${rangeCount} days, no more than ${maxRange} days.`
             )
           } else {
             setSelected('start', _start)
@@ -143,7 +147,9 @@ const TaCalendarView: FRVFC<
             updateStates()
           }
         } else {
-          printError('The range of "value" is not in the optional range.')
+          printPropError(
+            `The range of "${VALUE_KEY}" is not in the optional range.`
+          )
         }
       } else {
         const select = getSelectedInfo(timeArr[0])
@@ -153,7 +159,9 @@ const TaCalendarView: FRVFC<
           setSelected('end', null)
           updateStates()
         } else {
-          printError('The range of "value" is not in the optional range.')
+          printPropError(
+            `The range of "${VALUE_KEY}" is not in the optional range.`
+          )
         }
       }
     }
@@ -274,18 +282,18 @@ const TaCalendarView: FRVFC<
 
   const minTimestamp = useRef(0)
   const maxTimestamp = useRef(0)
-  const defaultMixTime = useRef(getMinTime())
+  const defaultMinTime = useRef(getMinTime())
 
   function updateOptions() {
     if (props.minDate instanceof Date) {
       minTimestamp.current = getTimeByDate(props.minDate)
     } else {
-      minTimestamp.current = defaultMixTime.current
+      minTimestamp.current = defaultMinTime.current
     }
 
     if (props.maxDate instanceof Date) {
       if (props.maxDate.getTime() < minTimestamp.current) {
-        printError(
+        printPropError(
           'The value of "maxDate" cannot be less than the value of "minDate".'
         )
         maxTimestamp.current = getMaxTime(minTimestamp.current)
@@ -477,7 +485,7 @@ const TaCalendarView: FRVFC<
 
   function onSelect() {
     onChange()
-    props.onSelect && props.onSelect(getDetail())
+    props.onSelect && props.onSelect(getSourceDetail(getDetail()))
   }
 
   function getDetail() {

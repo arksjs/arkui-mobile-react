@@ -14,7 +14,7 @@
 ## Import
 
 ```js
-import { AkImageUploader } from 'arkui-mobile-react'
+import { TaImageUploader } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ImageUploaderBeforeUpload,
   ImageUploaderUploadReady,
   ImageUploaderOnDelete
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props

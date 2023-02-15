@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkScrollView } from 'arkui-mobile-react'
+import { TaScrollView } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ScrollViewOnScrollToLower,
   ScrollViewOnRefreshing,
   ScrollViewOnScroll
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -60,13 +60,13 @@ import type {
 ### children
 
 ```tsx
-<AkScrollView>自定义内容</AkScrollView>
+<TaScrollView>自定义内容</TaScrollView>
 ```
 
 ### 下拉指示器（renderIndicator）
 
 ```tsx
-<AkScrollView
+<TaScrollView
   className="exp-scrollView-box"
   scrollY
   renderIndicator={slotProps => (
@@ -74,5 +74,5 @@ import type {
       方向：{slotProps.pullDirection} 状态：{slotProps.pullRefreshState}
     </>
   )}
-></AkScrollView>
+></TaScrollView>
 ```

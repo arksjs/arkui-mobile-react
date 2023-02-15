@@ -1,16 +1,16 @@
+import { forwardRef, useContext } from 'react'
 import classNames from 'classnames'
 import type {
   PickerPopupEmits,
   PickerPopupProps,
   PickerPopupRef
 } from './types'
-import type { FRVFC } from '../helpers/types'
+import type { FRVFC } from '../helpers'
 import PickerView from './PickerView'
 import { Drawer } from '../Drawer'
 import { NavBar } from '../NavBar'
 import { usePickerPopup } from './use-picker'
 import { useLocale } from '../ConfigProvider/context'
-import { forwardRef, useContext } from 'react'
 import { OnVisibleStateChange } from '../popup/types'
 import { mergeHandlers } from './util'
 import { PickerContext } from './context'

@@ -1,5 +1,5 @@
 import type { DatePickerEmits, DatePickerProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { Picker } from '../Picker'
 import { useHandlers } from './use-date-picker'
 

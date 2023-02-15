@@ -21,5 +21,4 @@ const DatePicker = Object.assign(_DatePicker, {
 })
 
 export { DatePicker, DatePickerPopup, DatePickerView, showDatePicker }
-
 export default DatePicker

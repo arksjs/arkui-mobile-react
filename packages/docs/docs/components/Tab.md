@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTab } from 'arkui-mobile-react'
+import { TaTab } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,11 @@ import { AkTab } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { TabOnChange, TabOptions, BadgeOption } from 'arkui-mobile-react'
+import type {
+  TabOnChange,
+  TabOptions,
+  BadgeOption
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props

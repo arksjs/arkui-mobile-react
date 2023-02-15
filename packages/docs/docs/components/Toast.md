@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkToast } from 'arkui-mobile-react'
+import { TaToast } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   ToastType,
   VisibleState,
   PopupOnVisibleStateChange
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props

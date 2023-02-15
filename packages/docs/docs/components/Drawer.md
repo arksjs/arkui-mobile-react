@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkDrawer } from 'arkui-mobile-react'
+import { TaDrawer } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,7 +25,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -59,7 +59,7 @@ import type {
 ### children
 
 ```tsx
-<AkDrawer title="菜单" placement="right">
+<TaDrawer title="菜单" placement="right">
   内容
-</AkDrawer>
+</TaDrawer>
 ```

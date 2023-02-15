@@ -31,11 +31,11 @@ sidebarDepth: 2
 
 ```sh
 # npm
-npm i -S arkui-mobile-react
+npm i -S tantalum-ui-mobile-react
 
 # yarn
-yarn add arkui-mobile-react
+yarn add tantalum-ui-mobile-react
 
 # pnpm
-pnpm add arkui-mobile-react
+pnpm add tantalum-ui-mobile-react
 ```

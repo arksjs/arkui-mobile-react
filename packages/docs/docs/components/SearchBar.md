@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkSearchBar } from 'arkui-mobile-react'
+import { TaSearchBar } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -30,7 +30,7 @@ import type {
   SearchBarOnInput,
   SearchBarOnSearch,
   SearchBarOnFieldClick
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props

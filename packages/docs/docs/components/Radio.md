@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkRadio, AkRadioGroup } from 'arkui-mobile-react'
+import { TaRadio, TaRadioGroup } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkRadio, AkRadioGroup } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { RadioOptionItem } from 'arkui-mobile-react'
+import type { RadioOptionItem } from 'tantalum-ui-mobile-react'
 ```
 
 ## Radio Props
@@ -40,8 +40,8 @@ import type { RadioOptionItem } from 'arkui-mobile-react'
 ## Radio Slots
 
 ```tsx
-<AkRadio>男</AkRadio>
-<AkRadio>女</AkRadio>
+<TaRadio>男</TaRadio>
+<TaRadio>女</TaRadio>
 ```
 
 ## RadioGroup
@@ -79,9 +79,9 @@ import type { RadioOptionItem } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkRadio.Group>
-  <AkRadio>男</AkRadio>
-  <AkRadio>女</AkRadio>
+<TaRadio.Group>
+  <TaRadio>男</TaRadio>
+  <TaRadio>女</TaRadio>
   ...
-</AkRadio.Group>
+</TaRadio.Group>
 ```

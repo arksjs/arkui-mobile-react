@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkDialog } from 'arkui-mobile-react'
+import { TaDialog } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -61,7 +61,7 @@ import type {
 ### children
 
 ```tsx
-<AkDialog>提示内容</AkDialog>
+<TaDialog>提示内容</TaDialog>
 ```
 
 ## showDialog(object)

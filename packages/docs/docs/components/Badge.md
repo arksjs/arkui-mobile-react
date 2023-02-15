@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkBadge } from 'arkui-mobile-react'
+import { TaBadge } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -35,7 +35,7 @@ import { AkBadge } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkBadge count={1} showZero>
-  <AkButton>badge</AkButton>
-</AkBadge>
+<TaBadge count={1} showZero>
+  <TaButton>badge</TaButton>
+</TaBadge>
 ```

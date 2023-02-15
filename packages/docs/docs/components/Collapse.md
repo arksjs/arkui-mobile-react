@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCollapse, AkCollapseItem } from 'arkui-mobile-react'
+import { TaCollapse, TaCollapseItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   CollapseActiveName,
   CollapseOnChange,
   CollapseItemOnToggle
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Collapse
@@ -48,23 +48,23 @@ import type {
 注：其中只可放置 [CollapseItem](./Collapse.md#collapseitem-折叠面板子项) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkCollapse>
-  <AkCollapse.Item title="标题1" name="row1">
+<TaCollapse>
+  <TaCollapse.Item title="标题1" name="row1">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-  <AkCollapse.Item title="标题2" name="row2">
+  </TaCollapse.Item>
+  <TaCollapse.Item title="标题2" name="row2">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-  <AkCollapse.Item title="标题3" name="row3">
+  </TaCollapse.Item>
+  <TaCollapse.Item title="标题3" name="row3">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-</AkCollapse>
+  </TaCollapse.Item>
+</TaCollapse>
 ```
 
 ## CollapseItem

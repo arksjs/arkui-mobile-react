@@ -2,9 +2,9 @@
   "name": "@arksjs/demo",
   "private": true,
   "version": "0.0.0",
-  "description": "ArkUI demo",
+  "description": "UI demo",
   "keywords": [
-    "ArkUI",
+    "UI",
     "demo"
   ],
   "scripts": {

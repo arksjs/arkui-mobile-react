@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkCountDown } from 'arkui-mobile-react'
+import { TaCountDown } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   CountDownOnPause,
   CountDownOnResume,
   CountDownRef
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -60,7 +60,7 @@ import type {
 ### render(countTime)
 
 ```tsx
-<AkCountDown
+<TaCountDown
   initialTiming={300 * 1000}
   render={countTime =>
     `${countTime.fullHours}时${countTime.minutes}分${countTime.seconds}秒`

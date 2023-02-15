@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSwiper, AkSwiperItem } from 'arkui-mobile-react'
+import { TaSwiper, TaSwiperItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkSwiper, AkSwiperItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
+import type { SwiperOnChange, SwiperOnAnimated } from 'tantalum-ui-mobile-react'
 ```
 
 ## Swiper Props
@@ -52,15 +52,15 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 注：其中只可放置 [SwiperItem](./Swiper.md#swiperitem-slots) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkSwiper>
-  <AkSwiper.Item>
-    <AkImage src="a.jpg" />
-  </AkSwiper.Item>
-  <AkSwiper.Item>
-    <AkImage src="b.jpg" />
-  </AkSwiper.Item>
+<TaSwiper>
+  <TaSwiper.Item>
+    <TaImage src="a.jpg" />
+  </TaSwiper.Item>
+  <TaSwiper.Item>
+    <TaImage src="b.jpg" />
+  </TaSwiper.Item>
   ...
-</AkSwiper>
+</TaSwiper>
 ```
 
 ## SwiperItem Slots
@@ -68,7 +68,7 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkSwiper.Item>
-  <AkImage src="b.jpg" />
-</AkSwiper.Item>
+<TaSwiper.Item>
+  <TaImage src="b.jpg" />
+</TaSwiper.Item>
 ```

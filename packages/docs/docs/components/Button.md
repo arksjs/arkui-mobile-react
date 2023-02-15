@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkButton, AkButtonGroup } from 'arkui-mobile-react'
+import { TaButton, TaButtonGroup } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -24,7 +24,7 @@ import type {
   StateType,
   ButtonShape,
   ButtonPattern
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Button Props
@@ -83,7 +83,7 @@ import type {
 ### children
 
 ```tsx
-<AkButton form-type="submit">提交</AkButton>
+<TaButton form-type="submit">提交</TaButton>
 ```
 
 ## ButtonGroup Props
@@ -99,8 +99,8 @@ import type {
 ### children
 
 ```tsx
-<AkButton.Group shape="square" size="small">
-  <AkButton type="default" icon="LeftOutlined"></AkButton>
-  <AkButton type="default" icon="HomeOutlined"></AkButton>
-</AkButton.Group>
+<TaButton.Group shape="square" size="small">
+  <TaButton type="default" icon="LeftOutlined"></TaButton>
+  <TaButton type="default" icon="HomeOutlined"></TaButton>
+</TaButton.Group>
 ```

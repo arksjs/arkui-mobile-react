@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-react'
+import { TaIndexView, TaIndexViewItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { IndexViewOnChange } from 'arkui-mobile-react'
+import type { IndexViewOnChange } from 'tantalum-ui-mobile-react'
 ```
 
 ## IndexView Props
@@ -48,13 +48,13 @@ import type { IndexViewOnChange } from 'arkui-mobile-react'
 注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem-索引子项) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkIndexView>
-  <AkIndexView.Item name="A">
-    <AkCell label="单元格" />
-    <AkCell label="单元格" />
-    <AkCell label="单元格" />
-  </AkIndexView.Item>
-</AkIndexView>
+<TaIndexView>
+  <TaIndexView.Item name="A">
+    <TaCell label="单元格" />
+    <TaCell label="单元格" />
+    <TaCell label="单元格" />
+  </TaIndexView.Item>
+</TaIndexView>
 ```
 
 ## IndexViewItem Props
@@ -68,9 +68,9 @@ import type { IndexViewOnChange } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkIndexView.Item name="A">
-  <AkCell label="单元格" />
-  <AkCell label="单元格" />
-  <AkCell label="单元格" />
-</AkIndexView.Item>
+<TaIndexView.Item name="A">
+  <TaCell label="单元格" />
+  <TaCell label="单元格" />
+  <TaCell label="单元格" />
+</TaIndexView.Item>
 ```

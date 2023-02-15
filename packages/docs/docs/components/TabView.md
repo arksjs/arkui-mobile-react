@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTabView, AkTabViewItem } from 'arkui-mobile-react'
+import { TaTabView, TaTabViewItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,10 @@ import { AkTabView, AkTabViewItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-react'
+import type {
+  TabViewOnChange,
+  TabViewOnAnimated
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## TabView Props
@@ -43,25 +46,25 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-react'
 注：其中只可放置 [TabViewItem](./TabView.md#tabviewitem-props) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkTabView className="exp-tabView">
-  <AkTabView.Item name="Tab 1">
-    <AkScrollView
+<TaTabView className="exp-tabView">
+  <TaTabView.Item name="Tab 1">
+    <TaScrollView
       className="exp-tabView-scroll-view"
       enablePullDirections={['down']}
       scrollY
       scrollX
       onRefreshing={onRefreshing}
     >
-      <AkEmpty
+      <TaEmpty
         className="exp-tabView-empty"
         description="Tab 1 下拉刷新"
-      ></AkEmpty>
-    </AkScrollView>
-  </AkTabView.Item>
-  <AkTabView.Item name="Tab 2">
-    <AkEmpty className="exp-tabView-empty" description="Tab 2"></AkEmpty>
-  </AkTabView.Item>
-</AkTabView>
+      ></TaEmpty>
+    </TaScrollView>
+  </TaTabView.Item>
+  <TaTabView.Item name="Tab 2">
+    <TaEmpty className="exp-tabView-empty" description="Tab 2"></TaEmpty>
+  </TaTabView.Item>
+</TaTabView>
 ```
 
 ## TabViewItem Props
@@ -75,7 +78,7 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-react'
 ### 内容（children）
 
 ```tsx
-<AkTabView.Item name="Tab 2">
-  <AkEmpty className="exp-tabView-empty" description="Tab 2"></AkEmpty>
-</AkTabView.Item>
+<TaTabView.Item name="Tab 2">
+  <TaEmpty className="exp-tabView-empty" description="Tab 2"></TaEmpty>
+</TaTabView.Item>
 ```

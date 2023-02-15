@@ -14,7 +14,7 @@
 ## Import
 
 ```js
-import { AkCopy } from 'arkui-mobile-react'
+import { TaCopy } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -35,5 +35,5 @@ import { AkCopy } from 'arkui-mobile-react'
 ## Slots
 
 ```tsx
-<AkCopy text="复制的文本">点击复制</AkCopy>
+<TaCopy text="复制的文本">点击复制</TaCopy>
 ```

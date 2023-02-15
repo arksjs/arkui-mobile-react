@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkNavBar } from 'arkui-mobile-react'
+import { TaNavBar } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   NavBarButtonOption,
   NavBarOnButtonClick,
   NavBarOnTitleDbClick
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -82,22 +82,22 @@ type Payload = {
 ### 左侧/右侧区域自定义（renderLeft/renderRight）
 
 ```tsx
-<AkNavBar
+<TaNavBar
   title="标题"
   showBack
   showHome
   renderLeft={() => (
     <div className="exp-navBar-left">
-      <AkButton type="primary" icon="LeftOutlined" size="small">
+      <TaButton type="primary" icon="LeftOutlined" size="small">
         返回
-      </AkButton>
+      </TaButton>
     </div>
   )}
   renderRight={() => (
     <div className="exp-navBar-right">
-      <AkButton type="primary" icon="MenuOutlined" size="small">
+      <TaButton type="primary" icon="MenuOutlined" size="small">
         菜单
-      </AkButton>
+      </TaButton>
     </div>
   )}
 />

@@ -20,5 +20,4 @@ const Picker = Object.assign(_Picker, {
 })
 
 export { Picker, PickerPopup, PickerView, showPicker }
-
 export default Picker

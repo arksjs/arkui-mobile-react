@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTimeline, AkTimelineItem } from 'arkui-mobile-react'
+import { TaTimeline, TaTimelineItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -21,11 +21,11 @@ import { AkTimeline, AkTimelineItem } from 'arkui-mobile-react'
 注：其中只可放置 [TimelineItem](./Timeline.md#timelineitem-props) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkTimeline>
-  <AkTimeline.Item title="成功获得0.01元收益">搞半天就这点？</AkTimeline.Item>
-  <AkTimeline.Item title="十天后到账">0.01元还要十天到账？</AkTimeline.Item>
-  <AkTimeline.Item title="爱要不要">不要了，滚。</AkTimeline.Item>
-</AkTimeline>
+<TaTimeline>
+  <TaTimeline.Item title="成功获得0.01元收益">搞半天就这点？</TaTimeline.Item>
+  <TaTimeline.Item title="十天后到账">0.01元还要十天到账？</TaTimeline.Item>
+  <TaTimeline.Item title="爱要不要">不要了，滚。</TaTimeline.Item>
+</TaTimeline>
 ```
 
 ## TimelineItem Props
@@ -40,13 +40,13 @@ import { AkTimeline, AkTimelineItem } from 'arkui-mobile-react'
 ### 内容（children）
 
 ```tsx
-<AkTimeline.Item title="成功获得 0.01 元收益">搞半天就这点？</AkTimeline.Item>
+<TaTimeline.Item title="成功获得 0.01 元收益">搞半天就这点？</TaTimeline.Item>
 ```
 
 ### 标题（renderTitle）
 
 ```tsx
-<AkTimeline.Item
+<TaTimeline.Item
   renderTitle={() => (
     <>
       【珠海市】快件已送达【正方云创园】，如有疑问请电联：
@@ -55,7 +55,7 @@ import { AkTimeline, AkTimelineItem } from 'arkui-mobile-react'
   )}
 >
   2021-04-13 12:42:57
-</AkTimeline.Item>
+</TaTimeline.Item>
 ```
 
 注：优先级高于 Props `title`。
@@ -63,14 +63,14 @@ import { AkTimeline, AkTimelineItem } from 'arkui-mobile-react'
 ### 节点（renderDot）
 
 ```tsx
-<AkTimeline.Item
+<TaTimeline.Item
   title="成功获得 0.01 元收益"
   renderDot={() => (
     <div className="exp-timeline-custom-dot">
-      <AkIcon icon="HeartOutlined" />
+      <TaIcon icon="HeartOutlined" />
     </div>
   )}
 >
   搞半天就这点？
-</AkTimeline.Item>
+</TaTimeline.Item>
 ```

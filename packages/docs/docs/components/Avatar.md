@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkAvatar, AkAvatarGroup } from 'arkui-mobile-react'
+import { TaAvatar, TaAvatarGroup } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,11 @@ import { AkAvatar, AkAvatarGroup } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { BadgeOption, AvatarShape, AvatarSize } from 'arkui-mobile-react'
+import type {
+  BadgeOption,
+  AvatarShape,
+  AvatarSize
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Avatar
@@ -74,7 +78,7 @@ type BadgeOption =
 #### children
 
 ```tsx
-<AkAvatar>曹</AkAvatar>
+<TaAvatar>曹</TaAvatar>
 ```
 
 ## AvatarGroup
@@ -94,9 +98,9 @@ type BadgeOption =
 注：其中只可放置 [Avatar](./Avatar.md#avatar) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkAvatar.Group>
-  <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
-  <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
-  <AkAvatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
-</AkAvatar.Group>
+<TaAvatar.Group>
+  <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
+  <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
+  <TaAvatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
+</TaAvatar.Group>
 ```

@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkRow, AkCol } from 'arkui-mobile-react'
+import { TaRow, TaCol } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -27,14 +27,14 @@ import { AkRow, AkCol } from 'arkui-mobile-react'
 ## Row Slots
 
 ```tsx
-<AkRow className="exp-layout-row">
-  <AkCol className="exp-layout-col" span="12">
+<TaRow className="exp-layout-row">
+  <TaCol className="exp-layout-col" span="12">
     col-12
-  </AkCol>
-  <AkCol className="exp-layout-col" span="12">
+  </TaCol>
+  <TaCol className="exp-layout-col" span="12">
     col-12
-  </AkCol>
-</AkRow>
+  </TaCol>
+</TaRow>
 ```
 
 ## Col Props
@@ -49,7 +49,7 @@ import { AkRow, AkCol } from 'arkui-mobile-react'
 ## Col Slots
 
 ```tsx
-<AkCol className="exp-layout-col" span="8">
+<TaCol className="exp-layout-col" span="8">
   col-8
-</AkCol>
+</TaCol>
 ```

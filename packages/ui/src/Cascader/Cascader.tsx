@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { CascaderEmits, CascaderProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { SelectorField } from '../SelectorField'
 import CascaderPopup from './CascaderPopup'
 import { usePicker } from '../Picker/use-picker'

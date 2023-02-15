@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSkeleton } from 'arkui-mobile-react'
+import { TaSkeleton } from 'tantalum-ui-mobile-react'
 ```
 
 如果想要自定义布局，可以再引入子组件：
@@ -21,7 +21,7 @@ import {
   SkeletonTitle,
   SkeletonParagraph,
   SkeletonButton
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -34,7 +34,7 @@ import {
 import type {
   SkeletonAvatarShape,
   SkeletonButtonShape
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Skeleton Props
@@ -53,13 +53,13 @@ import type {
 ### children
 
 ```tsx
-<AkSkeleton avatar loading={loading}>
+<TaSkeleton avatar loading={loading}>
   <div className="exp-skeleton-sub-component">
-    <AkIcon icon="HeartFilled" size="32" />
+    <TaIcon icon="HeartFilled" size="32" />
     <h4 className="title">hello World</h4>
     <p className="paragraph">简单不先于复杂，而是在复杂之后。</p>
   </div>
-</AkSkeleton>
+</TaSkeleton>
 ```
 
 ### 骨架屏重新布局（renderLayout）
@@ -67,18 +67,18 @@ import type {
 还可以通过 `renderLayout` 重新组合骨架屏，目前提供 [SkeletonAvatar](./Skeleton.md#skeletonavatar-props)、[SkeletonImage](./Skeleton.md#skeletonimage-props)、[SkeletonTitle](./Skeleton.md#skeletontitle-props)、[SkeletonParagraph](./Skeleton.md#skeletonparagraph-props)、[SkeletonButton](./Skeleton.md#skeletonbutton-props) 5 款子组件。
 
 ```tsx
-<AkSkeleton
+<TaSkeleton
   className="exp-skeleton-custom"
   buttonShape={buttonShape}
   renderLayout={() => (
     <>
-      <AkSkeleton.Image />
-      <AkSkeleton.Title />
-      <AkSkeleton.Paragraph row={2} />
-      <AkSkeleton.Button />
+      <TaSkeleton.Image />
+      <TaSkeleton.Title />
+      <TaSkeleton.Paragraph row={2} />
+      <TaSkeleton.Button />
     </>
   )}
-></AkSkeleton>
+></TaSkeleton>
 ```
 
 ## SkeletonAvatar Props

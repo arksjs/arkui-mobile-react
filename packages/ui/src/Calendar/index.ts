@@ -3,7 +3,7 @@ import CalendarPopup from './CalendarPopup'
 import CalendarView from './CalendarView'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { ShowCalendarOptions, CalendarDetail } from '../Calendar/types'
+import type { ShowCalendarOptions, CalendarDetail } from './types'
 
 const showCalendar = createShowPopup<
   ShowCalendarOptions,
@@ -20,5 +20,4 @@ const Calendar = Object.assign(_Calendar, {
 })
 
 export { Calendar, CalendarPopup, CalendarView, showCalendar }
-
 export default Calendar

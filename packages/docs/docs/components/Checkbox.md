@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCheckbox, AkCheckboxGroup } from 'arkui-mobile-react'
+import { TaCheckbox, TaCheckboxGroup } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkCheckbox, AkCheckboxGroup } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { CheckboxOptionItem } from 'arkui-mobile-react'
+import type { CheckboxOptionItem } from 'tantalum-ui-mobile-react'
 ```
 
 ## Checkbox Props
@@ -41,8 +41,8 @@ import type { CheckboxOptionItem } from 'arkui-mobile-react'
 ## Checkbox Slots
 
 ```tsx
-<AkCheckbox>开朗</AkCheckbox>
-<AkCheckbox>活泼</AkCheckbox>
+<TaCheckbox>开朗</TaCheckbox>
+<TaCheckbox>活泼</TaCheckbox>
 ...
 ```
 
@@ -81,9 +81,9 @@ import type { CheckboxOptionItem } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkCheckbox.Group>
-  <AkCheckbox>开朗</AkCheckbox>
-  <AkCheckbox>活泼</AkCheckbox>
+<TaCheckbox.Group>
+  <TaCheckbox>开朗</TaCheckbox>
+  <TaCheckbox>活泼</TaCheckbox>
   ...
-</AkCheckbox.Group>
+</TaCheckbox.Group>
 ```

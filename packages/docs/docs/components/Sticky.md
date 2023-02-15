@@ -9,7 +9,11 @@
 ## Import
 
 ```js
-import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-react'
+import {
+  TaSticky,
+  TaStickyView,
+  TaStickyViewItem
+} from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +23,7 @@ import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { StickyViewOnChange } from 'arkui-mobile-react'
+import type { StickyViewOnChange } from 'tantalum-ui-mobile-react'
 ```
 
 ## Sticky
@@ -39,7 +43,7 @@ import type { StickyViewOnChange } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkSticky>自定义内容</AkSticky>
+<TaSticky>自定义内容</TaSticky>
 ```
 
 ## StickyView
@@ -67,22 +71,22 @@ import type { StickyViewOnChange } from 'arkui-mobile-react'
 注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem-props) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkGroup title="Sticky View">
-  <AkStickyView className="exp-sticky-box" onChange={onChange}>
-    <AkStickyView.Item name="Sticky 1">
+<TaGroup title="Sticky View">
+  <TaStickyView className="exp-sticky-box" onChange={onChange}>
+    <TaStickyView.Item name="Sticky 1">
       <div className="exp-sticky-box-1"></div>
-    </AkStickyView.Item>
-    <AkStickyView.Item name="Sticky 2">
+    </TaStickyView.Item>
+    <TaStickyView.Item name="Sticky 2">
       <div className="exp-sticky-box-2"></div>
-    </AkStickyView.Item>
-    <AkStickyView.Item name="Sticky 3">
+    </TaStickyView.Item>
+    <TaStickyView.Item name="Sticky 3">
       <div className="exp-sticky-box-3"></div>
-    </AkStickyView.Item>
-    <AkStickyView.Item name="Sticky 4">
+    </TaStickyView.Item>
+    <TaStickyView.Item name="Sticky 4">
       <div className="exp-sticky-box-4"></div>
-    </AkStickyView.Item>
-  </AkStickyView>
-</AkGroup>
+    </TaStickyView.Item>
+  </TaStickyView>
+</TaGroup>
 ```
 
 ## StickyViewItem Props
@@ -96,7 +100,7 @@ import type { StickyViewOnChange } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkStickyView.Item name="Sticky 1">
+<TaStickyView.Item name="Sticky 1">
   <div className="exp-sticky-box-1"></div>
-</AkStickyView.Item>
+</TaStickyView.Item>
 ```

@@ -5,14 +5,14 @@ import {
   useRef,
   useState
 } from 'react'
-import { cloneData, isSameArray } from '../helpers/util'
+import { cloneData, isSameArray } from '../helpers'
 import type {
   ColRow,
   OptionItem,
   PickerOptionsHandler,
   PickerHandlers,
-  PickerCommonProps,
-  PickerCommonEmits,
+  PickerViewProps,
+  PickerViewEmits,
   PickerPopupProps,
   PickerPopupEmits,
   PickerViewRef,
@@ -65,6 +65,9 @@ export function usePicker(
   const popupRef = useRef<PickerPopupRef>(null)
 
   const detail = useRef(getDefaultDetail(handlers))
+  function getPopupDetail(): SelectorDetail {
+    return popupRef.current?.getDetail() || getDefaultDetail(handlers)
+  }
 
   function updateValue(val: unknown) {
     if (val == null) {
@@ -124,7 +127,9 @@ export function usePicker(
     return cloneDetail(detail.current)
   }
 
-  function onConfirm(newDetail: SelectorDetail) {
+  function onConfirm() {
+    const newDetail = getPopupDetail()
+
     if (!isSameDetail(newDetail, detail.current)) {
       updateDetail(newDetail)
 
@@ -178,9 +183,19 @@ export function usePickerPopup(
 
       // 跟picker-view不一样，改变数值时机是确定按钮
       props.onChange && props.onChange(getDetail().value)
+    } else {
+      detail.current = newDetail
     }
 
-    return getDetail()
+    return getDetail().source
+  }
+
+  function onHeaderLeftClick() {
+    onCancelClick()
+  }
+
+  function onHeaderRightClick() {
+    customConfirm(beforeConfirm())
   }
 
   function onCancelClick() {
@@ -250,7 +265,7 @@ export function usePickerView(
     options = defaultOptions,
     fieldNames = defaultFieldNames,
     ...props
-  }: PickerCommonProps & PickerCommonEmits,
+  }: PickerViewProps & PickerViewEmits,
   { name, afterUpdate, handlers }: ViewUseOptions
 ) {
   const [cols, setCols] = useState<Col[]>([])
@@ -281,7 +296,7 @@ export function usePickerView(
     isCascade.current = formatted.isCascade
   }
 
-  function updateOriginalValue(val: SelectorValue[], forceUpdate: boolean) {
+  function updateOriginalValue(val: SelectorValue[], forceUpdate = false) {
     const { valid, value: values } = validateValues(
       val,
       options2.current,
@@ -496,7 +511,8 @@ export function usePickerView(
    */
   function updateCascadeCols(selecteds: SelectorValue[]) {
     if (typeof optionsHandler === 'function') {
-      return updateVirtualOptionsCols(selecteds)
+      updateVirtualOptionsCols(selecteds)
+      return
     }
 
     clearCache()
@@ -734,13 +750,21 @@ const formatter: PickerFormatter = (valueArray, labelArray, handlers) => {
   if ((ret as SelectorDetail)?.value != null) {
     return {
       value: (ret as SelectorDetail).value,
-      label: (ret as SelectorDetail).label ?? ''
+      label: (ret as SelectorDetail).label ?? '',
+      source: {
+        value: valueArray,
+        label: defaultLabel
+      }
     }
   }
 
   return {
     value: ret as SelectorModelValue,
-    label: defaultLabel
+    label: defaultLabel,
+    source: {
+      value: valueArray,
+      label: defaultLabel
+    }
   }
 }
 

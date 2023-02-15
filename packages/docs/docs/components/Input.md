@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkInput } from 'arkui-mobile-react'
+import { TaInput } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -57,7 +57,7 @@ import { AkInput } from 'arkui-mobile-react'
 ### 前置元素（renderPrepend）
 
 ```tsx
-<AkInput
+<TaInput
   type="text"
   focus
   placeholder="请输入网址"
@@ -70,7 +70,7 @@ import { AkInput } from 'arkui-mobile-react'
 ### 后置元素（renderAppend）
 
 ```tsx
-<AkInput
+<TaInput
   type="text"
   focus
   placeholder="请输入网址"

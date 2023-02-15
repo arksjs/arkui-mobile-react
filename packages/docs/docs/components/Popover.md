@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkPopover } from 'arkui-mobile-react'
+import { TaPopover } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -22,7 +22,7 @@ import { AkPopover } from 'arkui-mobile-react'
 import type {
   VisibleState,
   PopupOnVisibleStateChange
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -56,7 +56,7 @@ import type {
 ### children
 
 ```tsx
-<AkPopover>自定义内容</AkPopover>
+<TaPopover>自定义内容</TaPopover>
 ```
 
 ## showPopover(object)

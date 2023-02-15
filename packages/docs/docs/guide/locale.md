@@ -11,14 +11,14 @@
 ```tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AkConfigProvider } from 'arkui-mobile-react'
-import enUS from 'arkui-mobile-react/es/locale/lang/en-US'
+import { TaConfigProvider } from 'tantalum-ui-mobile-react'
+import enUS from 'tantalum-ui-mobile-react/es/locale/lang/en-US'
 import App from './App'
 
 ReactDOM.render(
-  <AkConfigProvider locale={enUS}>
+  <TaConfigProvider locale={enUS}>
     <App />
-  </AkConfigProvider>,
+  </TaConfigProvider>,
   document.getElementById('root')
 )
 ```

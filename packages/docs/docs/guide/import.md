@@ -16,30 +16,30 @@ yarn create vite my-react-app --template react-ts
 pnpm create vite my-react-app -- --template react-ts
 ```
 
-## 引入 arkui-mobile-react
+## 引入 tantalum-ui-mobile-react
 
 ```sh
 # npm
-npm i -S arkui-mobile-react
+npm i -S tantalum-ui-mobile-react
 
 # yarn
-yarn add arkui-mobile-react
+yarn add tantalum-ui-mobile-react
 
 # pnpm
-pnpm add arkui-mobile-react
+pnpm add tantalum-ui-mobile-react
 ```
 
-修改 `src/App.tsx`，引入 arkui-mobile-react 的按钮组件。
+修改 `src/App.tsx`，引入 tantalum-ui-mobile-react 的按钮组件。
 
 ```tsx
 import { FC } from 'react'
-import { AkButton } from 'arkui-mobile-react'
-import 'arkui-mobile-react/es/style'
-// import 'arkui-mobile-react/es/style/sass' // use sass
+import { TaButton } from 'tantalum-ui-mobile-react'
+import 'tantalum-ui-mobile-react/es/style'
+// import 'tantalum-ui-mobile-react/es/style/sass' // use sass
 
 const App: FC = () => (
   <div className="App">
-    <AkButton type="primary">Button</AkButton>
+    <TaButton type="primary">Button</TaButton>
   </div>
 )
 
@@ -51,12 +51,12 @@ export default App
 API 调用需要先引入对应的组件，方可调用，引用方式同上。
 
 ```tsx
-import { showToast } from 'arkui-mobile-react'
-import 'arkui-mobile-react/es/Toast/style'
+import { showToast } from 'tantalum-ui-mobile-react'
+import 'tantalum-ui-mobile-react/es/Toast/style'
 
 const App: FC = () => (
   <div className="App">
-    <AkButton
+    <TaButton
       type="primary"
       onClick={() =>
         showToast({
@@ -67,7 +67,7 @@ const App: FC = () => (
       }
     >
       Button
-    </AkButton>
+    </TaButton>
   </div>
 )
 

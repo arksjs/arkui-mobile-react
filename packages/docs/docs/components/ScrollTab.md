@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-react'
+import { TaScrollTab, TaScrollTabItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { ScrollTabOnChange } from 'arkui-mobile-react'
+import type { ScrollTabOnChange } from 'tantalum-ui-mobile-react'
 ```
 
 ## ScrollTab Props
@@ -42,14 +42,14 @@ import type { ScrollTabOnChange } from 'arkui-mobile-react'
 注：其中只可放置 [ScrollTabItem](./ScrollTab.md#scrolltabitem-props) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkScrollTab className="exp-scrollTab-boxs">
-  <AkScrollTab.Item name="Dust Red">
+<TaScrollTab className="exp-scrollTab-boxs">
+  <TaScrollTab.Item name="Dust Red">
     <div className="exp-scrollTab-box box-1"></div>
-  </AkScrollTab.Item>
-  <AkScrollTab.Item name="Volcano">
+  </TaScrollTab.Item>
+  <TaScrollTab.Item name="Volcano">
     <div className="exp-scrollTab-box box-2"></div>
-  </AkScrollTab.Item>
-</AkScrollTab>
+  </TaScrollTab.Item>
+</TaScrollTab>
 ```
 
 ## ScrollTabItem Props
@@ -63,7 +63,7 @@ import type { ScrollTabOnChange } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkScrollTab.Item name="Dust Red">
+<TaScrollTab.Item name="Dust Red">
   <div className="exp-scrollTab-box box-1"></div>
-</AkScrollTab.Item>
+</TaScrollTab.Item>
 ```

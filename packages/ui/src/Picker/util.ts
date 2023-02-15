@@ -1,5 +1,3 @@
-import { isEmpty } from '../helpers/util'
-import type { AnyObject } from '../helpers/types'
 import type {
   UserFieldNames,
   UserOptionItem,
@@ -25,9 +23,11 @@ import {
   isStringOrNumberArray,
   objectForEach,
   isObject,
-  isStringOrNumber
-} from '../helpers/util'
-import Exception from '../helpers/exception'
+  isStringOrNumber,
+  isEmpty,
+  type AnyObject,
+  isString
+} from '../helpers'
 
 export const getDefaultFieldNames: () => FieldNames = () => {
   return { label: 'label', value: 'value', children: 'children' }
@@ -47,7 +47,7 @@ const defaultFormatter: SelectorValueFormatter = (valueArray, labelArray) => {
 const defaultParser: SelectorValueParser = value => {
   if (isNumber(value)) {
     return [value as number]
-  } else if (typeof value === 'string' && value) {
+  } else if (isString(value) && value) {
     return [value]
   } else if (isStringOrNumberArray(value)) {
     return cloneValue(value as (string | number)[]) as SelectorValue[]
@@ -108,7 +108,7 @@ function parseOptions(
         if (subOptions.length > 0) {
           ;(newOptions as OptionItem[][]).push(subOptions)
         }
-      } else if (isNumber(option) || typeof option === 'string') {
+      } else if (isStringOrNumber(option)) {
         // 纯数值或者字符串
         ;(newOptions as OptionItem[]).push({
           label: option.toString(),
@@ -286,36 +286,23 @@ function validateCascadeCols(
       }
 }
 
-function printError(message: string) {
-  console.error(
-    new Exception(
-      message,
-      Exception.TYPE.PROP_ERROR,
-      'Picker/DatePicker/Cascader/Calendar'
-    )
-  )
-}
-
 /**
  * 校验值
  * @param values 值
  * @param options
- * @param separator
  * @param isCascade
  * @param virtualHandler
  * @returns { valid, detail }
  */
 export function validateValues(
-  values: SelectorValue[] | Error,
+  values: SelectorValue[],
   options: OptionItem[] | OptionItem[][],
   isCascade: boolean,
   virtualHandler?: PickerOptionsHandler | null
 ): ValidateReturn {
   let valid = false
 
-  if (values instanceof Error) {
-    printError(values.message)
-  } else if (values.length === 0) {
+  if (values.length === 0) {
     // 空数组也算符合
     valid = true
   } else {
@@ -350,13 +337,13 @@ export function getFormatOptions(
 
   if (virtualHandler == null) {
     if (fieldNames) {
-      typeof fieldNames.label === 'string' &&
+      isString(fieldNames.label) &&
         fieldNames.label &&
         (newFieldNames.label = fieldNames.label)
-      typeof fieldNames.value === 'string' &&
+      isString(fieldNames.value) &&
         fieldNames.value &&
         (newFieldNames.value = fieldNames.value)
-      typeof fieldNames.children === 'string' &&
+      isString(fieldNames.children) &&
         fieldNames.children &&
         (newFieldNames.children = fieldNames.children)
     }

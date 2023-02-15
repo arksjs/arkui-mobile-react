@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkPagination } from 'arkui-mobile-react'
+import { TaPagination } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -32,15 +32,15 @@ import { AkPagination } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkPagination total={total}>
+<TaPagination total={total}>
   {({ current }) => <>{`第 ${current} 页`}</>}
-</AkPagination>
+</TaPagination>
 ```
 
 ### 翻页按钮（#prev/#next）
 
 ```tsx
-<AkPagination
+<TaPagination
   total={total}
   renderPrev={() => <>上一页</>}
   renderNext={() => <>下一页</>}

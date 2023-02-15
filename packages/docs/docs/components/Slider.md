@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { Slider } from 'arkui-mobile-react'
+import { Slider } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。

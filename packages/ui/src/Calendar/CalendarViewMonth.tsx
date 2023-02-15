@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { OnClick, VFC } from '../helpers/types'
+import type { OnClick, VFC } from '../helpers'
 import type { Mode, Month } from './types'
 
 const TaCalendarViewMonth: VFC<{

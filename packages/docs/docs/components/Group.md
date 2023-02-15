@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkGroup } from 'arkui-mobile-react'
+import { TaGroup } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,29 +28,29 @@ import { AkGroup } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkGroup title="基础风格">
-  <AkCell
+<TaGroup title="基础风格">
+  <TaCell
     label="单元格"
     content="内容"
     description="网站大部分组件都由这个组件进行分组"
   />
-  <AkCell label="单元格" content="内容" />
-  <AkCell label="单元格" content="内容" />
-  <AkCell label="单元格" content="内容" />
-</AkGroup>
+  <TaCell label="单元格" content="内容" />
+  <TaCell label="单元格" content="内容" />
+  <TaCell label="单元格" content="内容" />
+</TaGroup>
 ```
 
 ### 右上角（renderHeader）
 
 ```tsx
-<AkGroup
+<TaGroup
   title="强化标题栏"
-  renderHeader={() => <AkButton size="small"> 查看更多 </AkButton>}
+  renderHeader={() => <TaButton size="small"> 查看更多 </TaButton>}
   strongHeader={strongHeader}
 >
-  <AkCell label="单元格" content="内容" />
-  <AkCell label="单元格" content="内容" />
-  <AkCell label="单元格" content="内容" />
-  <AkCell label="单元格" content="内容" />
-</AkGroup>
+  <TaCell label="单元格" content="内容" />
+  <TaCell label="单元格" content="内容" />
+  <TaCell label="单元格" content="内容" />
+  <TaCell label="单元格" content="内容" />
+</TaGroup>
 ```

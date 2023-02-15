@@ -16,7 +16,7 @@
 ## Import
 
 ```js
-import { AkFlatList } from 'arkui-mobile-react'
+import { TaFlatList } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -32,7 +32,7 @@ import type {
   FlatListOnEndReached,
   FlatListOnVisibleItemsChange,
   FlatListRef
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -70,7 +70,7 @@ import type {
 ### 列表项（render）
 
 ```tsx
-<AkFlatList
+<TaFlatList
   className="exp-flatList-box"
   ids={list.map(v => v.id)}
   render={({ index }) => (
@@ -82,10 +82,10 @@ import type {
 ### 列表为空（renderEmpty）
 
 ```tsx
-<AkFlatList
+<TaFlatList
   className="exp-flatList-box"
   ids={[]}
-  renderEmpty={() => <AkEmpty description="暂无列表" />}
+  renderEmpty={() => <TaEmpty description="暂无列表" />}
   render={() => <></>}
 />
 ```
@@ -93,7 +93,7 @@ import type {
 ### 分割线（renderSeparator）
 
 ```tsx
-<AkFlatList
+<TaFlatList
   className="exp-flatList-box"
   ids={list.map(v => v.id)}
   render={({ index }) => (
