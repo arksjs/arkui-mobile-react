@@ -1,5 +1,6 @@
-import { isStringOrNumber } from '../helpers/util'
-import { useGroup, useGroupItem } from '../hooks/use-group'
+import { useEffect, useMemo, useRef } from 'react'
+import { isStringOrNumber } from '../helpers'
+import { useGroup, useGroupItem } from '../hooks'
 import type {
   CheckCommonEmits,
   CheckCommonProps,
@@ -9,7 +10,6 @@ import type {
   ModelValue,
   OptionItem
 } from './types'
-import { useEffect, useMemo, useRef } from 'react'
 import { CheckboxContext } from './context'
 import { getCheckGroupClasses, getCheckStyles } from './util'
 
@@ -66,11 +66,13 @@ export function useCheck(
       const groupValues = groupOptions.value
 
       checked =
-        !!props.checkedValue &&
-        (name === 'checkbox'
-          ? Array.isArray(groupValues) &&
-            groupValues.includes(props.checkedValue)
-          : props.checkedValue === groupValues)
+        name === 'checkbox'
+          ? !!(
+              Array.isArray(groupValues) &&
+              props.checkedValue &&
+              groupValues.includes(props.checkedValue)
+            )
+          : props.checkedValue === groupValues
     } else {
       checked = !!props.checked
     }

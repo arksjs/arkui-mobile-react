@@ -2,29 +2,29 @@ import { useEffect, useRef } from 'react'
 import type { Noop } from '../helpers'
 
 export function useOnce(interval = 0) {
-  const handle = useRef<number>()
+  const handle = useRef<number | null>(null)
 
   function cancel() {
     if (handle.current != null) {
       interval > 0
         ? clearTimeout(handle.current)
         : cancelAnimationFrame(handle.current)
-      handle.current = undefined
+      handle.current = null
     }
   }
 
-  function call(fn: Noop) {
+  function call(fn: Noop, forceInterval?: number) {
     cancel()
 
     if (interval > 0) {
       handle.current = window.setTimeout(() => {
-        handle.current = undefined
+        handle.current = null
 
         fn()
-      }, 50)
+      }, forceInterval ?? interval)
     } else {
       handle.current = requestAnimationFrame(() => {
-        handle.current = undefined
+        handle.current = null
 
         fn()
       })

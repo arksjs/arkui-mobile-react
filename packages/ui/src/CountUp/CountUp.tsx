@@ -1,7 +1,3 @@
-import classNames from 'classnames'
-import type { CountUpEmits, CountUpProps, CountUpRef } from './types'
-import { getNumber, thousands as handleThousands, type FRVFC } from '../helpers'
-import { getDuration } from './util'
 import {
   forwardRef,
   useEffect,
@@ -9,7 +5,11 @@ import {
   useRef,
   useState
 } from 'react'
-import { useFrameTask } from '../hooks/use-frame-task'
+import classNames from 'classnames'
+import type { CountUpEmits, CountUpProps, CountUpRef } from './types'
+import { getNumber, thousands as handleThousands, type FRVFC } from '../helpers'
+import { getDuration } from './util'
+import { useFrameTask } from '../hooks'
 
 const TaCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   {

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { SelectorFieldEmits, SelectorFieldProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { Icon } from '../Icon'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { getClasses, getInputClasses } from './util'

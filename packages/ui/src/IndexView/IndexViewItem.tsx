@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import type { IndexViewItemProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { Group } from '../Group'
 
-const TaIndexViewItem: FC<IndexViewItemProps> = ({ name = '', ...props }) => {
+const TaIndexViewItem: FC<IndexViewItemProps> = ({ name, title, ...props }) => {
   const classes = classNames(
     'ta-sticky-view-item',
     'ta-index-view-item',
@@ -11,7 +11,12 @@ const TaIndexViewItem: FC<IndexViewItemProps> = ({ name = '', ...props }) => {
   )
 
   return (
-    <Group title={name.toString()} className={classes} data-name={name}>
+    <Group
+      className={classes}
+      title={title || name}
+      data-name={name}
+      data-title={title}
+    >
       {props.children}
     </Group>
   )

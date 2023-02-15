@@ -1,16 +1,11 @@
 import ImagePreview from './ImagePreview'
 import { createConfirmHook, createShowPopup } from '../popup/api'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject } from '../helpers'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
+import type { ShowImagePreviewOptions } from './types'
 
 const showImagePreview = createShowPopup<
-  {
-    urls: string[]
-    content?: string
-    showClose?: boolean
-    navigationButtons?: boolean
-    imageHighRendering?: boolean
-  },
+  ShowImagePreviewOptions,
   PopupSuccessConfirmArgs<EmptyObject>
 >({
   apiName: 'showImagePreview',

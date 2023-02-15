@@ -133,7 +133,6 @@ export function useTab(
   }
 
   function _switchTo(value: string | number, isProp = false) {
-    console.log(isProp, 'sss')
     if (value === activeValue2.current) {
       return
     }

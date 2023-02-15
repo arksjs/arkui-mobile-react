@@ -8,7 +8,13 @@ import {
 } from 'react'
 import classNames from 'classnames'
 import type { InputEmits, InputProps } from './types'
-import type { CSSProperties, OnFocus, RenderProp, VFC } from '../helpers'
+import type {
+  CSSProperties,
+  OnClick,
+  OnFocus,
+  RenderProp,
+  VFC
+} from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import { Icon } from '../Icon'
@@ -19,6 +25,7 @@ const TaInput: VFC<
       renderPrepend?: RenderProp
       renderAppend?: RenderProp
       style?: CSSProperties
+      onClick?: OnClick
     }
 > = ({
   type = 'text',
@@ -27,6 +34,7 @@ const TaInput: VFC<
   readonly,
   renderPrepend,
   renderAppend,
+  onClick,
   ...props
 }) => {
   const [active, setActive] = useState(false)
@@ -190,6 +198,7 @@ const TaInput: VFC<
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          onClick={onClick}
         />
       ) : (
         <input
@@ -206,6 +215,7 @@ const TaInput: VFC<
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          onClick={onClick}
           onCompositionStart={onCompositionStart}
           onCompositionEnd={onCompositionEnd}
         />

@@ -1,4 +1,4 @@
-export type OnChange = (current: number) => void
+export type OnChange = (value: number) => void
 
 export interface PaginationProps {
   value?: number | string

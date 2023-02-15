@@ -118,7 +118,7 @@ export default function ExpImagePreview() {
       </TaGroup>
       <TaImagePreview
         urls={imageUrls}
-        current={current}
+        value={current}
         visible={visible}
         maskClosable={maskClosable}
         showClose={showClose}

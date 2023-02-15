@@ -1,4 +1,4 @@
-import { string2StringArray } from '../helpers/util'
+import { string2StringArray } from '../helpers'
 import type { Accept } from './types'
 
 export const ACCEPT_TYPES = new Map<Accept, string>([

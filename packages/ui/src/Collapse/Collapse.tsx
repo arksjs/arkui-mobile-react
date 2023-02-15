@@ -1,53 +1,74 @@
+import { useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import type {
-  ActiveName,
   CollapseContextItemRef,
   CollapseContextValue,
   CollapseEmits,
   CollapseProps
 } from './types'
-import type { FC } from '../helpers/types'
-import {
-  cloneData,
-  isSameArray,
-  isStringOrNumber,
-  isStringOrNumberArray
-} from '../helpers/util'
-import { useEffect, useRef } from 'react'
-import { useGroup } from '../hooks/use-group'
+import { cloneData, isSameArray, isStringArray, type FC } from '../helpers'
+import { useGroup } from '../hooks'
 import { CollapseContext } from './context'
 
 const TaCollapse: FC<CollapseProps & CollapseEmits> = ({
-  activeNames = [],
+  value = [],
   accordion = false,
   ...props
 }) => {
   const classes = classNames('ta-collapse', props.className)
 
-  const activeNames2 = useRef<ActiveName[]>([])
+  const activeNames = useRef<string[]>([])
+
+  function updateValue(val: string | string[]) {
+    let values = cloneData(
+      isStringArray(val) ? val : isStringArray(val) ? [val] : []
+    )
+
+    if (accordion) {
+      // 手风琴模式只保留一个值
+      values = values.slice(0, 1)
+    }
+
+    if (Array.isArray(values) && isSameArray(values, activeNames.current)) {
+      return
+    }
+
+    activeNames.current = []
+
+    children.current.forEach(child => {
+      const childName = child.getName() as string
+
+      if (childName && values.includes(childName)) {
+        activeNames.current.push(childName)
+        child.show()
+      } else {
+        child.hide()
+      }
+    })
+  }
 
   function onChange(uid: symbol) {
-    activeNames2.current = []
+    activeNames.current = []
 
     if (accordion) {
       children.current.forEach(child => {
         if (child.uid === uid) {
-          child.isActive() &&
+          child.getActive() &&
             child.getName() &&
-            activeNames2.current.push(child.getName())
+            activeNames.current.push(child.getName())
         } else {
           child.hide()
         }
       })
     } else {
       children.current.forEach(child => {
-        child.isActive() &&
+        child.getActive() &&
           child.getName() &&
-          activeNames2.current.push(child.getName())
+          activeNames.current.push(child.getName())
       })
     }
 
-    props.onChange && props.onChange(cloneData(activeNames2.current))
+    props.onChange && props.onChange(cloneData(activeNames.current))
   }
 
   const { children, GroupProvider } = useGroup<
@@ -58,37 +79,9 @@ const TaCollapse: FC<CollapseProps & CollapseEmits> = ({
     hasGroup: true
   })
 
-  function updateValue(val: ActiveName | ActiveName[]) {
-    let values = cloneData(
-      isStringOrNumberArray(val) ? val : isStringOrNumber(val) ? [val] : []
-    )
-
-    if (accordion) {
-      // 手风琴模式只保留一个值
-      values = values.slice(0, 1)
-    }
-
-    if (Array.isArray(values) && isSameArray(values, activeNames2.current)) {
-      return
-    }
-
-    activeNames2.current = []
-
-    children.current.forEach(child => {
-      const childName = child.getName() as ActiveName
-
-      if (childName && values.includes(childName)) {
-        activeNames2.current.push(childName)
-        child.show()
-      } else {
-        child.hide()
-      }
-    })
-  }
-
   useEffect(() => {
-    updateValue(activeNames)
-  }, [activeNames])
+    updateValue(value)
+  }, [value])
 
   return (
     <div className={classes}>

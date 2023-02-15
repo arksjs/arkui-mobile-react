@@ -53,7 +53,7 @@ const TaSwiper: FRFC<SwiperRef, SwiperProps & SwiperEmits> = (
   ref
 ) => {
   // 设置初始化数据
-  const { printListItemNotFoundError } = useException('TaSwiper')
+  const { printListItemNotFoundError } = useException('Swiper')
   const circular = useRef(!!initialCircular)
   const direction = useRef(initialVertical ? 'y' : 'x')
   const directionGroup = useRef(

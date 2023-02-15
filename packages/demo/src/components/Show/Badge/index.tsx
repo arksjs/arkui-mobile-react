@@ -1,17 +1,17 @@
-import { TaRow, TaCol, TaIcon, TaGroup, TaBadge } from '@/index'
+import { TaRow, TaCol, TaIcon, TaGroup, TaBadge, TaSwitch } from '@/index'
 import { useState } from 'react'
 
 export default function ExpBadge() {
-  const [count] = useState(0)
-  const [count2] = useState(0)
+  const [count, setCount] = useState(0)
+  const [count2, setCount2] = useState(0)
 
-  // function onSwitch(checked: boolean) {
-  //   count.value = checked ? 1000 : 0
-  // }
+  function onSwitch(checked: boolean) {
+    setCount(checked ? 1000 : 0)
+  }
 
-  // function onSwitch2(checked: boolean) {
-  //   count2.value = checked ? 1000 : 0
-  // }
+  function onSwitch2(checked: boolean) {
+    setCount2(checked ? 1000 : 0)
+  }
 
   return (
     <>
@@ -167,7 +167,7 @@ export default function ExpBadge() {
               </TaBadge>
             </TaCol>
             <TaCol span="6">
-              {/* <TaSwitch @change="onSwitch"></TaSwitch> */}
+              <TaSwitch onChange={onSwitch} />
             </TaCol>
           </TaRow>
           <TaRow gutter={[16, 16]}>
@@ -177,7 +177,7 @@ export default function ExpBadge() {
               </TaBadge>
             </TaCol>
             <TaCol span="6">
-              {/* <TaSwitch @change="onSwitch2"></TaSwitch> */}
+              <TaSwitch onChange={onSwitch2} />
             </TaCol>
           </TaRow>
         </div>

@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { OrderProps, Position, OrderEmits } from './types'
-import type { FC, RenderProp, UniqueID } from '../helpers/types'
 import {
   getClasses,
   getItemClasses,
@@ -10,14 +10,21 @@ import {
 } from './util'
 import { Icon } from '../Icon'
 import { Drawer } from '../Drawer'
-import { rangeNumber, cloneData, getNumber } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
-import { addClassName, getParentTarget, removeClassName } from '../helpers/dom'
+import {
+  rangeNumber,
+  cloneData,
+  getNumber,
+  addClassName,
+  getParentTarget,
+  removeClassName,
+  type FC,
+  type RenderProp,
+  type UniqueID
+} from '../helpers'
+import { useTouch, useStableState } from '../hooks'
 import type { OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
-import { useEffect, useRef, useState } from 'react'
-import { useStableState } from '../hooks/use'
 
 interface TargetObject {
   id: UniqueID

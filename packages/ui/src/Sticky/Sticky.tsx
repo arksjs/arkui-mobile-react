@@ -1,6 +1,3 @@
-import classNames from 'classnames'
-import type { ResetContainer, StickyProps, StickyRef } from './types'
-import type { FRFC } from '../helpers/types'
 import {
   forwardRef,
   useEffect,
@@ -8,14 +5,17 @@ import {
   useRef,
   useState
 } from 'react'
-import { widgetZIndex } from '../helpers/layer'
-import { useScroll } from '../hooks/use-scroll'
+import classNames from 'classnames'
+import type { ResetContainer, StickyProps, StickyRef } from './types'
 import {
+  widgetZIndex,
   getRelativeOffset,
   getScrollTop,
   getSizeValue,
-  querySelector
-} from '../helpers/dom'
+  querySelector,
+  type FRFC
+} from '../helpers'
+import { useScroll } from '../hooks'
 import { getStyles } from './util'
 
 const TaSticky: FRFC<StickyRef, StickyProps> = (

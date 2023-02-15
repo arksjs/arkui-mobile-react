@@ -48,7 +48,7 @@ export type {
   UserOptionItem as RadioOptionItem
 }
 
-import { GroupContextItemRef, GroupContextValue } from '../hooks/types'
+import type { GroupContextItemRef, GroupContextValue } from '../hooks'
 
 export interface CheckContextValue extends GroupContextValue {
   value?: ModelValue | ModelValue[]

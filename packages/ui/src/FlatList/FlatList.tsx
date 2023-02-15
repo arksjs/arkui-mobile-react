@@ -1,6 +1,14 @@
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 import classNames from 'classnames'
 import type { FlatListEmits, FlatListProps, FlatListRef } from './types'
-import type { CSSProperties, FRFC, RenderProp } from '../helpers/types'
+import type { CSSProperties, FRFC, RenderProp } from '../helpers'
 import { LoadMore } from '../LoadMore'
 import { ScrollView } from '../ScrollView'
 import { VirtualList } from '../VirtualList'
@@ -12,14 +20,6 @@ import type {
 } from '../VirtualList/types'
 import { useLocale } from '../ConfigProvider/context'
 import type { PullDirection, ScrollViewRef } from '../ScrollView/types'
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
 import { getClasses } from './util'
 
 const TaFlatList: FRFC<

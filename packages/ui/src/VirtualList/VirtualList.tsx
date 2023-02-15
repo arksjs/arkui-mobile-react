@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'react'
 import {
   forwardRef,
   useCallback,
@@ -7,7 +6,8 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
-  useState
+  useState,
+  type HTMLAttributes
 } from 'react'
 import classNames from 'classnames'
 import type {
@@ -18,21 +18,26 @@ import type {
   VirtualListProps,
   VirtualListRef
 } from './types'
-import type { FRFC, RenderProp, UniqueID } from '../helpers/types'
 import {
   cloneData,
   getSameValueArray,
   isNumber,
-  rangeNumber
-} from '../helpers/util'
+  rangeNumber,
+  getViewPosition,
+  type ViewPosition,
+  type FRFC,
+  type RenderProp,
+  type UniqueID
+} from '../helpers'
 import Exception from '../helpers/exception'
-import { getViewPosition } from '../helpers/dom'
-import type { ViewPosition } from '../helpers/types'
 import type { OnVisibleItemsChangePayload, ListItem, RenderItem } from './types'
-import { useScroll, useScrollTo } from '../hooks/use-scroll'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import {
+  useScroll,
+  useScrollTo,
+  useResizeObserver,
+  type ScrollToOffsetOptions
+} from '../hooks'
 import { getClasses, getItemStyles, getListStyles } from './util'
-import type { ScrollToOffsetOptions } from '../hooks/types'
 
 // 对数据进行分割，以50个为一组
 const calcGroupCount = 50

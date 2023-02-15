@@ -1,20 +1,24 @@
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FormEventHandler
+} from 'react'
 import classNames from 'classnames'
-import type { FormEventHandler } from 'react'
-import { useEffect, useMemo, useRef, useState } from 'react'
 import type {
   SearchBarEmits,
   SearchBarProps,
   SuggestItem,
   SuggestList
 } from './types'
-import type { VFC } from '../helpers/types'
 import { Icon } from '../Icon'
 import { Input } from '../Input'
 import { Button } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
-import { isStringArray } from '../helpers/util'
+import { isStringArray, type VFC } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
 

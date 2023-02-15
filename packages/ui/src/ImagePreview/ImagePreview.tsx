@@ -1,16 +1,16 @@
+import { forwardRef, useEffect, useMemo, useRef } from 'react'
 import classNames from 'classnames'
 import type { ImagePreviewEmits, ImagePreviewProps } from './types'
-import type { FRVFC, RenderProp } from '../helpers/types'
-import { forwardRef, useEffect, useMemo, useRef } from 'react'
+import type { FRVFC, RenderProp } from '../helpers'
 import { PopupRef } from '../popup/types'
 import { usePopup } from '../popup/use-popup'
 import { createPortal } from 'react-dom'
 import { Button } from '../Button'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { Swiper } from '../Swiper'
-import { OnChange as SwiperOnChange, SwiperRef } from '../Swiper/types'
+import type { SwiperOnActiveIndexChange, SwiperRef } from '../Swiper/types'
 import PreviewItem from './ImagePreviewItem'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 
 const TaImagePreview: FRVFC<
   PopupRef,
@@ -19,13 +19,7 @@ const TaImagePreview: FRVFC<
       renderClose?: RenderProp<{ activeIndex: number }>
     }
 > = (
-  {
-    urls = [],
-    imageHighRendering = true,
-    showClose = false,
-    current,
-    ...props
-  },
+  { urls = [], imageHighRendering = true, showClose = false, value, ...props },
   ref
 ) => {
   const swiperRef = useRef<SwiperRef>(null)
@@ -37,12 +31,12 @@ const TaImagePreview: FRVFC<
   )
 
   const classes = classNames([
-    'ta-preview-image',
+    'ta-image-preview',
     popupClasses,
     props.className
   ])
 
-  const onSwiperChange: SwiperOnChange = (index, fromIndex) => {
+  const onSwiperChange: SwiperOnActiveIndexChange = (index, fromIndex) => {
     if (index === getActiveIndex2(true)) {
       return
     }
@@ -69,12 +63,12 @@ const TaImagePreview: FRVFC<
   )
 
   useEffect(() => {
-    if (current && urls.indexOf(current) !== -1) {
-      const _index = urls.indexOf(current)
+    if (value && urls.indexOf(value) !== -1) {
+      const _index = urls.indexOf(value)
       setActiveIndex2(_index)
       swiperRef.current?.swipeTo(_index)
     }
-  }, [current])
+  }, [value])
 
   return createPortal(
     <div className={classes} style={popupStyles}>
@@ -83,14 +77,14 @@ const TaImagePreview: FRVFC<
         ref={swiperRef}
         navigationButtons={props.navigationButtons}
         onClick={onPreviewClick}
-        onChange={onSwiperChange}
+        onActiveIndexChange={onSwiperChange}
       >
         {renderImages}
       </Swiper>
-      <div className="ta-preview-image_pagination">
+      <div className="ta-image-preview_pagination">
         {getActiveIndex2() + 1} / {urls.length}
       </div>
-      <div className="ta-preview-image_close">
+      <div className="ta-image-preview_close">
         {props.renderClose ? (
           props.renderClose({
             activeIndex: getActiveIndex2()

@@ -1,6 +1,3 @@
-import classNames from 'classnames'
-import type { IndexViewEmits, IndexViewProps, IndexViewRef } from './types'
-import type { CSSProperties, FRFC } from '../helpers/types'
 import {
   forwardRef,
   useEffect,
@@ -9,11 +6,17 @@ import {
   useRef,
   useState
 } from 'react'
-import { isString, rangeInteger } from '../helpers/util'
-import type { OnResetItems, StickyViewRef } from '../StickyView/types'
+import classNames from 'classnames'
+import type { IndexViewEmits, IndexViewProps, IndexViewRef } from './types'
+import { rangeInteger, type CSSProperties, type FRFC } from '../helpers'
+import type {
+  StickyViewOnResetItems,
+  StickyViewOnChange,
+  StickyViewRef
+} from '../StickyView/types'
 import type { ResetContainer } from '../Sticky/types'
 import { StickyView } from '../StickyView'
-import { useTouch } from '../hooks/use-touch'
+import { useOnce, useTouch } from '../hooks'
 
 interface Coords {
   size: number
@@ -36,48 +39,51 @@ const TaIndexView: FRFC<
 
   const [indexList, setIndexList] = useState<
     {
-      value: number
+      value: string
       label: string
     }[]
   >([])
+  const [activeName, setActiveName] = useState('')
 
-  const onResetItems: OnResetItems = items => {
-    setIndexList(
-      items.map(({ name }, index) => {
-        return {
-          value: index,
-          label: name
-        }
-      })
-    )
+  // 单独更新以下tab的activeName
+  function updateActiveName(name?: string) {
+    if (name != null && nameInList(name) && name !== activeName) {
+      setActiveName(name)
+    }
   }
 
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  function onStickyViewChange(index: number | string) {
-    if (isString(index)) {
-      return
+  function nameInList(name: string) {
+    for (let i = 0; i < indexList.length; i++) {
+      if (indexList[i].value === name) {
+        return true
+      }
     }
 
-    if (index === activeIndex) {
-      return
-    }
-
-    props.onChange && props.onChange(index, activeIndex)
-
-    setActiveIndex(index)
+    return false
   }
 
-  function switchToIndex(index: number) {
+  const onStickyViewChange: StickyViewOnChange = (name, index) => {
+    updateActiveName(name)
+
+    props.onChange && props.onChange(name, index)
+  }
+
+  /**
+   * 滚动到第index个
+   */
+  function scrollToIndex(index: number) {
     bodyRef.current?.scrollToIndex(index)
   }
 
-  const resetContainer: ResetContainer = selector => {
-    bodyRef.current?.resetContainer(selector)
+  /**
+   * 滚动到指定name
+   */
+  function scrollTo(name: string) {
+    bodyRef.current?.scrollTo(name)
   }
 
-  const changeTimer = useRef<number>()
   const coords = useRef<Coords | null>(null)
+  const lazyDo = useOnce(100)
 
   useTouch({
     el: navEl,
@@ -85,20 +91,19 @@ const TaIndexView: FRFC<
       const { clientY } = e.touchObject
 
       const $target = e.target as HTMLElement
-      const value = parseInt($target.dataset.value as string)
+      const index = parseInt($target.dataset.index as string)
       const rects = $target.getClientRects()[0]
 
       coords.current = {
         size: rects.height,
         offsetY: clientY - rects.top,
         startY: clientY,
-        current: value,
+        current: index,
         isChange: false
       }
 
-      clearTimeout(changeTimer.current)
-      changeTimer.current = window.setTimeout(() => {
-        switchToIndex(value)
+      lazyDo(() => {
+        scrollToIndex(index)
       }, 500)
 
       e.preventDefault()
@@ -123,14 +128,13 @@ const TaIndexView: FRFC<
       }
 
       if (offsetCount !== 0) {
-        clearTimeout(changeTimer.current)
         coords.current.isChange = true
 
-        changeTimer.current = window.setTimeout(() => {
-          switchToIndex(
+        lazyDo(() => {
+          scrollToIndex(
             rangeInteger(current + offsetCount, 0, indexList.length - 1)
           )
-        }, 100)
+        })
       }
 
       e.stopPropagation()
@@ -139,8 +143,11 @@ const TaIndexView: FRFC<
     onTouchEnd(e) {
       if (coords.current) {
         if (!coords.current.isChange) {
-          clearTimeout(changeTimer.current)
-          switchToIndex(coords.current.current)
+          const toIndex = coords.current.current
+
+          lazyDo(() => {
+            scrollToIndex(toIndex)
+          }, 0)
         }
 
         coords.current = null
@@ -149,34 +156,52 @@ const TaIndexView: FRFC<
     }
   })
 
+  const resetContainer: ResetContainer = containSelector => {
+    bodyRef.current?.resetContainer(containSelector)
+  }
+
+  const onResetItems: StickyViewOnResetItems = items => {
+    setIndexList(
+      items.map(item => {
+        return {
+          value: item.name,
+          label: item.title
+        }
+      })
+    )
+  }
+
+  useEffect(() => {
+    updateActiveName(props.value)
+  }, [props.value])
+
   useEffect(() => {
     resetContainer(document.documentElement)
-
-    return () => {
-      clearTimeout(changeTimer.current)
-    }
   }, [])
 
   useImperativeHandle(
     ref,
     () => ({
-      switchToIndex
+      scrollTo,
+      scrollToIndex,
+      resetContainer
     }),
     []
   )
 
   const renderIndexItems = useMemo(
     () =>
-      indexList.map(item => (
+      indexList.map((item, index) => (
         <li
-          className={item.value === activeIndex ? 'active' : ''}
+          className={item.value === activeName ? 'active' : ''}
           data-value={item.value}
+          data-index={index}
           key={item.value}
         >
           {item.label}
         </li>
       )),
-    [activeIndex, indexList]
+    [activeName, indexList]
   )
 
   return (

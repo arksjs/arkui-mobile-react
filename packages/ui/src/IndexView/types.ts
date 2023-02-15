@@ -4,6 +4,7 @@ import type {
 } from '../StickyView/types'
 
 export interface IndexViewProps {
+  value?: string
   stickyOffsetTop?: number | string
 }
 
