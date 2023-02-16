@@ -1,8 +1,8 @@
+import type { UIEventHandler } from 'react'
 import classNames from 'classnames'
 import type { ColRow } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { VirtualList } from '../VirtualList'
-import type { UIEventHandler } from 'react'
 import { DEFAULT_ITEM_HEIGHT } from './util'
 
 const TaPickerViewCol: VFC<{

@@ -3,8 +3,7 @@ import classNames from 'classnames'
 import type { FixedProps } from './types'
 import type { FC } from '../helpers'
 import { getInnerClasses, getInnerStyles, getStyles } from './util'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import { useSafeAreaInsets, useResizeObserver } from '../hooks'
 
 const TaFixed: FC<FixedProps> = props => {
   const root = useRef<HTMLDivElement>(null)

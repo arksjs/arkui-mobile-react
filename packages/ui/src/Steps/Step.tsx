@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { StepProps } from './types'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 import { getStepClasses } from './util'
 
 const TaStep: FC<

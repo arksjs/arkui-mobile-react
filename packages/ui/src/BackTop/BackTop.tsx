@@ -3,8 +3,7 @@ import classNames from 'classnames'
 import type { BackTopProps } from './types'
 import { getStyles, DEFAULT_VISIBLE_HEIGHT } from './util'
 import UpCircleOutlined from '../Icon/icons/UpCircleOutlined'
-import { useScroll } from '../hooks/use-scroll'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
+import { useScroll, useSafeAreaInsets } from '../hooks'
 import { Icon } from '../Icon'
 import {
   getNumber,

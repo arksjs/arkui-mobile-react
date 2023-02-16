@@ -29,13 +29,13 @@ import {
   type RenderProp,
   type UniqueID
 } from '../helpers'
-import Exception from '../helpers/exception'
 import type { OnVisibleItemsChangePayload, ListItem, RenderItem } from './types'
 import {
   useScroll,
   useScrollTo,
   useResizeObserver,
-  type ScrollToOffsetOptions
+  type ScrollToOffsetOptions,
+  useException
 } from '../hooks'
 import { getClasses, getItemStyles, getListStyles } from './util'
 
@@ -72,6 +72,7 @@ const TaVirtualList: FRFC<
   },
   ref
 ) => {
+  const { printPropError } = useException('VirtualList')
   const root = useRef<HTMLDivElement>(null)
   const listEl = useRef<HTMLUListElement>(null)
   const poolEl = useRef<HTMLUListElement>(null)
@@ -102,12 +103,8 @@ const TaVirtualList: FRFC<
           return size
         }
       } catch (error) {
-        console.error(
-          new Exception(
-            'The object.size value returned by getItemSize should be a Number type.',
-            Exception.TYPE.PROP_ERROR,
-            'FlatList'
-          )
+        printPropError(
+          `The "itemSize" function return value should be a Number type.`
         )
       }
     } else if (isNumber(itemSize)) {

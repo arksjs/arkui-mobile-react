@@ -5,7 +5,7 @@ import { getDate } from './util'
 import type { VFC } from '../helpers'
 import { format } from 'timeago.js'
 import { useLocale } from '../ConfigProvider/context'
-import { useTimer } from '../hooks/use-timer'
+import { useTimer } from '../hooks'
 
 const TaTimeAgo: VFC<TimeAgoProps> = props => {
   const classes = classNames('ta-time-ago', props.className)

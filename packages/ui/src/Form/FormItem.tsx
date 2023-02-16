@@ -1,7 +1,7 @@
+import { useMemo } from 'react'
 import classNames from 'classnames'
 import type { FormItemProps } from './types'
-import type { FC } from '../helpers/types'
-import { useMemo } from 'react'
+import type { FC } from '../helpers'
 
 const TaFormItem: FC<FormItemProps> = props => {
   const classes = classNames(

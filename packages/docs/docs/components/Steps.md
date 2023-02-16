@@ -14,16 +14,18 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile-react'
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
 
-## Steps Props
+## Steps
+
+### Steps Props
 
 | 属性        | 类型    | 默认值 | 必填 | 说明                 |
 | ----------- | ------- | ------ | ---- | -------------------- |
 | activeIndex | number  | 0      | 否   | 当前步骤对应的索引值 |
 | dot         | boolean | false  | 否   | 是否开启小点样式     |
 
-## Steps Slots
+### Steps Slots
 
-### children
+#### children
 
 注：其中只可放置 [Step](./Steps.md#step-props) 组件，否则会导致未定义的行为。
 
@@ -33,21 +35,23 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile-react'
 </TaSteps>
 ```
 
-## Step Props
+## Step
+
+### Step Props
 
 | 属性  | 类型   | 默认值 | 必填 | 说明         |
 | ----- | ------ | ------ | ---- | ------------ |
 | title | string |        | 否   | 步骤子项标题 |
 
-## Step Slots
+### Step Slots
 
-### 内容（children）
+#### 内容（children）
 
 ```tsx
 <TaSteps.Step title="标题">自定义内容</TaSteps.Step>
 ```
 
-### 标题（renderTitle）
+#### 标题（renderTitle）
 
 ```tsx
 <TaSteps.Step
@@ -64,7 +68,7 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile-react'
 
 注：优先级高于 Props `title`。
 
-### 步骤标（renderStep）
+#### 步骤标（renderStep）
 
 ```tsx
 <TaSteps.Step

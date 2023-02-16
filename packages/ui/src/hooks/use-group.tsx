@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, type MutableRefObject } from 'react'
 import type { GroupContext, GroupContextItemRef } from './types'
 import { withProvider } from './with'
-import { noop, type Noop } from '../helpers/util'
+import { noop, type Noop } from '../helpers'
 
 interface ListItemElement<T = any> extends HTMLDivElement {
   _akRef: MutableRefObject<T>

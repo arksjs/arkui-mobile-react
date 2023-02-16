@@ -23,14 +23,17 @@ import {
 组件导出的类型定义：
 
 ```ts
-import type { StickyViewOnChange } from 'tantalum-ui-mobile-react'
+import type {
+  StickyViewOnChange,
+  StickyViewRef
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Sticky
 
 粘性容器。
 
-## Sticky Props
+### Sticky Props
 
 | 属性            | 类型                              | 默认值   | 必填 | 说明                                                                            |
 | --------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
@@ -38,9 +41,9 @@ import type { StickyViewOnChange } from 'tantalum-ui-mobile-react'
 | offsetTop       | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 | offsetBottom    | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 
-## Sticky Slots
+### Sticky Slots
 
-### children
+#### children
 
 ```tsx
 <TaSticky>自定义内容</TaSticky>
@@ -50,25 +53,25 @@ import type { StickyViewOnChange } from 'tantalum-ui-mobile-react'
 
 粘性布局。
 
-## StickyView Props
+### StickyView Props
 
 | 属性            | 类型                              | 默认值   | 必填 | 说明                                                                            |
 | --------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
-| activeIndex     | number                            | 0        | 否   | 当前布局中展现的子项 index                                                      |
+| value           | string                            | 0        | 否   | 当前布局中展现的子项 name 值                                                    |
 | containSelector | string \| HTMLElement \| Document | document | 否   | 基于哪个容器，如果是 string，则为可以被 document.querySelector(selector) 获取到 |
 | offsetTop       | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 
-## StickyView Events
+### StickyView Events
 
-| 事件     | 描述       | 回调函数参数                     | TypeScript 函数    |
-| -------- | ---------- | -------------------------------- | ------------------ |
-| onChange | 切换时触发 | (activeIndex: number) 当前项索引 | StickyViewOnChange |
+| 事件     | 描述       | 回调函数参数                        | TypeScript 函数    |
+| -------- | ---------- | ----------------------------------- | ------------------ |
+| onChange | 切换时触发 | (name: string, activeIndex: number) | StickyViewOnChange |
 
-## StickyView Slots
+### StickyView Slots
 
-### children
+#### children
 
-注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem-props) 组件，否则会导致未定义的行为。
+注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem) 组件，否则会导致未定义的行为。
 
 ```tsx
 <TaGroup title="Sticky View">
@@ -89,15 +92,34 @@ import type { StickyViewOnChange } from 'tantalum-ui-mobile-react'
 </TaGroup>
 ```
 
-## StickyViewItem Props
+### Methods
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                 |
-| ---- | ------ | ------ | ---- | -------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附 |
+```ts
+interface StickyViewRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+  scrollToOffset: (offset: number) => void
+}
+```
 
-## StickyViewItem Slots
+| 方法名         | 说明                      |
+| -------------- | ------------------------- |
+| scrollTo       | 切换到指定 name 的 Item   |
+| scrollToIndex  | 切换到指定 index 的 Item  |
+| scrollToOffset | 切换到指定位置（单位 px） |
 
-### children
+## StickyViewItem
+
+### StickyViewItem Props
+
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                             |
+| ----- | ------ | ------ | ---- | ---------------------------------------------------------------- |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `value` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值             |
+
+### StickyViewItem Slots
+
+#### children
 
 ```tsx
 <TaStickyView.Item name="Sticky 1">

@@ -6,7 +6,7 @@ import { Button } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import HomeOutlined from '../Icon/icons/HomeOutlined'
-import { useDbclick } from '../hooks/use-event'
+import { useDbclick } from '../hooks'
 
 type ButtonMouseEvent = MouseEvent<HTMLButtonElement>
 

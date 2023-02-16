@@ -22,68 +22,68 @@ import { TaCheckbox, TaCheckboxGroup } from 'tantalum-ui-mobile-react'
 import type { CheckboxOptionItem } from 'tantalum-ui-mobile-react'
 ```
 
-## Checkbox Props
+## Checkbox
 
-| 属性        | 类型             | 默认值 | 必填 | 说明                                                                                                         |
-| ----------- | ---------------- | ------ | ---- | ------------------------------------------------------------------------------------------------------------ |
-| value       | string \| number | ''     | 否   | 该项值，[CheckboxGroup](./Checkbox.md#checkboxgroup-多项选择器) 的 `onChange` 事件会携带 `checkbox` 的 value |
-| disabled    | boolean          | false  | 否   | 是否禁用                                                                                                     |
-| circle      | boolean          | false  | 否   | 是否显示圆形的图标                                                                                           |
-| checked     | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                                             |
-| activeColor | string           |        | 否   | 自定义激活态的图标颜色                                                                                       |
+### Checkbox Props
 
-## Checkbox Events
+| 属性         | 类型             | 默认值 | 必填 | 说明                                                                                                         |
+| ------------ | ---------------- | ------ | ---- | ------------------------------------------------------------------------------------------------------------ |
+| checked      | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                                             |
+| checkedValue | string \| number | ''     | 否   | 该项值，[CheckboxGroup](./Checkbox.md#checkboxgroup-多项选择器) 的 `onChange` 事件会携带 `checkbox` 的 value |
+| disabled     | boolean          | false  | 否   | 是否禁用                                                                                                     |
+| circle       | boolean          | false  | 否   | 是否显示圆形的图标                                                                                           |
+| activeColor  | string           |        | 否   | 自定义激活态的图标颜色                                                                                       |
 
-| 事件名称 | 描述               | 回调函数参数     |
-| -------- | ------------------ | ---------------- |
-| onChange | 勾选发生改变时触发 | checked: boolean |
+### Checkbox Events
 
-## Checkbox Slots
+| 事件名称        | 描述               | 回调函数参数     |
+| --------------- | ------------------ | ---------------- |
+| onCheckedChange | 勾选发生改变时触发 | checked: boolean |
+
+### Checkbox Slots
 
 ```tsx
 <TaCheckbox>开朗</TaCheckbox>
 <TaCheckbox>活泼</TaCheckbox>
-...
 ```
 
 ## CheckboxGroup
 
 注：
 
-- 内部由多个 [Checkbox](./Checkbox.md#Checkbox-多选项) 组成。
+- 内部由多个 [Checkbox](./Checkbox.md#Checkbox) 组成。
 - 支持表单，具体可参考 [Form](./Form.md)。
 
-## CheckboxGroup Props
+### CheckboxGroup Props
 
 | 属性        | 类型                 | 默认值 | 必填 | 说明                                           |
 | ----------- | -------------------- | ------ | ---- | ---------------------------------------------- |
+| value       | (string \| number)[] | []     | 否   | 当前选择子项的 value 列表                      |
 | name        | string               |        | 否   | 标识                                           |
 | inline      | boolean              | false  | 否   | 是否使用内联布局，默认纵向布局                 |
-| value       | (string \| number)[] | []     | 否   | 当前选择子项的 value 列表                      |
 | activeColor | string               |        | 否   | 自定义子项激活态的图标颜色                     |
 | options     | CheckboxOptionItem[] |        | 否   | 子项配置，优先级低于 slot 放入 `Checkbox` 组件 |
 
-### CheckboxOptionItem
+#### CheckboxOptionItem
 
 | key   | 类型             | 默认值 | 必填 | 说明                                  |
 | ----- | ---------------- | ------ | ---- | ------------------------------------- |
 | value | string \| number |        | 是   | 值， 同 `Checkbox` 组件 value         |
 | label | string           |        | 是   | 描述，同 `Checkbox` 组件 slot default |
 
-## CheckboxGroup Events
+### CheckboxGroup Events
 
 | 事件名称 | 描述                 | 回调函数参数                |
 | -------- | -------------------- | --------------------------- |
 | onChange | 选中项发生改变时触发 | value: (string \| number)[] |
 
-## CheckboxGroup Slots
+### CheckboxGroup Slots
 
-### children
+#### children
 
 ```tsx
 <TaCheckbox.Group>
   <TaCheckbox>开朗</TaCheckbox>
   <TaCheckbox>活泼</TaCheckbox>
-  ...
 </TaCheckbox.Group>
 ```

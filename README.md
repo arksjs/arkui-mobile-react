@@ -1,4 +1,4 @@
-# arkui-mobile-react
+# tantalum-ui-mobile-react
 
 基于 React 移动端组件库。
 
@@ -6,10 +6,10 @@
 
 ### 前言
 
-1. 该组件库是基于 [ArkUI](https://github.com/arksjs/arkui-mobile-vue) 的 React 实现。
+1. 该组件库是基于 [ArkUI](https://github.com/arksjs/tantalum-ui-mobile) 的 React 实现。
 2. 现阶段现学现写的，所以不具备用于生产的条件，组件库会不断完善。
-3. 该版本会尽量抽出非框架逻辑，以做到和 arkui-mobile-vue 的共用。
-4. 该版本尽量属性参数和接口的设计对齐 arkui-mobile-vue，但是由于框架不同，使用有些许不同：
+3. 该版本会尽量抽出非框架逻辑，以做到和 tantalum-ui-mobile 的共用。
+4. 该版本尽量属性参数和接口的设计对齐 tantalum-ui-mobile，但是由于框架不同，使用有些许不同：
 
 | 属性           | Vue                                                                | React                                                                                             |
 | -------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
@@ -42,21 +42,21 @@
 
 ```sh
 # npm
-npm i -S arkui-mobile-react
+npm i -S tantalum-ui-mobile-react
 
 # yarn
-yarn add arkui-mobile-react
+yarn add tantalum-ui-mobile-react
 
 # pnpm
-pnpm add arkui-mobile-react
+pnpm add tantalum-ui-mobile-react
 ```
 
 ## 参考文档
 
-[Docs](https://arksjs.github.io/arkui-mobile-react/)
+[Docs](https://arksjs.github.io/tantalum-ui-mobile-react/)
 
-[Demo](https://arksjs.github.io/arkui-mobile-react/demo)
+[Demo](https://arksjs.github.io/tantalum-ui-mobile-react/demo)
 
 ## LICENSE
 
-[MIT](https://github.com/arksjs/arkui-mobile-react/blob/main/LICENSE)
+[MIT](https://github.com/arksjs/tantalum-ui-mobile-react/blob/main/LICENSE)

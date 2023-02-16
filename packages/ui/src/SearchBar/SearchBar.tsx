@@ -21,14 +21,13 @@ import { Tag } from '../Tag'
 import { isStringArray, type VFC } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
-
 import {
   getFieldClasses,
   getInnerClasses,
   getInnerStyles,
   getSuggestStyles
 } from './util'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 
 const TaSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
   placeholderInterval = 5000,

@@ -1,6 +1,6 @@
 {
-  "name": "arkui-mobile-react",
-  "version": "0.0.2",
+  "name": "tantalum-ui-mobile-react",
+  "version": "0.1.0",
   "description": "React components include form, toast, modal, etc.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arksjs/arkui-mobile-react.git"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile-react.git"
   },
   "keywords": [
     "react",
@@ -30,7 +30,7 @@
   "author": "Arksjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arksjs/arkui-mobile-react/issues"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile-react/issues"
   },
   "files": [
     "dist",
@@ -38,7 +38,7 @@
     "es",
     "global.d.ts"
   ],
-  "homepage": "https://github.com/arksjs/arkui-mobile-react#readme",
+  "homepage": "https://github.com/arksjs/tantalum-ui-mobile-react#readme",
   "dependencies": {
     "classnames": "^2.3.1",
     "colorfuls": "^1.0.2",

@@ -25,5 +25,5 @@ import { TaLoadMore } from 'tantalum-ui-mobile-react'
 ### 附加内容（children）
 
 ```tsx
-<TaLoadMore>暂无数据</TaLoadMore>
+<TaLoadMore>加载中...</TaLoadMore>
 ```

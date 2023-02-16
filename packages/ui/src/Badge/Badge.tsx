@@ -18,7 +18,7 @@ import {
   type FC,
   type RenderProp
 } from '../helpers'
-import { useFrameTask } from '../hooks/use-frame-task'
+import { useFrameTask } from '../hooks'
 
 const TaBadge: FC<
   BadgeProps & {

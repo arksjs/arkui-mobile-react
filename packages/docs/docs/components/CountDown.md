@@ -47,14 +47,6 @@ import type {
 | onResume | 恢复计时时触发 | payload: { remainTime: number } remainTime 剩余时间，单位 ms                                              | CountDownOnResume |
 | onEnd    | 计时结束时触发 | payload: { startTime: number, endTime: number } startTime 本地开始时间戳，endTime 本地结束时间戳，单位 ms | CountDownOnEnd    |
 
-## Methods
-
-| 方法名 | 说明             | 参数                                    |
-| ------ | ---------------- | --------------------------------------- |
-| pause  | 暂停倒计时       |                                         |
-| resume | 恢复倒计时       |                                         |
-| pause  | 主动取消动画变化 | timing: number 重置为多少 ms 开始倒计时 |
-
 ## Slots
 
 ### render(countTime)
@@ -80,3 +72,11 @@ import type {
 | minutes            | string | 分钟数，保留 2 位                           |
 | seconds            | string | 秒钟数，保留 2 位                           |
 | milliseconds       | string | 毫秒数，保留 3 位                           |
+
+## Methods
+
+| 方法名 | 说明       | 参数                                            |
+| ------ | ---------- | ----------------------------------------------- |
+| pause  | 暂停倒计时 |                                                 |
+| resume | 恢复倒计时 |                                                 |
+| reset  | 重置倒计时 | ( timing: number, autoStart?: boolean ) 单位 ms |

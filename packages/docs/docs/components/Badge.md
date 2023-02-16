@@ -39,3 +39,11 @@ import { TaBadge } from 'tantalum-ui-mobile-react'
   <TaButton>badge</TaButton>
 </TaBadge>
 ```
+
+### renderBadge
+
+```tsx
+<TaBadge content={1} renderBadge={() => <TaIcon icon="CheckOutlined" />}>
+  <div className="exp-badge-slot"></div>
+</TaBadge>
+```

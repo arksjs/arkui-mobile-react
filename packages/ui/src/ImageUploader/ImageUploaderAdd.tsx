@@ -1,7 +1,7 @@
-import type { OnChange, VFC } from '../helpers/types'
+import classNames from 'classnames'
+import type { OnChange, VFC } from '../helpers'
 import { Icon } from '../Icon'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
-import classNames from 'classnames'
 
 const TaImageUploaderAdd: VFC<{
   accept: string

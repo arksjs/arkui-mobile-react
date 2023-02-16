@@ -23,8 +23,7 @@ import {
   PullRefreshState,
   ScrollState
 } from './util'
-import { useTouch } from '../hooks/use-touch'
-import { useScrollTo } from '../hooks/use-scroll'
+import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import { Icon } from '../Icon'

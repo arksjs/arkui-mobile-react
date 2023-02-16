@@ -1,4 +1,4 @@
-import { OnError } from '../helpers'
+import type { OnError } from '../helpers'
 import type { LoadedResource } from './types'
 
 type LoadObject = {

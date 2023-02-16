@@ -21,8 +21,10 @@ import { TaTabBar } from 'tantalum-ui-mobile-react'
 ```ts
 import type {
   TabBarOnChange,
-  TabOptions,
-  BadgeOption
+  TabBarOptions,
+  TabBarOption,
+  BadgeOption,
+  TabBarRef
 } from 'tantalum-ui-mobile-react'
 ```
 
@@ -30,30 +32,29 @@ import type {
 
 | 属性        | 类型             | 默认值 | 必填 | 说明                         |
 | ----------- | ---------------- | ------ | ---- | ---------------------------- |
-| options     | TabOptions       | []     | 是   | tab 数据集                   |
-| activeValue | string \| number |        | 否   | 当前激活项的 value 值        |
+| value       | string \| number |        | 否   | 当前激活项的 value 值        |
+| options     | TabBarOptions    | []     | 是   | tab 数据集                   |
 | color       | string           |        | 否   | 自定义默认态字体和图标颜色   |
 | activeColor | string           |        | 否   | 自定义激活态的字体和图标颜色 |
 
-### TabOptions
+### TabBarOptions
 
 ```ts
-type TabOptions = (
-  | number
-  | string
-  | {
-      label: string
-      value: number | string
-      icon?: string | IconData
-      activeIcon?: string | IconData
-      badge?: BadgeOption
-    }
-)[]
+type TabBarOption = {
+  label: string
+  value: number | string
+  icon?: IconData
+  activeIcon?: IconData
+  badge?: BadgeOption
+  subLabel?: string
+}
+
+type TabBarOptions = (number | string | TabBarOption)[]
 ```
 
 | key        | 类型                | 默认值 | 必填 | 说明                                                       |
 | ---------- | ------------------- | ------ | ---- | ---------------------------------------------------------- |
-| value      | string \| number    |        | 是   | 唯一值（v-model:active-value 使用）                        |
+| value      | string \| number    |        | 是   | 唯一值                                                     |
 | label      | string              |        | 是   | 标签名                                                     |
 | icon       | string \| Component |        | 否   | 设置图标，使用 [Icon](./Icon.md) 组件，也支持图像 URL      |
 | activeIcon | string \| Component |        | 否   | 设置激活态图标，也支持图像 URL，没有设置则沿用 `icon` 属性 |
@@ -140,7 +141,14 @@ type BadgeOption =
 
 ## Methods
 
-| 方法名        | 说明                 | 参数                              |
-| ------------- | -------------------- | --------------------------------- |
-| switchTo      | 切换到指定 Tab       | (value: string \| number) => void |
-| switchToIndex | 切换到指定索引的 Tab | (index: number) => void           |
+```ts
+interface TabBarRef {
+  switchTo: (value: string | number) => void
+  switchToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                    |
+| ------------- | ----------------------- |
+| switchTo      | 切换到指定 value 的 Tab |
+| switchToIndex | 切换到指定索引的 Tab    |

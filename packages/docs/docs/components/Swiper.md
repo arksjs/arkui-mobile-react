@@ -19,7 +19,11 @@ import { TaSwiper, TaSwiperItem } from 'tantalum-ui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'tantalum-ui-mobile-react'
+import type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated,
+  SwiperRef
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Swiper Props
@@ -39,11 +43,11 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'tantalum-ui-mobile-react'
 
 ## Swiper Events
 
-| 事件       | 描述                         | 回调函数参数                               | TypeScript 函数  |
-| ---------- | ---------------------------- | ------------------------------------------ | ---------------- |
-| onChange   | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnChange   |
-| onAnimated | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated |
-| onClick    | 点击时触发，为了区分滑动情况 |                                            |                  |
+| 事件                | 描述                         | 回调函数参数                               | TypeScript 函数           |
+| ------------------- | ---------------------------- | ------------------------------------------ | ------------------------- |
+| onActiveIndexChange | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnActiveIndexChange |
+| onAnimated          | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated          |
+| onClick             | 点击时触发，为了区分滑动情况 |                                            |                           |
 
 ## Swiper Slots
 
@@ -72,3 +76,19 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'tantalum-ui-mobile-react'
   <TaImage src="b.jpg" />
 </TaSwiper.Item>
 ```
+
+## Methods
+
+```ts
+interface SwiperRef {
+  swipeTo: (newIndex: number) => void
+  prev: () => void
+  next: () => void
+}
+```
+
+| 方法名  | 说明                                                   |
+| ------- | ------------------------------------------------------ |
+| swipeTo | 切换到指定 index 的 Item                               |
+| prev    | 切换到上一个 Item，如果当前在第一个 ，则循环到最后一个 |
+| next    | 切换到下一个 Item，如果当前在最后一个，则循环到第一个  |

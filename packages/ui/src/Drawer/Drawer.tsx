@@ -6,7 +6,7 @@ import type { FRFC, RenderProp } from '../helpers'
 import { usePopup } from '../popup/use-popup'
 import { getInnerClasses, getInnerStyles } from './util'
 import { NavBar } from '../NavBar'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
+import { useSafeAreaInsets } from '../hooks'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import type { PopupRef } from '../popup/types'
 

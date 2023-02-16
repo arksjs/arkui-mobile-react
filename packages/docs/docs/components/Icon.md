@@ -94,7 +94,7 @@ svgjs -d ./icons -o path/to/lib/svg.js
 ```js
 import { FC } from 'react'
 import { TaButton } from 'tantalum-ui-mobile-react'
-import 'tantalum-ui-mobile-react/es/style'
+import 'tantalum-ui-mobile-react/es/style/index'
 
 import 'path/to/lib/svg.js'
 

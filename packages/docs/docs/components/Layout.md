@@ -16,7 +16,9 @@ import { TaRow, TaCol } from 'tantalum-ui-mobile-react'
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
 
-## Row Props
+## Row
+
+### Row Props
 
 | 属性    | 类型                         | 默认值  | 必填 | 说明                                                                                        |
 | ------- | ---------------------------- | ------- | ---- | ------------------------------------------------------------------------------------------- |
@@ -24,7 +26,7 @@ import { TaRow, TaCol } from 'tantalum-ui-mobile-react'
 | justify | RowJustify                   | 'start' | 否   | 水平排列方式，可选值：'start', 'end', 'center', 'space-around', 'space-between'             |
 | align   | RowAlign                     | 'top'   | 否   | 水平排列方式，可选值：'top', 'middle', 'bottom'                                             |
 
-## Row Slots
+### Row Slots
 
 ```tsx
 <TaRow className="exp-layout-row">
@@ -37,7 +39,9 @@ import { TaRow, TaCol } from 'tantalum-ui-mobile-react'
 </TaRow>
 ```
 
-## Col Props
+## Col
+
+### Col Props
 
 | 属性   | 类型             | 默认值 | 必填 | 说明                          |
 | ------ | ---------------- | ------ | ---- | ----------------------------- |
@@ -46,7 +50,7 @@ import { TaRow, TaCol } from 'tantalum-ui-mobile-react'
 | push   | string \| number | 0      | 否   | 栅格向右移动格数，可选 1-24   |
 | pull   | string \| number | 0      | 否   | 栅格向左移动格数，可选 1-24   |
 
-## Col Slots
+### Col Slots
 
 ```tsx
 <TaCol className="exp-layout-col" span="8">

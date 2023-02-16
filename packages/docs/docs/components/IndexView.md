@@ -19,33 +19,42 @@ import { TaIndexView, TaIndexViewItem } from 'tantalum-ui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { IndexViewOnChange } from 'tantalum-ui-mobile-react'
+import type { IndexViewOnChange, IndexViewRef } from 'tantalum-ui-mobile-react'
 ```
 
-## IndexView Props
+## IndexView
+
+### IndexView Props
 
 | 属性            | 类型             | 默认值 | 必填 | 说明                        |
 | --------------- | ---------------- | ------ | ---- | --------------------------- |
 | stickyOffsetTop | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
 
-## IndexView Events
+### IndexView Events
 
-| 事件     | 描述       | 回调函数参数                       | TypeScript 函数   |
-| -------- | ---------- | ---------------------------------- | ----------------- |
-| onChange | 切换时触发 | ( activeIndex: number ) 当前项索引 | IndexViewOnChange |
+| 事件     | 描述       | 回调函数参数                        | TypeScript 函数   |
+| -------- | ---------- | ----------------------------------- | ----------------- |
+| onChange | 切换时触发 | (name: string, activeIndex: number) | IndexViewOnChange |
 
-## Methods
+### Methods
 
-| 方法名        | 说明                                                    | 参数                         |
-| ------------- | ------------------------------------------------------- | ---------------------------- |
-| scrollToIndex | 将位于指定位置的 `IndexViewItem` 滚动到可视区的指定位置 | ({ index: number }) => void  |
-| scrollTo      | 滚动列表到指定的偏移，单位 px                           | ({ offset: number }) => void |
+```ts
+interface IndexViewRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+}
+```
 
-## IndexView Slots
+| 方法名        | 说明                     |
+| ------------- | ------------------------ |
+| scrollTo      | 切换到指定 name 的 Item  |
+| scrollToIndex | 切换到指定 index 的 Item |
 
-### children
+### IndexView Slots
 
-注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem-索引子项) 组件，否则会导致未定义的行为。
+#### children
+
+注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem) 组件，否则会导致未定义的行为。
 
 ```tsx
 <TaIndexView>
@@ -57,15 +66,18 @@ import type { IndexViewOnChange } from 'tantalum-ui-mobile-react'
 </TaIndexView>
 ```
 
-## IndexViewItem Props
+## IndexViewItem
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                       |
-| ---- | ------ | ------ | ---- | -------------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附和菜单 |
+### IndexViewItem Props
 
-## IndexViewItem Slots
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                             |
+| ----- | ------ | ------ | ---- | ---------------------------------------------------------------- |
+| name  | string |        | 是   | 唯一标识，设置后配合 IndexView 组件的 `value` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附侧边栏，如果没有设置则获取 `name` 的值       |
 
-### children
+### IndexViewItem Slots
+
+#### children
 
 ```tsx
 <TaIndexView.Item name="A">

@@ -1,7 +1,7 @@
-import classNames from 'classnames'
 import { useRef } from 'react'
-import type { FC } from '../helpers/types'
-import { useTouch } from '../hooks/use-touch'
+import classNames from 'classnames'
+import type { FC } from '../helpers'
+import { useTouch } from '../hooks'
 import type { TabViewItemProps } from './types'
 
 interface TabViewItemCoords {
@@ -13,7 +13,7 @@ interface TabViewItemCoords {
   stop: boolean
 }
 
-const TaTabViewItem: FC<TabViewItemProps> = ({
+const TaTabViewItem: FC<TabViewItemProps & { vertical?: boolean }> = ({
   vertical = false,
   ...props
 }) => {
@@ -104,7 +104,8 @@ const TaTabViewItem: FC<TabViewItemProps> = ({
     <div
       className={classes}
       data-name={props.name}
-      data-sub-name={props.subName}
+      data-title={props.title}
+      data-sub-title={props.subTitle}
       ref={root}
     >
       {props.children}

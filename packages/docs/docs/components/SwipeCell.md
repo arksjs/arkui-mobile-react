@@ -61,7 +61,7 @@ const buttons: SwipeCellButtonOption[] = [
 
 | 事件          | 描述           | 回调函数参数                                            | TypeScript 函数        |
 | ------------- | -------------- | ------------------------------------------------------- | ---------------------- |
-| onbuttonClick | 点击按钮时触发 | payload: { item: SwipeCellButtonOption, index: number } | SwipeCellOnButtonClick |
+| onButtonClick | 点击按钮时触发 | payload: { item: SwipeCellButtonOption, index: number } | SwipeCellOnButtonClick |
 
 ## Slots
 

@@ -16,10 +16,10 @@ import { TaPagination } from 'tantalum-ui-mobile-react'
 
 ## Props
 
-| 属性    | 类型   | 默认值 | 必填 | 说明     |
-| ------- | ------ | ------ | ---- | -------- |
-| current | number | 1      | 否   | 当前页码 |
-| total   | number | 1      | 否   | 总页数   |
+| 属性  | 类型   | 默认值 | 必填 | 说明     |
+| ----- | ------ | ------ | ---- | -------- |
+| value | number | 1      | 否   | 当前页码 |
+| total | number | 1      | 否   | 总页数   |
 
 ## Events
 
@@ -37,7 +37,7 @@ import { TaPagination } from 'tantalum-ui-mobile-react'
 </TaPagination>
 ```
 
-### 翻页按钮（#prev/#next）
+### 翻页按钮（renderPrev/renderNext）
 
 ```tsx
 <TaPagination

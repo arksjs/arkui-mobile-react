@@ -1,9 +1,10 @@
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { Image } from '../Image'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
-import { FileItem, ImageMode } from './types'
+import type { FileItem } from './types'
+import type { ImageMode } from '../Image/types'
 
 const TaImageUploaderItem: VFC<{
   item: FileItem

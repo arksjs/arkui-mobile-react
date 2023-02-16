@@ -14,9 +14,11 @@ import { TaTimeline, TaTimelineItem } from 'tantalum-ui-mobile-react'
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
 
-## Timeline Slots
+## Timeline
 
-### children
+### Timeline Slots
+
+#### children
 
 注：其中只可放置 [TimelineItem](./Timeline.md#timelineitem-props) 组件，否则会导致未定义的行为。
 
@@ -28,22 +30,24 @@ import { TaTimeline, TaTimelineItem } from 'tantalum-ui-mobile-react'
 </TaTimeline>
 ```
 
-## TimelineItem Props
+## TimelineItem
+
+### TimelineItem Props
 
 | 属性      | 类型   | 默认值 | 必填 | 说明           |
 | --------- | ------ | ------ | ---- | -------------- |
 | title     | string |        | 否   | 时间轴子项标题 |
 | dot-color | string |        | 否   | 时间轴节点颜色 |
 
-## TimelineItem Slots
+### TimelineItem Slots
 
-### 内容（children）
+#### 内容（children）
 
 ```tsx
 <TaTimeline.Item title="成功获得 0.01 元收益">搞半天就这点？</TaTimeline.Item>
 ```
 
-### 标题（renderTitle）
+#### 标题（renderTitle）
 
 ```tsx
 <TaTimeline.Item
@@ -60,7 +64,7 @@ import { TaTimeline, TaTimelineItem } from 'tantalum-ui-mobile-react'
 
 注：优先级高于 Props `title`。
 
-### 节点（renderDot）
+#### 节点（renderDot）
 
 ```tsx
 <TaTimeline.Item

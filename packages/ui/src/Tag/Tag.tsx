@@ -1,11 +1,11 @@
-import classNames from 'classnames'
 import { useRef } from 'react'
+import classNames from 'classnames'
 import type { TagEmits, TagProps } from './types'
 import type { FC } from '../helpers'
 import { getClasses, getStyles } from './util'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { Icon } from '../Icon'
-import { useStop, useLongPress } from '../hooks/use-event'
+import { useStop, useLongPress } from '../hooks'
 
 const TaTag: FC<TagProps & TagEmits> = props => {
   const root = useRef<HTMLDivElement>(null)

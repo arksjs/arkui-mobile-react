@@ -474,20 +474,22 @@ const TaImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
         onChange={url => setPreviewCurrent(url)}
         onUpdateVisible={v => setPreviewVisible(v)}
         showClose
-        renderClose={({ activeIndex }) => {
-          deletable ? (
-            <Button
-              onClick={() => onPreviewDelete(activeIndex)}
-              icon={DeleteOutlined}
-              size="large"
-              pattern="borderless"
-              shape="square"
-              ghost
-            />
-          ) : (
-            <></>
-          )
-        }}
+        renderClose={({ activeIndex }) => (
+          <>
+            {deletable ? (
+              <Button
+                onClick={() => onPreviewDelete(activeIndex)}
+                icon={DeleteOutlined}
+                size="large"
+                pattern="borderless"
+                shape="square"
+                ghost
+              />
+            ) : (
+              <></>
+            )}
+          </>
+        )}
       />
     </>
   )

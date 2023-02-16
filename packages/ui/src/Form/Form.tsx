@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { CSSProperties, FC, RenderProp } from '../helpers/types'
+import type { CSSProperties, FC, RenderProp } from '../helpers'
 import FormFooter from './FormFooter'
 
 const TaForm: FC<{

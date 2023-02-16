@@ -22,9 +22,9 @@ import { TaNumberKeyboard } from 'tantalum-ui-mobile-react'
 import type {
   NumberKeyboardOnDelete,
   NumberKeyboardOnClose,
+  NumberKeyboardType,
   VisibleState,
-  PopupOnVisibleStateChange,
-  KeyboardType
+  PopupOnVisibleStateChange
 } from 'tantalum-ui-mobile-react'
 ```
 

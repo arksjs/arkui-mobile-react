@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { VirtualList } from '../VirtualList'
 import { Icon } from '../Icon'
 import CheckOutlined from '../Icon/icons/CheckOutlined'
