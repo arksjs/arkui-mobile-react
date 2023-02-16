@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, type MutableRefObject } from 'react'
-import type { GroupContext, GroupContextItemRef } from './types'
+import type { GroupContext, GroupContextItemRef } from './with'
 import { withProvider } from './with'
 import { noop, type Noop } from '../helpers'
 

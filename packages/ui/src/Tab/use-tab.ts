@@ -189,7 +189,7 @@ export function useTab(
   }
 
   function emitChange() {
-    activeValue2.current &&
+    activeValue2.current != null &&
       props.onChange &&
       props.onChange(activeValue2.current, activeIndex2.current)
   }

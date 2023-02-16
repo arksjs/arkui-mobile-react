@@ -127,7 +127,7 @@ function buildFilePathsCache() {
   const paths = []
 
   return gulp
-    .src(`${corePath}/src/**/*.ts`)
+    .src(`${corePath}/src/**/*.{ts,tsx}`)
     .pipe(
       through.obj(function (file, enc, callback) {
         this.push(`${file.path.replace(/\\/g, '/').split('/src/').pop()}\n`)

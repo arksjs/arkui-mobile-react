@@ -6,7 +6,7 @@
 
 ### 前言
 
-1. 该组件库是基于 [ArkUI](https://github.com/arksjs/tantalum-ui-mobile) 的 React 实现。
+1. 该组件库是基于 [TantalumUI](https://github.com/arksjs/tantalum-ui-mobile) 的 React 实现。
 2. 现阶段现学现写的，所以不具备用于生产的条件，组件库会不断完善。
 3. 该版本会尽量抽出非框架逻辑，以做到和 tantalum-ui-mobile 的共用。
 4. 该版本尽量属性参数和接口的设计对齐 tantalum-ui-mobile，但是由于框架不同，使用有些许不同：

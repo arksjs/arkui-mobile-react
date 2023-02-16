@@ -61,7 +61,7 @@ export default function ExpCollapse() {
         </TaCollapse>
       </TaGroup>
       <TaGroup title="其他">
-        <TaCollapse activeNames={['row1']}>
+        <TaCollapse value={['row1']}>
           <TaCollapse.Item title="默认展开" name="row1">
             <div className="exp-collapse-pad">
               代码是写出来给人看的，附带能在机器上运行

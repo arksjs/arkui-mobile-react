@@ -36,7 +36,7 @@ const TaTabView: FRFC<
   const swiperRef = useRef<SwiperRef>(null)
   const [vertical] = useState(!!props.initialVertical)
   const [tabList, setTabList] = useState<TabItem[]>([])
-  const activeIndex = useRef(0)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const itemNames = useRef<string[]>([])
 
@@ -53,11 +53,12 @@ const TaTabView: FRFC<
   }
 
   const onTabChange: TabOnChange = index => {
+    console.log(index)
     switchToIndex(index as number)
   }
 
   const onSwiperChange: SwiperOnActiveIndexChange = index => {
-    activeIndex.current = index
+    setActiveIndex(index)
 
     props.onChange && props.onChange(itemNames.current[index] || '', index)
   }
@@ -67,9 +68,9 @@ const TaTabView: FRFC<
 
     if (newIndex === -1) {
       printListItemNotFoundError('name', isProp)
-    } else if (newIndex !== activeIndex.current) {
+    } else if (newIndex !== activeIndex) {
       if (isProp) {
-        activeIndex.current = newIndex
+        setActiveIndex(newIndex)
       } else {
         switchToIndex(newIndex)
       }
@@ -138,13 +139,19 @@ const TaTabView: FRFC<
     <div className={classes} style={props.style}>
       <div className="ta-tab-view_header ta-horizontal-hairline">
         {vertical ? (
-          <SideTab options={tabList} onChange={onTabChange} ref={tabRef} />
+          <SideTab
+            options={tabList}
+            onChange={onTabChange}
+            ref={tabRef}
+            value={activeIndex}
+          />
         ) : (
           <Tab
             options={tabList}
             scrollThreshold={props.scrollThreshold}
             onChange={onTabChange}
             ref={tabRef}
+            value={activeIndex}
           />
         )}
       </div>

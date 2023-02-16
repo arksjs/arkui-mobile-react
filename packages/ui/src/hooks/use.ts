@@ -1,5 +1,4 @@
-import { Dispatch, useRef } from 'react'
-import { useState } from 'react'
+import { type Dispatch, useRef, useState } from 'react'
 
 export function useStableState<S>(
   initialState: S | (() => S)

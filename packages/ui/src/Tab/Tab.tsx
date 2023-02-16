@@ -11,7 +11,6 @@ const TaTab: FRVFC<TabRef, TabProps & TabEmits> = (
   { scrollThreshold = 4, className, ...tabProps },
   ref
 ) => {
-  console.log(tabProps)
   const {
     options2,
     hasSub,

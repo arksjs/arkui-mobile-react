@@ -5,6 +5,8 @@ import { getCoreDeps, getJSON, getPath } from './utils.mjs'
 
 const { resolveCore, resolve } = getPath(import.meta.url)
 
+const config = await getJSON(resolveCore('./src/components/config.json'))
+
 const getDeps = async () => {
   const pkg = await getJSON(resolve('./package.json'))
   return Object.keys(pkg.dependencies).concat(getCoreDeps())
@@ -15,17 +17,16 @@ const getEntryPoints = async () => {
 
   const entryPoints = {}
   tss.forEach(name => {
-    entryPoints[name] = resolveCore(`./src/${name}.ts`)
+    entryPoints[name.replace(/\.tsx?$/, '')] = resolveCore(`./src/${name}`)
   })
 
   return entryPoints
 }
 
-const externalPlugin = () => {
+const externalPlugin = (esm = false) => {
   return {
     name: 'external',
     setup(build) {
-      // Match an import called "./*" and mark it as external
       build.onResolve(
         {
           filter: new RegExp(
@@ -34,21 +35,43 @@ const externalPlugin = () => {
         },
         () => ({ external: false })
       )
-      build.onResolve({ filter: /^\.\// }, () => ({ external: true }))
-      build.onResolve({ filter: /^\.\.\// }, () => ({ external: true }))
+      // Match an import called "./*" and mark it as external
+      build.onResolve({ filter: /^\.\.?\// }, args => {
+        let path = args.path
+
+        if (esm) {
+          // import add .mjs
+          if (!/[A-Za-z]+\./.test(path)) {
+            // Exclude the ./a.css
+            if (
+              /helpers|hooks|locale/.test(path) ||
+              /\/[A-Z][^/]+$/.test(path)
+            ) {
+              // add  /index.mjs
+              path += '/index.mjs'
+            } else {
+              path += '.mjs'
+            }
+          }
+        }
+
+        return { external: true, path }
+      })
     }
   }
 }
 
 const buildCompsEsm = async (entryPoints, deps) => {
   await build({
-    plugins: [externalPlugin()],
+    plugins: [externalPlugin(true)],
     entryPoints: entryPoints,
     external: deps,
     outdir: resolve('./es/'),
     format: 'esm',
     bundle: true,
-    target: ['es2019']
+    target: ['es2019'],
+    platform: 'node',
+    outExtension: { '.js': '.mjs' }
   })
 }
 
@@ -79,13 +102,15 @@ export const getFilePaths = async () => {
   return fileStr
     .split(`\n`)
     .filter(function (path) {
+      return !/\/[A-Z][^/]+tsx/.test(path)
+    })
+    .filter(function (path) {
       return (
         !['style/index.ts', 'types.ts', '.d.ts', 'umd.ts', '__tests__'].some(
           v => path.includes(v)
         ) && path !== ''
       )
     })
-    .map(v => v.replace(/.ts$/, ''))
     .sort()
 }
 
@@ -100,8 +125,6 @@ export const buildComps = async () => {
 }
 
 export const buildSrcCompEntry = async () => {
-  const config = await getJSON(resolveCore('./src/components/config.json'))
-
   // index.ts
   const imports = []
   for (const name of config.components) {
