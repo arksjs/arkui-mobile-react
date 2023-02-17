@@ -1,5 +1,5 @@
 import type { CountTime } from '../CountDown/types'
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export type OnStop = (payload: { detail: CountTime; laps: CountTime[] }) => void
 
@@ -20,3 +20,5 @@ export interface StopwatchRef {
   reset: Noop
   lap: () => CountTime[]
 }
+
+export type { OnStop as StopwatchOnStop }

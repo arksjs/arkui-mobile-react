@@ -1,8 +1,8 @@
 import {
-  AkButton,
-  AkCell,
-  AkGroup,
-  AkPopover,
+  TaButton,
+  TaCell,
+  TaGroup,
+  TaPopover,
   PlacementType,
   PopupOnVisibleStateChange,
   showPopover,
@@ -59,9 +59,9 @@ export default function ExpPopover() {
 
   return (
     <>
-      <AkGroup title="基础用法">
+      <TaGroup title="基础用法">
         <div className="exp-popover-box">
-          <AkButton
+          <TaButton
             size="small"
             id="popoverLeft"
             shape="circle"
@@ -69,8 +69,8 @@ export default function ExpPopover() {
             onClick={() => onShow({ selector: '#popoverLeft' })}
           >
             左
-          </AkButton>
-          <AkButton
+          </TaButton>
+          <TaButton
             size="small"
             id="popoverCenter"
             shape="circle"
@@ -78,8 +78,8 @@ export default function ExpPopover() {
             onClick={() => onShow({ selector: '#popoverCenter' })}
           >
             中
-          </AkButton>
-          <AkButton
+          </TaButton>
+          <TaButton
             size="small"
             id="popoverRight"
             shape="circle"
@@ -87,13 +87,13 @@ export default function ExpPopover() {
             onClick={() => onShow({ selector: '#popoverRight' })}
           >
             右
-          </AkButton>
+          </TaButton>
         </div>
-      </AkGroup>
-      <AkGroup title="方向 placement=top/bottom/left/right">
+      </TaGroup>
+      <TaGroup title="方向 placement=top/bottom/left/right">
         <div className="exp-popover-box2">
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popoverTop2"
               shape="circle"
@@ -103,10 +103,10 @@ export default function ExpPopover() {
               }
             >
               上
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popoverLeft2"
               shape="circle"
@@ -116,8 +116,8 @@ export default function ExpPopover() {
               }
             >
               左
-            </AkButton>
-            <AkButton
+            </TaButton>
+            <TaButton
               className="exp-popover-box2-ml"
               size="small"
               id="popoverRight2"
@@ -128,10 +128,10 @@ export default function ExpPopover() {
               }
             >
               右
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popoverBottom2"
               shape="circle"
@@ -141,13 +141,13 @@ export default function ExpPopover() {
               }
             >
               下
-            </AkButton>
+            </TaButton>
           </div>
         </div>
-      </AkGroup>
-      <AkGroup title="带选项">
-        <AkCell label="长文案">
-          <AkButton
+      </TaGroup>
+      <TaGroup title="带选项">
+        <TaCell label="长文案">
+          <TaButton
             size="small"
             id="popoverLongContent"
             shape="circle"
@@ -159,21 +159,21 @@ export default function ExpPopover() {
                 selector: '#popoverLongContent'
               })
             }
-          ></AkButton>
-        </AkCell>
-        <AkCell label="不展示蒙层">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="不展示蒙层">
+          <TaButton
             size="small"
             id="popoverNoMask"
             shape="circle"
             icon="PlusOutlined"
             onClick={() => setVisible2(true)}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="onVisibleStateChange">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="onVisibleStateChange">
+          <TaButton
             size="small"
             id="popoverEvent"
             shape="circle"
@@ -181,35 +181,35 @@ export default function ExpPopover() {
             onClick={() =>
               onShow({ visibleEvent: true, selector: '#popoverEvent' })
             }
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showPopover">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showPopover">
+          <TaButton
             size="small"
             id="popoverApi"
             shape="circle"
             icon="PlusOutlined"
             onClick={() => onCallApi('#popoverApi')}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkPopover
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaPopover
         placement={placement}
         content={content}
         selector={selector}
         visible={visible}
         onUpdateVisible={v => setVisible(v)}
         onVisibleStateChange={onVisibleStateChange}
-      ></AkPopover>
-      <AkPopover
+      ></TaPopover>
+      <TaPopover
         visible={visible2}
         selector="#popoverNoMask"
         showMask={false}
         content="无蒙层气泡内容"
         onUpdateVisible={v => setVisible2(v)}
-      ></AkPopover>
+      ></TaPopover>
     </>
   )
 }

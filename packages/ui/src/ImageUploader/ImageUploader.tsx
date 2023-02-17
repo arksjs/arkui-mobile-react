@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import type {
   ImageUploaderEmits,
@@ -6,7 +7,6 @@ import type {
   BeforeUploadReturn,
   FileItem
 } from './types'
-import type { OnChange, UniqueID, VFC } from '../helpers/types'
 import { Button } from '../Button'
 import { Order } from '../Order'
 import { ImagePreview } from '../ImagePreview'
@@ -18,27 +18,27 @@ import {
   noop,
   getNumber,
   returnTrue,
-  isStringArray
-} from '../helpers/util'
-import { formatFileSize } from '../helpers/digital-conversion'
+  isStringArray,
+  formatFileSize,
+  type OnChange,
+  type UniqueID,
+  type VFC
+} from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
-import type {
-  OnDelete as OrderOnDelete,
-  Item as OrderItem
-} from '../Order/types'
+import type { OrderOnDelete, OrderItem } from '../Order/types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
-import { useCallback, useEffect, useRef, useState } from 'react'
 import { getAccepts, getNewUid, urlId } from './util'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 import UploaderAdd from './ImageUploaderAdd'
 import UploaderItem from './ImageUploaderItem'
 
 const addButtonID = -1
 
-const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
+const TaImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
   uploadReady = noop,
   beforeUpload = returnTrue,
   preview = true,
+  deletable = true,
   ...props
 }) => {
   const { locale } = useLocale()
@@ -46,7 +46,7 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
   const [getFormValue, setFormValue] = useStableState<string[]>([])
 
   const [previewVisible, setPreviewVisible] = useState(false)
-  const [previewCurrent, setPreviwCurrent] = useState('')
+  const [previewCurrent, setPreviewCurrent] = useState('')
   // const [fileItems, setFileItems] = useState<Record<number, FileItem>>({})
   const fileItems = useRef<Record<number, FileItem>>({})
   const [updateFileCount, setUpdateFileCount] = useState(0)
@@ -349,7 +349,7 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
       if (fileItem.status === 'uploaded') {
         if (preview) {
           // 针对已经上传完毕的
-          setPreviwCurrent(fileItem.url as string)
+          setPreviewCurrent(fileItem.url as string)
           setPreviewVisible(true)
         }
       } else if (fileItem.status === 'failed') {
@@ -447,14 +447,14 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
     ]
   )
 
-  const classes = classNames('ak-image-uploader', props.className)
+  const classes = classNames('ta-image-uploader', props.className)
 
   return (
     <>
       <div className={classes}>
         <Order
           columnNumber={props.columnNumber}
-          deletable={props.deletable}
+          deletable={deletable}
           items={getOrderItems()}
           onDelete={onDelete}
           onUpdateItems={onUpdateOrderItems}
@@ -467,25 +467,32 @@ const AkImageUploader: VFC<ImageUploaderProps & ImageUploaderEmits> = ({
         />
       </div>
       <ImagePreview
-        className="ak-image-uploader_preview"
+        className="ta-image-uploader_preview"
         urls={getFormValue()}
         visible={previewVisible}
-        current={previewCurrent}
-        onChange={url => setPreviwCurrent(url)}
+        value={previewCurrent}
+        onChange={url => setPreviewCurrent(url)}
+        onUpdateVisible={v => setPreviewVisible(v)}
         showClose
         renderClose={({ activeIndex }) => (
-          <Button
-            onClick={() => onPreviewDelete(activeIndex)}
-            icon={DeleteOutlined}
-            size="large"
-            pattern="borderless"
-            shape="square"
-            ghost
-          />
+          <>
+            {deletable ? (
+              <Button
+                onClick={() => onPreviewDelete(activeIndex)}
+                icon={DeleteOutlined}
+                size="large"
+                pattern="borderless"
+                shape="square"
+                ghost
+              />
+            ) : (
+              <></>
+            )}
+          </>
         )}
       />
     </>
   )
 }
 
-export default AkImageUploader
+export default TaImageUploader

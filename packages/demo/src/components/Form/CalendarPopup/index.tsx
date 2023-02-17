@@ -3,10 +3,10 @@ import {
   SelectorModelValue,
   PopupOnVisibleStateChange,
   PopupOnCancel,
-  AkCell,
-  AkGroup,
-  AkNoticeBar,
-  AkCalendar,
+  TaCell,
+  TaGroup,
+  TaNoticeBar,
+  TaCalendar,
   CalendarOnConfirm
 } from '@/index'
 import dayjs from 'dayjs'
@@ -95,46 +95,46 @@ export default function ExpCalendarPopup() {
 
   return (
     <>
-      <AkNoticeBar
+      <TaNoticeBar
         className="top-notice-bar"
         title="基础展示参数可以参考 Calendar"
       />
-      <AkGroup title="基础用法">
-        <AkCell label="默认" onClick={() => onShow({})}>
+      <TaGroup title="基础用法">
+        <TaCell label="默认" onClick={() => onShow({})}>
           {popupValue}
-        </AkCell>
-        <AkCell label="+1day" isLink onClick={() => addOneDay()}>
+        </TaCell>
+        <TaCell label="+1day" isLink onClick={() => addOneDay()}>
           click
-        </AkCell>
-        <AkCell
+        </TaCell>
+        <TaCell
           label="showConfirm=true"
           isLink
           onClick={() => onShow({ showConfirm: true })}
         />
-        <AkCell
+        <TaCell
           label="initialMode=range"
           isLink
           onClick={() => setRangeVisible(true)}
-        ></AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+        ></TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="onChange"
           isLink
           onClick={() => onShow({ changeEvent: true })}
         />
-        <AkCell
+        <TaCell
           label="onConfirm/onCancel"
           isLink
           onClick={() => onShow({ clickEvent: true })}
         />
-        <AkCell
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() => onShow({ visibleEvent: true })}
         />
-      </AkGroup>
-      <AkCalendar.Popup
+      </TaGroup>
+      <TaCalendar.Popup
         title={title}
         showConfirm={showConfirm}
         showClose={showClose}
@@ -148,7 +148,7 @@ export default function ExpCalendarPopup() {
         onCancel={onCancel}
         onVisibleStateChange={onVisibleStateChange}
       />
-      <AkCalendar.Popup
+      <TaCalendar.Popup
         title={title}
         initialMode="range"
         visible={rangeVisible}

@@ -6,5 +6,4 @@ const ScrollTab = Object.assign(_ScrollTab, {
 })
 
 export { ScrollTab, ScrollTabItem }
-
 export default ScrollTab

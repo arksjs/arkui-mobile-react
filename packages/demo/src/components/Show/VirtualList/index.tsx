@@ -1,7 +1,7 @@
 import {
-  AkVirtualList,
-  AkCell,
-  AkGroup,
+  TaVirtualList,
+  TaCell,
+  TaGroup,
   ViewPosition,
   VirtualListRef
 } from '@/index'
@@ -37,8 +37,8 @@ export default function ExpVirtualList() {
 
   return (
     <>
-      <AkGroup title="Method">
-        <AkVirtualList
+      <TaGroup title="Method">
+        <TaVirtualList
           className="exp-flatList-box"
           ids={largeList.map(v => v.id)}
           ref={methodList}
@@ -49,32 +49,32 @@ export default function ExpVirtualList() {
             </div>
           )}
         />
-        <AkCell
+        <TaCell
           label="scrollToIndex({ index: 49999 })"
           isLink
           onClick={() => scrollToIndex(49999)}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="同上加 viewPosition=0.5"
           isLink
           onClick={() => scrollToIndex(49999, 0.5)}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="同上加 viewPosition=1"
           isLink
           onClick={() => scrollToIndex(49999, 1)}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="scrollTo({ offset: 200 })"
           isLink
           onClick={() => scrollTo(200)}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="scrollToEnd(true)"
           isLink
           onClick={() => scrollToEnd(true)}
-        ></AkCell>
-      </AkGroup>
+        ></TaCell>
+      </TaGroup>
     </>
   )
 }

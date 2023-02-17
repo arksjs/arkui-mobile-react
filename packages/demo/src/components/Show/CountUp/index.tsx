@@ -1,8 +1,8 @@
 import {
-  AkCountUp,
-  AkCell,
-  AkGroup,
-  AkButton,
+  TaCountUp,
+  TaCell,
+  TaGroup,
+  TaButton,
   showToast,
   CountUpOnAnimated,
   CountUpOnCancel,
@@ -44,62 +44,62 @@ export default function ExpCountUp() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认">
-          <AkCountUp number={1000} />
-        </AkCell>
-        <AkCell label="千分位 thousands">
-          <AkCountUp initialNumber={initialNumber} number={number} thousands />
-        </AkCell>
-        <AkCell label="小数位 decimalDigits=2">
-          <AkCountUp
+      <TaGroup title="基础用法">
+        <TaCell label="默认">
+          <TaCountUp number={1000} />
+        </TaCell>
+        <TaCell label="千分位 thousands">
+          <TaCountUp initialNumber={initialNumber} number={number} thousands />
+        </TaCell>
+        <TaCell label="小数位 decimalDigits=2">
+          <TaCountUp
             initialNumber={initialNumber}
             number={number}
             decimalDigits="2"
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="速度">
-        <AkCell label="speed=slow">
-          <AkCountUp
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="速度">
+        <TaCell label="speed=slow">
+          <TaCountUp
             initialNumber={initialNumber}
             number={number}
             decimalDigits="2"
             speed="slow"
           />
-        </AkCell>
-        <AkCell label="speed=normal">
-          <AkCountUp
+        </TaCell>
+        <TaCell label="speed=normal">
+          <TaCountUp
             initialNumber={initialNumber}
             number={number}
             decimalDigits="2"
             speed="normal"
           />
-        </AkCell>
-        <AkCell label="speed=fast">
-          <AkCountUp
+        </TaCell>
+        <TaCell label="speed=fast">
+          <TaCountUp
             initialNumber={initialNumber}
             number={number}
             decimalDigits="2"
             speed="fast"
           />
-        </AkCell>
-        <AkCell label="speed=10000（固定10秒动画）">
-          <AkCountUp
+        </TaCell>
+        <TaCell label="speed=10000（固定10秒动画）">
+          <TaCountUp
             initialNumber={initialNumber}
             number={number}
             decimalDigits="2"
             speed={10000}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="animated">
-          <AkCountUp number="500" onAnimated={onAnimated} />
-        </AkCell>
-        <AkCell label="cancel" className="exp-countUp-box">
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="animated">
+          <TaCountUp number="500" onAnimated={onAnimated} />
+        </TaCell>
+        <TaCell label="cancel" className="exp-countUp-box">
           <div className="exp-countUp-r">
-            <AkCountUp
+            <TaCountUp
               ref={countUpRef}
               initialNumber="0"
               number={number2}
@@ -108,11 +108,11 @@ export default function ExpCountUp() {
               onCancel={onCancel}
             />
           </div>
-          <AkButton onClick={cancel} size="small">
+          <TaButton onClick={cancel} size="small">
             {isCancel ? '开始' : '取消'}
-          </AkButton>
-        </AkCell>
-      </AkGroup>
+          </TaButton>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

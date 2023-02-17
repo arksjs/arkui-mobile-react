@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkProgress } from 'arkui-mobile-react'
+import { TaProgress } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -27,9 +27,9 @@ import { AkProgress } from 'arkui-mobile-react'
 ### 内容区（children）
 
 ```tsx
-<AkProgress percentage="5">
+<TaProgress percentage="5">
   {({ progress }) => <>{'已抢' + progress}</>}
-</AkProgress>
+</TaProgress>
 ```
 
 注：添加 slot 后 `showText` prop 属性失效。

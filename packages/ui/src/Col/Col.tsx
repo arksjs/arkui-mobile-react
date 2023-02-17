@@ -3,9 +3,9 @@ import classNames from 'classnames'
 import type { ColProps } from './types'
 import { getColClasses, getColStyles } from './util'
 import { LayoutContext } from '../Row/context'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 
-const AkCol: FC<ColProps> = props => {
+const TaCol: FC<ColProps> = props => {
   const consumer = useContext(LayoutContext)
   const classes = classNames(getColClasses(props), props.className)
   const styles = getColStyles(consumer.gutter)
@@ -16,12 +16,11 @@ const AkCol: FC<ColProps> = props => {
     </div>
   )
 }
-
-AkCol.defaultProps = {
+TaCol.defaultProps = {
   span: 24,
   offset: 0,
   push: 0,
   pull: 0
 }
 
-export default AkCol
+export default TaCol

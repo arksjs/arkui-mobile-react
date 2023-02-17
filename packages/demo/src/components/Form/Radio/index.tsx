@@ -1,4 +1,4 @@
-import { AkRadio, AkCell, AkGroup, showToast } from '@/index'
+import { TaRadio, TaCell, TaGroup, showToast } from '@/index'
 
 const groups = [
   { value: 'man', label: '男' },
@@ -8,9 +8,9 @@ const groups = [
 export default function ExpRadio() {
   function renderItems() {
     return groups.map(item => (
-      <AkRadio key={item.value} value={item.value}>
+      <TaRadio key={item.value} checkedValue={item.value}>
         {item.label}
-      </AkRadio>
+      </TaRadio>
     ))
   }
 
@@ -21,48 +21,48 @@ export default function ExpRadio() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认">
-          <AkRadio />
-        </AkCell>
-        <AkCell label="带文案">
-          <AkRadio>勾选</AkRadio>
-        </AkCell>
-        <AkCell label="默认激活">
-          <AkRadio checked>勾选</AkRadio>
-        </AkCell>
-        <AkCell label="自定义颜色">
-          <AkRadio checked activeColor="#8b1721">
+      <TaGroup title="基础用法">
+        <TaCell label="默认">
+          <TaRadio />
+        </TaCell>
+        <TaCell label="带文案">
+          <TaRadio>勾选</TaRadio>
+        </TaCell>
+        <TaCell label="默认激活">
+          <TaRadio checked>勾选</TaRadio>
+        </TaCell>
+        <TaCell label="自定义颜色">
+          <TaRadio checked activeColor="#8b1721">
             勾选
-          </AkRadio>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkRadio disabled>勾选</AkRadio>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="CheckboxGroup">
-        <AkCell label="默认">
-          <AkRadio.Group>{renderItems()}</AkRadio.Group>
-        </AkCell>
-        <AkCell label="内联">
-          <AkRadio.Group inline value="woman" activeColor="#8b1721">
+          </TaRadio>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaRadio disabled>勾选</TaRadio>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="CheckboxGroup">
+        <TaCell label="默认">
+          <TaRadio.Group>{renderItems()}</TaRadio.Group>
+        </TaCell>
+        <TaCell label="内联">
+          <TaRadio.Group inline value="woman" activeColor="#8b1721">
             {renderItems()}
-          </AkRadio.Group>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkRadio.Group value="man" disabled>
+          </TaRadio.Group>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaRadio.Group value="man" disabled>
             {renderItems()}
-          </AkRadio.Group>
-        </AkCell>
-        <AkCell label="通过options设置">
-          <AkRadio.Group options={groups} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="change">
-          <AkRadio.Group onChange={onChange}>{renderItems()}</AkRadio.Group>
-        </AkCell>
-      </AkGroup>
+          </TaRadio.Group>
+        </TaCell>
+        <TaCell label="通过options设置">
+          <TaRadio.Group options={groups} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="change">
+          <TaRadio.Group onChange={onChange}>{renderItems()}</TaRadio.Group>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

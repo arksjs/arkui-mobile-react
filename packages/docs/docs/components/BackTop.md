@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkBackTop } from 'arkui-mobile-react'
+import { TaBackTop } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -45,7 +45,7 @@ import { AkBackTop } from 'arkui-mobile-react'
 ### 点击区域 children
 
 ```tsx
-<AkBackTop>回顶部</AkBackTop>
+<TaBackTop>回顶部</TaBackTop>
 ```
 
 #### children 的缺省内容

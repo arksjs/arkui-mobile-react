@@ -1,17 +1,21 @@
 import classNames from 'classnames'
 import type { CircleProgressProps } from './types'
-import type { RenderChildren, VFC } from '../helpers/types'
 import { LoadingIcon } from '../LoadingIcon'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH } from '../LoadingIcon/util'
-import { getNumber, rangeInteger } from '../helpers/util'
+import {
+  getNumber,
+  rangeInteger,
+  type RenderChildren,
+  type VFC
+} from '../helpers'
 import { getFontSize } from './util'
 
-const AkCircleProgress: VFC<
+const TaCircleProgress: VFC<
   CircleProgressProps & {
     children?: RenderChildren<{ progress: string }>
   }
 > = props => {
-  const classes = classNames('ak-circle-progress', props.className)
+  const classes = classNames('ta-circle-progress', props.className)
   const nSize = getNumber(props.size, DEFAULT_SIZE)
   const progress = rangeInteger(props.percentage, 0, 100) + '%'
   const fontSize = getFontSize(nSize)
@@ -24,14 +28,14 @@ const AkCircleProgress: VFC<
   return (
     <div className={classes} style={{ fontSize: fontSize + 'px' }}>
       <LoadingIcon
-        className="ak-circle-progress_bar"
+        className="ta-circle-progress_bar"
         size={nSize}
         rate={rangeInteger(props.percentage, 0, 100) / 100}
         strokeWidth={props.strokeWidth}
         color={props.color}
       />
       <div
-        className="ak-circle-progress_text"
+        className="ta-circle-progress_text"
         style={{ padding: (props.strokeWidth ?? DEFAULT_STROKE_WIDTH) + 'px' }}
       >
         {children || progress}
@@ -40,9 +44,9 @@ const AkCircleProgress: VFC<
   )
 }
 
-AkCircleProgress.defaultProps = {
+TaCircleProgress.defaultProps = {
   size: DEFAULT_SIZE,
   strokeWidth: DEFAULT_STROKE_WIDTH
 }
 
-export default AkCircleProgress
+export default TaCircleProgress

@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { GroupContext } from '../hooks/types'
+import type { GroupContext } from '../hooks'
 import type { CheckContextRef, CheckContextValue } from './types'
 
 export const CheckboxContext: GroupContext<CheckContextValue, CheckContextRef> =

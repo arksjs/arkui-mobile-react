@@ -1,7 +1,7 @@
 import {
-  AkCell,
-  AkGroup,
-  AkImagePreview,
+  TaCell,
+  TaGroup,
+  TaImagePreview,
   showImagePreview,
   PopupOnVisibleStateChange,
   PopupOnCancel,
@@ -80,9 +80,9 @@ export default function ExpImagePreview() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="预览图片" isLink onClick={() => onShow({})}></AkCell>
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell label="预览图片" isLink onClick={() => onShow({})}></TaCell>
+        <TaCell
           label="指定初始图片"
           isLink
           onClick={() =>
@@ -90,35 +90,35 @@ export default function ExpImagePreview() {
               current: 'https://cdn.fox2.cn/vfox/swiper/different-2.jpg'
             })
           }
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="展示关闭按钮"
           isLink
           onClick={() => onShow({ showClose: true })}
-        ></AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+        ></TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="change/cancel"
           isLink
           onClick={() => onShow({ showClose: true, callbackEvent: true })}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() => onShow({ visibleEvent: true })}
-        ></AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell
+        ></TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell
           label="showImagePreview"
           isLink
           onClick={() => onCallApi()}
-        ></AkCell>
-      </AkGroup>
-      <AkImagePreview
+        ></TaCell>
+      </TaGroup>
+      <TaImagePreview
         urls={imageUrls}
-        current={current}
+        value={current}
         visible={visible}
         maskClosable={maskClosable}
         showClose={showClose}

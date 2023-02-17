@@ -1,15 +1,14 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import type { StepperEmits, StepperProps } from './types'
-import type { FC, OnClick } from '../helpers/types'
 import { formatNumber, getRangeNumber, getClasses } from './util'
-import { getNumber } from '../helpers/util'
+import { getNumber, type FC, type OnClick } from '../helpers'
 import { useInput } from '../Form/use-form'
 import { Button } from '../Button'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
-import { useEffect, useState } from 'react'
 
-const AkStepper: FC<StepperProps & StepperEmits> = ({
+const TaStepper: FC<StepperProps & StepperEmits> = ({
   value,
   disabled,
   decimalLength,
@@ -93,7 +92,7 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
         onClick={onMinusClick}
       />
       <input
-        className="ak-stepper_input"
+        className="ta-stepper_input"
         type={decimalLength != 0 ? 'text' : 'tel'}
         inputMode={decimalLength != 0 ? 'decimal' : 'numeric'}
         name={props.name}
@@ -118,4 +117,4 @@ const AkStepper: FC<StepperProps & StepperEmits> = ({
   )
 }
 
-export default AkStepper
+export default TaStepper

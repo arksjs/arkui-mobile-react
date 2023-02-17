@@ -1,5 +1,4 @@
-import { rangeInteger } from '../helpers/util'
-import type { CSSProperties } from '../helpers/types'
+import { rangeInteger, type CSSProperties } from '../helpers'
 import type { ColProps } from './types'
 
 function rangeCol(number: number | string = 0) {
@@ -7,18 +6,18 @@ function rangeCol(number: number | string = 0) {
 }
 
 export const getColClasses = (props: ColProps) => {
-  const classes = [`ak-col`, `ak-col-${rangeCol(props.span || 24)}`]
+  const classes = [`ta-col`, `ta-col-${rangeCol(props.span || 24)}`]
 
   if (props.offset && props.offset > 0) {
-    classes.push(`ak-col-offset-${Math.min(24, rangeCol(props.offset))}`)
+    classes.push(`ta-col-offset-${Math.min(24, rangeCol(props.offset))}`)
   }
 
   if (props.push && props.push > 0) {
-    classes.push(`ak-col-push-${rangeCol(props.push)}`)
+    classes.push(`ta-col-push-${rangeCol(props.push)}`)
   }
 
   if (props.pull && props.pull > 0) {
-    classes.push(`ak-col-pull-${rangeCol(props.pull)}`)
+    classes.push(`ta-col-pull-${rangeCol(props.pull)}`)
   }
 
   return classes

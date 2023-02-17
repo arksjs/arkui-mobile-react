@@ -1,4 +1,4 @@
-import type { OnClick } from '../helpers/types'
+import type { OnClick } from '../helpers'
 
 export interface SuggestItem {
   text: string | number
@@ -33,4 +33,13 @@ export interface SearchBarEmits {
   onCancelClick?: OnClick
   onSearch?: OnSearch
   onFieldClick?: OnFieldClick
+}
+
+export type {
+  SetSuggestList as SearchBarSetSuggestList,
+  OnInput as SearchBarOnFocus,
+  OnInput as SearchBarOnBlur,
+  OnInput as SearchBarOnInput,
+  OnSearch as SearchBarOnSearch,
+  OnFieldClick as SearchBarOnFieldClick
 }

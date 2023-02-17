@@ -10,7 +10,7 @@
 ## Import
 
 ```js
-import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-react'
+import { TaForm, TaFormFooter, TaFormItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -20,15 +20,15 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkForm>
-  <AkInput type="text" />
-</AkForm>
+<TaForm>
+  <TaInput type="text" />
+</TaForm>
 ```
 
 ### renderFooter
 
 ```tsx
-<AkForm renderFooter={() => <AkButton form-type="submit">提交</AkButton>} />
+<TaForm renderFooter={() => <TaButton form-type="submit">提交</TaButton>} />
 ```
 
 ## FormFooter Slots
@@ -36,9 +36,9 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkForm.Footer>
-  <AkButton form-type="submit">提交</AkButton>
-</AkForm.Footer>
+<TaForm.Footer>
+  <TaButton form-type="submit">提交</TaButton>
+</TaForm.Footer>
 ```
 
 ## FormItem Props
@@ -54,9 +54,9 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-react'
 ### default
 
 ```tsx
-<AkForm.Item>
-  <AkInput type="text" />
-</AkForm.Item>
+<TaForm.Item>
+  <TaInput type="text" />
+</TaForm.Item>
 ```
 
 ## 支持表单的组件
@@ -90,12 +90,12 @@ npm install --save @formily/core @formily/react
 `FormilyFormItem.js`:
 
 ```js
-import { AkFormItem } from 'arkui-mobile-react'
+import { TaFormItem } from 'tantalum-ui-mobile-react'
 import { connect, mapProps } from '@formily/react'
 import { isVoidField } from '@formily/core'
 
 export default connect(
-  AkFormItem,
+  TaFormItem,
   mapProps(
     { validateStatus: true, title: 'label', required: true },
     (props, field) => {

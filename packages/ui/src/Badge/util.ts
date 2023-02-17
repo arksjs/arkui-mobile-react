@@ -1,17 +1,17 @@
-import { getColorObject } from '../helpers/color'
-import type { CSSProperties } from '../helpers/types'
 import {
   getNumber,
   isNumber,
   isObject,
   isString,
-  isStringNumberMix,
-  rangeInteger
-} from '../helpers/util'
+  isStringOrNumber,
+  rangeInteger,
+  getColorObject,
+  type CSSProperties
+} from '../helpers'
 import type { BadgeOption, BadgeProps } from './types'
 
 export function handleBadge(badge?: BadgeOption): BadgeProps {
-  if (isStringNumberMix(badge)) {
+  if (isStringOrNumber(badge)) {
     return {
       content: badge
     }
@@ -24,7 +24,7 @@ export function handleBadge(badge?: BadgeOption): BadgeProps {
 
 export const getClasses = (props: BadgeProps) => {
   return [
-    'ak-badge',
+    'ta-badge',
     {
       animated: !!props.animated
     }
@@ -33,7 +33,7 @@ export const getClasses = (props: BadgeProps) => {
 
 export const getBadgeClasses = (props: BadgeProps) => {
   return [
-    'ak-badge_badge',
+    'ta-badge_badge',
     {
       dot: !!props.dot
     }
@@ -45,7 +45,7 @@ export const getBadgeStyles = (props: BadgeProps) => {
 
   const styles: CSSProperties = {
     transform: `translate3d(50%, -50%, 0px) scale(${
-      (typeof props.content === 'string' && props.content) ||
+      (isString(props.content) && props.content) ||
       props.showZero ||
       (props.content && props.content > 0)
         ? 1
@@ -58,8 +58,8 @@ export const getBadgeStyles = (props: BadgeProps) => {
   const colorObj = getColorObject(props.color)
 
   if (colorObj.hasColor) {
-    styles[`--ak-color`] = colorObj.varBackgroundColor
-    styles[`--ak-front-color`] = colorObj.varFrontColor
+    styles[`--ta-color`] = colorObj.varBackgroundColor
+    styles[`--ta-front-color`] = colorObj.varFrontColor
   }
 
   return styles
@@ -80,7 +80,7 @@ export const getDefaultContent = (props: BadgeProps) => {
 }
 
 export const getShowContent = (props: BadgeProps, content: string | number) => {
-  if (typeof content === 'string') {
+  if (isString(content)) {
     return content
   }
 

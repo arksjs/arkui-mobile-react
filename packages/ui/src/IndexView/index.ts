@@ -6,5 +6,4 @@ const IndexView = Object.assign(_IndexView, {
 })
 
 export { IndexView, IndexViewItem }
-
 export default IndexView

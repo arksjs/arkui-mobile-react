@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { FrameTask, FrameOption } from '../helpers/animation'
-import { frameTo } from '../helpers/animation'
+import { frameTo, type FrameTask, type FrameOption } from '../helpers'
 
 export function useFrameTask() {
   const task = useRef<FrameTask | null>(null)
@@ -16,7 +15,10 @@ export function useFrameTask() {
     task.current = frameTo(options)
   }
 
+  function getRunFrameTaskId() {
+    return task.current?.id ?? null
+  }
   useEffect(() => frameStop, [])
 
-  return { frameStart, frameStop, frameTask: task }
+  return { frameStart, frameStop, frameTask: task, getRunFrameTaskId }
 }

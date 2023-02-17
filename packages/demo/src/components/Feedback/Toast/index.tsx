@@ -1,7 +1,7 @@
 import {
-  AkCell,
-  AkGroup,
-  AkToast,
+  TaCell,
+  TaGroup,
+  TaToast,
   ToastType,
   PopupOnVisibleStateChange,
   showToast,
@@ -42,42 +42,42 @@ export default function ExpToast() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell
           label="纯文字"
           isLink
           onClick={() => onShow({ title: '提示文本' })}
         />
-        <AkCell
+        <TaCell
           label="长文字"
           isLink
           onClick={() =>
             onShow({ title: '提示文本提示文本提示文本提示文本提示文本' })
           }
         />
-        <AkCell
+        <TaCell
           label="成功"
           isLink
           onClick={() => onShow({ title: '成功文本', type: 'success' })}
         />
-        <AkCell
+        <TaCell
           label="失败"
           isLink
           onClick={() => onShow({ title: '失败文本', type: 'fail' })}
         />
-        <AkCell
+        <TaCell
           label="加载中"
           isLink
           onClick={() => onShow({ title: '加载文本', type: 'loading' })}
         />
-      </AkGroup>
-      <AkGroup title="自定义图标">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="自定义图标">
+        <TaCell
           label="收藏"
           isLink
           onClick={() => onShow({ title: '已收藏', icon: 'StarFilled' })}
         />
-        <AkCell
+        <TaCell
           label="警告"
           isLink
           onClick={() =>
@@ -87,34 +87,34 @@ export default function ExpToast() {
             })
           }
         />
-      </AkGroup>
-      <AkGroup title="其他">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="其他">
+        <TaCell
           label="自定义时长"
           isLink
           onClick={() => onShow({ title: '5秒后消失', duration: 5000 })}
         />
-        <AkCell
+        <TaCell
           label="展示透明蒙层"
           isLink
           onClick={() => onShow({ title: '不可穿透', showMask: true })}
         />
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell
           label="showToast"
           isLink
           onClick={() => showToast({ title: '提示文本', duration: 5000 })}
         />
-        <AkCell label="hideToast" isLink onClick={() => hideToast()} />
-        <AkCell
+        <TaCell label="hideToast" isLink onClick={() => hideToast()} />
+        <TaCell
           label="showLoading"
           isLink
           onClick={() => showLoading({ title: '加载中' })}
         />
-        <AkCell label="hideLoading" isLink onClick={() => hideLoading()} />
-      </AkGroup>
-      <AkToast
+        <TaCell label="hideLoading" isLink onClick={() => hideLoading()} />
+      </TaGroup>
+      <TaToast
         visible={visible}
         title={title}
         type={type}
@@ -123,7 +123,7 @@ export default function ExpToast() {
         duration={duration}
         onUpdateVisible={v => setVisible(v)}
         onVisibleStateChange={onVisibleStateChange}
-      ></AkToast>
+      ></TaToast>
     </>
   )
 }

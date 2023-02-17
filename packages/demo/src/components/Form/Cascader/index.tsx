@@ -5,9 +5,9 @@ import {
   SelectorModelValue,
   SelectorValueFormatter,
   SelectorValueParser,
-  AkGroup,
-  AkCell,
-  AkCascader
+  TaGroup,
+  TaCell,
+  TaCascader
 } from '@/index'
 import { useState } from 'react'
 
@@ -48,42 +48,42 @@ export default function ExpCascader() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="家电">
-          <AkCascader
+      <TaGroup title="基础用法">
+        <TaCell label="家电">
+          <TaCascader
             options={cascadeOptions}
             onChange={onChange}
             placeholder={placeholder}
           />
-        </AkCell>
-        <AkCell label="地区">
-          <AkCascader
+        </TaCell>
+        <TaCell label="地区">
+          <TaCascader
             options={regionOptions}
             fieldNames={{ value: 'label' }}
             onChange={onChange}
           />
-        </AkCell>
-        <AkCell label="formatter/parser">
-          <AkCascader
+        </TaCell>
+        <TaCell label="formatter/parser">
+          <TaCascader
             value={formatValue}
             formatter={formatter}
             parser={parser}
             options={cascadeOptions}
             onChange={onChange}
-          ></AkCascader>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkCascader
+          ></TaCascader>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaCascader
             value={disableValue}
             options={cascadeOptions}
             disabled
             onChange={onChange}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showCascader" isLink onClick={() => onCallApi()} />
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showCascader" isLink onClick={() => onCallApi()} />
+      </TaGroup>
     </>
   )
 }

@@ -1,10 +1,9 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { RateProps, RateEmits } from './types'
-import type { VFC } from '../helpers/types'
 import { getMax, getClasses, getStyles, isIntegerOrHalf } from './util'
-import { isInteger, rangeInteger } from '../helpers/util'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { useTouch } from '../hooks/use-touch'
+import { isInteger, rangeInteger, type VFC } from '../helpers'
+import { useTouch } from '../hooks'
 import { Icon } from '../Icon'
 
 import StarOutlined from '../Icon/icons/StarOutlined'
@@ -19,7 +18,7 @@ interface RateCoords {
   isChange: boolean
 }
 
-const AkRate: VFC<RateProps & RateEmits> = ({
+const TaRate: VFC<RateProps & RateEmits> = ({
   icon = StarOutlined,
   activeIcon = StarFilled,
   count = 5,
@@ -33,8 +32,6 @@ const AkRate: VFC<RateProps & RateEmits> = ({
   const isReadonly = useRef(false)
 
   const change = (newVal: number, isHalf = false) => {
-    newVal = rangeInteger(newVal, 0, max)
-
     if (allowHalf && isHalf) {
       newVal -= 0.5
     }
@@ -92,16 +89,26 @@ const AkRate: VFC<RateProps & RateEmits> = ({
       let offsetCount = 0
 
       if (x > 0) {
-        offsetCount = Math.floor(x / size) + (x % size > size - offsetX ? 1 : 0)
+        offsetCount =
+          Math.floor(x / size) + (x % size >= size - offsetX ? 1 : 0)
       } else if (x < 0) {
         offsetCount = -Math.floor(-x / size) + (-x % size > offsetX ? -1 : 0)
       }
 
-      const isHalf = (offsetX + x) % size < size / 2
+      const perOffsetX = (offsetX + x) % size
+      const isHalf =
+        current + offsetCount <= 0
+          ? true
+          : current + offsetCount > max
+          ? false
+          : perOffsetX === 0 ||
+            (perOffsetX > 0
+              ? perOffsetX < size / 2
+              : size + perOffsetX < size / 2)
 
       coords.current.isChange = true
 
-      change(Math.max(1, current + offsetCount), isHalf)
+      change(rangeInteger(current + offsetCount, 1, max), isHalf)
 
       e.stopPropagation()
     },
@@ -113,18 +120,7 @@ const AkRate: VFC<RateProps & RateEmits> = ({
     }
   })
 
-  useEffect(() => {
-    if (inputValue > max) {
-      // 如果max被修改了，导致原有的值大于最大值，修改为最大值
-      change(max)
-    }
-  }, [max])
-
-  useEffect(() => {
-    setMax(getMax(count))
-  }, [count])
-
-  useEffect(() => {
+  function updateValue() {
     if (!isIntegerOrHalf(value)) {
       return
     }
@@ -144,6 +140,21 @@ const AkRate: VFC<RateProps & RateEmits> = ({
     }
 
     setInputValue(newVal)
+  }
+
+  useEffect(() => {
+    if (inputValue > max) {
+      // 如果max被修改了，导致原有的值大于最大值，修改为最大值
+      change(max)
+    }
+  }, [max])
+
+  useEffect(() => {
+    setMax(getMax(count))
+  }, [count])
+
+  useEffect(() => {
+    updateValue()
   }, [value])
 
   useEffect(() => {
@@ -160,7 +171,7 @@ const AkRate: VFC<RateProps & RateEmits> = ({
       items.push(
         <div
           className={classNames([
-            'ak-rate_item',
+            'ta-rate_item',
             {
               active: num - 0.5 <= inputValue,
               half: inputValue - num === -0.5
@@ -169,10 +180,10 @@ const AkRate: VFC<RateProps & RateEmits> = ({
           key={num}
           data-value={num}
         >
-          <i className="ak-rate_icon">
+          <i className="ta-rate_icon">
             <Icon icon={icon} />
           </i>
-          <i className="ak-rate_active-icon">
+          <i className="ta-rate_active-icon">
             <Icon icon={activeIcon} />
           </i>
         </div>
@@ -195,4 +206,4 @@ const AkRate: VFC<RateProps & RateEmits> = ({
   )
 }
 
-export default AkRate
+export default TaRate

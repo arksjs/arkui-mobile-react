@@ -1,11 +1,11 @@
-import type { UIEventHandler } from 'react'
 import {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
-  useState
+  useState,
+  type UIEventHandler
 } from 'react'
 import classNames from 'classnames'
 import type {
@@ -14,9 +14,17 @@ import type {
   CalendarViewRef,
   DayInfo
 } from './types'
-import type { OnClick, Dayjs, FRVFC } from '../helpers/types'
-import dayjs from '../helpers/day'
-import { cloneData, getNumber, isSameArray } from '../helpers/util'
+import {
+  dayjs,
+  type Dayjs,
+  CSSProperties2CssText,
+  getScrollTop,
+  cloneData,
+  getNumber,
+  isSameArray,
+  type OnClick,
+  type FRVFC
+} from '../helpers'
 import { showToast } from '../Toast'
 import {
   getFirstDayOfWeek,
@@ -24,14 +32,12 @@ import {
   getMinTime,
   getTimeByDate,
   getViewBodyTitleStyles,
-  printError
+  getSourceDetail
 } from './util'
 import { useHandlers } from './use-calendar'
 import { useLocale } from '../ConfigProvider/context'
-
 import ViewMonth from './CalendarViewMonth'
-import { useStableState } from '../hooks/use'
-import { CSSProperties2CssText, getScrollTop } from '../helpers/dom'
+import { useStableState, useException } from '../hooks'
 import VirtualList from '../VirtualList'
 
 type WeekDay = '0' | '1' | '2' | '3' | '4' | '5' | '6'
@@ -62,18 +68,21 @@ function getDefaultSelectDay(): SelectDay {
   }
 }
 
-const AkCalendarView: FRVFC<
+const VALUE_KEY = 'modelValue'
+
+const TaCalendarView: FRVFC<
   CalendarViewRef,
   CalendarViewProps & CalendarViewEmits
 > = (props, ref) => {
+  const { printPropError } = useException('Calendar')
   const { locale } = useLocale()
   const { formatter, parser, mode } = useHandlers(props)
+  const bodyEl = useRef<HTMLDivElement>(null)
+  const bodyTitleEl = useRef<HTMLDivElement>(null)
   const [weekDays, setWeekDays] = useState<WeekDay[]>([])
   const [getMonths, setMonths] = useStableState<Month[]>([])
   const start = useRef(getDefaultSelectDay())
   const end = useRef(getDefaultSelectDay())
-  const bodyEl = useRef<HTMLDivElement>(null)
-  const bodyTitleEl = useRef<HTMLDivElement>(null)
 
   const maxRange = getNumber(props.maxRange, Infinity)
   const firstDayOfWeek = getFirstDayOfWeek(props.firstDayOfWeek)
@@ -113,7 +122,7 @@ const AkCalendarView: FRVFC<
     if (
       !isSameArray(timeArr, [start.current.timestamp, end.current.timestamp])
     ) {
-      if (timeArr.length === 0) {
+      if (timeArr.length === 0 || timeArr[0] === 0) {
         setSelected('start', null)
         setSelected('end', null)
         updateStates()
@@ -125,10 +134,12 @@ const AkCalendarView: FRVFC<
           const { rangeCount, hasDisabled } = getRangeInfo(_start, _end)
 
           if (hasDisabled) {
-            printError('The range of "value" contains disabled days.')
+            printPropError(
+              `The range of "${VALUE_KEY}" contains disabled days.`
+            )
           } else if (rangeCount > maxRange) {
-            printError(
-              `The range of "value" contains ${rangeCount} days, no more than ${maxRange} days.`
+            printPropError(
+              `The range of "${VALUE_KEY}" contains ${rangeCount} days, no more than ${maxRange} days.`
             )
           } else {
             setSelected('start', _start)
@@ -136,7 +147,9 @@ const AkCalendarView: FRVFC<
             updateStates()
           }
         } else {
-          printError('The range of "value" is not in the optional range.')
+          printPropError(
+            `The range of "${VALUE_KEY}" is not in the optional range.`
+          )
         }
       } else {
         const select = getSelectedInfo(timeArr[0])
@@ -146,7 +159,9 @@ const AkCalendarView: FRVFC<
           setSelected('end', null)
           updateStates()
         } else {
-          printError('The range of "value" is not in the optional range.')
+          printPropError(
+            `The range of "${VALUE_KEY}" is not in the optional range.`
+          )
         }
       }
     }
@@ -267,18 +282,18 @@ const AkCalendarView: FRVFC<
 
   const minTimestamp = useRef(0)
   const maxTimestamp = useRef(0)
-  const defaultMixTime = useRef(getMinTime())
+  const defaultMinTime = useRef(getMinTime())
 
   function updateOptions() {
     if (props.minDate instanceof Date) {
       minTimestamp.current = getTimeByDate(props.minDate)
     } else {
-      minTimestamp.current = defaultMixTime.current
+      minTimestamp.current = defaultMinTime.current
     }
 
     if (props.maxDate instanceof Date) {
       if (props.maxDate.getTime() < minTimestamp.current) {
-        printError(
+        printPropError(
           'The value of "maxDate" cannot be less than the value of "minDate".'
         )
         maxTimestamp.current = getMaxTime(minTimestamp.current)
@@ -470,7 +485,7 @@ const AkCalendarView: FRVFC<
 
   function onSelect() {
     onChange()
-    props.onSelect && props.onSelect(getDetail())
+    props.onSelect && props.onSelect(getSourceDetail(getDetail()))
   }
 
   function getDetail() {
@@ -542,7 +557,7 @@ const AkCalendarView: FRVFC<
     const h = 28
     const $items: HTMLDivElement[] = bodyEl.current
       ? [].slice.call(
-          bodyEl.current.querySelectorAll('.ak-virtual-list_item'),
+          bodyEl.current.querySelectorAll('.ta-virtual-list_item'),
           0
         )
       : []
@@ -624,7 +639,7 @@ const AkCalendarView: FRVFC<
   const renderWeekdays = useMemo(
     () =>
       weekDays.map(weekDay => {
-        const weekDayClasses = classNames('ak-calendar-view_weekday', {
+        const weekDayClasses = classNames('ta-calendar-view_weekday', {
           highlight: weekDay === '0' || weekDay === '6'
         })
         return (
@@ -659,7 +674,7 @@ const AkCalendarView: FRVFC<
     [getMonths(), onDaysClick]
   )
 
-  const classes = classNames('ak-calendar-view', props.className)
+  const classes = classNames('ta-calendar-view', props.className)
 
   useImperativeHandle(
     ref,
@@ -671,13 +686,13 @@ const AkCalendarView: FRVFC<
 
   return (
     <div className={classes}>
-      <div className="ak-calendar-view_header">
-        <div className="ak-calendar-view_weekdays">{renderWeekdays}</div>
+      <div className="ta-calendar-view_header">
+        <div className="ta-calendar-view_weekdays">{renderWeekdays}</div>
       </div>
-      <div className="ak-calendar-view_body" ref={bodyEl}>
+      <div className="ta-calendar-view_body" ref={bodyEl}>
         {renderMonths}
         <div
-          className="ak-calendar-view_month-caption fixed"
+          className="ta-calendar-view_month-caption fixed"
           ref={bodyTitleEl}
         ></div>
       </div>
@@ -685,4 +700,4 @@ const AkCalendarView: FRVFC<
   )
 }
 
-export default forwardRef(AkCalendarView)
+export default forwardRef(TaCalendarView)

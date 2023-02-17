@@ -1,11 +1,3 @@
-import classNames from 'classnames'
-import type {
-  CountDownEmits,
-  CountDownProps,
-  CountDownRef,
-  CountTime
-} from './types'
-import type { FRVFC, RenderProp } from '../helpers/types'
 import {
   forwardRef,
   useCallback,
@@ -13,10 +5,18 @@ import {
   useImperativeHandle,
   useRef
 } from 'react'
+import classNames from 'classnames'
+import type {
+  CountDownEmits,
+  CountDownProps,
+  CountDownRef,
+  CountTime
+} from './types'
+import type { FRVFC, RenderProp } from '../helpers'
 import { useCountTime } from './use-count-time'
 import { useLocale } from '../ConfigProvider/context'
 
-const AkCountDown: FRVFC<
+const TaCountDown: FRVFC<
   CountDownRef,
   CountDownProps &
     CountDownEmits & {
@@ -35,7 +35,7 @@ const AkCountDown: FRVFC<
   ref
 ) => {
   const { locale } = useLocale()
-  const classes = classNames('ak-count-down', props.className)
+  const classes = classNames('ta-count-down', props.className)
 
   const startTime = useRef(0)
   const expiredTime = useRef(0)
@@ -138,4 +138,4 @@ const AkCountDown: FRVFC<
   return <div className={classes}>{renderChildren()}</div>
 }
 
-export default forwardRef(AkCountDown)
+export default forwardRef(TaCountDown)

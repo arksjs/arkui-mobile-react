@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export function useDelay(callback: Noop, duration?: number) {
   const timer = useRef<number>()

@@ -1,6 +1,9 @@
-import { formatInputDigit, formatInputNumber } from '../helpers/input'
-import { getNumber } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
+import {
+  formatInputDigit,
+  formatInputNumber,
+  getNumber,
+  getEnumsValue
+} from '../helpers'
 import type { Mode } from './types'
 
 const TYPE_NAMES = [
@@ -11,7 +14,7 @@ const TYPE_NAMES = [
   'password',
   'search',
   'textarea'
-]
+] as const
 
 export const getInputMode = (_type?: string) => {
   let mode: Mode = 'none'
@@ -74,11 +77,11 @@ export const getClasses = ({
   active: boolean
 }) => {
   return [
-    'ak-input',
+    'ta-input',
     {
       'has--prepend': prepend,
       'has--append': append,
-      'ak-textarea': type === 'textarea',
+      'ta-textarea': type === 'textarea',
       focus: active,
       readonly: !!readonly,
       disabled: !!disabled

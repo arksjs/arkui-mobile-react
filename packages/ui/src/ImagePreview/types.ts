@@ -1,4 +1,4 @@
-import { PopupEmits, PopupProps } from '../popup/types'
+import type { PopupEmits, PopupProps } from '../popup/types'
 
 export type OnChange = (
   current: string,
@@ -19,12 +19,19 @@ export interface ImageObject {
   loaded: boolean
 }
 
-export interface ImagePreviewProps extends PopupProps {
+interface CommonOptions {
   urls: string[]
-  current?: string
   showClose?: boolean
   navigationButtons?: boolean
   imageHighRendering?: boolean
+}
+
+export interface ShowImagePreviewOptions extends CommonOptions {
+  value?: string
+}
+
+export interface ImagePreviewProps extends PopupProps, CommonOptions {
+  value?: string
 }
 
 export interface ImagePreviewEmits extends PopupEmits {
@@ -35,3 +42,5 @@ export interface DistanceOptions {
   pageX: number
   pageY: number
 }
+
+export type { OnChange as ImagePreviewOnChange }

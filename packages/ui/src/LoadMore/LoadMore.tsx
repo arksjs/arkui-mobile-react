@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import type { LoadMoreProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { getClasses } from './util'
 import { ActivityIndicator } from '../ActivityIndicator'
 
-const AkLoadMore: FC<LoadMoreProps> = ({
+const TaLoadMore: FC<LoadMoreProps> = ({
   loading = false,
   vertical = false,
   ...props
@@ -20,20 +20,20 @@ const AkLoadMore: FC<LoadMoreProps> = ({
   return (
     <div className={classes}>
       {loading ? (
-        <ActivityIndicator className="ak-load-more_icon" size="18" />
+        <ActivityIndicator className="ta-load-more_icon" size="18" />
       ) : (
         <></>
       )}
-      <span className="ak-load-more_content">
-        {props.children || <i className="ak-load-more_dot"></i>}
+      <span className="ta-load-more_content">
+        {props.children || <i className="ta-load-more_dot"></i>}
       </span>
     </div>
   )
 }
 
-AkLoadMore.defaultProps = {
+TaLoadMore.defaultProps = {
   loading: false,
   vertical: false
 }
 
-export default AkLoadMore
+export default TaLoadMore

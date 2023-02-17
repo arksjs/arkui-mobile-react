@@ -1,5 +1,5 @@
 import type { IconData } from '../Icon/types'
-import type { StateType } from '../helpers/types'
+import type { StateType } from '../helpers'
 
 export type ButtonOption = {
   text: string
@@ -34,4 +34,10 @@ export interface NavBarEmits {
   onLeftButtonClick?: OnButtonClick
   onRightButtonClick?: OnButtonClick
   onTitleDbclick?: OnTitleDbClick
+}
+
+export type {
+  ButtonOption as NavBarButtonOption,
+  OnButtonClick as NavBarOnButtonClick,
+  OnTitleDbClick as NavBarOnTitleDbClick
 }

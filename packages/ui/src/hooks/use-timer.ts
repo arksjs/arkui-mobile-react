@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
-import { addTimer } from '../helpers/timer'
-import type { Noop } from '../helpers/types'
+import { addTimer, type Noop } from '../helpers'
 
 export const useTimer = (callback: Noop, interval = 1000) => {
   let removeTimer: Noop

@@ -1,9 +1,9 @@
 import {
-  AkSwiper,
-  AkGroup,
-  AkImage,
+  TaSwiper,
+  TaGroup,
+  TaImage,
   showToast,
-  SwiperOnChange,
+  SwiperOnActiveIndexChange,
   SwiperOnAnimated
 } from '@/index'
 
@@ -13,7 +13,7 @@ export default function ExpSwiper() {
       <>
         {[1, 2, 3, 4].map((item, index) => {
           return (
-            <AkSwiper.Item key={item}>
+            <TaSwiper.Item key={item}>
               <div
                 className={`exp-swiper-box-item ${
                   index % 2 === 1 ? 'even' : 'odd'
@@ -21,7 +21,7 @@ export default function ExpSwiper() {
               >
                 {item}
               </div>
-            </AkSwiper.Item>
+            </TaSwiper.Item>
           )
         })}
       </>
@@ -37,16 +37,16 @@ export default function ExpSwiper() {
           'https://cdn.fox2.cn/vfox/swiper/regular-3.jpg'
         ].map(item => {
           return (
-            <AkSwiper.Item key={item}>
-              <AkImage className="exp-swiper-image" src={item} />
-            </AkSwiper.Item>
+            <TaSwiper.Item key={item}>
+              <TaImage className="exp-swiper-image" src={item} />
+            </TaSwiper.Item>
           )
         })}
       </>
     )
   }
 
-  const onChange: SwiperOnChange = activeIndex => {
+  const onChange: SwiperOnActiveIndexChange = activeIndex => {
     showToast(`change 到第 ${activeIndex + 1} 张`)
     console.log('change', activeIndex)
   }
@@ -58,65 +58,65 @@ export default function ExpSwiper() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkSwiper className="exp-swiper-box">{renderItems()}</AkSwiper>
-      </AkGroup>
-      <AkGroup title="显示面板指示点 indicatorDots=true">
-        <AkSwiper className="exp-swiper-box" indicatorDots>
+      <TaGroup title="基础用法">
+        <TaSwiper className="exp-swiper-box">{renderItems()}</TaSwiper>
+      </TaGroup>
+      <TaGroup title="显示面板指示点 indicatorDots=true">
+        <TaSwiper className="exp-swiper-box" indicatorDots>
           {renderImages()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="显示切换按钮 navigation-buttons=true">
-        <AkSwiper className="exp-swiper-box" navigationButtons>
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="显示切换按钮 navigation-buttons=true">
+        <TaSwiper className="exp-swiper-box" navigationButtons>
           {renderImages()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="循环展示 initialCircular=true">
-        <AkSwiper className="exp-swiper-box" indicatorDots initialCircular>
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="循环展示 initialCircular=true">
+        <TaSwiper className="exp-swiper-box" indicatorDots initialCircular>
           {renderItems()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="垂直方向 initialVertical=true">
-        <AkSwiper className="exp-swiper-box" indicatorDots initialVertical>
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="垂直方向 initialVertical=true">
+        <TaSwiper className="exp-swiper-box" indicatorDots initialVertical>
           {renderItems()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="更改指示点颜色">
-        <AkSwiper
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="更改指示点颜色">
+        <TaSwiper
           className="exp-swiper-box"
           indicatorDots
           indicatorColor="rgba(255, 255, 255, 0.5)"
           indicatorActiveColor="#ff4d4f"
         >
           {renderItems()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="自动轮播（切换时长设置为3000ms）">
-        <AkSwiper
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="自动轮播（切换时长设置为3000ms）">
+        <TaSwiper
           className="exp-swiper-box"
           indicatorDots
           autoplay
           interval="3000"
         >
           {renderImages()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="滑动过程时长（设置为2000ms）">
-        <AkSwiper className="exp-swiper-box" indicatorDots duration="2000">
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="滑动过程时长（设置为2000ms）">
+        <TaSwiper className="exp-swiper-box" indicatorDots duration="2000">
           {renderImages()}
-        </AkSwiper>
-      </AkGroup>
-      <AkGroup title="事件监听（change/animated/click）">
-        <AkSwiper
+        </TaSwiper>
+      </TaGroup>
+      <TaGroup title="事件监听（change/animated/click）">
+        <TaSwiper
           className="exp-swiper-box"
           indicatorDots
-          onChange={onChange}
+          onActiveIndexChange={onChange}
           onAnimated={onAnimated}
           onClick={() => showToast('click 触发')}
         >
           {renderItems()}
-        </AkSwiper>
-      </AkGroup>
+        </TaSwiper>
+      </TaGroup>
     </>
   )
 }

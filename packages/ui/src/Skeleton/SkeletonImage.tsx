@@ -1,20 +1,20 @@
+import { useContext } from 'react'
 import classNames from 'classnames'
 import type { SkeletonImageProps } from './types'
-import type { VFC } from '../helpers/types'
-import { useContext } from 'react'
+import type { VFC } from '../helpers'
 import { SkeletonContext } from './context'
 import { getImageClasses } from './util'
 import { skeletonDefaultProps } from './props'
 
-const AkSkeletonImage: VFC<SkeletonImageProps> = props => {
+const TaSkeletonImage: VFC<SkeletonImageProps> = props => {
   const consumer = useContext(SkeletonContext)
   const classes = classNames(getImageClasses(props, consumer), props.className)
 
   return <div className={classes}></div>
 }
 
-AkSkeletonImage.defaultProps = {
+TaSkeletonImage.defaultProps = {
   ...skeletonDefaultProps
 }
 
-export default AkSkeletonImage
+export default TaSkeletonImage

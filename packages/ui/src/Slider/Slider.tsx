@@ -1,11 +1,11 @@
-import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import classNames from 'classnames'
 import type { SliderProps, SliderEmits } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { useSlide } from './use-slide'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 
-const AkSlider: VFC<SliderProps & SliderEmits> = ({
+const TaSlider: VFC<SliderProps & SliderEmits> = ({
   value,
   onInput,
   onChange,
@@ -65,14 +65,14 @@ const AkSlider: VFC<SliderProps & SliderEmits> = ({
 
   return (
     <div className={classes} style={slideStyles}>
-      <div className="ak-slider_inner" ref={sliderEl}>
-        <div className="ak-slider_box">
+      <div className="ta-slider_inner" ref={sliderEl}>
+        <div className="ta-slider_box">
           <div
-            className="ak-slider_track"
+            className="ta-slider_track"
             style={{ width: progress * 100 + '%' }}
           ></div>
           <div
-            className="ak-slider_thumb"
+            className="ta-slider_thumb"
             data-thumb="true"
             style={{ left: progress * 100 + '%' }}
           >
@@ -90,4 +90,4 @@ const AkSlider: VFC<SliderProps & SliderEmits> = ({
   )
 }
 
-export default AkSlider
+export default TaSlider

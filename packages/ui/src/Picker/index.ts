@@ -3,12 +3,11 @@ import PickerPopup from './PickerPopup'
 import PickerView from './PickerView'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { ShowPickerOptions } from '../Picker/types'
-import type { SelectorDetail } from '../SelectorField/types'
+import type { ShowPickerOptions, PickerDetail } from './types'
 
 const showPicker = createShowPopup<
   ShowPickerOptions,
-  PopupSuccessConfirmArgs<SelectorDetail>
+  PopupSuccessConfirmArgs<PickerDetail>
 >({
   apiName: 'showPicker',
   component: PickerPopup,
@@ -21,5 +20,4 @@ const Picker = Object.assign(_Picker, {
 })
 
 export { Picker, PickerPopup, PickerView, showPicker }
-
 export default Picker

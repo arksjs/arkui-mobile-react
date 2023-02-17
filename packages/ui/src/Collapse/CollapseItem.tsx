@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import classNames from 'classnames'
 import type {
   CollapseContextItemRef,
@@ -6,21 +6,20 @@ import type {
   CollapseItemEmits,
   CollapseItemProps
 } from './types'
-import type { FC } from '../helpers/types'
-import { useGroupItem } from '../hooks/use-group'
+import type { FC } from '../helpers'
+import { useGroupItem, useException, useStableState } from '../hooks'
 import { CollapseContext } from './context'
-import Exception from '../helpers/exception'
 import { getItemClasses } from './util'
 import { Cell } from '../Cell'
 
-const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
-  name = '',
+const TaCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
+  name,
   ...props
 }) => {
+  const { printItemIsolationWarn } = useException('collapse')
   const uid = useRef(Symbol())
   const bodyEl = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState(false)
-  const isActive = useRef(false)
+  const [getActive, setActive] = useStableState(false)
 
   const { onChange } = useGroupItem<
     CollapseContextValue,
@@ -30,36 +29,31 @@ const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
     show,
     hide,
     getName: () => name,
-    isActive: () => isActive.current
+    getActive: () => getActive(true)
   })
 
   function handleChange(uid: symbol) {
     if (onChange) {
       onChange(uid)
     } else {
-      new Exception(
-        `CollapseItemItem is not in CollapseItem`,
-        Exception.TYPE.DEFAULT,
-        'CollapseItemItem'
-      )
+      printItemIsolationWarn()
     }
   }
 
   const visibleTimer = useRef<number>()
 
   function show(isClick = false) {
-    if (isActive.current) {
+    if (getActive(true)) {
       return
     }
-    isActive.current = true
     setActive(true)
-    clearTimeout(visibleTimer.current)
 
+    clearTimeout(visibleTimer.current)
     if (!bodyEl.current) {
       return
     }
-
     const $body = bodyEl.current
+
     $body.style.cssText = 'position: absolute; opacity: 0;'
     const contentHeight = $body.getBoundingClientRect().height
     $body.style.cssText = 'height: 0px;'
@@ -78,19 +72,17 @@ const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
   }
 
   function hide(isClick = false) {
-    if (!isActive.current) {
+    if (!getActive(true)) {
       return
     }
-    isActive.current = false
     setActive(false)
 
     if (!bodyEl.current) {
       return
     }
-
     clearTimeout(visibleTimer.current)
-
     const $body = bodyEl.current
+
     $body.style.cssText = `height: ${$body.getBoundingClientRect().height}px;`
 
     visibleTimer.current = window.setTimeout(() => {
@@ -115,31 +107,31 @@ const AkCollapseItem: FC<CollapseItemProps & CollapseItemEmits> = ({
   }
 
   function onClick() {
-    isActive.current ? hide(true) : show(true)
+    getActive(true) ? hide(true) : show(true)
   }
 
-  const classes = classNames(getItemClasses(active))
+  const classes = classNames(getItemClasses(getActive()))
 
   return (
     <div className={classes}>
       <Cell
-        className="ak-collapse-item_header"
+        className="ta-collapse-item_header"
         label={props.title}
         icon={props.icon}
         disabled={props.disabled}
         isLink
-        arrowDirection={active ? 'up' : 'down'}
+        arrowDirection={getActive() ? 'up' : 'down'}
         onClick={onClick}
       />
       <div
-        className="ak-collapse-item_body ak-horizontal-hairline"
+        className="ta-collapse-item_body ta-horizontal-hairline"
         style={{ display: 'none' }}
         ref={bodyEl}
       >
-        <div className="ak-collapse-item_content">{props.children}</div>
+        <div className="ta-collapse-item_content">{props.children}</div>
       </div>
     </div>
   )
 }
 
-export default AkCollapseItem
+export default TaCollapseItem

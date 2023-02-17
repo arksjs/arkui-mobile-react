@@ -1,4 +1,4 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 import type { OnRefreshing, OnScroll } from '../ScrollView/types'
 import type {
   ScrollTo,
@@ -28,4 +28,11 @@ export interface FlatListRef {
   scrollToIndex: ScrollToIndex
   scrollToEnd: ScrollToEnd
   recordInteraction: Noop
+}
+
+export type {
+  OnEndReached as FlatListOnEndReached,
+  OnRefreshing as FlatListOnRefreshing,
+  OnScroll as FlatListOnScroll,
+  OnVisibleItemsChange as FlatListOnVisibleItemsChange
 }

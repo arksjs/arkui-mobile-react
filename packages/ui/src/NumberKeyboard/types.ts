@@ -1,5 +1,5 @@
 import type { FormItemCommonProps } from '../Form/types'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject } from '../helpers'
 import type { IconData } from '../Icon/types'
 import type { PopupEmits, PopupProps } from '../popup/types'
 
@@ -29,5 +29,10 @@ export interface NumberKeyboardEmits extends PopupEmits {
   onDelete?: OnDelete
   onClose?: OnClose
   onConfirm?: OnConfirm
-  onUpdateValue?: (text: string) => void
+}
+
+export type {
+  OnDelete as NumberKeyboardOnDelete,
+  OnClose as NumberKeyboardOnClose,
+  KeyboardType as NumberKeyboardType
 }

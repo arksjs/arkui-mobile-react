@@ -6,9 +6,9 @@ import {
   PopupOnCancel,
   showActionSheet,
   PopupOnVisibleStateChange,
-  AkCell,
-  AkGroup,
-  AkActionSheet
+  TaCell,
+  TaGroup,
+  TaActionSheet
 } from '@/index'
 import { useRef, useState } from 'react'
 
@@ -109,28 +109,28 @@ export default function ExpActionSheet() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认" isLink onClick={() => onShow()} />
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell label="默认" isLink onClick={() => onShow()} />
+        <TaCell
           label="展示标题"
           isLink
           onClick={() => onShow({ title: '标题' })}
         />
-        <AkCell
+        <TaCell
           label="展示取消按钮"
           isLink
           onClick={() => onShow({ showCancel: true })}
         />
-        <AkCell
+        <TaCell
           label="设置取消按钮文案"
           isLink
           onClick={() =>
             onShow({ showCancel: true, cancelText: '自定义取消按钮文案' })
           }
         />
-      </AkGroup>
-      <AkGroup title="options 扩展">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="options 扩展">
+        <TaCell
           label="选项描述"
           isLink
           onClick={() =>
@@ -150,7 +150,7 @@ export default function ExpActionSheet() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="选项高亮"
           isLink
           onClick={() =>
@@ -170,23 +170,23 @@ export default function ExpActionSheet() {
             })
           }
         />
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="confirm/cancel"
           isLink
           onClick={() => onShow({ showCancel: true, confirmEvent: true })}
         />
-        <AkCell
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() => onShow({ visibleEvent: true })}
         />
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showActionSheet" isLink onClick={() => onCallApi()} />
-      </AkGroup>
-      <AkActionSheet
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showActionSheet" isLink onClick={() => onCallApi()} />
+      </TaGroup>
+      <TaActionSheet
         visible={visible}
         title={title}
         options={options}

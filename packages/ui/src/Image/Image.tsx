@@ -9,12 +9,12 @@ import {
   removeComponentFromLazy,
   withCheckInView
 } from './load-image'
-import type { TypeException, VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import ImageOutlined from '../Icon/icons/ImageOutlined'
 import ImageBreakOutlined from '../Icon/icons/ImageBreakOutlined'
 import { Icon } from '../Icon'
 
-const AkImage: VFC<
+const TaImage: VFC<
   Omit<HTMLAttributes<HTMLDivElement>, 'onLoad' | 'onError'> &
     ImageProps &
     ImageEmits
@@ -33,7 +33,7 @@ const AkImage: VFC<
   ...attrs
 }) => {
   const root = useRef<HTMLDivElement | null>(null)
-  const classes = classNames('ak-image', className)
+  const classes = classNames('ta-image', className)
   const imgClasses = classNames(getImgClasses(mode))
   const ratioStyles = getRatioStyles(aspectRatio)
 
@@ -74,7 +74,7 @@ const AkImage: VFC<
       })
   }
 
-  function _onError(e: TypeException) {
+  function _onError(e: Error) {
     if (!mounted.current) {
       return
     }
@@ -107,19 +107,19 @@ const AkImage: VFC<
   return (
     <div {...attrs} className={classes} ref={root}>
       {aspectRatio != null && aspectRatio > 0 ? (
-        <span className="ak-image_ratio" style={ratioStyles}></span>
+        <span className="ta-image_ratio" style={ratioStyles}></span>
       ) : (
         <></>
       )}
       {loading ? (
-        <i className="ak-image_loading">
+        <i className="ta-image_loading">
           <Icon icon={loadingIcon} size={iconSize} />
         </i>
       ) : (
         <></>
       )}
       {error ? (
-        <i className="ak-image_error">
+        <i className="ta-image_error">
           <Icon icon={errorIcon} size={iconSize} />
         </i>
       ) : (
@@ -134,4 +134,4 @@ const AkImage: VFC<
   )
 }
 
-export default AkImage
+export default TaImage

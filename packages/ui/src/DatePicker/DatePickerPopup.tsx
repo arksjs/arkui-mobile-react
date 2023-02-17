@@ -1,11 +1,15 @@
-import type { DatePickerPopupEmits, DatePickerPopupProps } from './types'
-import type { FRVFC } from '../helpers/types'
+import { forwardRef } from 'react'
+import type {
+  DatePickerDetail,
+  DatePickerPopupEmits,
+  DatePickerPopupProps
+} from './types'
+import type { FRVFC } from '../helpers'
 import { PickerPopup } from '../Picker'
 import { useHandlers } from './use-date-picker'
-import type { PickerPopupRef } from '../Picker/types'
-import { forwardRef } from 'react'
+import type { PickerDetail, PickerPopupRef } from '../Picker/types'
 
-const AkDatePickerPopup: FRVFC<
+const TaDatePickerPopup: FRVFC<
   PickerPopupRef,
   DatePickerPopupProps & DatePickerPopupEmits
 > = (
@@ -20,11 +24,15 @@ const AkDatePickerPopup: FRVFC<
     filter
   })
 
+  function onConfirm(payload: PickerDetail) {
+    props.onConfirm && props.onConfirm(payload as DatePickerDetail)
+  }
+
   return (
     <PickerProvider>
-      <PickerPopup {...props} options={[]} ref={ref} />
+      <PickerPopup {...props} options={[]} ref={ref} onConfirm={onConfirm} />
     </PickerProvider>
   )
 }
 
-export default forwardRef(AkDatePickerPopup)
+export default forwardRef(TaDatePickerPopup)

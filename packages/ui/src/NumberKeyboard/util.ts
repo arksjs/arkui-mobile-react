@@ -1,5 +1,4 @@
-import { isString, isStringArray } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
+import { isString, isStringArray, getEnumsValue } from '../helpers'
 import type { KeyboardType } from './types'
 
 const KEYBOARD_TYPES: KeyboardType[] = ['default', 'rightColumn']
@@ -8,7 +7,7 @@ export const getBodyClasses = (
   { type, title }: { type?: KeyboardType; title?: string },
   showHeaderConfirm: boolean
 ) => [
-  'ak-number-keyboard_body',
+  'ta-number-keyboard_body',
   `type--${getEnumsValue(KEYBOARD_TYPES, type)}`,
   { 'has--header': showHeaderConfirm || title }
 ]

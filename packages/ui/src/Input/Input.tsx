@@ -1,18 +1,31 @@
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEventHandler
+} from 'react'
 import classNames from 'classnames'
 import type { InputEmits, InputProps } from './types'
-import type { CSSProperties, OnFocus, RenderProp, VFC } from '../helpers/types'
+import type {
+  CSSProperties,
+  OnClick,
+  OnFocus,
+  RenderProp,
+  VFC
+} from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { MouseEventHandler } from 'react'
 import { Icon } from '../Icon'
 
-const AkInput: VFC<
+const TaInput: VFC<
   InputProps &
     InputEmits & {
       renderPrepend?: RenderProp
       renderAppend?: RenderProp
       style?: CSSProperties
+      onClick?: OnClick
     }
 > = ({
   type = 'text',
@@ -21,6 +34,7 @@ const AkInput: VFC<
   readonly,
   renderPrepend,
   renderAppend,
+  onClick,
   ...props
 }) => {
   const [active, setActive] = useState(false)
@@ -133,7 +147,7 @@ const AkInput: VFC<
     () =>
       props.showClear && isShowClear ? (
         <Icon
-          className="ak-input_clear"
+          className="ta-input_clear"
           icon={CloseCircleFilled}
           onMouseDown={onClear}
         />
@@ -165,15 +179,15 @@ const AkInput: VFC<
   }, [formValue, active])
 
   return (
-    <label className={classes} style={props.style} onClick={props.onClick}>
+    <label className={classes} style={props.style}>
       {renderPrepend ? (
-        <div className="ak-input_prepend">{renderPrepend()}</div>
+        <div className="ta-input_prepend">{renderPrepend()}</div>
       ) : (
         <></>
       )}
       {type === 'textarea' ? (
         <textarea
-          className="ak-input_input ak-input_textarea"
+          className="ta-input_input ta-input_textarea"
           name={props.name}
           disabled={disabled}
           placeholder={props.placeholder}
@@ -184,10 +198,11 @@ const AkInput: VFC<
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          onClick={onClick}
         />
       ) : (
         <input
-          className="ak-input_input"
+          className="ta-input_input"
           type={inputType}
           inputMode={inputMode}
           name={props.name}
@@ -200,12 +215,13 @@ const AkInput: VFC<
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
+          onClick={onClick}
           onCompositionStart={onCompositionStart}
           onCompositionEnd={onCompositionEnd}
         />
       )}
       {props.showLimit && maxLength > 0 ? (
-        <span className="ak-input_limit">
+        <span className="ta-input_limit">
           {formValue.length}/{maxLength}
         </span>
       ) : (
@@ -213,7 +229,7 @@ const AkInput: VFC<
       )}
       {renderShowClear}
       {renderAppend ? (
-        <div className="ak-input_append">{renderAppend()}</div>
+        <div className="ta-input_append">{renderAppend()}</div>
       ) : (
         <></>
       )}
@@ -221,9 +237,9 @@ const AkInput: VFC<
   )
 }
 
-AkInput.defaultProps = {
+TaInput.defaultProps = {
   type: 'text',
   value: ''
 }
 
-export default AkInput
+export default TaInput

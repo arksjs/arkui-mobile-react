@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSwiper, AkSwiperItem } from 'arkui-mobile-react'
+import { TaSwiper, TaSwiperItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,11 @@ import { AkSwiper, AkSwiperItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
+import type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated,
+  SwiperRef
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Swiper Props
@@ -29,7 +33,7 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 | activeIndex          | number  | 0                          | 否   | 当前所在滑块的 index                     |
 | indicatorDots        | boolean | false                      | 否   | 是否显示面板指示点                       |
 | indicatorColor       | color   | 'rgba(0, 0, 0, 0.4)'       | 否   | 指示点颜色                               |
-| indicatorCctiveColor | color   | 'rgba(255, 255, 255, 0.8)' | 否   | 当前选中的指示点颜色                     |
+| indicatorActiveColor | color   | 'rgba(255, 255, 255, 0.8)' | 否   | 当前选中的指示点颜色                     |
 | autoplay             | boolean | false                      | 否   | 是否自动切换                             |
 | interval             | number  | 5000                       | 否   | 自动切换时间间隔                         |
 | duration             | number  |                            | 否   | 滑动动画时长，没有设置时使用内置调优时长 |
@@ -39,11 +43,11 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 
 ## Swiper Events
 
-| 事件       | 描述                         | 回调函数参数                               | TypeScript 函数  |
-| ---------- | ---------------------------- | ------------------------------------------ | ---------------- |
-| onChange   | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnChange   |
-| onAnimated | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated |
-| onClick    | 点击时触发，为了区分滑动情况 |                                            |                  |
+| 事件                | 描述                         | 回调函数参数                               | TypeScript 函数           |
+| ------------------- | ---------------------------- | ------------------------------------------ | ------------------------- |
+| onActiveIndexChange | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnActiveIndexChange |
+| onAnimated          | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated          |
+| onClick             | 点击时触发，为了区分滑动情况 |                                            |                           |
 
 ## Swiper Slots
 
@@ -52,15 +56,15 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 注：其中只可放置 [SwiperItem](./Swiper.md#swiperitem-slots) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkSwiper>
-  <AkSwiper.Item>
-    <AkImage src="a.jpg" />
-  </AkSwiper.Item>
-  <AkSwiper.Item>
-    <AkImage src="b.jpg" />
-  </AkSwiper.Item>
+<TaSwiper>
+  <TaSwiper.Item>
+    <TaImage src="a.jpg" />
+  </TaSwiper.Item>
+  <TaSwiper.Item>
+    <TaImage src="b.jpg" />
+  </TaSwiper.Item>
   ...
-</AkSwiper>
+</TaSwiper>
 ```
 
 ## SwiperItem Slots
@@ -68,7 +72,23 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkSwiper.Item>
-  <AkImage src="b.jpg" />
-</AkSwiper.Item>
+<TaSwiper.Item>
+  <TaImage src="b.jpg" />
+</TaSwiper.Item>
 ```
+
+## Methods
+
+```ts
+interface SwiperRef {
+  swipeTo: (newIndex: number) => void
+  prev: () => void
+  next: () => void
+}
+```
+
+| 方法名  | 说明                                                   |
+| ------- | ------------------------------------------------------ |
+| swipeTo | 切换到指定 index 的 Item                               |
+| prev    | 切换到上一个 Item，如果当前在第一个 ，则循环到最后一个 |
+| next    | 切换到下一个 Item，如果当前在最后一个，则循环到第一个  |

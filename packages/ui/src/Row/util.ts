@@ -1,5 +1,4 @@
-import { isNumberArray, isNumeric } from '../helpers/util'
-import type { CSSProperties } from '../helpers/types'
+import { isNumberArray, isNumeric, type CSSProperties } from '../helpers'
 import type { JustifyType, AlignType, UserGutter, RowProps } from './types'
 
 export const JUSTIFY_TYPES: JustifyType[] = [
@@ -32,7 +31,7 @@ export const getRowStyles = ([gH, gV]: number[]) => {
 }
 
 export const getRowClasses = (props: RowProps) => {
-  const classes = [`ak-row`]
+  const classes = [`ta-row`]
 
   props.justify &&
     JUSTIFY_TYPES.includes(props.justify) &&

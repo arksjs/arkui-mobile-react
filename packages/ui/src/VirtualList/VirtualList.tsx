@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'react'
 import {
   forwardRef,
   useCallback,
@@ -7,7 +6,8 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
-  useState
+  useState,
+  type HTMLAttributes
 } from 'react'
 import classNames from 'classnames'
 import type {
@@ -18,26 +18,31 @@ import type {
   VirtualListProps,
   VirtualListRef
 } from './types'
-import type { FRFC, RenderProp, UniqueID } from '../helpers/types'
 import {
   cloneData,
   getSameValueArray,
   isNumber,
-  rangeNumber
-} from '../helpers/util'
-import Exception from '../helpers/exception'
-import { getViewPosition } from '../helpers/dom'
-import type { ViewPosition } from '../helpers/types'
+  rangeNumber,
+  getViewPosition,
+  type ViewPosition,
+  type FRFC,
+  type RenderProp,
+  type UniqueID
+} from '../helpers'
 import type { OnVisibleItemsChangePayload, ListItem, RenderItem } from './types'
-import { useScroll, useScrollTo } from '../hooks/use-scroll'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import {
+  useScroll,
+  useScrollTo,
+  useResizeObserver,
+  type ScrollToOffsetOptions,
+  useException
+} from '../hooks'
 import { getClasses, getItemStyles, getListStyles } from './util'
-import type { ScrollToOffsetOptions } from '../hooks/types'
 
 // 对数据进行分割，以50个为一组
 const calcGroupCount = 50
 
-const AkVirtualList: FRFC<
+const TaVirtualList: FRFC<
   VirtualListRef,
   HTMLAttributes<HTMLDivElement> &
     VirtualListProps &
@@ -67,6 +72,7 @@ const AkVirtualList: FRFC<
   },
   ref
 ) => {
+  const { printPropError } = useException('VirtualList')
   const root = useRef<HTMLDivElement>(null)
   const listEl = useRef<HTMLUListElement>(null)
   const poolEl = useRef<HTMLUListElement>(null)
@@ -97,12 +103,8 @@ const AkVirtualList: FRFC<
           return size
         }
       } catch (error) {
-        console.error(
-          new Exception(
-            'The object.size value returned by getItemSize should be a Number type.',
-            Exception.TYPE.PROP_ERROR,
-            'FlatList'
-          )
+        printPropError(
+          `The "itemSize" function return value should be a Number type.`
         )
       }
     } else if (isNumber(itemSize)) {
@@ -554,7 +556,7 @@ const AkVirtualList: FRFC<
   const renderItems = useMemo(() => {
     return renderList.map(item => (
       <li
-        className="ak-virtual-list_item"
+        className="ta-virtual-list_item"
         key={item.id}
         data-index={item.index}
         style={item.style}
@@ -568,7 +570,7 @@ const AkVirtualList: FRFC<
   const renderPoolItems = useMemo(() => {
     return renderPoolList.map(item => (
       <li
-        className="ak-virtual-list_item"
+        className="ta-virtual-list_item"
         key={item.id}
         data-index={item.index}
       >
@@ -632,14 +634,14 @@ const AkVirtualList: FRFC<
 
   return (
     <div {...attrs} className={classes} ref={root}>
-      <ul className="ak-virtual-list_list" style={listStyles} ref={listEl}>
+      <ul className="ta-virtual-list_list" style={listStyles} ref={listEl}>
         {renderItems}
       </ul>
-      <ul className="ak-virtual-list_list pool" ref={poolEl}>
+      <ul className="ta-virtual-list_list pool" ref={poolEl}>
         {renderPoolItems}
       </ul>
     </div>
   )
 }
 
-export default forwardRef(AkVirtualList)
+export default forwardRef(TaVirtualList)

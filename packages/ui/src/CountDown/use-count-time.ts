@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { getDefaultCountTime, getCountTime } from './util'
+import type { Noop } from '../helpers'
 
 interface StepHandlers {
   update: (time: number) => void
-  start: () => void
-  stop: () => void
+  start: Noop
+  stop: Noop
 }
 
 export function useCountTime(onStep: (handlers: StepHandlers) => void) {

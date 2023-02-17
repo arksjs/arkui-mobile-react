@@ -1,4 +1,4 @@
-import { AkButton, AkCell, AkGroup } from '@/index'
+import { TaButton, TaCell, TaGroup } from '@/index'
 import { useState } from 'react'
 
 export default function ExpGroup() {
@@ -6,32 +6,32 @@ export default function ExpGroup() {
 
   return (
     <>
-      <AkGroup title="基础风格">
-        <AkCell
+      <TaGroup title="基础风格">
+        <TaCell
           label="单元格"
           content="内容"
           description="网站大部分组件都由这个组件进行分组"
         />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-      </AkGroup>
-      <AkGroup title="基础风格" renderHeader={() => <>右侧文案</>}>
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-      </AkGroup>
-      <AkGroup
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+      </TaGroup>
+      <TaGroup title="基础风格" renderHeader={() => <>右侧文案</>}>
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+      </TaGroup>
+      <TaGroup
         title="强化标题栏"
-        renderHeader={() => <AkButton size="small"> 查看更多 </AkButton>}
+        renderHeader={() => <TaButton size="small"> 查看更多 </TaButton>}
         strongHeader={strongHeader}
       >
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-        <AkCell label="单元格" content="内容" />
-      </AkGroup>
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+        <TaCell label="单元格" content="内容" />
+      </TaGroup>
     </>
   )
 }

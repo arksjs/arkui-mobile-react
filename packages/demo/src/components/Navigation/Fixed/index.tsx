@@ -1,4 +1,4 @@
-import { AkFixed, AkButton, AkGroup } from '@/index'
+import { TaFixed, TaButton, TaGroup } from '@/index'
 import { useState } from 'react'
 
 export default function ExpFixed() {
@@ -6,15 +6,15 @@ export default function ExpFixed() {
 
   return (
     <>
-      <AkGroup title="基本用法">
-        <AkFixed fixed={fixed}>
+      <TaGroup title="基本用法">
+        <TaFixed fixed={fixed}>
           <div className="exp-fixed-box">
-            <AkButton type="primary" onClick={() => setFixed(!fixed)}>
+            <TaButton type="primary" onClick={() => setFixed(!fixed)}>
               {fixed ? '点击取消固定' : '点击固定布局'}
-            </AkButton>
+            </TaButton>
           </div>
-        </AkFixed>
-      </AkGroup>
+        </TaFixed>
+      </TaGroup>
     </>
   )
 }

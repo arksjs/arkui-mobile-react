@@ -1,8 +1,8 @@
 import {
-  AkButton,
-  AkCell,
-  AkGroup,
-  AkPopMenu,
+  TaButton,
+  TaCell,
+  TaGroup,
+  TaPopMenu,
   PlacementType,
   PopupOnCancel,
   PopupOnVisibleStateChange,
@@ -105,30 +105,30 @@ export default function ExpPopMenu() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="基础">
-          <AkButton
+      <TaGroup title="基础用法">
+        <TaCell label="基础">
+          <TaButton
             size="small"
             id="popMenu"
             shape="circle"
             icon="MenuOutlined"
             onClick={() => onShow({ selector: '#popMenu' })}
-          ></AkButton>
-        </AkCell>
-        <AkCell label="不展示蒙层">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="不展示蒙层">
+          <TaButton
             size="small"
             id="popMenuNoMask"
             shape="circle"
             icon="MenuOutlined"
             onClick={() => setVisible2(true)}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="方向 placement=top/bottom/left/right">
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="方向 placement=top/bottom/left/right">
         <div className="exp-popover-box2">
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popMenuTop2"
               shape="circle"
@@ -138,10 +138,10 @@ export default function ExpPopMenu() {
               }
             >
               上
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popMenuLeft2"
               shape="circle"
@@ -151,8 +151,8 @@ export default function ExpPopMenu() {
               }
             >
               左
-            </AkButton>
-            <AkButton
+            </TaButton>
+            <TaButton
               className="exp-popover-box2-ml"
               size="small"
               id="popMenuRight2"
@@ -163,10 +163,10 @@ export default function ExpPopMenu() {
               }
             >
               右
-            </AkButton>
+            </TaButton>
           </div>
           <div>
-            <AkButton
+            <TaButton
               size="small"
               id="popMenuBottom2"
               shape="circle"
@@ -176,13 +176,13 @@ export default function ExpPopMenu() {
               }
             >
               下
-            </AkButton>
+            </TaButton>
           </div>
         </div>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="confirm/cancel">
-          <AkButton
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="confirm/cancel">
+          <TaButton
             size="small"
             id="popMenuEvent"
             shape="circle"
@@ -190,10 +190,10 @@ export default function ExpPopMenu() {
             onClick={() =>
               onShow({ confirmEvent: true, selector: '#popMenuEvent' })
             }
-          ></AkButton>
-        </AkCell>
-        <AkCell label="onVisibleStateChange">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+        <TaCell label="onVisibleStateChange">
+          <TaButton
             size="small"
             id="popMenuEvent2"
             shape="circle"
@@ -201,21 +201,21 @@ export default function ExpPopMenu() {
             onClick={() =>
               onShow({ visibleEvent: true, selector: '#popMenuEvent2' })
             }
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showPopMenu">
-          <AkButton
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showPopMenu">
+          <TaButton
             size="small"
             id="popMenuApi"
             shape="circle"
             icon="MenuOutlined"
             onClick={() => onCallApi('#popMenuApi')}
-          ></AkButton>
-        </AkCell>
-      </AkGroup>
-      <AkPopMenu
+          ></TaButton>
+        </TaCell>
+      </TaGroup>
+      <TaPopMenu
         options={options}
         placement={placement}
         selector={selector}
@@ -225,7 +225,7 @@ export default function ExpPopMenu() {
         onCancel={onCancel}
         onConfirm={onConfirm}
       />
-      <AkPopMenu
+      <TaPopMenu
         options={options}
         visible={visible2}
         selector="#popMenuNoMask"

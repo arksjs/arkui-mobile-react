@@ -1,11 +1,25 @@
 {
-  "name": "arkui-mobile-react",
-  "version": "0.0.2",
-  "description": "React components include form, toast, modal, etc.",
+  "name": "tantalum-ui-mobile-react",
+  "version": "0.1.3",
+  "description": "A Mobile UI Components built on React",
   "main": "lib/index.js",
-  "module": "es/index.js",
+  "module": "es/index.mjs",
   "style": "es/style/index.css",
   "typings": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./es": "./es/index.mjs",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
+    "./lib": "./lib/index.js",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
+  },
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix && stylelint packages/**/*.scss --fix",
     "build": "node build/build.mjs",
@@ -13,11 +27,15 @@
     "build:site": "node build/build.site.mjs",
     "semantic-release": "semantic-release",
     "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "demo:dev": "pnpm --filter demo run dev",
+    "demo:build": "pnpm --filter demo run build",
+    "docs:dev": "pnpm --filter docs run dev",
+    "docs:build": "pnpm --filter docs run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arksjs/arkui-mobile-react.git"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile-react.git"
   },
   "keywords": [
     "react",
@@ -28,7 +46,7 @@
   "author": "Arksjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arksjs/arkui-mobile-react/issues"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile-react/issues"
   },
   "files": [
     "dist",
@@ -36,11 +54,11 @@
     "es",
     "global.d.ts"
   ],
-  "homepage": "https://github.com/arksjs/arkui-mobile-react#readme",
+  "homepage": "https://github.com/arksjs/tantalum-ui-mobile-react#readme",
   "dependencies": {
     "classnames": "^2.3.1",
     "colorfuls": "^1.0.2",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^16.12.0",
@@ -48,33 +66,34 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/runtime-corejs3": "^7.12.5",
-    "@commitlint/cli": "^16.0.1",
-    "@commitlint/config-conventional": "^16.0.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-typescript": "^8.3.1",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.4.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.2",
     "@semantic-release/npm": "^8.0.3",
-    "@semantic-release/release-notes-generator": "^10.0.2",
-    "@types/md5": "^2.3.1",
-    "@types/react": "17",
-    "@types/react-dom": "17",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/md5": "^2.3.2",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
     "@types/react-is": "^17.0.3",
     "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.11.0",
+    "@vitejs/plugin-react": "^1.2.0",
     "babel-jest": "^27.0.0",
     "commander": "^9.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild": "^0.14.11",
-    "eslint": "^8.2.0",
+    "esbuild": "^0.17.8",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
     "execa": "^6.0.0",
@@ -98,9 +117,9 @@
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard-scss": "^3.0.0",
     "through2": "^4.0.2",
-    "ts-node": "^10.5.0",
+    "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.5",
+    "typescript": "^4.6.2",
     "vite": "^2.9.15"
   },
   "peerDependencies": {

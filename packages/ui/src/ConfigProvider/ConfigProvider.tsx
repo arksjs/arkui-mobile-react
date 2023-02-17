@@ -1,8 +1,8 @@
 import type { ConfigProviderProps } from './types'
 import { ConfigContext, defaultValue } from './context'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 
-const AkConfigProvider: FC<ConfigProviderProps> = props => {
+const TaConfigProvider: FC<ConfigProviderProps> = props => {
   return (
     <ConfigContext.Provider
       value={{
@@ -14,4 +14,4 @@ const AkConfigProvider: FC<ConfigProviderProps> = props => {
   )
 }
 
-export default AkConfigProvider
+export default TaConfigProvider

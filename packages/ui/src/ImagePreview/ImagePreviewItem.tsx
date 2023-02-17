@@ -1,8 +1,7 @@
-import classNames from 'classnames'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { FC } from '../helpers/types'
-import { rangeNumber } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
+import classNames from 'classnames'
+import { rangeNumber, type FC } from '../helpers'
+import { useTouch } from '../hooks'
 import { Image } from '../Image'
 import type { OnLoad } from '../Image/types'
 import type { DistanceOptions, ImageObject } from './types'
@@ -59,7 +58,7 @@ const ImagePreviewItem: FC<{
   const [zoomAnimated, setZoomAnimated] = useState(false)
   const coords = useRef<ImageCoords | null>(null)
 
-  const classes = classNames('ak-preview-image_image-container', {
+  const classes = classNames('ta-image-preview_image-container', {
     animated: zoomAnimated
   })
 
@@ -296,7 +295,7 @@ const ImagePreviewItem: FC<{
   )
 
   return (
-    <div className="ak-swiper-item">
+    <div className="ta-swiper-item">
       <div className={classes} ref={imageWrapperEl}>
         {renderImage}
       </div>

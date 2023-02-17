@@ -1,4 +1,4 @@
-import { AkStickyView, AkGroup, StickyViewOnChange } from '@/index'
+import { TaStickyView, TaGroup, StickyViewOnChange } from '@/index'
 
 export default function ExpSticky() {
   const onChange: StickyViewOnChange = res => {
@@ -7,22 +7,22 @@ export default function ExpSticky() {
 
   return (
     <>
-      <AkGroup title="Sticky View">
-        <AkStickyView className="exp-sticky-box" onChange={onChange}>
-          <AkStickyView.Item name="Sticky 1">
+      <TaGroup title="Sticky View">
+        <TaStickyView className="exp-sticky-box" onChange={onChange}>
+          <TaStickyView.Item name="Sticky 1">
             <div className="exp-sticky-box-1"></div>
-          </AkStickyView.Item>
-          <AkStickyView.Item name="Sticky 2">
+          </TaStickyView.Item>
+          <TaStickyView.Item name="Sticky 2">
             <div className="exp-sticky-box-2"></div>
-          </AkStickyView.Item>
-          <AkStickyView.Item name="Sticky 3">
+          </TaStickyView.Item>
+          <TaStickyView.Item name="Sticky 3">
             <div className="exp-sticky-box-3"></div>
-          </AkStickyView.Item>
-          <AkStickyView.Item name="Sticky 4">
+          </TaStickyView.Item>
+          <TaStickyView.Item name="Sticky 4">
             <div className="exp-sticky-box-4"></div>
-          </AkStickyView.Item>
-        </AkStickyView>
-      </AkGroup>
+          </TaStickyView.Item>
+        </TaStickyView>
+      </TaGroup>
     </>
   )
 }

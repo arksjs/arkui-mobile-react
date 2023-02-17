@@ -1,8 +1,3 @@
-import classNames from 'classnames'
-import { CascaderViewEmits, CascaderViewProps, CascaderViewRef } from './types'
-import type { FRVFC } from '../helpers/types'
-import { Empty } from '../Empty'
-import { useLocale } from '../ConfigProvider/context'
 import {
   forwardRef,
   useImperativeHandle,
@@ -11,8 +6,12 @@ import {
   useEffect,
   useState
 } from 'react'
+import classNames from 'classnames'
+import { CascaderViewEmits, CascaderViewProps, CascaderViewRef } from './types'
+import { Empty } from '../Empty'
+import { useLocale } from '../ConfigProvider/context'
 import ViewGroup from './CascaderViewGroup'
-import { isSameArray, noop } from '../helpers/util'
+import { isSameArray, noop, type FRVFC } from '../helpers'
 import { SelectorValue } from '../SelectorField/types'
 import { usePickerView } from '../Picker/use-picker'
 import { ColRow } from '../Picker/types'
@@ -25,7 +24,7 @@ interface SelectedTabs {
   value: number | string
 }
 
-const AkCascaderView: FRVFC<
+const TaCascaderView: FRVFC<
   CascaderViewRef,
   CascaderViewProps & CascaderViewEmits
 > = (props, ref) => {
@@ -35,14 +34,50 @@ const AkCascaderView: FRVFC<
   const [tabIndex, setTabIndex] = useState(0)
   const tempTabIndex = useRef(-1)
 
+  const tabOptions = useMemo(
+    () =>
+      selectedTabs.map(v => {
+        return {
+          label: v.label == null ? locale.cascaderDefaultTitle : v.label,
+          value: v.value
+        }
+      }),
+    [selectedTabs, locale]
+  )
+
+  function onItemClick(item: ColRow) {
+    if (item.disabled) {
+      return
+    }
+
+    const selecteds = getValuesByRow(item)
+
+    update(selecteds)
+
+    if (!item.hasChildren) {
+      if (!isSameArray(currentValues.current, selecteds)) {
+        onSelect(selecteds)
+        onChange()
+      } else {
+        onSelect(selecteds)
+      }
+    }
+  }
+
+  function onSelect(selecteds: SelectorValue[]) {
+    const selectDetail = updateOriginalValue(selecteds)
+
+    props.onSelect && props.onSelect(selectDetail.source)
+  }
+
   const {
     currentValues,
     getDetail,
     cols,
     update,
     getValuesByRow,
-    onChange,
-    updateOriginalValue
+    updateOriginalValue,
+    onChange
   } = usePickerView(props, {
     name: 'cascader',
     afterUpdate(valueArray, labelArray, cols) {
@@ -74,45 +109,9 @@ const AkCascaderView: FRVFC<
     )
   })
 
-  function onItemClick(item: ColRow) {
-    if (item.disabled) {
-      return
-    }
-
-    const selecteds = getValuesByRow(item)
-
-    update(selecteds)
-
-    if (!item.hasChildren) {
-      if (!isSameArray(currentValues.current, selecteds)) {
-        onSelect(selecteds)
-        onChange()
-      } else {
-        onSelect(selecteds)
-      }
-    }
-  }
-
-  function onSelect(selecteds: SelectorValue[]) {
-    const selectDetail = updateOriginalValue(selecteds, false)
-
-    props.onSelect && props.onSelect(selectDetail)
-  }
-
   function onTabChange(index: number | string) {
     setTabIndex(index as number)
   }
-
-  const tabOptions = useMemo(
-    () =>
-      selectedTabs.map(v => {
-        return {
-          label: v.label == null ? locale.cascaderDefaultTitle : v.label,
-          value: v.value
-        }
-      }),
-    [selectedTabs, locale]
-  )
 
   useEffect(() => {
     if (tabOptions.length === 0) {
@@ -128,7 +127,7 @@ const AkCascaderView: FRVFC<
     }
   }, [tabOptions])
 
-  const classes = classNames('ak-cascader-view', props.className)
+  const classes = classNames('ta-cascader-view', props.className)
 
   const renderGroups = useMemo(() => {
     return cols.map((colItem, listIndex) => (
@@ -154,13 +153,13 @@ const AkCascaderView: FRVFC<
   return (
     <div className={classes}>
       <Tab
-        className="ak-cascader-view_header"
+        className="ta-cascader-view_header"
         options={tabOptions}
         scrollThreshold={0}
         onChange={onTabChange}
         ref={tabRef}
       />
-      <div className="ak-cascader-view_body">
+      <div className="ta-cascader-view_body">
         {renderGroups}
         {cols.length === 0 ? (
           <Empty description={locale.cascaderEmptyText} />
@@ -172,4 +171,4 @@ const AkCascaderView: FRVFC<
   )
 }
 
-export default forwardRef(AkCascaderView)
+export default forwardRef(TaCascaderView)

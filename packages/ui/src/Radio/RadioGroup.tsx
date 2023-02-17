@@ -1,13 +1,13 @@
 import { useCallback, useRef } from 'react'
 import classNames from 'classnames'
 import type { RadioGroupEmits, RadioGroupProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import { useCheckGroup } from '../Checkbox/use-check'
 import Radio from './Radio'
 import type { ModelValue } from '../Checkbox/types'
 import { getCheckGroupClasses } from '../Checkbox/util'
 
-const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
+const TaRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   inline = false,
   onChange,
   children,
@@ -57,7 +57,7 @@ const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   })
 
   const classes = classNames(
-    'ak-radio-group',
+    'ta-radio-group',
     getCheckGroupClasses({ inline, disabled: props.disabled }),
     props.className
   )
@@ -68,7 +68,7 @@ const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
         ? children
         : options2.map(item => {
             return (
-              <Radio key={item.value} value={item.value}>
+              <Radio key={item.value} checkedValue={item.value}>
                 {item.label}
               </Radio>
             )
@@ -83,4 +83,4 @@ const AkRadioGroup: FC<RadioGroupProps & RadioGroupEmits> = ({
   )
 }
 
-export default AkRadioGroup
+export default TaRadioGroup

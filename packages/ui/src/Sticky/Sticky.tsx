@@ -1,6 +1,3 @@
-import classNames from 'classnames'
-import type { ResetContainer, StickyProps, StickyRef } from './types'
-import type { FRFC } from '../helpers/types'
 import {
   forwardRef,
   useEffect,
@@ -8,17 +5,20 @@ import {
   useRef,
   useState
 } from 'react'
-import { widgetZIndex } from '../helpers/layer'
-import { useScroll } from '../hooks/use-scroll'
+import classNames from 'classnames'
+import type { ResetContainer, StickyProps, StickyRef } from './types'
 import {
+  widgetZIndex,
   getRelativeOffset,
   getScrollTop,
   getSizeValue,
-  querySelector
-} from '../helpers/dom'
+  querySelector,
+  type FRFC
+} from '../helpers'
+import { useScroll } from '../hooks'
 import { getStyles } from './util'
 
-const AkSticky: FRFC<StickyRef, StickyProps> = (
+const TaSticky: FRFC<StickyRef, StickyProps> = (
   { containSelector, ...props },
   ref
 ) => {
@@ -113,15 +113,15 @@ const AkSticky: FRFC<StickyRef, StickyProps> = (
     []
   )
 
-  const classes = classNames('ak-sticky', props.className)
+  const classes = classNames('ta-sticky', props.className)
 
   return (
     <div className={classes} style={getStyles(height ?? undefined)} ref={root}>
-      <div className="ak-sticky_content" ref={contentEl}>
+      <div className="ta-sticky_content" ref={contentEl}>
         {props.children}
       </div>
     </div>
   )
 }
 
-export default forwardRef(AkSticky)
+export default forwardRef(TaSticky)

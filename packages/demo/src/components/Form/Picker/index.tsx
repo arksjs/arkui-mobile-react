@@ -5,9 +5,9 @@ import {
   SelectorModelValue,
   SelectorValueFormatter,
   SelectorValueParser,
-  AkGroup,
-  AkCell,
-  AkPicker
+  TaGroup,
+  TaCell,
+  TaPicker
 } from '@/index'
 import { useState } from 'react'
 
@@ -48,44 +48,44 @@ export default function ExpPicker() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="单列">
-          <AkPicker options={options} onChange={onChange} />
-        </AkCell>
-        <AkCell label="多列">
-          <AkPicker options={multiOptions} onChange={onChange} />
-        </AkCell>
-        <AkCell label="级联">
-          <AkPicker options={cascadeOptions} onChange={onChange} />
-        </AkCell>
-        <AkCell label="地区">
-          <AkPicker
+      <TaGroup title="基础用法">
+        <TaCell label="单列">
+          <TaPicker options={options} onChange={onChange} />
+        </TaCell>
+        <TaCell label="多列">
+          <TaPicker options={multiOptions} onChange={onChange} />
+        </TaCell>
+        <TaCell label="级联">
+          <TaPicker options={cascadeOptions} onChange={onChange} />
+        </TaCell>
+        <TaCell label="地区">
+          <TaPicker
             options={regionOptions}
             fieldNames={{ value: 'label' }}
             onChange={onChange}
           />
-        </AkCell>
-        <AkCell label="formatter/parser">
-          <AkPicker
+        </TaCell>
+        <TaCell label="formatter/parser">
+          <TaPicker
             value={formatValue}
             formatter={formatter}
             parser={parser}
             options={multiOptions}
             onChange={onChange}
-          ></AkPicker>
-        </AkCell>
-        <AkCell label="禁用">
-          <AkPicker
+          ></TaPicker>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaPicker
             value={disableValue}
             options={multiOptions}
             disabled
             onChange={onChange}
           />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showPicker" isLink onClick={() => onCallApi()} />
-      </AkGroup>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showPicker" isLink onClick={() => onCallApi()} />
+      </TaGroup>
     </>
   )
 }

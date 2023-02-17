@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import type { BadgeProps } from './types'
-import type { CSSProperties, FC, RenderProp } from '../helpers/types'
 import {
   DEFAULT_MAX_COUNT,
   getBadgeClasses,
@@ -9,11 +9,18 @@ import {
   getDefaultContent,
   getShowContent
 } from './util'
-import { getNumber, isNumber, isString, rangeInteger } from '../helpers/util'
-import { useEffect, useState } from 'react'
-import { useFrameTask } from '../hooks/use-frame-task'
+import {
+  getNumber,
+  isNumber,
+  isString,
+  rangeInteger,
+  type CSSProperties,
+  type FC,
+  type RenderProp
+} from '../helpers'
+import { useFrameTask } from '../hooks'
 
-const AkBadge: FC<
+const TaBadge: FC<
   BadgeProps & {
     style?: CSSProperties
     renderBadge?: RenderProp<{
@@ -21,7 +28,7 @@ const AkBadge: FC<
     }>
   }
 > = props => {
-  const [content2, setCoutent2] = useState(getDefaultContent(props))
+  const [content2, setContent2] = useState(getDefaultContent(props))
   const { frameStart, frameStop } = useFrameTask()
 
   const classes = classNames(getClasses(props), props.className)
@@ -35,7 +42,7 @@ const AkBadge: FC<
     const val = props.content
 
     if (isString(val) || isString(content2)) {
-      setCoutent2(getDefaultContent(props))
+      setContent2(getDefaultContent(props))
       return
     }
 
@@ -47,7 +54,7 @@ const AkBadge: FC<
     const isReadyToHide = !props.showZero && val === 0
 
     if (!currentIsShow || isReadyToHide) {
-      setCoutent2(val)
+      setContent2(val)
     } else {
       const to = rangeInteger(
         val,
@@ -61,11 +68,11 @@ const AkBadge: FC<
         duration: Math.min(Math.abs(to - content2) * 50, 1000),
         progress: ({ current, frameIndex }) => {
           if (frameIndex % 3 === 0) {
-            setCoutent2(Math.round(current))
+            setContent2(Math.round(current))
           }
         },
         complete: ({ current }) => {
-          setCoutent2(current)
+          setContent2(current)
         }
       })
     }
@@ -89,11 +96,11 @@ const AkBadge: FC<
   )
 }
 
-AkBadge.defaultProps = {
+TaBadge.defaultProps = {
   maxCount: DEFAULT_MAX_COUNT,
   dot: false,
   showZero: false,
   animated: false
 }
 
-export default AkBadge
+export default TaBadge

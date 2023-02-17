@@ -1,8 +1,9 @@
 @import '../style/var.scss';
 
-.ak-modal {
+.ta-modal {
   &_box {
-    width: 400px;
+    width: calc(100% - 96px);
+    max-width: 480px;
     box-sizing: border-box;
     transform: scale(0);
     transition: all 0.2s;
@@ -18,7 +19,7 @@
   }
 
   &.visible {
-    .ak-modal_box {
+    .ta-modal_box {
       opacity: 1;
       transform: scale(1);
     }
@@ -38,17 +39,9 @@
     box-sizing: border-box;
     cursor: pointer;
 
-    .ak-icon {
-      --ak-icon-size: 32px;
-      --ak-icon-color: #{$font-color};
-    }
-  }
-}
-
-@media (max-width: 575px) {
-  .ak-modal {
-    &_box {
-      width: calc(100% - 96px);
+    .ta-icon {
+      --ta-icon-size: 32px;
+      --ta-icon-color: #{$font-color};
     }
   }
 }

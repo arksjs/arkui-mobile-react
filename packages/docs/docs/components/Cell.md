@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkCell } from 'arkui-mobile-react'
+import { TaCell } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -21,7 +21,7 @@ import { AkCell } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { CellArrowDirection } from 'arkui-mobile-react'
+import type { CellArrowDirection } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -32,7 +32,7 @@ import type { CellArrowDirection } from 'arkui-mobile-react'
 | description    | string             |         | 否   | 左侧附加描述文字                                                    |
 | content        | string             |         | 否   | 右侧文字                                                            |
 | required       | boolean            | false   | 否   | true 在左侧文字边上会展示一个 红色`*`箭头                           |
-| clickable      | boolean            | false   | 否   | 是否开启点击反馈，clickable=true 有点击态和箭头                     |
+| clickable      | boolean            | false   | 否   | 是否开启点击反馈                                                    |
 | isLink         | boolean            | false   | 否   | 是否展示右侧箭头并开启点击反馈                                      |
 | arrowDirection | CellArrowDirection | 'right' | 否   | isLink=true 时展示的箭头方向，可选值：'right', 'up', 'down', 'left' |
 
@@ -41,9 +41,9 @@ import type { CellArrowDirection } from 'arkui-mobile-react'
 ### 内容区（children）
 
 ```tsx
-<AkCell label="右侧图标">
-  <AkIcon icon="CloseOutlined" />
-</AkCell>
+<TaCell label="右侧图标">
+  <TaIcon icon="CloseOutlined" />
+</TaCell>
 ```
 
 注：添加 slot 后 `content` prop 属性失效。

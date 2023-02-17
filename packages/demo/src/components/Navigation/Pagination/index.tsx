@@ -1,4 +1,4 @@
-import { AkPagination, AkGroup, showToast } from '@/index'
+import { TaPagination, TaGroup, showToast } from '@/index'
 import { useState } from 'react'
 
 const total = 5
@@ -8,32 +8,32 @@ export default function ExpPagination() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkPagination current={current} total={total} onChange={setCurrent} />
-      </AkGroup>
-      <AkGroup title="自定义展示">
-        <AkPagination total={total}>
+      <TaGroup title="基础用法">
+        <TaPagination value={current} total={total} onChange={setCurrent} />
+      </TaGroup>
+      <TaGroup title="自定义展示">
+        <TaPagination total={total}>
           {({ current }) => <>{`第 ${current} 页`}</>}
-        </AkPagination>
-      </AkGroup>
-      <AkGroup title="renderPrev & renderNext">
-        <AkPagination
+        </TaPagination>
+      </TaGroup>
+      <TaGroup title="renderPrev & renderNext">
+        <TaPagination
           total={total}
           renderPrev={() => <>上一页</>}
           renderNext={() => <>下一页</>}
         />
-      </AkGroup>
-      <AkGroup title="CSS height=32px">
-        <AkPagination style={{ height: '32px' }} total={total} />
-      </AkGroup>
-      <AkGroup title="事件监听 change">
-        <AkPagination
+      </TaGroup>
+      <TaGroup title="CSS height=32px">
+        <TaPagination style={{ height: '32px' }} total={total} />
+      </TaGroup>
+      <TaGroup title="事件监听 change">
+        <TaPagination
           total={total}
           onChange={current => {
             showToast(`跳转到第 ${current} 页`)
           }}
         />
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

@@ -3,10 +3,10 @@ import {
   CountDownOnPause,
   CountDownOnResume,
   showToast,
-  AkGroup,
-  AkCell,
-  AkCountDown,
-  AkButton,
+  TaGroup,
+  TaCell,
+  TaCountDown,
+  TaButton,
   CountDownRef
 } from '@/index'
 import { useRef, useState } from 'react'
@@ -46,33 +46,33 @@ export default function ExpCountDown() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认" className="exp-countDown-box">
-          <AkCountDown initialTiming={300 * 1000} />
-        </AkCell>
-        <AkCell label="显示天数" className="exp-countDown-box">
-          <AkCountDown initialTiming={1.5 * 24 * 3600 * 1000} showDays />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="Slot render">
-        <AkCell label="中文显示" className="exp-countDown-box">
-          <AkCountDown
+      <TaGroup title="基础用法">
+        <TaCell label="默认" className="exp-countDown-box">
+          <TaCountDown initialTiming={300 * 1000} />
+        </TaCell>
+        <TaCell label="显示天数" className="exp-countDown-box">
+          <TaCountDown initialTiming={1.5 * 24 * 3600 * 1000} showDays />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="Slot render">
+        <TaCell label="中文显示" className="exp-countDown-box">
+          <TaCountDown
             initialTiming={300 * 1000}
             render={countDown =>
               `${countDown.fullHours}时${countDown.minutes}分${countDown.seconds}秒`
             }
           />
-        </AkCell>
-        <AkCell label="毫秒" className="exp-countDown-box">
-          <AkCountDown
+        </TaCell>
+        <TaCell label="毫秒" className="exp-countDown-box">
+          <TaCountDown
             initialTiming={300 * 1000}
             render={countDown =>
               `${countDown.fullHours}:${countDown.minutes}:${countDown.seconds}.${countDown.milliseconds}`
             }
-          ></AkCountDown>
-        </AkCell>
-        <AkCell label="自定义风格" className="exp-countDown-box">
-          <AkCountDown
+          ></TaCountDown>
+        </TaCell>
+        <TaCell label="自定义风格" className="exp-countDown-box">
+          <TaCountDown
             initialTiming={300 * 1000}
             render={countDown => (
               <>
@@ -87,13 +87,13 @@ export default function ExpCountDown() {
                 </span>
               </>
             )}
-          ></AkCountDown>
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="时间监听">
-        <AkCell label="onPause/onResume/onEnd" className="exp-countDown-box">
+          ></TaCountDown>
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="时间监听">
+        <TaCell label="onPause/onResume/onEnd" className="exp-countDown-box">
           <div className="exp-countDown-time-r">
-            <AkCountDown
+            <TaCountDown
               initialTiming={100 * 1000}
               onPause={onPause}
               onResume={onResume}
@@ -101,14 +101,14 @@ export default function ExpCountDown() {
               ref={ref}
             />
           </div>
-          <AkButton onClick={onPauseOrResume} size="small">
+          <TaButton onClick={onPauseOrResume} size="small">
             {paused ? '恢复' : '暂停'}
-          </AkButton>
-          <AkButton onClick={onReset} size="small" type="danger">
+          </TaButton>
+          <TaButton onClick={onReset} size="small" type="danger">
             重置
-          </AkButton>
-        </AkCell>
-      </AkGroup>
+          </TaButton>
+        </TaCell>
+      </TaGroup>
     </>
   )
 }

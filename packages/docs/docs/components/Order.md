@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkOrder } from 'arkui-mobile-react'
+import { TaOrder } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -21,7 +21,7 @@ import { AkOrder } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { OrderOnDelete } from 'arkui-mobile-react'
+import type { OrderOnDelete } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -57,7 +57,7 @@ interface Item {
 ### 列表项（children）
 
 ```tsx
-<AkOrder
+<TaOrder
   columnNumber="4"
   items={items2}
   onUpdateItems={setItems2 as any}

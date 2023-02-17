@@ -1,4 +1,4 @@
-import { AkTab, AkGroup, TabOnChange, showToast } from '@/index'
+import { TaTab, TaGroup, TabOnChange, showToast } from '@/index'
 import { shortTabList, tabList, mixTabList, subTabList } from './data'
 
 export default function ExpTab() {
@@ -9,31 +9,31 @@ export default function ExpTab() {
 
   return (
     <>
-      <AkGroup title="基础用法">
+      <TaGroup title="基础用法">
         <div className="exp-tab-box">
-          <AkTab options={shortTabList} />
+          <TaTab options={shortTabList} />
         </div>
-      </AkGroup>
-      <AkGroup title="滚动（阈值 scrollThreshold = 4）">
+      </TaGroup>
+      <TaGroup title="滚动（阈值 scrollThreshold = 4）">
         <div className="exp-tab-box">
-          <AkTab options={tabList} />
+          <TaTab options={tabList} />
         </div>
-      </AkGroup>
-      <AkGroup title="Mix">
+      </TaGroup>
+      <TaGroup title="Mix">
         <div className="exp-tab-box">
-          <AkTab options={mixTabList} activeValue={2} />
+          <TaTab options={mixTabList} value={2} />
         </div>
-      </AkGroup>
-      <AkGroup title="带副标签">
+      </TaGroup>
+      <TaGroup title="带副标签">
         <div className="exp-tab-box">
-          <AkTab options={subTabList} />
+          <TaTab options={subTabList} />
         </div>
-      </AkGroup>
-      <AkGroup title="change 事件">
+      </TaGroup>
+      <TaGroup title="change 事件">
         <div className="exp-tab-box">
-          <AkTab options={shortTabList} onChange={onChange} />
+          <TaTab options={shortTabList} onChange={onChange} />
         </div>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

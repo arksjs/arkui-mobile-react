@@ -1,20 +1,19 @@
-import classNames from 'classnames'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import classNames from 'classnames'
 import type { StopwatchEmits, StopwatchProps, StopwatchRef } from './types'
-import type { FRVFC, RenderProp } from '../helpers/types'
-import { cloneData } from '../helpers/util'
+import { cloneData, type FRVFC, type RenderProp } from '../helpers'
 import { useCountTime } from '../CountDown/use-count-time'
 import { getCountTime } from '../CountDown/util'
 import type { CountTime } from '../CountDown/types'
 
-const AkStopwatch: FRVFC<
+const TaStopwatch: FRVFC<
   StopwatchRef,
   StopwatchProps &
     StopwatchEmits & {
       render?: RenderProp<CountTime>
     }
 > = ({ showMilliseconds = true, thousands = true, render, ...props }, ref) => {
-  const classes = classNames('ak-stopwatch', props.className)
+  const classes = classNames('ta-stopwatch', props.className)
 
   const time = useRef(0)
   const startTime = useRef(0)
@@ -115,4 +114,4 @@ const AkStopwatch: FRVFC<
   return <div className={classes}>{renderChildren()}</div>
 }
 
-export default forwardRef(AkStopwatch)
+export default forwardRef(TaStopwatch)

@@ -1,8 +1,8 @@
 import {
-  AkTabView,
-  AkScrollView,
-  AkEmpty,
-  AkGroup,
+  TaTabView,
+  TaScrollView,
+  TaEmpty,
+  TaGroup,
   ScrollViewOnRefreshing
 } from '@/index'
 
@@ -15,53 +15,53 @@ export default function ExpTabView() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkTabView className="exp-tabView">
-          <AkTabView.Item name="Tab 1">
-            <AkScrollView
+      <TaGroup title="基础用法">
+        <TaTabView className="exp-tabView">
+          <TaTabView.Item name="Tab 1">
+            <TaScrollView
               className="exp-tabView-scroll-view"
               enablePullDirections={['down']}
               scrollY
               scrollX
               onRefreshing={onRefreshing}
             >
-              <AkEmpty
+              <TaEmpty
                 className="exp-tabView-empty"
                 description="Tab 1 下拉刷新"
-              ></AkEmpty>
-            </AkScrollView>
-          </AkTabView.Item>
-          <AkTabView.Item name="Tab 2">
-            <AkEmpty
+              ></TaEmpty>
+            </TaScrollView>
+          </TaTabView.Item>
+          <TaTabView.Item name="Tab 2">
+            <TaEmpty
               className="exp-tabView-empty"
               description="Tab 2"
-            ></AkEmpty>
-          </AkTabView.Item>
-        </AkTabView>
-      </AkGroup>
-      <AkGroup title="垂直">
-        <AkTabView className="exp-tabView" initialVertical scrollThreshold={1}>
-          <AkTabView.Item name="Tab 1">
-            <AkScrollView
+            ></TaEmpty>
+          </TaTabView.Item>
+        </TaTabView>
+      </TaGroup>
+      <TaGroup title="垂直">
+        <TaTabView className="exp-tabView" initialVertical scrollThreshold={1}>
+          <TaTabView.Item name="Tab 1">
+            <TaScrollView
               className="exp-tabView-scroll-view"
               enablePullDirections={['down']}
               scroll-y
               onRefreshing={onRefreshing}
             >
-              <AkEmpty
+              <TaEmpty
                 className="exp-tabView-empty"
                 description="Tab 1 下拉刷新"
-              ></AkEmpty>
-            </AkScrollView>
-          </AkTabView.Item>
-          <AkTabView.Item name="Tab 2">
-            <AkEmpty
+              ></TaEmpty>
+            </TaScrollView>
+          </TaTabView.Item>
+          <TaTabView.Item name="Tab 2">
+            <TaEmpty
               className="exp-tabView-empty"
               description="Tab 2"
-            ></AkEmpty>
-          </AkTabView.Item>
-        </AkTabView>
-      </AkGroup>
+            ></TaEmpty>
+          </TaTabView.Item>
+        </TaTabView>
+      </TaGroup>
     </>
   )
 }

@@ -1,8 +1,8 @@
 import {
-  AkCell,
-  AkGroup,
-  AkModal,
-  AkImage,
+  TaCell,
+  TaGroup,
+  TaModal,
+  TaImage,
   PopupOnVisibleStateChange,
   PopupOnCancel,
   showToast
@@ -56,24 +56,24 @@ export default function ExpModal() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell label="默认" isLink onClick={() => onShow()} />
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell label="默认" isLink onClick={() => onShow()} />
+        <TaCell
           label="蒙层可点击"
           isLink
           onClick={() => onShow({ maskClosable: true, showClose: true })}
         />
-        <AkCell
+        <TaCell
           label="隐藏关闭按钮"
           isLink
           onClick={() => onShow({ showClose: false, maskClosable: true })}
         />
-      </AkGroup>
-      <AkGroup title="自定义子节点">
-        <AkCell label="图片" isLink onClick={() => setVisible2(true)} />
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="自定义子节点">
+        <TaCell label="图片" isLink onClick={() => setVisible2(true)} />
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell
           label="onCancel"
           isLink
           onClick={() => {
@@ -81,7 +81,7 @@ export default function ExpModal() {
             onShow({ maskClosable: true })
           }}
         />
-        <AkCell
+        <TaCell
           label="onVisibleStateChange"
           isLink
           onClick={() => {
@@ -89,18 +89,18 @@ export default function ExpModal() {
             onShow()
           }}
         />
-      </AkGroup>
-      <AkModal
+      </TaGroup>
+      <TaModal
         visible={visible}
         maskClosable={maskClosable}
         showClose={showClose}
         onCancel={onCancel}
         onVisibleStateChange={onVisibleStateChange}
         onUpdateVisible={v => setVisible(v)}
-      ></AkModal>
-      <AkModal visible={visible2} onUpdateVisible={v => setVisible2(v)}>
-        <AkImage className="exp-image-image" src={imageUrl} aspectRatio="1" />
-      </AkModal>
+      ></TaModal>
+      <TaModal visible={visible2} onUpdateVisible={v => setVisible2(v)}>
+        <TaImage className="exp-image-image" src={imageUrl} aspectRatio="1" />
+      </TaModal>
     </>
   )
 }

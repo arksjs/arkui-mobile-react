@@ -1,21 +1,20 @@
+import { forwardRef, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import type { DropdownEmits, DropdownProps } from './types'
-import type { FRFC, RenderProp } from '../helpers/types'
 import { usePopup } from '../popup/use-popup'
 import type { PopupRef } from '../popup/types'
-import { forwardRef, useMemo, useRef, useState } from 'react'
-import Exception from '../helpers/exception'
-import { querySelector } from '../helpers/dom'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import { querySelector, type FRFC, type RenderProp } from '../helpers'
+import { useException, useResizeObserver } from '../hooks'
 
-const AkDropdown: FRFC<
+const TaDropdown: FRFC<
   PopupRef,
   DropdownProps &
     DropdownEmits & {
       render?: RenderProp<{ height: number }>
     }
 > = (props, ref) => {
+  const { printPropError } = useException('Dropdown')
   const root = useRef<HTMLDivElement>(null)
   const [top, setTop] = useState(-1)
   const [height, setHeight] = useState(0)
@@ -27,7 +26,7 @@ const AkDropdown: FRFC<
     }
   })
 
-  const classes = classNames(['ak-dropdown', popupClasses, props.className])
+  const classes = classNames(['ta-dropdown', popupClasses, props.className])
 
   const styles = Object.assign(
     {
@@ -40,13 +39,7 @@ const AkDropdown: FRFC<
     const $target = querySelector(props.selector)
 
     if (!$target) {
-      console.error(
-        new Exception(
-          'Cannot find element through "selector"',
-          Exception.TYPE.PROP_ERROR,
-          'Dropdown'
-        )
-      )
+      printPropError(`Cannot find element through "selector"`)
       return
     }
 
@@ -69,11 +62,11 @@ const AkDropdown: FRFC<
 
   return createPortal(
     <div className={classes} style={styles} ref={root}>
-      <div className="ak-mask" onClick={onMaskClick}></div>
-      <div className="ak-dropdown_inner">{renderChildren}</div>
+      <div className="ta-mask" onClick={onMaskClick}></div>
+      <div className="ta-dropdown_inner">{renderChildren}</div>
     </div>,
     document.body
   )
 }
 
-export default forwardRef(AkDropdown)
+export default forwardRef(TaDropdown)

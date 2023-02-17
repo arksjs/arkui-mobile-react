@@ -1,13 +1,10 @@
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { CSSProperties, PlacementType } from '../helpers/types'
-import { getEnumsValue } from '../helpers/validator'
-import type { SafeAreaInsets } from '../hooks/types'
-import type { DrawerProps } from './types'
-
-export const getClasses = (showMask?: boolean) => [
-  'ak-drawer',
-  { 'no--mask': !showMask }
-]
+import {
+  PLACEMENT_TYPES,
+  getEnumsValue,
+  type CSSProperties,
+  type PlacementType
+} from '../helpers'
+import type { SafeAreaInsets } from '../hooks'
 
 export const getInnerStyles = ({
   placement,
@@ -45,8 +42,8 @@ export const getInnerClasses = ({
   placement?: PlacementType
   hasHeader: boolean
 }) => [
-  'ak-drawer_inner',
-  'ak-horizontal-hairline',
+  'ta-drawer_inner',
+  'ta-horizontal-hairline',
   'placement--' + getEnumsValue(PLACEMENT_TYPES, placement),
   {
     'has--header': hasHeader

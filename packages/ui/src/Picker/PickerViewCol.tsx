@@ -1,11 +1,11 @@
+import type { UIEventHandler } from 'react'
 import classNames from 'classnames'
 import type { ColRow } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { VirtualList } from '../VirtualList'
-import type { UIEventHandler } from 'react'
 import { DEFAULT_ITEM_HEIGHT } from './util'
 
-const AkPickerViewCol: VFC<{
+const TaPickerViewCol: VFC<{
   list: ColRow[]
   listIndex: number
   onListScroll: ($el: HTMLElement, index: number) => void
@@ -27,16 +27,16 @@ const AkPickerViewCol: VFC<{
   }
 
   return (
-    <div className="ak-picker-view_col">
+    <div className="ta-picker-view_col">
       <VirtualList
-        className="ak-picker-view_list"
+        className="ta-picker-view_list"
         ids={list.map(v => v.value)}
         data-index={listIndex}
         itemSize={getItemSize}
         onScroll={onScroll}
         render={({ index }) => {
           const item = list[index]
-          const itemClasses = classNames('ak-picker-view_item', {
+          const itemClasses = classNames('ta-picker-view_item', {
             selected: item.selected,
             disabled: item.disabled
           })
@@ -52,4 +52,4 @@ const AkPickerViewCol: VFC<{
   )
 }
 
-export default AkPickerViewCol
+export default TaPickerViewCol

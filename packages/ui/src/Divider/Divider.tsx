@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import type { DividerProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { getClasses } from './util'
 
-const AkDivider: VFC<DividerProps> = props => {
+const TaDivider: VFC<DividerProps> = props => {
   const classes = classNames(getClasses(props), props.className)
 
   return (
@@ -12,9 +12,8 @@ const AkDivider: VFC<DividerProps> = props => {
     </div>
   )
 }
-
-AkDivider.defaultProps = {
+TaDivider.defaultProps = {
   dashed: false
 }
 
-export default AkDivider
+export default TaDivider

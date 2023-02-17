@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkIcon } from 'arkui-mobile-react'
+import { TaIcon } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -52,7 +52,7 @@ export default defineConfig({
 import QqSVG from './QqSVG.svg?jsx'
 
 export function MyIcon() {
-  return <AkIcon className="exp-icon-icon color-primary" icon={QqSVG} />
+  return <TaIcon className="exp-icon-icon color-primary" icon={QqSVG} />
 }
 ```
 
@@ -93,14 +93,14 @@ svgjs -d ./icons -o path/to/lib/svg.js
 
 ```js
 import { FC } from 'react'
-import { AkButton } from 'arkui-mobile-react'
-import 'arkui-mobile-react/es/style'
+import { TaButton } from 'tantalum-ui-mobile-react'
+import 'tantalum-ui-mobile-react/es/style/index'
 
 import 'path/to/lib/svg.js'
 
 const App: FC = () => (
   <div className="App">
-    <AkButton type="primary">Button</AkButton>
+    <TaButton type="primary">Button</TaButton>
   </div>
 )
 
@@ -110,9 +110,9 @@ export default App
 #### 4. Icon 组件通过展示
 
 ```tsx
-<AkIcon icon="icon-homeTab" />
+<TaIcon icon="icon-homeTab" />
 ```
 
 ### 附录：示例图标库
 
-组件示例使用了一套图标库，涵盖了一些日常使用图标，具体效果和使用方式可以查看 [@arksjs/ui-icons](https://github.com/arksjs/arkui-mobile-vue/tree/main/packages/icons)。
+组件示例使用了一套图标库，涵盖了一些日常使用图标，具体效果和使用方式可以查看 [@arksjs/ui-icons](https://github.com/arksjs/tantalum-ui-mobile/tree/main/packages/icons)。

@@ -1,4 +1,4 @@
-import { AkCopy, AkButton, AkGroup, showToast } from '@/index'
+import { TaCopy, TaButton, TaGroup, showToast } from '@/index'
 
 export default function ExpCopy() {
   const onSuccess = (text: string) => {
@@ -17,25 +17,25 @@ export default function ExpCopy() {
 
   return (
     <>
-      <AkGroup title="基本用法">
+      <TaGroup title="基本用法">
         <div className="exp-copy-pad">
-          <AkCopy className="exp-copy-box" text="复制的文本">
-            <AkButton type="primary">点击复制</AkButton>
-          </AkCopy>
+          <TaCopy className="exp-copy-box" text="复制的文本">
+            <TaButton type="primary">点击复制</TaButton>
+          </TaCopy>
         </div>
-      </AkGroup>
-      <AkGroup title="事件监听">
+      </TaGroup>
+      <TaGroup title="事件监听">
         <div className="exp-copy-pad">
-          <AkCopy
+          <TaCopy
             className="exp-copy-box"
             text="复制的文本2"
             onSuccess={onSuccess}
             onError={onError}
           >
-            <AkButton type="primary">点击复制</AkButton>
-          </AkCopy>
+            <TaButton type="primary">点击复制</TaButton>
+          </TaCopy>
         </div>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

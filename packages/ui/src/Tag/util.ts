@@ -1,7 +1,10 @@
-import { getColorObject } from '../helpers/color'
-import { SIZE_TYPES, STATE_TYPES } from '../helpers/constants'
-import type { CSSProperties } from '../helpers/types'
-import { getEnumsValue } from '../helpers/validator'
+import {
+  getColorObject,
+  SIZE_TYPES,
+  STATE_TYPES,
+  getEnumsValue,
+  type CSSProperties
+} from '../helpers'
 import type { TagProps, PatternType } from './types'
 
 export const TAG_PATTERN_TYPES: PatternType[] = ['light', 'dark', 'plain']
@@ -10,7 +13,7 @@ export const getClasses = (props: TagProps) => {
   const { hasColor, isDark } = getColorObject(props.color)
 
   return [
-    'ak-tag',
+    'ta-tag',
     'type--' +
       (hasColor ? STATE_TYPES[1] : getEnumsValue(STATE_TYPES, props.type)),
     'size--' + getEnumsValue(SIZE_TYPES, props.size),
@@ -30,8 +33,8 @@ export const getStyles = (color?: string) => {
   const colorObj = getColorObject(color)
 
   if (colorObj.hasColor) {
-    styles[`--ak-color`] = colorObj.varColor
-    styles[`--ak-black-color`] = colorObj.varBlackColor
+    styles[`--ta-color`] = colorObj.varColor
+    styles[`--ta-black-color`] = colorObj.varBlackColor
   }
 
   return styles

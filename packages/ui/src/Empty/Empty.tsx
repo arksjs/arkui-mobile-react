@@ -1,14 +1,14 @@
 import classNames from 'classnames'
 import type { EmptyProps } from './types'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 import { getImageUrl } from './util'
 
-const AkEmpty: FC<
+const TaEmpty: FC<
   EmptyProps & {
     renderImage?: RenderProp
   }
 > = ({ description = '', ...props }) => {
-  const classes = classNames('ak-empty', props.className)
+  const classes = classNames('ta-empty', props.className)
   const imageUrl = getImageUrl(props.type)
 
   return (
@@ -16,11 +16,11 @@ const AkEmpty: FC<
       {props.renderImage ? (
         props.renderImage()
       ) : (
-        <img className="ak-empty_image" src={imageUrl} />
+        <img className="ta-empty_image" src={imageUrl} />
       )}
 
       {description ? (
-        <p className="ak-empty_description">{description}</p>
+        <p className="ta-empty_description">{description}</p>
       ) : (
         <></>
       )}
@@ -29,4 +29,4 @@ const AkEmpty: FC<
   )
 }
 
-export default AkEmpty
+export default TaEmpty

@@ -1,4 +1,4 @@
-import type { OnClick, SizeType, StateType } from '../helpers/types'
+import type { OnClick, SizeType, StateType } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export type ShapeType = 'rectangle' | 'round' | 'circle' | 'square'
@@ -32,3 +32,5 @@ export interface ButtonProps extends ButtonGroupProps {
 export interface ButtonEmits {
   onClick?: OnClick<HTMLButtonElement>
 }
+
+export type { ShapeType as ButtonShape, PatternType as ButtonPattern }

@@ -1,13 +1,15 @@
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { CSSProperties } from '../helpers/types'
-import { capitalize } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
-import type { SafeAreaInsets } from '../hooks/types'
+import {
+  PLACEMENT_TYPES,
+  capitalize,
+  getEnumsValue,
+  type CSSProperties
+} from '../helpers'
+import type { SafeAreaInsets } from '../hooks'
 import type { FixedProps } from './types'
 
 export const getInnerClasses = (props: FixedProps, fixed: boolean) => {
   return [
-    'ak-fixed_inner',
+    'ta-fixed_inner',
     'placement--' + getEnumsValue(PLACEMENT_TYPES, props.placement),
     { fixed }
   ]

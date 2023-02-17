@@ -1,4 +1,4 @@
-import type { StateType } from '../helpers/types'
+import type { StateType } from '../helpers'
 
 export type ButtonOption = {
   text: string
@@ -16,4 +16,9 @@ export interface SwipeCellProps {
 
 export interface SwipeCellEmits {
   onButtonClick?: OnButtonClick
+}
+
+export type {
+  ButtonOption as SwipeCellButtonOption,
+  OnButtonClick as SwipeCellOnButtonClick
 }

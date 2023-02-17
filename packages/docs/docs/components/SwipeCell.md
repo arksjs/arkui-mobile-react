@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSwipeCell } from 'arkui-mobile-react'
+import { TaSwipeCell } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -22,7 +22,7 @@ import { AkSwipeCell } from 'arkui-mobile-react'
 import type {
   SwipeCellButtonOption,
   SwipeCellOnButtonClick
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -61,14 +61,14 @@ const buttons: SwipeCellButtonOption[] = [
 
 | 事件          | 描述           | 回调函数参数                                            | TypeScript 函数        |
 | ------------- | -------------- | ------------------------------------------------------- | ---------------------- |
-| onbuttonClick | 点击按钮时触发 | payload: { item: SwipeCellButtonOption, index: number } | SwipeCellOnButtonClick |
+| onButtonClick | 点击按钮时触发 | payload: { item: SwipeCellButtonOption, index: number } | SwipeCellOnButtonClick |
 
 ## Slots
 
 ### 被挂载元素（children）
 
 ```tsx
-<AkSwipeCell buttons={buttons}>
-  <AkCell label="单元格" content="向左划"></AkCell>
-</AkSwipeCell>
+<TaSwipeCell buttons={buttons}>
+  <TaCell label="单元格" content="向左划"></TaCell>
+</TaSwipeCell>
 ```

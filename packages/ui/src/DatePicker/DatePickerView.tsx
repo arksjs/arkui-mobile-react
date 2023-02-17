@@ -1,9 +1,10 @@
 import type { DatePickerViewEmits, DatePickerViewProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { PickerView } from '../Picker'
 import { useHandlers } from './use-date-picker'
+import type { SelectorModelValue } from '../SelectorField/types'
 
-const AkDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
+const TaDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
   formatTemplate,
   initialMode,
   minDate,
@@ -19,11 +20,15 @@ const AkDatePickerView: VFC<DatePickerViewProps & DatePickerViewEmits> = ({
     filter
   })
 
+  function onChange(e: SelectorModelValue) {
+    props.onChange && props.onChange(e)
+  }
+
   return (
     <PickerProvider>
-      <PickerView {...props} options={[]} />
+      <PickerView {...props} options={[]} onChange={onChange} />
     </PickerProvider>
   )
 }
 
-export default AkDatePickerView
+export default TaDatePickerView

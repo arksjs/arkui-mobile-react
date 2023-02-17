@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkEmpty } from 'arkui-mobile-react'
+import { TaEmpty } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkEmpty } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { EmptyType } from 'arkui-mobile-react'
+import type { EmptyType } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -34,20 +34,20 @@ import type { EmptyType } from 'arkui-mobile-react'
 ### 底部（children）
 
 ```tsx
-<AkEmpty description="网络错误" type="network">
-  <AkButton type="primary" size="small">
+<TaEmpty description="网络错误" type="network">
+  <TaButton type="primary" size="small">
     刷新试试
-  </AkButton>
-</AkEmpty>
+  </TaButton>
+</TaEmpty>
 ```
 
 ### 图片区域（renderImage）
 
 ```tsx
-<AkEmpty
+<TaEmpty
   description="网站被小猫咪吃了"
   renderImage={() => (
-    <AkImage
+    <TaImage
       className="exp-empty-custom-image"
       src="https://cdn.fox2.cn/vfox/swiper/different-1.jpg"
     />

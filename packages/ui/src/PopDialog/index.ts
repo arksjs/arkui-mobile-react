@@ -1,7 +1,7 @@
 import PopDialog from './PopDialog'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { PlacementType, EmptyObject, Selector } from '../helpers/types'
+import type { Selector, PlacementType, EmptyObject } from '../helpers'
 
 const showPopDialog = createShowPopup<
   {
@@ -21,5 +21,4 @@ const showPopDialog = createShowPopup<
 })
 
 export { PopDialog, showPopDialog }
-
 export default PopDialog

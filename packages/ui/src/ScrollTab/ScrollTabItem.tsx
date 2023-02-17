@@ -1,22 +1,22 @@
 import classNames from 'classnames'
 import type { ScrollTabItemProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 
-const AkScrollTabItem: FC<ScrollTabItemProps> = props => {
+const TaScrollTabItem: FC<ScrollTabItemProps> = ({ name, title, ...props }) => {
   const classes = classNames(
-    'ak-sticky-view-item',
-    'ak-scroll-tab-item',
+    'ta-sticky-view-item',
+    'ta-scroll-tab-item',
     props.className
   )
 
   return (
-    <div className={classes} data-name={props.name}>
-      <div className="ak-sticky-view-item_header">{props.name}</div>
-      <div className="ak-sticky-view-item_body">{props.children}</div>
+    <div className={classes} data-name={name} data-title={title || name}>
+      <div className="ta-sticky-view-item_header">{name}</div>
+      <div className="ta-sticky-view-item_body">{props.children}</div>
     </div>
   )
 }
 
-AkScrollTabItem.displayName = 'AkStickyViewItem'
+TaScrollTabItem.displayName = 'TaStickyViewItem'
 
-export default AkScrollTabItem
+export default TaScrollTabItem

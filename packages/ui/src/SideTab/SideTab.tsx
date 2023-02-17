@@ -1,14 +1,14 @@
-import classNames from 'classnames'
 import { forwardRef, useCallback } from 'react'
+import classNames from 'classnames'
 import type { SideTabProps, SideTabEmits } from './types'
-import type { FRVFC } from '../helpers/types'
+import type { FRVFC } from '../helpers'
 import { useTab } from '../Tab/use-tab'
 import { Badge } from '../Badge'
 import { Icon } from '../Icon'
 import { getItemClasses } from './util'
 import type { TabRef } from '../Tab/types'
 
-const AkSideTab: FRVFC<TabRef, SideTabProps & SideTabEmits> = (
+const TaSideTab: FRVFC<TabRef, SideTabProps & SideTabEmits> = (
   { className, ...tabProps },
   ref
 ) => {
@@ -20,7 +20,7 @@ const AkSideTab: FRVFC<TabRef, SideTabProps & SideTabEmits> = (
     }
   )
 
-  const classes = classNames('ak-side-tab', className)
+  const classes = classNames('ta-side-tab', className)
 
   const renderItems = useCallback(() => {
     return options2.map((item, index) => (
@@ -29,13 +29,13 @@ const AkSideTab: FRVFC<TabRef, SideTabProps & SideTabEmits> = (
         key={item.value}
         onClick={() => onChange(item.value)}
       >
-        <Badge className="ak-side-tab_item-inner" {...item.badge}>
+        <Badge className="ta-side-tab_item-inner" {...item.badge}>
           {item.icon && item.activeIcon ? (
             <Icon icon={index === activeIndex ? item.activeIcon : item.icon} />
           ) : (
             <></>
           )}
-          <span className="ak-side-tab_item-text">{item.label}</span>
+          <span className="ta-side-tab_item-text">{item.label}</span>
         </Badge>
       </li>
     ))
@@ -43,11 +43,11 @@ const AkSideTab: FRVFC<TabRef, SideTabProps & SideTabEmits> = (
 
   return (
     <div className={classes} style={styles}>
-      <ul className="ak-side-tab_list" ref={listEl}>
+      <ul className="ta-side-tab_list" ref={listEl}>
         {renderItems()}
       </ul>
     </div>
   )
 }
 
-export default forwardRef(AkSideTab)
+export default forwardRef(TaSideTab)

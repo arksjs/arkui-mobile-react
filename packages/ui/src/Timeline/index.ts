@@ -6,5 +6,4 @@ const Timeline = Object.assign(_Timeline, {
 })
 
 export { Timeline, TimelineItem }
-
 export default Timeline

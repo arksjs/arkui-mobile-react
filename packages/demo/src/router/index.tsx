@@ -114,7 +114,7 @@ function Router() {
       <Route path="/Tag" element={<ExpTag />} />
       <Route path="/Drawer" element={<ExpDrawer />} />
       <Route path="/ActionSheet" element={<ExpActionSheet />} />
-      <Route path="/Dropdown" element={<ExpActionSheet />} />
+      <Route path="/Dropdown" element={<ExpDropdown />} />
       <Route path="/Dialog" element={<ExpDialog />} />
       <Route path="/Popover" element={<ExpPopover />} />
       <Route path="/PopDialog" element={<ExpPopDialog />} />

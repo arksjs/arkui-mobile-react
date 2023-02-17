@@ -1,15 +1,3 @@
-import classNames from 'classnames'
-import type {
-  CalendarPopupEmits,
-  CalendarPopupProps,
-  CalendarPopupRef,
-  CalendarViewRef,
-  CalendarDetail
-} from './types'
-import type { FRVFC } from '../helpers/types'
-import CalendarView from './CalendarView'
-import { Drawer } from '../Drawer'
-import { Button } from '../Button'
 import {
   forwardRef,
   useEffect,
@@ -17,6 +5,18 @@ import {
   useRef,
   useState
 } from 'react'
+import classNames from 'classnames'
+import type {
+  CalendarPopupEmits,
+  CalendarPopupProps,
+  CalendarPopupRef,
+  CalendarViewRef,
+  CalendarSelectorDetail
+} from './types'
+import type { FRVFC } from '../helpers'
+import CalendarView from './CalendarView'
+import { Drawer } from '../Drawer'
+import { Button } from '../Button'
 import type {
   PopupCustomCancel,
   PopupCustomConfirm,
@@ -25,17 +25,19 @@ import type {
 import { cloneDetail, isSameDetail } from '../Picker/util'
 import { useLocale } from '../ConfigProvider/context'
 import { useHandlers } from './use-calendar'
+import { getSourceDetail } from './util'
 
-const AkCalendarPopup: FRVFC<
+const TaCalendarPopup: FRVFC<
   CalendarPopupRef,
   CalendarPopupProps & CalendarPopupEmits
 > = (props, ref) => {
-  const { getDefaultDetail } = useHandlers(props)
   const { locale } = useLocale()
   const popupRef = useRef<PopupRef>(null)
   const viewRef = useRef<CalendarViewRef>(null)
   const [valueSize, setValueSize] = useState(0)
-  const detail = useRef<CalendarDetail>(getDefaultDetail())
+
+  const { getDefaultDetail } = useHandlers(props)
+  const detail = useRef<CalendarSelectorDetail>(getDefaultDetail())
 
   function onCancelClick() {
     popupRef.current?.onCancelClick()
@@ -49,7 +51,11 @@ const AkCalendarPopup: FRVFC<
     popupRef.current?.customCancel(key, focus)
   }
 
-  function onViewSelect(newDetail: CalendarDetail) {
+  function onViewSelect() {
+    const newDetail = getViewDetail()
+
+    setValueSize(newDetail.valueArray.length)
+
     if (!props.showConfirm) {
       confirm()
     } else {
@@ -73,14 +79,14 @@ const AkCalendarPopup: FRVFC<
       updateDetail(newDetail)
     }
 
-    customConfirm(getDetail())
+    customConfirm(getSourceDetail(getDetail()))
   }
 
   function getDetail() {
     return cloneDetail(detail.current)
   }
 
-  function updateDetail(newDetail: CalendarDetail) {
+  function updateDetail(newDetail: CalendarSelectorDetail) {
     detail.current = newDetail
     setValueSize(detail.current.valueArray.length)
   }
@@ -93,7 +99,7 @@ const AkCalendarPopup: FRVFC<
     detail.current = getViewDetail()
   }, [props.value])
 
-  const classes = classNames('ak-calendar-popup', props.className)
+  const classes = classNames('ta-calendar-popup', props.className)
 
   useImperativeHandle(
     ref,
@@ -133,7 +139,7 @@ const AkCalendarPopup: FRVFC<
         onSelect={onViewSelect}
       />
       {props.showConfirm ? (
-        <div className="ak-calendar-popup_confirm">
+        <div className="ta-calendar-popup_confirm">
           <Button
             type="primary"
             onClick={onConfirmClick}
@@ -149,4 +155,4 @@ const AkCalendarPopup: FRVFC<
   )
 }
 
-export default forwardRef(AkCalendarPopup)
+export default forwardRef(TaCalendarPopup)

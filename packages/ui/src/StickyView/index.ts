@@ -6,5 +6,4 @@ const StickyView = Object.assign(_StickyView, {
 })
 
 export { StickyView, StickyViewItem }
-
 export default StickyView

@@ -1,17 +1,16 @@
+import { useRef, type MouseEvent } from 'react'
 import classNames from 'classnames'
 import type { ButtonOption, NavBarEmits, NavBarProps } from './types'
-import type { OnClick, RenderProp, VFC } from '../helpers/types'
+import type { OnClick, RenderProp, VFC } from '../helpers'
 import { Button } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import HomeOutlined from '../Icon/icons/HomeOutlined'
-import { useRef } from 'react'
-import type { MouseEvent } from 'react'
-import { useDbclick } from '../hooks/use-event'
+import { useDbclick } from '../hooks'
 
 type ButtonMouseEvent = MouseEvent<HTMLButtonElement>
 
-const AkNavBar: VFC<
+const TaNavBar: VFC<
   NavBarProps &
     NavBarEmits & {
       renderLeft?: RenderProp
@@ -22,8 +21,8 @@ const AkNavBar: VFC<
   const titleEl = useRef<HTMLDivElement>(null)
 
   const classes = classNames(
-    'ak-nav-bar',
-    'ak-horizontal-hairline',
+    'ta-nav-bar',
+    'ta-horizontal-hairline',
     props.className
   )
 
@@ -95,7 +94,7 @@ const AkNavBar: VFC<
     ) {
       return (
         <Button.Group
-          className="ak-nav-bar_button-group"
+          className="ta-nav-bar_button-group"
           shape={props.iconOnly ? 'square' : 'rectangle'}
           pattern="borderless"
         >
@@ -103,7 +102,7 @@ const AkNavBar: VFC<
             props.leftButtons.map((item, index) => {
               return (
                 <Button
-                  className="ak-nav-bar_button"
+                  className="ta-nav-bar_button"
                   key={index}
                   transparent
                   type={item.type}
@@ -118,7 +117,7 @@ const AkNavBar: VFC<
             <>
               {props.showBack ? (
                 <Button
-                  className="ak-nav-bar_button"
+                  className="ta-nav-bar_button"
                   type="default"
                   icon={LeftOutlined}
                   transparent
@@ -131,7 +130,7 @@ const AkNavBar: VFC<
               )}
               {props.showHome ? (
                 <Button
-                  className="ak-nav-bar_button"
+                  className="ta-nav-bar_button"
                   type="default"
                   icon={HomeOutlined}
                   transparent
@@ -154,7 +153,7 @@ const AkNavBar: VFC<
     if (props.rightButtons && props.rightButtons.length > 0) {
       return (
         <Button.Group
-          className="ak-nav-bar_button-group"
+          className="ta-nav-bar_button-group"
           shape={props.iconOnly ? 'square' : 'rectangle'}
           pattern="borderless"
         >
@@ -162,7 +161,7 @@ const AkNavBar: VFC<
           {props.rightButtons.map((item, index) => {
             return (
               <Button
-                className="ak-nav-bar_button"
+                className="ta-nav-bar_button"
                 key={index}
                 transparent
                 type={item.type}
@@ -187,14 +186,14 @@ const AkNavBar: VFC<
 
   return (
     <div className={classes}>
-      <div className="ak-nav-bar_inner">
-        <div className="ak-nav-bar_left">
+      <div className="ta-nav-bar_inner">
+        <div className="ta-nav-bar_left">
           {props.renderLeft ? props.renderLeft() : renderLeftButtons()}
         </div>
-        <div className="ak-nav-bar_title" ref={titleEl}>
+        <div className="ta-nav-bar_title" ref={titleEl}>
           {props.title}
         </div>
-        <div className="ak-nav-bar_right">
+        <div className="ta-nav-bar_right">
           {props.renderRight ? props.renderRight() : renderRightButtons()}
         </div>
       </div>
@@ -202,10 +201,10 @@ const AkNavBar: VFC<
   )
 }
 
-AkNavBar.defaultProps = {
+TaNavBar.defaultProps = {
   showBack: false,
   showHome: false,
   iconOnly: true
 }
 
-export default AkNavBar
+export default TaNavBar

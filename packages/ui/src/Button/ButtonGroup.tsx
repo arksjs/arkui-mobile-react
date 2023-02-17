@@ -3,10 +3,9 @@ import { GroupContext } from './context'
 import { createDefaultProps } from './props'
 import { getGroupClasses } from './util'
 import classNames from 'classnames'
-import type { FC } from '../helpers/types'
-import { toArray } from '../helpers/react'
+import { toArray, type FC } from '../helpers'
 
-const AkButtonGroup: FC<ButtonGroupProps> = props => {
+const TaButtonGroup: FC<ButtonGroupProps> = props => {
   const childCount = toArray(props.children).length
   const classes = classNames(
     getGroupClasses(props, childCount),
@@ -27,6 +26,6 @@ const AkButtonGroup: FC<ButtonGroupProps> = props => {
   )
 }
 
-AkButtonGroup.defaultProps = createDefaultProps()
+TaButtonGroup.defaultProps = createDefaultProps()
 
-export default AkButtonGroup
+export default TaButtonGroup

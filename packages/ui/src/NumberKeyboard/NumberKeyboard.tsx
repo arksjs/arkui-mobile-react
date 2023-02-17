@@ -1,11 +1,10 @@
-import classNames from 'classnames'
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react'
+import classNames from 'classnames'
 import type {
   NumberKeyboardEmits,
   NumberKeyboardProps,
   OnConfirm
 } from './types'
-import type { FRVFC } from '../helpers/types'
 import { getBodyClasses, isShowHeaderConfirm } from './util'
 import { Drawer } from '../Drawer'
 import { Icon } from '../Icon'
@@ -14,7 +13,7 @@ import type { OnCancel, OnVisibleStateChange, PopupRef } from '../popup/types'
 import type { NumberKeyboardItem } from './types'
 import BackspaceOutlined from '../Icon/icons/BackspaceOutlined'
 import KeyboardOutlined from '../Icon/icons/KeyboardOutlined'
-import { isString, stringMix2StringArray } from '../helpers/util'
+import { isString, string2StringArray, type FRVFC } from '../helpers'
 
 const backspaceItem: NumberKeyboardItem = {
   text: 'backspace',
@@ -22,10 +21,10 @@ const backspaceItem: NumberKeyboardItem = {
   icon: BackspaceOutlined
 }
 
-const AkNumberKeyboard: FRVFC<
+const TaNumberKeyboard: FRVFC<
   PopupRef,
   NumberKeyboardProps & NumberKeyboardEmits
-> = ({ onUpdateValue, ...props }, ref) => {
+> = (props, ref) => {
   const { locale } = useLocale()
   const popupRef = useRef<PopupRef>(null)
   const valueCache = useRef('')
@@ -34,7 +33,7 @@ const AkNumberKeyboard: FRVFC<
     type: props.type,
     customKey: props.customKey
   })
-  const classes = classNames('ak-number-keyboard', props.className)
+  const classes = classNames('ta-number-keyboard', props.className)
   const bodyClasses = classNames(
     getBodyClasses({ type: props.type, title: props.title }, showHeaderConfirm)
   )
@@ -52,7 +51,7 @@ const AkNumberKeyboard: FRVFC<
       valueCache.current += item.text
 
       props.onInput && props.onInput(item.text)
-      onUpdateValue && onUpdateValue(valueCache.current)
+      // onUpdateValue && onUpdateValue(valueCache.current)
     } else if (item.type === 'backspace') {
       const deleteKey = valueCache.current.substring(
         valueCache.current.length - 1
@@ -66,7 +65,7 @@ const AkNumberKeyboard: FRVFC<
         props.onDelete({
           deleteKey
         })
-      onUpdateValue && onUpdateValue(valueCache.current)
+      // onUpdateValue && onUpdateValue(valueCache.current)
     } else if (item.type === 'confirm') {
       popupRef.current?.customConfirm({})
     }
@@ -108,7 +107,7 @@ const AkNumberKeyboard: FRVFC<
       })
     }
 
-    const customKey = stringMix2StringArray(props.customKey)
+    const customKey = string2StringArray(props.customKey)
 
     if (props.type === 'rightColumn') {
       if (customKey.length > 1) {
@@ -160,13 +159,13 @@ const AkNumberKeyboard: FRVFC<
     return list.map((item, index) => (
       <li
         className={classNames(
-          'ak-number-keyboard_item',
+          'ta-number-keyboard_item',
           'span-' + (item.span || 1)
         )}
         key={index}
       >
         <div
-          className="ak-number-keyboard_button"
+          className="ta-number-keyboard_button"
           onClick={() => onNumberClick(item)}
         >
           {item.icon ? <Icon icon={item.icon} /> : <>{item.text}</>}
@@ -191,20 +190,20 @@ const AkNumberKeyboard: FRVFC<
       onUpdateVisible={props.onUpdateVisible}
     >
       <div className={bodyClasses}>
-        <ul className="ak-number-keyboard_list">{renderItems}</ul>
+        <ul className="ta-number-keyboard_list">{renderItems}</ul>
         {props.type === 'rightColumn' ? (
-          <div className="ak-number-keyboard_right-column">
-            <div className="ak-number-keyboard_backspace">
+          <div className="ta-number-keyboard_right-column">
+            <div className="ta-number-keyboard_backspace">
               <div
-                className="ak-number-keyboard_button"
+                className="ta-number-keyboard_button"
                 onClick={() => onNumberClick(backspaceItem)}
               >
                 <Icon icon={BackspaceOutlined} />
               </div>
             </div>
-            <div className="ak-number-keyboard_confirm">
+            <div className="ta-number-keyboard_confirm">
               <div
-                className="ak-number-keyboard_confirm-button"
+                className="ta-number-keyboard_confirm-button"
                 onClick={onConfirmClick}
               >
                 {locale.numberKeyboardConfirmText}
@@ -219,4 +218,4 @@ const AkNumberKeyboard: FRVFC<
   )
 }
 
-export default forwardRef(AkNumberKeyboard)
+export default forwardRef(TaNumberKeyboard)

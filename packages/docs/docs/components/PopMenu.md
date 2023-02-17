@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkPopMenu } from 'arkui-mobile-react'
+import { TaPopMenu } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,7 +25,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -68,8 +68,8 @@ const options = [
 
 | 事件                 | 描述               | 回调函数参数                                                         | TypeScript 函数           |
 | -------------------- | ------------------ | -------------------------------------------------------------------- | ------------------------- |
-| onCancel             | 取消时触发         | payload: { source: string }                                          | PopupOnCancel             |
 | onConfirm            | 确认按钮点击时触发 | payload: { item: { name: string }, index: number }                   | PopMenuOnConfirm          |
+| onCancel             | 取消时触发         | payload: { source: string }                                          | PopupOnCancel             |
 | onVisibleStateChange | 展示隐藏时触发     | payload: { state: [VisibleState](./PopMenu.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 | onUpdateVisible      | 展示隐藏时触发     | visible: boolean 是否显示                                            |                           |
 

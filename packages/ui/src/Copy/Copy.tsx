@@ -1,16 +1,15 @@
+import { useRef } from 'react'
 import classNames from 'classnames'
 import type { CopyEmits, CopyProps } from './types'
-import type { FC } from '../helpers/types'
+import { type FC, Exception } from '../helpers'
 import { copy } from './util'
-import { useRef } from 'react'
-import Exception from '../helpers/exception'
 import { useLocale } from '../ConfigProvider/context'
 
-const AkCopy: FC<CopyProps & CopyEmits> = props => {
+const TaCopy: FC<CopyProps & CopyEmits> = props => {
   const inputEl = useRef<HTMLInputElement>(null)
 
   const { locale } = useLocale()
-  const classes = classNames('ak-copy', props.className)
+  const classes = classNames('ta-copy', props.className)
 
   function onCopy() {
     try {
@@ -27,17 +26,16 @@ const AkCopy: FC<CopyProps & CopyEmits> = props => {
       <input
         type="text"
         value={props.text}
-        className="ak-copy_input"
+        className="ta-copy_input"
         readOnly
         ref={inputEl}
       />
-      <div className="ak-copy_box">{props.children || locale.copyText}</div>
+      <div className="ta-copy_box">{props.children || locale.copyText}</div>
     </div>
   )
 }
-
-AkCopy.defaultProps = {
+TaCopy.defaultProps = {
   text: ''
 }
 
-export default AkCopy
+export default TaCopy

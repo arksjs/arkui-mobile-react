@@ -1,7 +1,11 @@
-import type { MutableRefObject } from 'react'
-import { useRef, useEffect } from 'react'
-import { addEvent, touchEvent, addLongPressEvent } from '../helpers/events'
-import type { LongPressEventCallback, Noop } from '../helpers/types'
+import { useRef, useEffect, type MutableRefObject } from 'react'
+import {
+  addEvent,
+  touchEvent,
+  addLongPressEvent,
+  type LongPressEventCallback,
+  type Noop
+} from '../helpers'
 
 type ElRef = MutableRefObject<HTMLElement | null | undefined>
 
@@ -98,21 +102,21 @@ export function useDbclick(
   elRef: ElRef,
   callback: ($el: HTMLElement, event: 'click' | 'dbclick') => void
 ) {
-  const tag = useRef<string | null>(null)
-  const timer = useRef<number>()
+  const dbClickTag = useRef<string | null>(null)
+  const dbClickTimer = useRef<number>()
 
   function onClick(e: Event) {
     const $el = e.currentTarget as HTMLElement
 
-    if (!tag.current) {
-      tag.current = e.type
-      timer.current = window.setTimeout(() => {
-        tag.current = null
+    if (!dbClickTag.current) {
+      dbClickTag.current = e.type
+      dbClickTimer.current = window.setTimeout(() => {
+        dbClickTag.current = null
         callback($el, 'click')
       }, 300)
-    } else if (tag.current === e.type) {
-      clearTimeout(timer.current)
-      tag.current = null
+    } else if (dbClickTag.current === e.type) {
+      clearTimeout(dbClickTimer.current)
+      dbClickTag.current = null
       callback($el, 'dbclick')
     }
   }
@@ -121,16 +125,32 @@ export function useDbclick(
     const off = addEvent(touchEvent.touchstart, onClick, el)
 
     return () => {
-      clearTimeout(timer.current)
+      clearTimeout(dbClickTimer.current)
       off()
     }
   })
 }
 
-export function useBlur(callback: Noop) {
-  const elRef = useRef(document.documentElement)
-
-  const { off } = useEvent(elRef, 'click', callback)
+export function useBlur(elRef: ElRef, callback: Noop) {
+  const { off } = useEvent(elRef, touchEvent.touchend, callback)
 
   return { off }
+}
+
+export function useStopBlur(elRef: ElRef) {
+  const { off } = useEvent(elRef, touchEvent.touchend, e => {
+    e.stopPropagation()
+  })
+
+  return { off }
+}
+
+export function useDocumentBlur(callback: Noop) {
+  const elRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    elRef.current = document.documentElement
+  }, [])
+
+  return useBlur(elRef, callback)
 }

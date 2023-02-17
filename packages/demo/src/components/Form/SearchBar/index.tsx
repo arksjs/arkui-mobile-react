@@ -1,6 +1,6 @@
 import {
-  AkSearchBar,
-  AkGroup,
+  TaSearchBar,
+  TaGroup,
   showToast,
   SearchBarOnFieldClick,
   SearchBarOnInput,
@@ -40,26 +40,26 @@ export default function ExpSearchBar() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkSearchBar />
-      </AkGroup>
-      <AkGroup title="搜索建议">
-        <AkSearchBar onInput={onInput} />
-      </AkGroup>
-      <AkGroup title="显示取消按钮">
-        <AkSearchBar showCancel />
-      </AkGroup>
-      <AkGroup title="设置候选项">
-        <AkSearchBar placeholders={placeholders} />
-      </AkGroup>
-      <AkGroup title="深色适配">
-        <AkSearchBar className="exp-searchBar-dark-style" showCancel ghost />
-      </AkGroup>
-      <AkGroup title="只读（readonly=true）">
-        <AkSearchBar readonly placeholders={placeholders} />
-      </AkGroup>
-      <AkGroup title="onInput/onFocus/onBlur/onCancelClick/onSearch">
-        <AkSearchBar
+      <TaGroup title="基础用法">
+        <TaSearchBar />
+      </TaGroup>
+      <TaGroup title="搜索建议">
+        <TaSearchBar onInput={onInput} />
+      </TaGroup>
+      <TaGroup title="显示取消按钮">
+        <TaSearchBar showCancel />
+      </TaGroup>
+      <TaGroup title="设置候选项">
+        <TaSearchBar placeholders={placeholders} />
+      </TaGroup>
+      <TaGroup title="深色适配">
+        <TaSearchBar className="exp-searchBar-dark-style" showCancel ghost />
+      </TaGroup>
+      <TaGroup title="只读（readonly=true）">
+        <TaSearchBar readonly placeholders={placeholders} />
+      </TaGroup>
+      <TaGroup title="onInput/onFocus/onBlur/onCancelClick/onSearch">
+        <TaSearchBar
           showCancel
           placeholders={placeholders}
           onInput={onInput2}
@@ -70,14 +70,14 @@ export default function ExpSearchBar() {
           }}
           onSearch={onSearch}
         />
-      </AkGroup>
-      <AkGroup title="onFieldClick & readonly=true">
-        <AkSearchBar
+      </TaGroup>
+      <TaGroup title="onFieldClick & readonly=true">
+        <TaSearchBar
           readonly
           placeholders={placeholders}
           onFieldClick={onClick}
         />
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

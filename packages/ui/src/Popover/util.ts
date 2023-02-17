@@ -1,7 +1,10 @@
-import { getEnumsValue } from '../helpers/validator'
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { CSSProperties, PlacementType } from '../helpers/types'
-import { cloneData } from '../helpers/util'
+import {
+  getEnumsValue,
+  PLACEMENT_TYPES,
+  cloneData,
+  type CSSProperties,
+  type PlacementType
+} from '../helpers'
 
 type PopoverPos = {
   t: number | null
@@ -14,7 +17,7 @@ type PopoverPos = {
   al: number | null
 }
 
-const DEFAULT_POS: PopoverPos = {
+export const DEFAULT_POS: PopoverPos = {
   t: null,
   r: null,
   b: null,
@@ -66,7 +69,7 @@ export const getArrowStyles = (isShow: boolean, showPos: PopoverPos) => {
 
 export const getShowPos = (
   container: HTMLElement,
-  innerEl: HTMLDivElement,
+  innerEl: HTMLElement,
   _placement?: PlacementType
 ) => {
   const placement = getEnumsValue(PLACEMENT_TYPES, _placement)

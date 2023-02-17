@@ -1,5 +1,5 @@
 import type { IconData } from '../Icon/types'
-import type { OnError } from '../helpers/types'
+import type { OnError } from '../helpers'
 
 export type Mode =
   | 'scaleToFill'
@@ -43,3 +43,5 @@ export interface LoadedResource {
   src: string
   event: Event
 }
+
+export type { Mode as ImageMode, OnLoad as ImageOnLoad }

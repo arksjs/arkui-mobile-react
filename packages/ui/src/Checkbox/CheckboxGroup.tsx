@@ -5,21 +5,18 @@ import type {
   CheckboxGroupProps,
   ModelValue
 } from './types'
-import type { FC } from '../helpers/types'
-import { getCheckGroupClasses } from './util'
-import { isSameArray, isStringNumberMixArray } from '../helpers/util'
+import { isSameArray, isStringOrNumberArray, type FC } from '../helpers'
 import { useCheckGroup } from './use-check'
 import Checkbox from './Checkbox'
 
-const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
-  inline = false,
+const TaCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
   onChange,
   children,
   ...props
 }) => {
   const inputValue = useRef<ModelValue[]>([])
 
-  const { root, options2, GroupProvider } = useCheckGroup(props, {
+  const { root, options2, GroupProvider, groupClasses } = useCheckGroup(props, {
     name: 'checkbox',
     updateValue({ isChange, children }) {
       const newVal: ModelValue[] = []
@@ -41,7 +38,7 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
     },
     watchValue({ children, value }) {
       if (
-        isStringNumberMixArray(value) &&
+        isStringOrNumberArray(value) &&
         !isSameArray(value, inputValue.current)
       ) {
         const newVal: ModelValue[] = []
@@ -58,11 +55,7 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
     }
   })
 
-  const classes = classNames(
-    'ak-checkbox-group',
-    getCheckGroupClasses({ inline, disabled: props.disabled }),
-    props.className
-  )
+  const classes = classNames('ta-checkbox-group', groupClasses, props.className)
 
   const renderChildren = useCallback(
     () =>
@@ -70,7 +63,7 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
         ? children
         : options2.map(item => {
             return (
-              <Checkbox key={item.value} value={item.value}>
+              <Checkbox key={item.value} checkedValue={item.value}>
                 {item.label}
               </Checkbox>
             )
@@ -85,4 +78,4 @@ const AkCheckboxGroup: FC<CheckboxGroupProps & CheckboxGroupEmits> = ({
   )
 }
 
-export default AkCheckboxGroup
+export default TaCheckboxGroup

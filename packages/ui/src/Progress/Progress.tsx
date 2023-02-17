@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import type { ProgressProps } from './types'
-import type { RenderChildren, VFC } from '../helpers/types'
+import type { RenderChildren, VFC } from '../helpers'
 import {
   getProgress,
   getClasses,
@@ -9,7 +9,7 @@ import {
   getTrackStyles
 } from './util'
 
-const AkProgress: VFC<
+const TaProgress: VFC<
   ProgressProps & {
     children?: RenderChildren<{
       progress: string
@@ -29,11 +29,11 @@ const AkProgress: VFC<
 
   return (
     <div className={classes} style={styles}>
-      <div className="ak-progress_bar">
+      <div className="ta-progress_bar">
         <div className={trackClasses} style={trackStyles}></div>
       </div>
       {children || props.showText ? (
-        <div className="ak-progress_text">{children || progress}</div>
+        <div className="ta-progress_text">{children || progress}</div>
       ) : (
         <></>
       )}
@@ -41,11 +41,11 @@ const AkProgress: VFC<
   )
 }
 
-AkProgress.defaultProps = {
+TaProgress.defaultProps = {
   percentage: 0,
   showText: false,
   animated: false,
   fixedBar: false
 }
 
-export default AkProgress
+export default TaProgress

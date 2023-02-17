@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export function useMounted({
   onMounted,

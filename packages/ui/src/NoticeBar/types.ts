@@ -1,4 +1,4 @@
-import type { OnClick, StateType } from '../helpers/types'
+import type { OnClick, StateType } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export type Mode = 'default' | 'clickable' | 'closable'
@@ -17,3 +17,5 @@ export interface NoticeBarEmits {
   onClick?: OnClick
   onCloseClick?: OnClick
 }
+
+export type { Mode as NoticeBarMode }

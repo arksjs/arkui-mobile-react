@@ -1,10 +1,10 @@
-import classNames from 'classnames'
 import type { HTMLAttributes } from 'react'
+import classNames from 'classnames'
 import type { GroupProps } from './types'
 import { getClasses } from './util'
-import type { FC, RenderProp } from '../helpers/types'
+import type { FC, RenderProp } from '../helpers'
 
-const AkGroup: FC<
+const TaGroup: FC<
   HTMLAttributes<HTMLDivElement> &
     GroupProps & {
       renderHeader?: RenderProp
@@ -21,15 +21,15 @@ const AkGroup: FC<
 
   return (
     <div {...attrs} className={classes}>
-      <div className="ak-group_header">
-        <div className="ak-group_title">{title}</div>
-        <div className="ak-group_more">{renderHeader && renderHeader()}</div>
+      <div className="ta-group_header">
+        <div className="ta-group_title">{title}</div>
+        <div className="ta-group_more">{renderHeader && renderHeader()}</div>
       </div>
-      <div className="ak-group_body ak-horizontal-hairline hairline-reverse">
-        <div className="ak-group_body-inner">{children}</div>
+      <div className="ta-group_body ta-horizontal-hairline hairline-reverse">
+        <div className="ta-group_body-inner">{children}</div>
       </div>
     </div>
   )
 }
 
-export default AkGroup
+export default TaGroup

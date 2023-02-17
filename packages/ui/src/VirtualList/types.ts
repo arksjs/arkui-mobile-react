@@ -4,7 +4,7 @@ import type {
   Noop,
   UniqueID,
   ViewPosition
-} from '../helpers/types'
+} from '../helpers'
 
 export interface ScrollToOptions {
   offset: number
@@ -75,3 +75,5 @@ export interface VirtualListEmits {
   onVisibleItemsChange?: OnVisibleItemsChange
   onResize?: (size: number) => void
 }
+
+export type { OnVisibleItemsChange as VirtualListOnVisibleItemsChange }

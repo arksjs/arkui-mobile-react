@@ -1,8 +1,3 @@
-import classNames from 'classnames'
-import type { CountUpEmits, CountUpProps, CountUpRef } from './types'
-import type { FRVFC } from '../helpers/types'
-import { getDuration } from './util'
-import { getNumber } from '../helpers/util'
 import {
   forwardRef,
   useEffect,
@@ -10,10 +5,13 @@ import {
   useRef,
   useState
 } from 'react'
-import { useFrameTask } from '../hooks/use-frame-task'
-import { thousands as handleThousands } from '../helpers/digital-conversion'
+import classNames from 'classnames'
+import type { CountUpEmits, CountUpProps, CountUpRef } from './types'
+import { getNumber, thousands as handleThousands, type FRVFC } from '../helpers'
+import { getDuration } from './util'
+import { useFrameTask } from '../hooks'
 
-const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
+const TaCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   {
     initialNumber = 0,
     number = 0,
@@ -28,18 +26,17 @@ const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   const numberCache = useRef(getNumber(initialNumber))
   const [content, setContent] = useState('')
 
-  const classes = classNames('ak-count-up', props.className)
+  const classes = classNames('ta-count-up', props.className)
 
-  const { frameStart, frameStop, frameTask } = useFrameTask()
+  const { frameStart, frameStop, getRunFrameTaskId } = useFrameTask()
 
   function cancel() {
-    if (frameTask.current) {
+    if (getRunFrameTaskId() !== null) {
+      frameStop()
       onCancel &&
         onCancel({
           number: numberCache.current
         })
-
-      frameStop()
     }
   }
 
@@ -88,4 +85,4 @@ const AkCountUp: FRVFC<CountUpRef, CountUpProps & CountUpEmits> = (
   return <div className={classes}>{content}</div>
 }
 
-export default forwardRef(AkCountUp)
+export default forwardRef(TaCountUp)

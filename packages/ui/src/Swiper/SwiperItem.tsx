@@ -1,9 +1,9 @@
 import classNames from 'classnames'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import type { SwiperItemProps } from './types'
 
-const AkSwiperItem: FC<SwiperItemProps> = ({ index = -1, ...props }) => {
-  const classes = classNames('ak-swiper-item', props.className)
+const TaSwiperItem: FC<SwiperItemProps> = ({ index = -1, ...props }) => {
+  const classes = classNames('ta-swiper-item', props.className)
 
   return (
     <div className={classes} data-index={index}>
@@ -12,4 +12,4 @@ const AkSwiperItem: FC<SwiperItemProps> = ({ index = -1, ...props }) => {
   )
 }
 
-export default AkSwiperItem
+export default TaSwiperItem

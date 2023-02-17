@@ -1,4 +1,4 @@
-import type { UniqueID } from '../helpers/types'
+import type { UniqueID } from '../helpers'
 
 export type Item = {
   id: UniqueID
@@ -32,3 +32,5 @@ export interface Position {
   left: number
   deleted: boolean
 }
+
+export type { OnDelete as OrderOnDelete, Item as OrderItem }

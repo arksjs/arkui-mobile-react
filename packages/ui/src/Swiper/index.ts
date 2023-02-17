@@ -6,5 +6,4 @@ const Swiper = Object.assign(_Swiper, {
 })
 
 export { Swiper, SwiperItem }
-
 export default Swiper

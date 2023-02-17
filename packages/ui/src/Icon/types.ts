@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import type { FC, SVGAttributes } from 'react'
 
 export type SVGComponent = FC<SVGAttributes<SVGSVGElement>>
 

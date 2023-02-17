@@ -1,5 +1,4 @@
-import { getNumber, isNumber } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
+import { getNumber, isNumber, getEnumsValue } from '../helpers'
 import type {
   AvatarShape,
   ButtonShape,
@@ -16,7 +15,7 @@ export const AVATAR_SHAPE_NAMES: AvatarShape[] = ['default', 'circle']
 export const BUTTON_SHAPE_NAMES: ButtonShape[] = ['default', 'round']
 
 export const getClasses = (animated?: boolean) => {
-  return ['ak-skeleton', { animated: !!animated }]
+  return ['ta-skeleton', { animated: !!animated }]
 }
 
 export const getAvatarClasses = (
@@ -24,7 +23,7 @@ export const getAvatarClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'ak-skeleton-avatar',
+    'ta-skeleton-avatar',
     { animated: !!(parentProps?.animated || props.animated) },
     'shape--' +
       getEnumsValue(AVATAR_SHAPE_NAMES, props.shape ?? parentProps?.avatarShape)
@@ -36,10 +35,10 @@ export const getButtonClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'ak-skeleton-button',
+    'ta-skeleton-button',
     { animated: !!(parentProps?.animated || props.animated) },
     'shape--' +
-      getEnumsValue(AVATAR_SHAPE_NAMES, props.shape ?? parentProps?.buttonShape)
+      getEnumsValue(BUTTON_SHAPE_NAMES, props.shape ?? parentProps?.buttonShape)
   ]
 }
 
@@ -48,7 +47,7 @@ export const getImageClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'ak-skeleton-image',
+    'ta-skeleton-image',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }
@@ -58,7 +57,7 @@ export const getTitleClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'ak-skeleton-title',
+    'ta-skeleton-title',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }
@@ -68,7 +67,7 @@ export const getParagraphClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'ak-skeleton-paragraph',
+    'ta-skeleton-paragraph',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }

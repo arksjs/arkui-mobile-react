@@ -1,8 +1,8 @@
 import {
   showToast,
-  AkButton,
-  AkNavBar,
-  AkGroup,
+  TaButton,
+  TaNavBar,
+  TaGroup,
   NavBarOnButtonClick
 } from '@/index'
 
@@ -19,42 +19,42 @@ export default function ExpNavBar() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkNavBar title="标题" />
-      </AkGroup>
-      <AkGroup title="显示返回按钮">
-        <AkNavBar title="标题" showBack />
-      </AkGroup>
-      <AkGroup title="展示首页按钮">
-        <AkNavBar title="标题" showBack showHome />
-      </AkGroup>
-      <AkGroup title="展示右侧按钮">
-        <AkNavBar
+      <TaGroup title="基础用法">
+        <TaNavBar title="标题" />
+      </TaGroup>
+      <TaGroup title="显示返回按钮">
+        <TaNavBar title="标题" showBack />
+      </TaGroup>
+      <TaGroup title="展示首页按钮">
+        <TaNavBar title="标题" showBack showHome />
+      </TaGroup>
+      <TaGroup title="展示右侧按钮">
+        <TaNavBar
           title="标题"
           showBack
           showHome
           rightButtons={[{ icon: 'MenuOutlined', text: '菜单' }]}
         />
-      </AkGroup>
-      <AkGroup title="按钮带文本">
-        <AkNavBar
+      </TaGroup>
+      <TaGroup title="按钮带文本">
+        <TaNavBar
           title="标题"
           showBack
           showHome
           rightButtons={[{ icon: 'MenuOutlined', text: '菜单' }]}
         />
-        <AkNavBar
+        <TaNavBar
           title="标题"
           showBack
           iconOnly={false}
           rightButtons={[{ icon: 'MenuOutlined', text: '菜单' }]}
         />
-      </AkGroup>
-      <AkGroup title="固定顶部(配合 fixed 组件)">
+      </TaGroup>
+      <TaGroup title="固定顶部(配合 fixed 组件)">
         <div className="exp-navBar-fixed">上下滑动观察最顶部的导航</div>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkNavBar
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaNavBar
           title="标题双击"
           showBack
           showHome
@@ -64,14 +64,14 @@ export default function ExpNavBar() {
           onTitleDbclick={() => showToast('标题双击')}
           onRightButtonClick={onRightButtonClick}
         />
-      </AkGroup>
-      <AkGroup title="renderLeft/renderRight">
-        <AkNavBar
+      </TaGroup>
+      <TaGroup title="renderLeft/renderRight">
+        <TaNavBar
           title="标题"
           rightButtons={[{ icon: 'MenuOutlined', text: '菜单' }]}
           renderLeft={() => <div className="exp-navBar-left">renderLeft</div>}
         />
-        <AkNavBar
+        <TaNavBar
           title="标题"
           showBack
           showHome
@@ -79,26 +79,26 @@ export default function ExpNavBar() {
             <div className="exp-navBar-right">renderRight</div>
           )}
         />
-        <AkNavBar
+        <TaNavBar
           title="标题"
           showBack
           showHome
           renderLeft={() => (
             <div className="exp-navBar-left">
-              <AkButton type="primary" icon="LeftOutlined" size="small">
+              <TaButton type="primary" icon="LeftOutlined" size="small">
                 返回
-              </AkButton>
+              </TaButton>
             </div>
           )}
           renderRight={() => (
             <div className="exp-navBar-right">
-              <AkButton type="primary" icon="MenuOutlined" size="small">
+              <TaButton type="primary" icon="MenuOutlined" size="small">
                 菜单
-              </AkButton>
+              </TaButton>
             </div>
           )}
         />
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

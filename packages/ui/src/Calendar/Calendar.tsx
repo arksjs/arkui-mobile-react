@@ -4,22 +4,27 @@ import type {
   CalendarEmits,
   CalendarPopupRef,
   CalendarProps,
-  CalendarDetail
+  CalendarSelectorDetail
 } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { SelectorField } from '../SelectorField'
 import CalendarPopup from './CalendarPopup'
 import { useHandlers } from './use-calendar'
 import { cloneDetail, isSameValue } from '../Picker/util'
 
-const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
-  const { formatter, parser, getDefaultDetail } = useHandlers(props)
+const TaCalendar: VFC<CalendarProps & CalendarEmits> = props => {
   const [isInitPopup, setIsInitPopup] = useState(false)
   const [popupVisible, setPopupVisible] = useState(true)
   const [fieldValue, setFieldValue] = useState('')
   const [fieldLabel, setFieldLabel] = useState('')
   const popupRef = useRef<CalendarPopupRef>(null)
-  const detail = useRef<CalendarDetail>(getDefaultDetail())
+
+  const { formatter, parser, getDefaultDetail } = useHandlers(props)
+  const detail = useRef<CalendarSelectorDetail>(getDefaultDetail())
+
+  function getPopupDetail() {
+    return popupRef.current?.getDetail() || getDefaultDetail()
+  }
 
   function updateValue(val: unknown) {
     if (val == null) {
@@ -30,7 +35,7 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
     updateDetail(formatter(parser(val)))
   }
 
-  function updateDetail(newDetail: CalendarDetail) {
+  function updateDetail(newDetail: CalendarSelectorDetail) {
     detail.current = newDetail
 
     setFieldLabel(newDetail.label)
@@ -55,7 +60,8 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
     return cloneDetail(detail.current)
   }
 
-  function onConfirm(newDetail: CalendarDetail) {
+  function onConfirm() {
+    const newDetail = getPopupDetail()
     if (isSameValue(detail.current.value, newDetail.value)) {
       return
     }
@@ -79,7 +85,7 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
     }
   }, [isInitPopup, popupVisible])
 
-  const classes = classNames('ak-calendar', props.className)
+  const classes = classNames('ta-calendar', props.className)
 
   return (
     <div className={classes}>
@@ -118,4 +124,4 @@ const AkCalendar: VFC<CalendarProps & CalendarEmits> = props => {
   )
 }
 
-export default AkCalendar
+export default TaCalendar

@@ -1,15 +1,20 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export type SelectorValue = string | number | Date
 export type SelectorModelValue = SelectorValue | SelectorValue[]
+export interface SelectorSourceDetail {
+  label: string
+  value: any
+}
 export interface SelectorDetail {
   value: SelectorModelValue
   label: string
+  source: SelectorSourceDetail
 }
 
 export interface SelectorValueFormatter {
   (valueArray: SelectorValue[], labelArray: string[]):
-    | SelectorDetail
+    | { value: SelectorModelValue; label: string }
     | SelectorModelValue
 }
 export interface SelectorValueParser {

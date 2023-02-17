@@ -1,6 +1,7 @@
+import { useContext } from 'react'
 import classNames from 'classnames'
 import type { AvatarProps } from './types'
-import type { FC } from '../helpers/types'
+import type { FC } from '../helpers'
 import {
   GENDER_TYPES,
   getAvatarClasses,
@@ -11,14 +12,13 @@ import {
 } from './util'
 import { Badge } from '../Badge'
 import { GroupContext } from './context'
-import { useContext } from 'react'
 import { Image } from '../Image'
 import { Icon } from '../Icon'
 import ManOutlined from '../Icon/icons/ManOutlined'
 import WomanOutlined from '../Icon/icons/WomanOutlined'
 import UserOutlined from '../Icon/icons/UserOutlined'
 
-const AkAvatar: FC<AvatarProps> = props => {
+const TaAvatar: FC<AvatarProps> = props => {
   const consumer = useContext(GroupContext)
   const size2 = getAvatarSize(props, consumer)
   const shape2 = getAvatarShape(props, consumer.hasGroup)
@@ -50,7 +50,7 @@ const AkAvatar: FC<AvatarProps> = props => {
     >
       {props.children || (
         <Image
-          className="ak-avatar_image"
+          className="ta-avatar_image"
           src={props.src}
           mode="aspectFill"
           loadingIcon={UserOutlined}
@@ -60,6 +60,4 @@ const AkAvatar: FC<AvatarProps> = props => {
   )
 }
 
-AkAvatar.defaultProps = {}
-
-export default AkAvatar
+export default TaAvatar

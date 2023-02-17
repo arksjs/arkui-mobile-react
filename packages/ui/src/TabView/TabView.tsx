@@ -1,22 +1,22 @@
-import classNames from 'classnames'
-import type { TabViewEmits, TabViewProps, TabViewRef } from './types'
-import type { CSSProperties, FRFC } from '../helpers/types'
 import {
   cloneElement,
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
   useState
 } from 'react'
+import classNames from 'classnames'
+import type { TabViewEmits, TabViewProps, TabViewRef } from './types'
 import { getClasses } from './util'
 import { SideTab } from '../SideTab'
 import { Tab } from '../Tab'
 import { Swiper } from '../Swiper'
-import type { SwiperRef } from '../Swiper/types'
-import type { TabRef } from '../Tab/types'
-import { isString } from '../helpers/util'
-import { toArray } from '../helpers/react'
+import type { SwiperOnActiveIndexChange, SwiperRef } from '../Swiper/types'
+import type { TabOnChange, TabRef } from '../Tab/types'
+import { toArray, type CSSProperties, type FRFC } from '../helpers'
+import { useException } from '../hooks'
 
 interface TabItem {
   value: number
@@ -24,51 +24,82 @@ interface TabItem {
   subLabel: string
 }
 
-const AkTabView: FRFC<
+const TaTabView: FRFC<
   TabViewRef,
   TabViewProps &
     TabViewEmits & {
       style?: CSSProperties
     }
 > = (props, ref) => {
+  const { printListItemNotFoundError } = useException('TabView')
   const tabRef = useRef<TabRef>(null)
   const swiperRef = useRef<SwiperRef>(null)
   const [vertical] = useState(!!props.initialVertical)
-  const classes = classNames(getClasses(vertical), props.className)
-
   const [tabList, setTabList] = useState<TabItem[]>([])
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const activeIndex = useRef(0)
+  const itemNames = useRef<string[]>([])
 
-  function onChange(index: number | string) {
-    if (isString(index)) {
-      return
+  function getActiveIndexByName(name?: string) {
+    if (name) {
+      for (let i = 0; i < itemNames.current.length; i++) {
+        if (itemNames.current[i] === name) {
+          return i
+        }
+      }
     }
 
-    if (index === activeIndex.current) {
-      return
+    return -1
+  }
+
+  const onTabChange: TabOnChange = index => {
+    console.log(index)
+    switchToIndex(index as number)
+  }
+
+  const onSwiperChange: SwiperOnActiveIndexChange = index => {
+    setActiveIndex(index)
+
+    props.onChange && props.onChange(itemNames.current[index] || '', index)
+  }
+
+  function _switchTo(name: string, isProp: boolean) {
+    const newIndex = getActiveIndexByName(name)
+
+    if (newIndex === -1) {
+      printListItemNotFoundError('name', isProp)
+    } else if (newIndex !== activeIndex) {
+      if (isProp) {
+        setActiveIndex(newIndex)
+      } else {
+        switchToIndex(newIndex)
+      }
     }
-
-    props.onChange && props.onChange(index, activeIndex.current)
-
-    activeIndex.current = index
-    switchToIndex(index)
   }
 
   function switchToIndex(index: number) {
-    tabRef.current?.switchToIndex(index)
-    swiperRef.current?.swipeTo(index)
+    if (index >= 0 && index < tabList.length) {
+      swiperRef.current?.swipeTo(index)
+    } else {
+      printListItemNotFoundError('index')
+    }
   }
 
   const renderItems = useMemo(() => {
     const newTabList: TabItem[] = []
+    itemNames.current = []
 
     const newChildren = toArray(props.children).map((child, index) => {
+      const name = child.props.name ?? ''
+      const title = child.props.title ?? ''
+
       newTabList.push({
         value: index,
-        label: child.props.name ?? '',
-        subLabel: child.props.subName ?? ''
+        label: title || name,
+        subLabel: child.props.subTitle ?? ''
       })
+
+      itemNames.current.push(name)
 
       const childProps = {
         key: index,
@@ -87,36 +118,50 @@ const AkTabView: FRFC<
     return newChildren
   }, [props.children])
 
+  useEffect(() => {
+    props.value != null && _switchTo(props.value, true)
+  }, [props.value])
+
+  const switchTo = (name: string) => _switchTo(name, false)
+
   useImperativeHandle(
     ref,
     () => ({
+      switchTo,
       switchToIndex
     }),
     []
   )
 
+  const classes = classNames(getClasses(vertical), props.className)
+
   return (
     <div className={classes} style={props.style}>
-      <div className="ak-tab-view_header ak-horizontal-hairline">
+      <div className="ta-tab-view_header ta-horizontal-hairline">
         {vertical ? (
-          <SideTab options={tabList} onChange={onChange} ref={tabRef} />
+          <SideTab
+            options={tabList}
+            onChange={onTabChange}
+            ref={tabRef}
+            value={activeIndex}
+          />
         ) : (
           <Tab
             options={tabList}
             scrollThreshold={props.scrollThreshold}
-            onChange={onChange}
+            onChange={onTabChange}
             ref={tabRef}
+            value={activeIndex}
           />
         )}
       </div>
-      <div className="ak-tab-view_body">
+      <div className="ta-tab-view_body">
         <Swiper
-          initialActiveIndex={0}
           initialVertical={vertical}
           bounces={false}
           onAnimated={props.onAnimated}
           ref={swiperRef}
-          onChange={onChange}
+          onActiveIndexChange={onSwiperChange}
         >
           {renderItems}
         </Swiper>
@@ -125,4 +170,4 @@ const AkTabView: FRFC<
   )
 }
 
-export default forwardRef(AkTabView)
+export default forwardRef(TaTabView)

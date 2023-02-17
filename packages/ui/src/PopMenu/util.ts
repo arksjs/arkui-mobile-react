@@ -1,4 +1,4 @@
-import { isObject } from '../helpers/util'
+import { isObject } from '../helpers'
 import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {
@@ -27,8 +27,8 @@ export const getOptions = (options?: Option[]) => {
 
 export const getItemClasses = (option: Option) => {
   return [
-    'ak-pop-menu_item',
-    'ak-horizontal-hairline',
+    'ta-pop-menu_item',
+    'ta-horizontal-hairline',
     { disabled: !!option.disabled, 'has--icon': !!option.icon }
   ]
 }

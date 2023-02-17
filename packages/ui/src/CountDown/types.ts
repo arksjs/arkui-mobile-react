@@ -1,4 +1,4 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export interface CountTime {
   time: number
@@ -26,8 +26,16 @@ export interface CountDownEmits {
   onResume?: OnPauseOrResume
 }
 
+export type Reset = (timing: number, autoStart?: boolean) => void
+
 export interface CountDownRef {
   pause: Noop
   resume: Noop
-  reset: (timing: number, autoStart?: boolean) => void
+  reset: Reset
+}
+
+export type {
+  OnEnd as CountDownOnEnd,
+  OnPauseOrResume as CountDownOnPause,
+  OnPauseOrResume as CountDownOnResume
 }

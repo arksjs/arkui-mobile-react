@@ -59,5 +59,4 @@ const hideLoading = createHidePopup({
 })
 
 export { Toast, showToast, hideToast, showLoading, hideLoading }
-
 export default Toast

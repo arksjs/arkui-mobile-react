@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-react'
+import { TaIndexView, TaIndexViewItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,58 +19,70 @@ import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { IndexViewOnChange } from 'arkui-mobile-react'
+import type { IndexViewOnChange, IndexViewRef } from 'tantalum-ui-mobile-react'
 ```
 
-## IndexView Props
+## IndexView
+
+### IndexView Props
 
 | 属性            | 类型             | 默认值 | 必填 | 说明                        |
 | --------------- | ---------------- | ------ | ---- | --------------------------- |
 | stickyOffsetTop | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
 
-## IndexView Events
+### IndexView Events
 
-| 事件     | 描述       | 回调函数参数                       | TypeScript 函数   |
-| -------- | ---------- | ---------------------------------- | ----------------- |
-| onChange | 切换时触发 | ( activeIndex: number ) 当前项索引 | IndexViewOnChange |
+| 事件     | 描述       | 回调函数参数                        | TypeScript 函数   |
+| -------- | ---------- | ----------------------------------- | ----------------- |
+| onChange | 切换时触发 | (name: string, activeIndex: number) | IndexViewOnChange |
 
-## Methods
+### Methods
 
-| 方法名        | 说明                                                    | 参数                         |
-| ------------- | ------------------------------------------------------- | ---------------------------- |
-| scrollToIndex | 将位于指定位置的 `IndexViewItem` 滚动到可视区的指定位置 | ({ index: number }) => void  |
-| scrollTo      | 滚动列表到指定的偏移，单位 px                           | ({ offset: number }) => void |
-
-## IndexView Slots
-
-### children
-
-注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem-索引子项) 组件，否则会导致未定义的行为。
-
-```tsx
-<AkIndexView>
-  <AkIndexView.Item name="A">
-    <AkCell label="单元格" />
-    <AkCell label="单元格" />
-    <AkCell label="单元格" />
-  </AkIndexView.Item>
-</AkIndexView>
+```ts
+interface IndexViewRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+}
 ```
 
-## IndexViewItem Props
+| 方法名        | 说明                     |
+| ------------- | ------------------------ |
+| scrollTo      | 切换到指定 name 的 Item  |
+| scrollToIndex | 切换到指定 index 的 Item |
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                       |
-| ---- | ------ | ------ | ---- | -------------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附和菜单 |
+### IndexView Slots
 
-## IndexViewItem Slots
+#### children
 
-### children
+注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkIndexView.Item name="A">
-  <AkCell label="单元格" />
-  <AkCell label="单元格" />
-  <AkCell label="单元格" />
-</AkIndexView.Item>
+<TaIndexView>
+  <TaIndexView.Item name="A">
+    <TaCell label="单元格" />
+    <TaCell label="单元格" />
+    <TaCell label="单元格" />
+  </TaIndexView.Item>
+</TaIndexView>
+```
+
+## IndexViewItem
+
+### IndexViewItem Props
+
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                             |
+| ----- | ------ | ------ | ---- | ---------------------------------------------------------------- |
+| name  | string |        | 是   | 唯一标识，设置后配合 IndexView 组件的 `value` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附侧边栏，如果没有设置则获取 `name` 的值       |
+
+### IndexViewItem Slots
+
+#### children
+
+```tsx
+<TaIndexView.Item name="A">
+  <TaCell label="单元格" />
+  <TaCell label="单元格" />
+  <TaCell label="单元格" />
+</TaIndexView.Item>
 ```

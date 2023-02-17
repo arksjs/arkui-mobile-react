@@ -8,7 +8,12 @@ import type {
   ScrollViewProps,
   ScrollViewRef
 } from './types'
-import type { CSSProperties, FRFC, RenderProp } from '../helpers/types'
+import {
+  string2StringArray,
+  type CSSProperties,
+  type FRFC,
+  type RenderProp
+} from '../helpers'
 import {
   getContentStyles,
   getIndicatorStyles,
@@ -18,9 +23,7 @@ import {
   PullRefreshState,
   ScrollState
 } from './util'
-import { stringMix2StringArray } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
-import { useScrollTo } from '../hooks/use-scroll'
+import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import { Icon } from '../Icon'
@@ -37,7 +40,7 @@ interface ScrollCoords {
   isSetSafeArea?: boolean
 }
 
-const AkScrollView: FRFC<
+const TaScrollView: FRFC<
   ScrollViewRef,
   ScrollViewProps &
     ScrollViewEmits & {
@@ -256,7 +259,7 @@ const AkScrollView: FRFC<
         return
       }
 
-      const allowPullDirections = stringMix2StringArray(enablePullDirections)
+      const allowPullDirections = string2StringArray(enablePullDirections)
 
       if (allowPullDirections.length === 0) {
         return
@@ -479,8 +482,8 @@ const AkScrollView: FRFC<
 
   return (
     <div className={classes} style={props.style} ref={root} onScroll={onScroll}>
-      <div className="ak-scroll-view_inner">
-        <div className="ak-scroll-view_content" style={contentStyles}>
+      <div className="ta-scroll-view_inner">
+        <div className="ta-scroll-view_content" style={contentStyles}>
           {enablePullDirections && enablePullDirections.length > 0 ? (
             <div className={pullRefreshClasses}>
               {renderIndicator ? (
@@ -493,14 +496,14 @@ const AkScrollView: FRFC<
                 <div className={loadMoreClasses} style={indicatorStyles}>
                   {pullRefreshState === PullRefreshState.Refreshing ? (
                     <ActivityIndicator
-                      className="ak-load-more_icon"
+                      className="ta-load-more_icon"
                       size="18"
                     />
                   ) : (
-                    <Icon className="ak-load-more_icon" icon={CircleOutlined} />
+                    <Icon className="ta-load-more_icon" icon={CircleOutlined} />
                   )}
 
-                  <span className="ak-load-more_content">
+                  <span className="ta-load-more_content">
                     {pullRefreshState === PullRefreshState.Refreshing
                       ? locale.scrollViewRefreshingText
                       : pullRefreshState === PullRefreshState.Holding
@@ -520,4 +523,4 @@ const AkScrollView: FRFC<
   )
 }
 
-export default forwardRef(AkScrollView)
+export default forwardRef(TaScrollView)

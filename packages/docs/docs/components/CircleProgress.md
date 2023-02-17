@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCircleProgress } from 'arkui-mobile-react'
+import { TaCircleProgress } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,7 +28,7 @@ import { AkCircleProgress } from 'arkui-mobile-react'
 ### 内容区（children）
 
 ```tsx
-<AkCircleProgress percentage={percentage}>
+<TaCircleProgress percentage={percentage}>
   {({ progress }) => <>{'已抢' + progress}</>}
-</AkCircleProgress>
+</TaCircleProgress>
 ```

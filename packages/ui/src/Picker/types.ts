@@ -1,12 +1,12 @@
 import type { PopupEmits, PopupProps, PopupRef } from '../popup/types'
-import type { SelectorOnChange } from '../SelectorField/types'
-import type { AnyObject, Noop } from '../helpers/types'
+import type { AnyObject, Noop } from '../helpers'
 import type {
   SelectorValue,
   SelectorModelValue,
   SelectorDetail,
   SelectorValueParser,
-  SelectorValueFormatter
+  SelectorValueFormatter,
+  SelectorOnChange
 } from '../SelectorField/types'
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 
@@ -61,34 +61,42 @@ export interface PickerHandlers {
   labelFormatter: PickerLabelFormatter
 }
 
-export interface ShowPickerOptions {
-  options: UserOptionItem[] | UserOptionItem[][]
-  title?: string
-  value?: SelectorModelValue
-  fieldNames?: UserFieldNames
+export interface PickerDetail {
+  value: (string | number)[]
+  label: string
 }
 
-export type OnConfirm = (payload: SelectorDetail) => void
+export type OnConfirm = (payload: PickerDetail) => void
 
 /**
  * PickerCommon
  */
 export interface PickerCommonProps {
   value?: SelectorModelValue
-  options: UserOptionItem[]
-  fieldNames?: UserFieldNames
   formatter?: SelectorValueFormatter
   parser?: SelectorValueParser
+}
+
+export interface PickerOptionsProps {
+  options: UserOptionItem[] | UserOptionItem[][]
+  fieldNames?: UserFieldNames
 }
 
 export interface PickerCommonEmits {
   onChange?: SelectorOnChange
 }
 
+export interface ShowPickerOptions extends PickerOptionsProps {
+  title?: string
+  value?: (string | number)[]
+}
+
 /**
  * PickerView
  */
-export type PickerViewProps = PickerCommonProps
+export interface PickerViewProps
+  extends PickerCommonProps,
+    PickerOptionsProps {}
 
 export type PickerViewEmits = PickerCommonEmits
 
@@ -100,7 +108,10 @@ export interface PickerViewRef {
 /**
  * PickerPopup
  */
-export interface PickerPopupProps extends PopupProps, PickerCommonProps {
+export interface PickerPopupProps
+  extends PopupProps,
+    PickerCommonProps,
+    PickerOptionsProps {
   title?: string
 }
 
@@ -115,7 +126,10 @@ export interface PickerPopupRef extends PopupRef {
 /**
  * Picker
  */
-export interface PickerProps extends FormItemCommonProps, PickerCommonProps {
+export interface PickerProps
+  extends FormItemCommonProps,
+    PickerCommonProps,
+    PickerOptionsProps {
   placeholder?: string
 }
 
@@ -133,3 +147,9 @@ export type PickerViewAfterUpdate = (
   labelArray: readonly string[],
   cols: readonly Col[]
 ) => void
+
+export type {
+  OnConfirm as PickerOnConfirm,
+  UserFieldNames as PickerFieldNames,
+  SelectorOnChange as PickerOnChange
+}

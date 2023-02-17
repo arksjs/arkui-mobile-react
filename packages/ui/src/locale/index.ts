@@ -1,4 +1,4 @@
-import zhCN from '../locale/lang/zh-CN'
+import zhCN from './lang/zh-CN'
 
 export { zhCN }
 

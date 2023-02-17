@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkLoadMore } from 'arkui-mobile-react'
+import { TaLoadMore } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,5 +25,5 @@ import { AkLoadMore } from 'arkui-mobile-react'
 ### 附加内容（children）
 
 ```tsx
-<AkLoadMore>暂无数据</AkLoadMore>
+<TaLoadMore>加载中...</TaLoadMore>
 ```

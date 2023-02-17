@@ -1,13 +1,13 @@
 import classNames from 'classnames'
 import type { CascaderEmits, CascaderProps } from './types'
-import type { VFC } from '../helpers/types'
+import type { VFC } from '../helpers'
 import { SelectorField } from '../SelectorField'
 import CascaderPopup from './CascaderPopup'
 import { usePicker } from '../Picker/use-picker'
 import { mergeHandlers } from '../Picker/util'
 
-const AkCascader: VFC<CascaderProps & CascaderEmits> = props => {
-  const classes = classNames('ak-picker', props.className)
+const TaCascader: VFC<CascaderProps & CascaderEmits> = props => {
+  const classes = classNames('ta-picker', props.className)
 
   const {
     popupRef,
@@ -55,4 +55,4 @@ const AkCascader: VFC<CascaderProps & CascaderEmits> = props => {
   )
 }
 
-export default AkCascader
+export default TaCascader

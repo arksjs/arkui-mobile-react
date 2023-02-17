@@ -1,14 +1,14 @@
 @import '../style/var.scss';
 
-.ak-index-view {
+.ta-index-view {
   overflow-y: auto;
   position: relative;
 
   &_sidebar {
     position: fixed;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
     width: 36px;
     z-index: 1000;
     display: flex;
@@ -40,10 +40,10 @@
   }
 }
 
-.ak-index-view-item {
+.ta-index-view-item {
   margin-bottom: 0;
 
-  .ak-group_header {
+  .ta-group_header {
     height: 28px;
     background-color: $background-color;
   }

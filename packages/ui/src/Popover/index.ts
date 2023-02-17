@@ -1,7 +1,7 @@
 import Popover from './Popover'
 import { createAlertHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
-import type { PlacementType, Selector } from '../helpers/types'
+import type { PlacementType, Selector } from '../helpers'
 
 interface ShowPopoverOptions {
   selector: Selector
@@ -16,5 +16,4 @@ const showPopover = createShowPopup<ShowPopoverOptions, PopupSuccessAlertArgs>({
 })
 
 export { Popover, showPopover }
-
 export default Popover

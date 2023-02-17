@@ -1,8 +1,8 @@
 import {
-  AkNumberKeyboard,
-  AkInput,
-  AkCell,
-  AkGroup,
+  TaNumberKeyboard,
+  TaInput,
+  TaCell,
+  TaGroup,
   NumberKeyboardOnDelete,
   NumberKeyboardOnClose,
   showToast,
@@ -55,49 +55,49 @@ export default function ExpNumberKeyboard() {
 
   return (
     <>
-      <AkGroup title="基础键盘">
-        <AkCell label="默认键盘" isLink onClick={() => onShow({})}></AkCell>
-        <AkCell
+      <TaGroup title="基础键盘">
+        <TaCell label="默认键盘" isLink onClick={() => onShow({})}></TaCell>
+        <TaCell
           label="带小数点（customKey='.'）"
           isLink
           onClick={() => onShow({ customKey: '.' })}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="身份证（customKey='X'）"
           isLink
           onClick={() => onShow({ customKey: 'X' })}
-        ></AkCell>
-      </AkGroup>
-      <AkGroup title="带右侧栏键盘">
-        <AkCell
+        ></TaCell>
+      </TaGroup>
+      <TaGroup title="带右侧栏键盘">
+        <TaCell
           label="默认键盘"
           isLink
           onClick={() => onShow({ type: 'rightColumn' })}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="1个自定义值（customKey=['.']）"
           isLink
           onClick={() => onShow({ type: 'rightColumn', customKey: '.' })}
-        ></AkCell>
-        <AkCell
+        ></TaCell>
+        <TaCell
           label="2个自定义值（customKey=['00', '.']）"
           isLink
           onClick={() =>
             onShow({ type: 'rightColumn', customKey: ['00', '.'] })
           }
-        ></AkCell>
-      </AkGroup>
-      <AkGroup title="其他">
-        <AkCell
+        ></TaCell>
+      </TaGroup>
+      <TaGroup title="其他">
+        <TaCell
           label="设置标题"
           isLink
           onClick={() => onShow({ title: '键盘标题' })}
-        ></AkCell>
-        <AkCell label="数据绑定" isLink onClick={() => setVisible2(true)}>
-          <AkInput value={inputValue} readonly />
-        </AkCell>
-      </AkGroup>
-      <AkNumberKeyboard
+        ></TaCell>
+        <TaCell label="数据绑定" isLink onClick={() => setVisible2(true)}>
+          <TaInput value={inputValue} readonly />
+        </TaCell>
+      </TaGroup>
+      <TaNumberKeyboard
         visible={visible1}
         title={title}
         customKey={customKey}
@@ -108,11 +108,10 @@ export default function ExpNumberKeyboard() {
         onDelete={onDelete}
         onInput={onInput}
       />
-      <AkNumberKeyboard
+      <TaNumberKeyboard
         visible={visible2}
         value={inputValue}
         onUpdateVisible={v => setVisible2(v)}
-        onUpdateValue={v => setInputValue(v)}
       />
     </>
   )

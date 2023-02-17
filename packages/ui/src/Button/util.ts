@@ -5,10 +5,15 @@ import type {
   FormType,
   ButtonGroupProps
 } from './types'
-import { getColorGroups, isColorValue, isDarkColor } from '../helpers/color'
-import { getEnumsValue } from '../helpers/validator'
-import { SIZE_TYPES, STATE_TYPES } from '../helpers/constants'
-import type { CSSProperties } from '../helpers/types'
+import {
+  getColorGroups,
+  isColorValue,
+  isDarkColor,
+  getEnumsValue,
+  SIZE_TYPES,
+  STATE_TYPES,
+  type CSSProperties
+} from '../helpers'
 
 export const BUTTON_SHAPE_TYPES: ShapeType[] = [
   'rectangle',
@@ -37,7 +42,7 @@ export const getButtonClasses = (
   props: ButtonProps,
   groupProps?: ButtonGroupProps
 ) => [
-  'ak-button',
+  'ta-button',
   {
     'has--icon': props.loading || props.icon,
     ghost: !!props.ghost,
@@ -53,7 +58,7 @@ export const getButtonClasses = (
 ]
 
 export const getGroupClasses = (props: ButtonGroupProps, count: number) => [
-  'ak-button-group',
+  'ta-button-group',
   getCommonClasses(props),
   'count--' + (count || 1)
 ]
@@ -66,13 +71,13 @@ export const getButtonStyles = (color?: string) => {
     const isDark = isDarkColor(color)
     const pattern = getEnumsValue(BUTTON_PATTERN_TYPES)
 
-    obj[`--ak-color`] = colors[5]
-    obj[`--ak-dark-color`] = colors[6]
-    obj[`--ak-light-color`] = colors[4]
+    obj[`--ta-color`] = colors[5]
+    obj[`--ta-dark-color`] = colors[6]
+    obj[`--ta-light-color`] = colors[4]
 
     if (!isDark && (pattern === 'default' || pattern === 'gradient')) {
       // 浅色背景情况，字体颜色升四阶
-      obj[`--ak-front-color`] = colors[9]
+      obj[`--ta-front-color`] = colors[9]
     }
   }
 

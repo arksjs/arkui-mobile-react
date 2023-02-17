@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkStopwatch } from 'arkui-mobile-react'
+import { TaStopwatch } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import { AkStopwatch } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { CountTime, StopwatchOnStop } from 'arkui-mobile-react'
+import type { CountTime, StopwatchOnStop } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -68,5 +68,5 @@ import type { CountTime, StopwatchOnStop } from 'arkui-mobile-react'
 ### 自定义风格显示（render）
 
 ```tsx
-<AkStopwatch render={countTime => <>{countTime.fullHours}</>} />
+<TaStopwatch render={countTime => <>{countTime.fullHours}</>} />
 ```

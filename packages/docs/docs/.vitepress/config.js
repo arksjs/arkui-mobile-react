@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  title: 'ArkUI',
+  title: 'Tantalum UI',
   description: '基于 React 17 移动端组件库',
-  base: '/arkui-mobile-react/',
+  base: '/tantalum-ui-mobile-react/',
   lang: 'zh-CN',
   head: [
     [
@@ -12,7 +12,7 @@ module.exports = {
         rel: 'icon',
         type: 'image/svg',
         sizes: '32x32',
-        href: '/arkui-mobile-react/logo.svg'
+        href: '/tantalum-ui-mobile-react/logo.svg'
       }
     ],
     [

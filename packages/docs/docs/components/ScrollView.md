@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkScrollView } from 'arkui-mobile-react'
+import { TaScrollView } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ScrollViewOnScrollToLower,
   ScrollViewOnRefreshing,
   ScrollViewOnScroll
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -40,7 +40,7 @@ import type {
 | scrollY              | boolean                                              | false  | 否   | 允许纵向滚动                                                                                          |
 | upperThreshold       | string \| number                                     | 50     | 否   | 距顶部/左边多远时，触发 `scroll-to-upper` 事件                                                        |
 | lowerThreshold       | string \| number                                     | 50     | 否   | 距底部/右边多远时，触发 `scroll-to-lower` 事件                                                        |
-| scrollLop            | string \| number                                     |        | 否   | 设置竖向滚动条位置                                                                                    |
+| scrollTop            | string \| number                                     |        | 否   | 设置竖向滚动条位置                                                                                    |
 | scrollLeft           | string \| number                                     |        | 否   | 设置横向滚动条位置                                                                                    |
 | scrollAnimated       | boolean                                              | false  | 否   | 在设置滚动条位置时使用动画过渡                                                                        |
 | enablePullDirections | ScrollViewPullDirection \| ScrollViewPullDirection[] | []     | 否   | 开启下拉刷新，可以同时开启多个方向，可选值：'up', 'down', 'left', 'right'，搭配 `refreshing` 事件使用 |
@@ -60,13 +60,13 @@ import type {
 ### children
 
 ```tsx
-<AkScrollView>自定义内容</AkScrollView>
+<TaScrollView>自定义内容</TaScrollView>
 ```
 
 ### 下拉指示器（renderIndicator）
 
 ```tsx
-<AkScrollView
+<TaScrollView
   className="exp-scrollView-box"
   scrollY
   renderIndicator={slotProps => (
@@ -74,5 +74,5 @@ import type {
       方向：{slotProps.pullDirection} 状态：{slotProps.pullRefreshState}
     </>
   )}
-></AkScrollView>
+></TaScrollView>
 ```

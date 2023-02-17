@@ -2,9 +2,9 @@ import {
   showToast,
   showCalendar,
   SelectorModelValue,
-  AkGroup,
-  AkCell,
-  AkCalendar,
+  TaGroup,
+  TaCell,
+  TaCalendar,
   SelectorDetail
 } from '@/index'
 import { formatter, parser } from './utils'
@@ -45,52 +45,52 @@ export default function ExpCalendar() {
 
   return (
     <>
-      <AkGroup title="initialMode=simple">
-        <AkCell label="默认">
-          <AkCalendar />
-        </AkCell>
-        <AkCell label="showConfirm=true">
-          <AkCalendar showConfirm />
-        </AkCell>
-        <AkCell label="showClose=true">
-          <AkCalendar showClose />
-        </AkCell>
-        <AkCell label="firstDayOfWeek=1">
-          <AkCalendar firstDayOfWeek="1" />
-        </AkCell>
-        <AkCell label="minDate/maxDate +-1month">
-          <AkCalendar minDate={minDate} maxDate={maxDate} />
-        </AkCell>
-        <AkCell label="formatter/parser">
-          <AkCalendar
+      <TaGroup title="initialMode=simple">
+        <TaCell label="默认">
+          <TaCalendar />
+        </TaCell>
+        <TaCell label="showConfirm=true">
+          <TaCalendar showConfirm />
+        </TaCell>
+        <TaCell label="showClose=true">
+          <TaCalendar showClose />
+        </TaCell>
+        <TaCell label="firstDayOfWeek=1">
+          <TaCalendar firstDayOfWeek="1" />
+        </TaCell>
+        <TaCell label="minDate/maxDate +-1month">
+          <TaCalendar minDate={minDate} maxDate={maxDate} />
+        </TaCell>
+        <TaCell label="formatter/parser">
+          <TaCalendar
             formatter={formatter}
             parser={parser}
             value={formatValue}
           />
-        </AkCell>
-        <AkCell label="禁用">
-          <AkCalendar disabled value={disableValue} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="initialMode=range">
-        <AkCell label="默认">
-          <AkCalendar initialMode="range" />
-        </AkCell>
-        <AkCell label="allowSameDay">
-          <AkCalendar initialMode="range" allowSameDay />
-        </AkCell>
-        <AkCell label="maxRange=5">
-          <AkCalendar initialMode="range" maxRange="5" />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="事件监听">
-        <AkCell label="change">
-          <AkCalendar onChange={onChange} />
-        </AkCell>
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell label="showCalendar" isLink onClick={() => onCallApi()} />
-      </AkGroup>
+        </TaCell>
+        <TaCell label="禁用">
+          <TaCalendar disabled value={disableValue} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="initialMode=range">
+        <TaCell label="默认">
+          <TaCalendar initialMode="range" />
+        </TaCell>
+        <TaCell label="allowSameDay">
+          <TaCalendar initialMode="range" allowSameDay />
+        </TaCell>
+        <TaCell label="maxRange=5">
+          <TaCalendar initialMode="range" maxRange="5" />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="事件监听">
+        <TaCell label="change">
+          <TaCalendar onChange={onChange} />
+        </TaCell>
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell label="showCalendar" isLink onClick={() => onCallApi()} />
+      </TaGroup>
     </>
   )
 }

@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import type { CSSProperties, FC } from '../helpers/types'
+import type { CSSProperties, FC } from '../helpers'
 
-const AkFormFooter: FC<{ style?: CSSProperties }> = props => {
-  const classes = classNames('ak-form-footer', props.className)
+const TaFormFooter: FC<{ style?: CSSProperties }> = props => {
+  const classes = classNames('ta-form-footer', props.className)
 
   return (
     <div className={classes} style={props.style}>
@@ -11,4 +11,4 @@ const AkFormFooter: FC<{ style?: CSSProperties }> = props => {
   )
 }
 
-export default AkFormFooter
+export default TaFormFooter

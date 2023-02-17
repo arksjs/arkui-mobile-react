@@ -2,15 +2,18 @@ import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import type { BackTopProps } from './types'
 import { getStyles, DEFAULT_VISIBLE_HEIGHT } from './util'
-import type { FC, OnClick } from '../helpers/types'
-import { getScrollTop, scrollTo } from '../helpers/dom'
 import UpCircleOutlined from '../Icon/icons/UpCircleOutlined'
-import { useScroll } from '../hooks/use-scroll'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
+import { useScroll, useSafeAreaInsets } from '../hooks'
 import { Icon } from '../Icon'
-import { getNumber } from '../helpers/util'
+import {
+  getNumber,
+  getScrollTop,
+  scrollTo,
+  type FC,
+  type OnClick
+} from '../helpers'
 
-const AkBackTop: FC<
+const TaBackTop: FC<
   BackTopProps & {
     onClick?: OnClick
   }
@@ -25,7 +28,7 @@ const AkBackTop: FC<
   const [isShow, setIsShow] = useState(false)
   const { safeAreaInsets } = useSafeAreaInsets(enableSafeAreaInsets)
 
-  const classes = classNames('ak-back-top', props.className)
+  const classes = classNames('ta-back-top', props.className)
   const styles = getStyles(offset, isShow, safeAreaInsets)
 
   useScroll(docEl, e => {
@@ -52,4 +55,4 @@ const AkBackTop: FC<
   )
 }
 
-export default AkBackTop
+export default TaBackTop

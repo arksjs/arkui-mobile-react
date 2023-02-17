@@ -1,4 +1,4 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export type OnCancel = (payload: { number: number }) => void
 export type OnAnimated = OnCancel
@@ -20,4 +20,10 @@ export interface CountUpEmits {
 
 export interface CountUpRef {
   cancel: Noop
+}
+
+export type {
+  Speed as CountUpSpeed,
+  OnCancel as CountUpOnCancel,
+  OnAnimated as CountUpOnAnimated
 }

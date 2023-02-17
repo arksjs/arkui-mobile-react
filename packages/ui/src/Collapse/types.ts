@@ -1,18 +1,13 @@
-import { GroupContextValue, GroupContextItemRef } from '../hooks/types'
+import type { GroupContextValue, GroupContextItemRef } from '../hooks'
+import type { Noop } from '../helpers'
 import type { IconData } from '../Icon/types'
-import { Noop } from '../helpers/types'
 
-export type ActiveName = string | number
+export type OnChange = (activeNames: string[]) => void
 
-export type OnChange = (activeNames: ActiveName[]) => void
-
-export type ItemOnToggle = (payload: {
-  name: ActiveName
-  spread: boolean
-}) => void
+export type ItemOnToggle = (payload: { name: string; spread: boolean }) => void
 
 export interface CollapseProps {
-  activeNames?: ActiveName | ActiveName[]
+  value?: string | string[]
   accordion?: boolean
 }
 
@@ -23,12 +18,17 @@ export interface CollapseEmits {
 export interface CollapseItemProps {
   icon?: IconData
   title?: string
-  name: string | number
+  name: string
   disabled?: boolean
 }
 
 export interface CollapseItemEmits {
   onToggle?: ItemOnToggle
+}
+
+export type {
+  OnChange as CollapseOnChange,
+  ItemOnToggle as CollapseItemOnToggle
 }
 
 export interface CollapseContextValue extends GroupContextValue {
@@ -38,6 +38,6 @@ export interface CollapseContextValue extends GroupContextValue {
 export interface CollapseContextItemRef extends GroupContextItemRef {
   show: Noop
   hide: Noop
-  getName: () => ActiveName
-  isActive: () => boolean
+  getName: () => string
+  getActive: () => boolean
 }

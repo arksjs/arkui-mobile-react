@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import type { OnClick, VFC } from '../helpers/types'
+import type { OnClick, VFC } from '../helpers'
 import type { Mode, Month } from './types'
 
-const AkCalendarViewMonth: VFC<{
+const TaCalendarViewMonth: VFC<{
   mode: Mode
   month: Month
   monthIndex: number
@@ -10,7 +10,7 @@ const AkCalendarViewMonth: VFC<{
 }> = ({ mode, month, monthIndex, onDaysClick }) => {
   const renderDays = () =>
     month.days.map((day, dayIndex) => {
-      const dayClasses = classNames('ak-calendar-view_day', {
+      const dayClasses = classNames('ta-calendar-view_day', {
         disabled: day.state === 'disabled',
         selected:
           day.state === 'selected' ||
@@ -19,10 +19,10 @@ const AkCalendarViewMonth: VFC<{
         'in-range': mode === 'range' && day.state === 'selected'
       })
 
-      const topTextClasses = classNames('ak-calendar-view_day-top-text', {
+      const topTextClasses = classNames('ta-calendar-view_day-top-text', {
         highlight: day.topHighlight
       })
-      const bottomTextClasses = classNames('ak-calendar-view_day-bottom-text', {
+      const bottomTextClasses = classNames('ta-calendar-view_day-bottom-text', {
         highlight: day.bottomHighlight
       })
 
@@ -45,9 +45,9 @@ const AkCalendarViewMonth: VFC<{
 
   return (
     <>
-      <div className="ak-calendar-view_month-caption">{month.caption}</div>
+      <div className="ta-calendar-view_month-caption">{month.caption}</div>
       <div
-        className="ak-calendar-view_days"
+        className="ta-calendar-view_days"
         data-index={monthIndex}
         onClick={onDaysClick}
       >
@@ -57,4 +57,4 @@ const AkCalendarViewMonth: VFC<{
   )
 }
 
-export default AkCalendarViewMonth
+export default TaCalendarViewMonth

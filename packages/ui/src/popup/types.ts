@@ -1,4 +1,4 @@
-import type { AnyObject, EmptyObject, Noop } from '../helpers/types'
+import type { AnyObject, EmptyObject, Noop } from '../helpers'
 
 export interface PopupProps {
   visible?: boolean
@@ -41,4 +41,10 @@ export interface PopupRef {
   customConfirm: PopupCustomConfirm
   customCancel: PopupCustomCancel
   onCancelClick: Noop
+}
+
+export type {
+  VisibleState as PopupVisibleState,
+  OnVisibleStateChange as PopupOnVisibleStateChange,
+  OnCancel as PopupOnCancel
 }

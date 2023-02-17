@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCollapse, AkCollapseItem } from 'arkui-mobile-react'
+import { TaCollapse, TaCollapseItem } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,23 +23,23 @@ import type {
   CollapseActiveName,
   CollapseOnChange,
   CollapseItemOnToggle
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Collapse
 
 ### Collapse Props
 
-| 属性        | 类型                 | 默认值 | 必填 | 说明                                                                                                |
-| ----------- | -------------------- | ------ | ---- | --------------------------------------------------------------------------------------------------- |
-| activeNames | (string \| number)[] | []     | 否   | 当前展开面板的 `name` 列表，需要每个 [CollapseItem](./Collapse.md#collapseitem) 组件都设置上 `name` |
-| accordion   | boolean              | false  | 否   | 是否开启手风琴模式                                                                                  |
+| 属性      | 类型               | 默认值 | 必填 | 说明                                                                                                |
+| --------- | ------------------ | ------ | ---- | --------------------------------------------------------------------------------------------------- |
+| value     | string \| string[] | []     | 否   | 当前展开面板的 `name` 列表，需要每个 [CollapseItem](./Collapse.md#collapseitem) 组件都设置上 `name` |
+| accordion | boolean            | false  | 否   | 是否开启手风琴模式                                                                                  |
 
 ### Collapse Events
 
-| 事件     | 描述           | 回调函数参数                      | TypeScript 函数  |
-| -------- | -------------- | --------------------------------- | ---------------- |
-| onChange | 切换面板时触发 | activeNames: (string \| number)[] | CollapseOnChange |
+| 事件     | 描述           | 回调函数参数          | TypeScript 函数  |
+| -------- | -------------- | --------------------- | ---------------- |
+| onChange | 切换面板时触发 | activeNames: string[] | CollapseOnChange |
 
 ### Collapse Slots
 
@@ -48,38 +48,38 @@ import type {
 注：其中只可放置 [CollapseItem](./Collapse.md#collapseitem-折叠面板子项) 组件，否则会导致未定义的行为。
 
 ```tsx
-<AkCollapse>
-  <AkCollapse.Item title="标题1" name="row1">
+<TaCollapse>
+  <TaCollapse.Item title="标题1" name="row1">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-  <AkCollapse.Item title="标题2" name="row2">
+  </TaCollapse.Item>
+  <TaCollapse.Item title="标题2" name="row2">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-  <AkCollapse.Item title="标题3" name="row3">
+  </TaCollapse.Item>
+  <TaCollapse.Item title="标题3" name="row3">
     <div className="exp-collapse-pad">
       代码是写出来给人看的，附带能在机器上运行
     </div>
-  </AkCollapse.Item>
-</AkCollapse>
+  </TaCollapse.Item>
+</TaCollapse>
 ```
 
 ## CollapseItem
 
 ### CollapseItem Props
 
-| 属性     | 类型    | 默认值 | 必填 | 说明                                                                              |
-| -------- | ------- | ------ | ---- | --------------------------------------------------------------------------------- |
-| title    | string  | ''     | 否   | 面板子项标题                                                                      |
-| icon     | string  |        | 否   | 面板子项标题前图标，使用 [Icon](./Icon.md) 组件                                   |
-| name     | string  |        | 否   | 唯一标识，设置后可以配合 [Collapse](./Collapse.md#collapse) 的 `activeNames` 使用 |
-| disabled | boolean | false  | 否   | 是否禁用                                                                          |
+| 属性     | 类型    | 默认值 | 必填 | 说明                                                                                  |
+| -------- | ------- | ------ | ---- | ------------------------------------------------------------------------------------- |
+| title    | string  | ''     | 否   | 面板子项标题                                                                          |
+| icon     | string  |        | 否   | 面板子项标题前图标，使用 [Icon](./Icon.md) 组件                                       |
+| name     | string  |        | 是   | 唯一标识，设置后配合 [Collapse](./Collapse.md#collapse) 的 `value` 和 `onChange` 使用 |
+| disabled | boolean | false  | 否   | 是否禁用                                                                              |
 
 ### CollapseItem Events
 
-| 事件     | 描述                    | 回调函数参数                                                                                 | TypeScript 函数      |
-| -------- | ----------------------- | -------------------------------------------------------------------------------------------- | -------------------- |
-| onToggle | 面板子项展开/收起时触发 | payload: { name: string \| number, spread: boolean } 其中 spread=true 展开/spread=false 收起 | CollapseItemOnToggle |
+| 事件     | 描述                    | 回调函数参数                                                                       | TypeScript 函数      |
+| -------- | ----------------------- | ---------------------------------------------------------------------------------- | -------------------- |
+| onToggle | 面板子项展开/收起时触发 | payload: { name: string, spread: boolean } 其中 spread=true 展开/spread=false 收起 | CollapseItemOnToggle |

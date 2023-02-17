@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import {
   forwardRef,
   useContext,
@@ -6,10 +5,10 @@ import {
   useMemo,
   useRef
 } from 'react'
+import classNames from 'classnames'
 import type { PickerViewEmits, PickerViewProps, PickerViewRef } from './types'
-import type { FRVFC } from '../helpers/types'
 import { Empty } from '../Empty'
-import { frameTo } from '../helpers/animation'
+import { frameTo, type FRVFC } from '../helpers'
 import { mergeHandlers, DEFAULT_ITEM_HEIGHT } from './util'
 import { usePickerView } from './use-picker'
 import { useLocale } from '../ConfigProvider/context'
@@ -21,7 +20,7 @@ interface ScrollElement extends HTMLElement {
   scrollTimer?: number
 }
 
-const AkPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
+const TaPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
   props,
   ref
 ) => {
@@ -54,7 +53,7 @@ const AkPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
     const $picker = root.current
 
     if ($picker) {
-      const $lists = $picker.querySelectorAll(`.ak-picker-view_list`)
+      const $lists = $picker.querySelectorAll(`.ta-picker-view_list`)
 
       $lists.forEach(($el, index) => {
         const $list = $el as ScrollElement
@@ -145,7 +144,7 @@ const AkPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
     }
   }
 
-  const classes = classNames('ak-picker-view', props.className)
+  const classes = classNames('ta-picker-view', props.className)
 
   const renderCols = useMemo(() => {
     return cols.map((colItem, listIndex) => (
@@ -169,7 +168,7 @@ const AkPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
 
   return (
     <div className={classes} ref={root}>
-      <div className="ak-picker-view_cols">
+      <div className="ta-picker-view_cols">
         {renderCols}
         {cols.length === 0 ? (
           <Empty description={locale.pickerEmptyText} />
@@ -181,4 +180,4 @@ const AkPickerView: FRVFC<PickerViewRef, PickerViewProps & PickerViewEmits> = (
   )
 }
 
-export default forwardRef(AkPickerView)
+export default forwardRef(TaPickerView)

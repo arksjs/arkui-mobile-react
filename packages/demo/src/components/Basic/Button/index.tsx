@@ -1,359 +1,359 @@
-import { AkButton, AkGroup } from '@/index'
+import { TaButton, TaGroup } from '@/index'
 
 export default function ExpButton() {
   return (
     <>
-      <AkGroup title="标准 & 渐变 & 实线 & 虚线 & 无边框">
+      <TaGroup title="标准 & 渐变 & 实线 & 虚线 & 无边框">
         <ul className="exp-button-group">
           <li>
-            <AkButton type="default">默认</AkButton>
-            <AkButton type="primary">主要</AkButton>
-            <AkButton type="success">成功</AkButton>
-            <AkButton type="warning">警告</AkButton>
-            <AkButton type="danger">危险</AkButton>
+            <TaButton type="default">默认</TaButton>
+            <TaButton type="primary">主要</TaButton>
+            <TaButton type="success">成功</TaButton>
+            <TaButton type="warning">警告</TaButton>
+            <TaButton type="danger">危险</TaButton>
           </li>
           <li>
-            <AkButton type="default" pattern="gradient">
+            <TaButton type="default" pattern="gradient">
               默认
-            </AkButton>
-            <AkButton type="primary" pattern="gradient">
+            </TaButton>
+            <TaButton type="primary" pattern="gradient">
               主要
-            </AkButton>
-            <AkButton type="success" pattern="gradient">
+            </TaButton>
+            <TaButton type="success" pattern="gradient">
               成功
-            </AkButton>
-            <AkButton type="warning" pattern="gradient">
+            </TaButton>
+            <TaButton type="warning" pattern="gradient">
               警告
-            </AkButton>
-            <AkButton type="danger" pattern="gradient">
+            </TaButton>
+            <TaButton type="danger" pattern="gradient">
               危险
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton type="default" pattern="solid">
+            <TaButton type="default" pattern="solid">
               默认
-            </AkButton>
-            <AkButton type="primary" pattern="solid">
+            </TaButton>
+            <TaButton type="primary" pattern="solid">
               主要
-            </AkButton>
-            <AkButton type="success" pattern="solid">
+            </TaButton>
+            <TaButton type="success" pattern="solid">
               成功
-            </AkButton>
-            <AkButton type="warning" pattern="solid">
+            </TaButton>
+            <TaButton type="warning" pattern="solid">
               警告
-            </AkButton>
-            <AkButton type="danger" pattern="solid">
+            </TaButton>
+            <TaButton type="danger" pattern="solid">
               危险
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton type="default" pattern="dashed">
+            <TaButton type="default" pattern="dashed">
               默认
-            </AkButton>
-            <AkButton type="primary" pattern="dashed">
+            </TaButton>
+            <TaButton type="primary" pattern="dashed">
               主要
-            </AkButton>
-            <AkButton type="success" pattern="dashed">
+            </TaButton>
+            <TaButton type="success" pattern="dashed">
               成功
-            </AkButton>
-            <AkButton type="warning" pattern="dashed">
+            </TaButton>
+            <TaButton type="warning" pattern="dashed">
               警告
-            </AkButton>
-            <AkButton type="danger" pattern="dashed">
+            </TaButton>
+            <TaButton type="danger" pattern="dashed">
               危险
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton type="default" pattern="borderless">
+            <TaButton type="default" pattern="borderless">
               默认
-            </AkButton>
-            <AkButton type="primary" pattern="borderless">
+            </TaButton>
+            <TaButton type="primary" pattern="borderless">
               主要
-            </AkButton>
-            <AkButton type="success" pattern="borderless">
+            </TaButton>
+            <TaButton type="success" pattern="borderless">
               成功
-            </AkButton>
-            <AkButton type="warning" pattern="borderless">
+            </TaButton>
+            <TaButton type="warning" pattern="borderless">
               警告
-            </AkButton>
-            <AkButton type="danger" pattern="borderless">
+            </TaButton>
+            <TaButton type="danger" pattern="borderless">
               危险
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="幽灵按钮">
+      </TaGroup>
+      <TaGroup title="幽灵按钮">
         <ul className="exp-button-group" style={{ background: '#000' }}>
           <li>
-            <AkButton type="default" ghost>
+            <TaButton type="default" ghost>
               默认
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton type="primary" ghost>
+            <TaButton type="primary" ghost>
               主要
-            </AkButton>
-            <AkButton type="success" ghost>
+            </TaButton>
+            <TaButton type="success" ghost>
               成功
-            </AkButton>
-            <AkButton type="warning" ghost>
+            </TaButton>
+            <TaButton type="warning" ghost>
               警告
-            </AkButton>
-            <AkButton type="danger" ghost>
+            </TaButton>
+            <TaButton type="danger" ghost>
               危险
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="自定义颜色（长春花色#6667AB/莲花色#E2C0BF）">
+      </TaGroup>
+      <TaGroup title="自定义颜色（长春花色#6667AB/莲花色#E2C0BF）">
         <ul className="exp-button-group">
           <li>
-            <AkButton color="#6667AB">深色</AkButton>
-            <AkButton color="#6667AB" pattern="gradient">
+            <TaButton color="#6667AB">深色</TaButton>
+            <TaButton color="#6667AB" pattern="gradient">
               渐变
-            </AkButton>
-            <AkButton color="#E2C0BF">浅色</AkButton>
+            </TaButton>
+            <TaButton color="#E2C0BF">浅色</TaButton>
           </li>
           <li>
-            <AkButton color="#6667AB" pattern="solid">
+            <TaButton color="#6667AB" pattern="solid">
               实线
-            </AkButton>
-            <AkButton color="#6667AB" pattern="dashed">
+            </TaButton>
+            <TaButton color="#6667AB" pattern="dashed">
               虚线
-            </AkButton>
-            <AkButton color="#6667AB" pattern="borderless">
+            </TaButton>
+            <TaButton color="#6667AB" pattern="borderless">
               无边框
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="禁用">
+      </TaGroup>
+      <TaGroup title="禁用">
         <ul className="exp-button-group">
           <li>
-            <AkButton type="default" disabled>
+            <TaButton type="default" disabled>
               默认
-            </AkButton>
-            <AkButton type="primary" pattern="solid" disabled>
+            </TaButton>
+            <TaButton type="primary" pattern="solid" disabled>
               实线
-            </AkButton>
-            <AkButton type="primary" pattern="dashed" disabled>
+            </TaButton>
+            <TaButton type="primary" pattern="dashed" disabled>
               虚线
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton type="primary" disabled>
+            <TaButton type="primary" disabled>
               主要
-            </AkButton>
-            <AkButton type="success" disabled>
+            </TaButton>
+            <TaButton type="success" disabled>
               成功
-            </AkButton>
-            <AkButton type="warning" disabled>
+            </TaButton>
+            <TaButton type="warning" disabled>
               警告
-            </AkButton>
-            <AkButton type="danger" disabled>
+            </TaButton>
+            <TaButton type="danger" disabled>
               危险
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="附带图标">
+      </TaGroup>
+      <TaGroup title="附带图标">
         <ul className="exp-button-group">
           <li>
-            <AkButton
+            <TaButton
               type="danger"
               shape="square"
               icon="HeartOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="primary"
               pattern="solid"
               shape="square"
               icon="EditOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="success"
               pattern="dashed"
               shape="square"
               icon="CheckOutlined"
-            ></AkButton>
-            <AkButton type="danger" icon="SearchOutlined">
+            ></TaButton>
+            <TaButton type="danger" icon="SearchOutlined">
               {' '}
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton
+            <TaButton
               type="primary"
               shape="circle"
               icon="SearchOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="success"
               pattern="solid"
               shape="circle"
               icon="EditOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="danger"
               pattern="dashed"
               shape="circle"
               icon="CheckOutlined"
-            ></AkButton>
-            <AkButton type="default" loading shape="round">
+            ></TaButton>
+            <TaButton type="default" loading shape="round">
               加载中
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="middle 尺寸">
+      </TaGroup>
+      <TaGroup title="middle 尺寸">
         <ul className="exp-button-group">
           <li>
-            <AkButton
+            <TaButton
               type="danger"
               size="middle"
               shape="circle"
               icon="HeartOutlined"
-            ></AkButton>
-            <AkButton type="danger" size="middle" disabled>
+            ></TaButton>
+            <TaButton type="danger" size="middle" disabled>
               危险
-            </AkButton>
-            <AkButton type="default" size="middle" loading shape="round">
+            </TaButton>
+            <TaButton type="default" size="middle" loading shape="round">
               加载中
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton
+            <TaButton
               type="warning"
               size="middle"
               shape="square"
               icon="BorderOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="primary"
               size="middle"
               pattern="solid"
               icon="PlusOutlined"
             >
               主要
-            </AkButton>
-            <AkButton type="success" size="middle" pattern="dashed">
+            </TaButton>
+            <TaButton type="success" size="middle" pattern="dashed">
               成功
-            </AkButton>
-            <AkButton type="danger" size="middle" pattern="borderless">
+            </TaButton>
+            <TaButton type="danger" size="middle" pattern="borderless">
               危险
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="small 尺寸">
+      </TaGroup>
+      <TaGroup title="small 尺寸">
         <ul className="exp-button-group">
           <li>
-            <AkButton
+            <TaButton
               type="danger"
               size="small"
               shape="circle"
               icon="HeartOutlined"
-            ></AkButton>
-            <AkButton type="danger" size="small" disabled>
+            ></TaButton>
+            <TaButton type="danger" size="small" disabled>
               危险
-            </AkButton>
-            <AkButton type="default" size="small" loading shape="round">
+            </TaButton>
+            <TaButton type="default" size="small" loading shape="round">
               加载中
-            </AkButton>
+            </TaButton>
           </li>
           <li>
-            <AkButton
+            <TaButton
               type="warning"
               size="small"
               shape="square"
               icon="SearchOutlined"
-            ></AkButton>
-            <AkButton
+            ></TaButton>
+            <TaButton
               type="primary"
               size="small"
               pattern="solid"
               icon="PlusOutlined"
             >
               主要
-            </AkButton>
-            <AkButton type="success" size="small" pattern="dashed">
+            </TaButton>
+            <TaButton type="success" size="small" pattern="dashed">
               成功
-            </AkButton>
-            <AkButton type="danger" size="small" pattern="borderless">
+            </TaButton>
+            <TaButton type="danger" size="small" pattern="borderless">
               危险
-            </AkButton>
+            </TaButton>
           </li>
         </ul>
-      </AkGroup>
-      <AkGroup title="group 组合">
+      </TaGroup>
+      <TaGroup title="group 组合">
         <ul className="exp-button-group">
           <li>
-            <AkButton.Group shape="square" size="small">
-              <AkButton type="default" icon="LeftOutlined"></AkButton>
-              <AkButton type="default" icon="HomeOutlined"></AkButton>
-            </AkButton.Group>
-            <AkButton.Group size="small">
-              <AkButton type="default" icon="LeftOutlined">
+            <TaButton.Group shape="square" size="small">
+              <TaButton type="default" icon="LeftOutlined"></TaButton>
+              <TaButton type="default" icon="HomeOutlined"></TaButton>
+            </TaButton.Group>
+            <TaButton.Group size="small">
+              <TaButton type="default" icon="LeftOutlined">
                 返回
-              </AkButton>
-              <AkButton type="default" icon="HomeOutlined">
+              </TaButton>
+              <TaButton type="default" icon="HomeOutlined">
                 首页
-              </AkButton>
-            </AkButton.Group>
+              </TaButton>
+            </TaButton.Group>
           </li>
           <li>
-            <AkButton.Group shape="square" size="large">
-              <AkButton type="default" icon="LeftOutlined"></AkButton>
-              <AkButton type="default" icon="HomeOutlined"></AkButton>
-            </AkButton.Group>
-            <AkButton.Group size="large">
-              <AkButton type="default" icon="LeftOutlined">
+            <TaButton.Group shape="square" size="large">
+              <TaButton type="default" icon="LeftOutlined"></TaButton>
+              <TaButton type="default" icon="HomeOutlined"></TaButton>
+            </TaButton.Group>
+            <TaButton.Group size="large">
+              <TaButton type="default" icon="LeftOutlined">
                 返回
-              </AkButton>
-              <AkButton type="default" icon="HomeOutlined">
+              </TaButton>
+              <TaButton type="default" icon="HomeOutlined">
                 首页
-              </AkButton>
-            </AkButton.Group>
+              </TaButton>
+            </TaButton.Group>
           </li>
           <li>
-            <AkButton.Group shape="circle" size="small">
-              <AkButton type="default" icon="LeftOutlined"></AkButton>
-              <AkButton type="default" icon="HomeOutlined"></AkButton>
-            </AkButton.Group>
-            <AkButton.Group shape="round" size="small">
-              <AkButton type="default" icon="LeftOutlined">
+            <TaButton.Group shape="circle" size="small">
+              <TaButton type="default" icon="LeftOutlined"></TaButton>
+              <TaButton type="default" icon="HomeOutlined"></TaButton>
+            </TaButton.Group>
+            <TaButton.Group shape="round" size="small">
+              <TaButton type="default" icon="LeftOutlined">
                 返回
-              </AkButton>
-              <AkButton type="default" icon="HomeOutlined">
+              </TaButton>
+              <TaButton type="default" icon="HomeOutlined">
                 首页
-              </AkButton>
-            </AkButton.Group>
+              </TaButton>
+            </TaButton.Group>
           </li>
           <li>
-            <AkButton.Group shape="circle" size="large">
-              <AkButton type="default" icon="LeftOutlined"></AkButton>
-              <AkButton type="default" icon="HomeOutlined"></AkButton>
-            </AkButton.Group>
-            <AkButton.Group shape="round" size="large">
-              <AkButton type="default" icon="LeftOutlined">
+            <TaButton.Group shape="circle" size="large">
+              <TaButton type="default" icon="LeftOutlined"></TaButton>
+              <TaButton type="default" icon="HomeOutlined"></TaButton>
+            </TaButton.Group>
+            <TaButton.Group shape="round" size="large">
+              <TaButton type="default" icon="LeftOutlined">
                 返回
-              </AkButton>
-              <AkButton type="default" icon="HomeOutlined">
+              </TaButton>
+              <TaButton type="default" icon="HomeOutlined">
                 首页
-              </AkButton>
-            </AkButton.Group>
+              </TaButton>
+            </TaButton.Group>
           </li>
           <li>
-            <AkButton.Group shape="circle" pattern="solid">
-              <AkButton type="primary" icon="LeftOutlined"></AkButton>
-              <AkButton type="primary" icon="HomeOutlined"></AkButton>
-            </AkButton.Group>
-            <AkButton.Group shape="round" pattern="gradient">
-              <AkButton type="warning">加购物车</AkButton>
-              <AkButton type="danger">立即购买</AkButton>
-            </AkButton.Group>
+            <TaButton.Group shape="circle" pattern="solid">
+              <TaButton type="primary" icon="LeftOutlined"></TaButton>
+              <TaButton type="primary" icon="HomeOutlined"></TaButton>
+            </TaButton.Group>
+            <TaButton.Group shape="round" pattern="gradient">
+              <TaButton type="warning">加购物车</TaButton>
+              <TaButton type="danger">立即购买</TaButton>
+            </TaButton.Group>
           </li>
         </ul>
-      </AkGroup>
+      </TaGroup>
     </>
   )
 }

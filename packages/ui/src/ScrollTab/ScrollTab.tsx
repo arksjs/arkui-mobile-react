@@ -1,6 +1,3 @@
-import classNames from 'classnames'
-import type { ScrollTabEmits, ScrollTabProps, ScrollTabRef } from './types'
-import type { CSSProperties, FRFC } from '../helpers/types'
 import {
   forwardRef,
   useEffect,
@@ -8,15 +5,22 @@ import {
   useRef,
   useState
 } from 'react'
+import classNames from 'classnames'
+import type { ScrollTabEmits, ScrollTabProps, ScrollTabRef } from './types'
 import type { TabRef } from '../Tab/types'
-import { isString } from '../helpers/util'
-import type { OnResetItems, StickyViewRef } from '../StickyView/types'
+import { type CSSProperties, type FRFC } from '../helpers'
+import type {
+  StickyViewOnResetItems,
+  StickyViewOnChange,
+  StickyViewRef
+} from '../StickyView/types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
+import type { SideTabOnChange } from '../SideTab/types'
 
-const AkScrollTab: FRFC<
+const TaScrollTab: FRFC<
   ScrollTabRef,
   ScrollTabProps &
     ScrollTabEmits & {
@@ -26,52 +30,76 @@ const AkScrollTab: FRFC<
   const sideRef = useRef<StickyRef>(null)
   const tabRef = useRef<TabRef>(null)
   const bodyRef = useRef<StickyViewRef>(null)
-  const classes = classNames('ak-scroll-tab', props.className)
+  const classes = classNames('ta-scroll-tab', props.className)
 
   const [tabList, setTabList] = useState<
     {
-      value: number
+      value: string
       label: string
     }[]
   >([])
+  const [activeName, setActiveName] = useState<string>()
 
-  const onResetItems: OnResetItems = items => {
+  // 单独更新以下tab的activeName
+  function updateActiveName(name?: string) {
+    if (name != null && nameInList(name) && name !== activeName) {
+      setActiveName(name)
+    }
+  }
+
+  function nameInList(name: string) {
+    for (let i = 0; i < tabList.length; i++) {
+      if (tabList[i].value === name) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  const onTabChange: SideTabOnChange = (name, index) => {
+    scrollToIndex(index)
+  }
+
+  const onStickyViewChange: StickyViewOnChange = (name, index) => {
+    updateActiveName(name)
+
+    props.onChange && props.onChange(name, index)
+  }
+
+  /**
+   * 滚动到第index个
+   */
+  function scrollToIndex(index: number) {
+    bodyRef.current?.scrollToIndex(index)
+  }
+
+  /**
+   * 滚动到指定name
+   */
+  function scrollTo(name: string) {
+    bodyRef.current?.scrollTo(name)
+  }
+
+  const resetContainer: ResetContainer = containSelector => {
+    sideRef.current?.resetContainer(containSelector)
+    bodyRef.current?.resetContainer(containSelector)
+  }
+
+  const onResetItems: StickyViewOnResetItems = items => {
     setTabList(
-      items.map(({ name }, index) => {
+      items.map(item => {
         return {
-          value: index,
-          label: name
+          value: item.name,
+          label: item.title
         }
       })
     )
   }
 
-  const activeIndex = useRef(0)
-
-  function onChange(index: number | string) {
-    if (isString(index)) {
-      return
-    }
-
-    if (index === activeIndex.current) {
-      return
-    }
-
-    props.onChange && props.onChange(index, activeIndex.current)
-
-    activeIndex.current = index
-    switchToIndex(index)
-  }
-
-  function switchToIndex(index: number) {
-    tabRef.current?.switchToIndex(index)
-    bodyRef.current?.scrollToIndex(index)
-  }
-
-  const resetContainer: ResetContainer = seletor => {
-    sideRef.current?.resetContainer(seletor)
-    bodyRef.current?.resetContainer(seletor)
-  }
+  useEffect(() => {
+    updateActiveName(props.value)
+  }, [props.value])
 
   useEffect(() => {
     resetContainer(document.documentElement)
@@ -80,27 +108,38 @@ const AkScrollTab: FRFC<
   useImperativeHandle(
     ref,
     () => ({
-      switchToIndex
+      scrollTo,
+      scrollToIndex,
+      resetContainer
     }),
     []
   )
 
   return (
     <div className={classes} style={props.style}>
-      <div className="ak-scroll-tab_sidebar">
+      <div className="ta-scroll-tab_sidebar">
         <Sticky
           offsetTop={props.stickyOffsetTop}
           offsetBottom={props.stickyOffsetBottom}
           ref={sideRef}
         >
-          <SideTab options={tabList} onChange={onChange} ref={tabRef} />
+          {tabList.length > 0 ? (
+            <SideTab
+              options={tabList}
+              value={activeName}
+              onChange={onTabChange}
+              ref={tabRef}
+            />
+          ) : (
+            <></>
+          )}
         </Sticky>
       </div>
-      <div className="ak-scroll-tab_body">
+      <div className="ta-scroll-tab_body">
         <StickyView
           offsetTop={props.stickyOffsetTop}
           onResetItems={onResetItems}
-          onChange={onChange}
+          onChange={onStickyViewChange}
           ref={bodyRef}
         >
           {props.children}
@@ -110,4 +149,4 @@ const AkScrollTab: FRFC<
   )
 }
 
-export default forwardRef(AkScrollTab)
+export default forwardRef(TaScrollTab)

@@ -1,5 +1,3 @@
-import { isEmpty } from './../helpers/util'
-import type { AnyObject } from '../helpers/types'
 import type {
   UserFieldNames,
   UserOptionItem,
@@ -22,12 +20,14 @@ import {
   isSameArray,
   isSameDate,
   isNumber,
-  isStringNumberMixArray,
+  isStringOrNumberArray,
   objectForEach,
   isObject,
-  isStringNumberMix
-} from '../helpers/util'
-import Exception from '../helpers/exception'
+  isStringOrNumber,
+  isEmpty,
+  type AnyObject,
+  isString
+} from '../helpers'
 
 export const getDefaultFieldNames: () => FieldNames = () => {
   return { label: 'label', value: 'value', children: 'children' }
@@ -47,20 +47,13 @@ const defaultFormatter: SelectorValueFormatter = (valueArray, labelArray) => {
 const defaultParser: SelectorValueParser = value => {
   if (isNumber(value)) {
     return [value as number]
-  } else if (typeof value === 'string' && value) {
+  } else if (isString(value) && value) {
     return [value]
-  } else if (isStringNumberMixArray(value)) {
+  } else if (isStringOrNumberArray(value)) {
     return cloneValue(value as (string | number)[]) as SelectorValue[]
   }
 
   return []
-}
-
-export function getDefaultDetail(): SelectorDetail {
-  return {
-    value: [],
-    label: ''
-  }
 }
 
 export function mergeHandlers(...handlersArray: Partial<PickerHandlers>[]) {
@@ -115,7 +108,7 @@ function parseOptions(
         if (subOptions.length > 0) {
           ;(newOptions as OptionItem[][]).push(subOptions)
         }
-      } else if (isNumber(option) || typeof option === 'string') {
+      } else if (isStringOrNumber(option)) {
         // 纯数值或者字符串
         ;(newOptions as OptionItem[]).push({
           label: option.toString(),
@@ -126,7 +119,7 @@ function parseOptions(
       } else if (isObject(option)) {
         const newOption = option as AnyObject
 
-        if (isStringNumberMix(newOption[fieldNames.value])) {
+        if (isStringOrNumber(newOption[fieldNames.value])) {
           ;(newOptions as OptionItem[]).push({
             label: (newOption[fieldNames.label] == null
               ? newOption[fieldNames.value]
@@ -293,36 +286,23 @@ function validateCascadeCols(
       }
 }
 
-function printError(message: string) {
-  console.error(
-    new Exception(
-      message,
-      Exception.TYPE.PROP_ERROR,
-      'Picker/DatePicker/Cascader/Calendar'
-    )
-  )
-}
-
 /**
  * 校验值
  * @param values 值
  * @param options
- * @param separator
  * @param isCascade
  * @param virtualHandler
  * @returns { valid, detail }
  */
 export function validateValues(
-  values: SelectorValue[] | Error,
+  values: SelectorValue[],
   options: OptionItem[] | OptionItem[][],
   isCascade: boolean,
   virtualHandler?: PickerOptionsHandler | null
 ): ValidateReturn {
   let valid = false
 
-  if (values instanceof Error) {
-    printError(values.message)
-  } else if (values.length === 0) {
+  if (values.length === 0) {
     // 空数组也算符合
     valid = true
   } else {
@@ -330,6 +310,7 @@ export function validateValues(
       ? validateCascadeCols(values, options as OptionItem[], virtualHandler)
       : validateCols(values, options)
     if (!ret.valid) {
+      // 不再提示错误，解决切换选项后未及时更新value导致的问题
       // printError('The value is not in "options".')
     } else {
       return ret
@@ -344,7 +325,7 @@ export function validateValues(
 }
 
 export function getFormatOptions(
-  options: UserOptionItem[],
+  options: UserOptionItem[] | UserOptionItem[][],
   fieldNames: UserFieldNames,
   virtualHandler: PickerOptionsHandler | null | undefined,
   cascader = false
@@ -356,13 +337,13 @@ export function getFormatOptions(
 
   if (virtualHandler == null) {
     if (fieldNames) {
-      typeof fieldNames.label === 'string' &&
+      isString(fieldNames.label) &&
         fieldNames.label &&
         (newFieldNames.label = fieldNames.label)
-      typeof fieldNames.value === 'string' &&
+      isString(fieldNames.value) &&
         fieldNames.value &&
         (newFieldNames.value = fieldNames.value)
-      typeof fieldNames.children === 'string' &&
+      isString(fieldNames.children) &&
         fieldNames.children &&
         (newFieldNames.children = fieldNames.children)
     }
@@ -410,7 +391,7 @@ export function isSameDetail(a: SelectorDetail, b: SelectorDetail) {
   return isSameValue(a.value, b.value)
 }
 
-export function cloneValue(value: SelectorModelValue) {
+export function cloneValue<T extends SelectorModelValue>(value: T) {
   if (value instanceof Date) {
     return new Date(value)
   } else if (isDateArray(value)) {
@@ -426,7 +407,11 @@ export function cloneValue(value: SelectorModelValue) {
 
 export function cloneDetail<T extends SelectorDetail>(detail: T) {
   const newDetail = cloneData(detail)
+
   newDetail.value = cloneValue(detail.value)
+  if (detail.source) {
+    newDetail.source.value = cloneValue(detail.source.value)
+  }
 
   return newDetail
 }

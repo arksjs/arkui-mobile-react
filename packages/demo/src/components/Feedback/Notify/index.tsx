@@ -1,7 +1,7 @@
 import {
-  AkCell,
-  AkGroup,
-  AkNotify,
+  TaCell,
+  TaGroup,
+  TaNotify,
   PopupOnVisibleStateChange,
   PopupOnCancel,
   showNotify,
@@ -48,30 +48,30 @@ export default function ExpNotify() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkCell
+      <TaGroup title="基础用法">
+        <TaCell
           label="主要"
           isLink
           onClick={() => onShow({ title: '通知文本' })}
         />
-        <AkCell
+        <TaCell
           label="成功"
           isLink
           onClick={() => onShow({ title: '成功文本', type: 'success' })}
         />
-        <AkCell
+        <TaCell
           label="警告"
           isLink
           onClick={() => onShow({ title: '警告文本', type: 'warning' })}
         />
-        <AkCell
+        <TaCell
           label="危险"
           isLink
           onClick={() => onShow({ title: '危险文本', type: 'danger' })}
         />
-      </AkGroup>
-      <AkGroup title="自定义图标">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="自定义图标">
+        <TaCell
           label="成功"
           isLink
           onClick={() =>
@@ -82,7 +82,7 @@ export default function ExpNotify() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="警告"
           isLink
           onClick={() =>
@@ -93,7 +93,7 @@ export default function ExpNotify() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="危险"
           isLink
           onClick={() =>
@@ -104,14 +104,14 @@ export default function ExpNotify() {
             })
           }
         />
-      </AkGroup>
-      <AkGroup title="其他">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="其他">
+        <TaCell
           label="自定义时长"
           isLink
           onClick={() => onShow({ title: '5秒后消失', duration: 5000 })}
         />
-        <AkCell
+        <TaCell
           label="自定义颜色"
           isLink
           onClick={() =>
@@ -122,16 +122,16 @@ export default function ExpNotify() {
             })
           }
         />
-        <AkCell
+        <TaCell
           label="手动关闭"
           isLink
           onClick={() =>
             onShow({ title: '常驻可手动关闭', duration: 0, closable: true })
           }
         />
-      </AkGroup>
-      <AkGroup title="API">
-        <AkCell
+      </TaGroup>
+      <TaGroup title="API">
+        <TaCell
           label="showNotify"
           isLink
           onClick={() =>
@@ -142,9 +142,9 @@ export default function ExpNotify() {
             })
           }
         />
-        <AkCell label="hideNotify" isLink onClick={() => hideNotify()} />
-      </AkGroup>
-      <AkNotify
+        <TaCell label="hideNotify" isLink onClick={() => hideNotify()} />
+      </TaGroup>
+      <TaNotify
         visible={visible}
         title={title}
         type={type}

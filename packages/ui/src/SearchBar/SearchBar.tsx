@@ -1,32 +1,35 @@
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FormEventHandler
+} from 'react'
 import classNames from 'classnames'
-import type { FormEventHandler } from 'react'
-import { useEffect, useMemo, useRef, useState } from 'react'
 import type {
   SearchBarEmits,
   SearchBarProps,
   SuggestItem,
   SuggestList
 } from './types'
-import type { VFC } from '../helpers/types'
 import { Icon } from '../Icon'
 import { Input } from '../Input'
 import { Button } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
-import { isStringArray } from '../helpers/util'
+import { isStringArray, type VFC } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
-
 import {
   getFieldClasses,
   getInnerClasses,
   getInnerStyles,
   getSuggestStyles
 } from './util'
-import { useStableState } from '../hooks/use'
+import { useStableState } from '../hooks'
 
-const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
+const TaSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
   placeholderInterval = 5000,
   ...props
 }) => {
@@ -192,7 +195,7 @@ const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
         <Cell
           key={item.text}
           label={item.text.toString()}
-          className="ak-search_suggest-item"
+          className="ta-search_suggest-item"
           clickable
           onClick={() => onSuggestItemClick(item.text)}
         >
@@ -204,7 +207,7 @@ const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
     [suggestList, props.onSearch]
   )
 
-  const classes = classNames('ak-search', props.className)
+  const classes = classNames('ta-search', props.className)
   const innerClasses = classNames(getInnerClasses(props.showCancel))
   const innerStyles = getInnerStyles(props.background)
   const fieldClasses = classNames(getFieldClasses(props.ghost))
@@ -232,10 +235,10 @@ const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
           onClick={onClick}
           renderPrepend={() => <Icon icon={SearchOutlined} />}
         />
-        <button className="ak-search_button">Search</button>
+        <button className="ta-search_button">Search</button>
         {props.showCancel ? (
           <Button
-            className="ak-search_cancel-button"
+            className="ta-search_cancel-button"
             size="large"
             type="default"
             pattern="borderless"
@@ -256,10 +259,10 @@ const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
           visible={suggestVisible}
           render={({ height }) => (
             <div
-              className="ak-search_suggest ak-horizontal-hairline"
+              className="ta-search_suggest ta-horizontal-hairline"
               style={getSuggestStyles(height)}
             >
-              <div className="ak-search_suggest-list">{renderSuggestItems}</div>
+              <div className="ta-search_suggest-list">{renderSuggestItems}</div>
             </div>
           )}
         />
@@ -270,4 +273,4 @@ const AkSearchBar: VFC<SearchBarProps & SearchBarEmits> = ({
   )
 }
 
-export default AkSearchBar
+export default TaSearchBar

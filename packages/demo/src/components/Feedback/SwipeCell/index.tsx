@@ -1,7 +1,7 @@
 import {
-  AkSwipeCell,
-  AkCell,
-  AkGroup,
+  TaSwipeCell,
+  TaCell,
+  TaGroup,
   showToast,
   SwipeCellButtonOption,
   SwipeCellOnButtonClick
@@ -26,16 +26,16 @@ export default function ExpSwipeCell() {
 
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkSwipeCell buttons={buttons}>
-          <AkCell label="单元格" content="向左划"></AkCell>
-        </AkSwipeCell>
-      </AkGroup>
-      <AkGroup title=" 事件监听">
-        <AkSwipeCell buttons={buttons} onButtonClick={onButtonClick}>
-          <AkCell label="单元格" content="向左划"></AkCell>
-        </AkSwipeCell>
-      </AkGroup>
+      <TaGroup title="基础用法">
+        <TaSwipeCell buttons={buttons}>
+          <TaCell label="单元格" content="向左划"></TaCell>
+        </TaSwipeCell>
+      </TaGroup>
+      <TaGroup title=" 事件监听">
+        <TaSwipeCell buttons={buttons} onButtonClick={onButtonClick}>
+          <TaCell label="单元格" content="向左划"></TaCell>
+        </TaSwipeCell>
+      </TaGroup>
     </>
   )
 }

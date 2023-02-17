@@ -1,12 +1,11 @@
-import classNames from 'classnames'
 import { useCallback, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import type { SwitchProps, SwitchEmits } from './types'
-import type { VFC } from '../helpers/types'
 import { getClasses, getStyles } from './util'
-import { isBoolean } from '../helpers/util'
+import { isBoolean, type VFC } from '../helpers'
 import { useInput } from '../Form/use-form'
 
-const AkSwitch: VFC<SwitchProps & SwitchEmits> = props => {
+const TaSwitch: VFC<SwitchProps & SwitchEmits> = props => {
   const [checked, setChecked] = useState<boolean | null>(null)
 
   const { inputEl, setInputChecked, getInputChecked } = useInput()
@@ -40,7 +39,7 @@ const AkSwitch: VFC<SwitchProps & SwitchEmits> = props => {
     <label className={classes} style={styles}>
       <input
         ref={inputEl}
-        className="ak-switch_checkbox"
+        className="ta-switch_checkbox"
         type="checkbox"
         disabled={props.disabled}
         name={props.name}
@@ -51,4 +50,4 @@ const AkSwitch: VFC<SwitchProps & SwitchEmits> = props => {
   )
 }
 
-export default AkSwitch
+export default TaSwitch

@@ -1,9 +1,11 @@
-import { EasingType } from './types'
+import type { Noop } from './util'
+
+type EasingType = 'linear' | 'swing'
 
 type TaskRef = {
   idle: number | null
   id: number
-  done: () => void
+  done: Noop
 }
 
 const Easing = {
@@ -25,7 +27,6 @@ export class FrameTask {
     this.stop = function () {
       if (ref.idle) {
         cancelAnimationFrame(ref.idle)
-        ref.idle = null
         ref.done()
         return true
       }
@@ -66,6 +67,7 @@ export function frameTo(options: FrameOption) {
   const id = ++uid
 
   function done() {
+    ref.idle = null
     complete && complete({ current, id })
   }
 

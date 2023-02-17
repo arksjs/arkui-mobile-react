@@ -1,20 +1,20 @@
-import { AkDivider, AkGroup } from '@/index'
+import { TaDivider, TaGroup } from '@/index'
 
 export default function ExpDivider() {
   return (
     <>
-      <AkGroup title="基础用法">
-        <AkDivider />
-      </AkGroup>
-      <AkGroup title="带文本">
-        <AkDivider title="文本" />
-      </AkGroup>
-      <AkGroup title="虚线">
-        <AkDivider title="文本" dashed />
-      </AkGroup>
-      <AkGroup title="自定义颜色">
-        <AkDivider className="exp-divider-custom-color" title="蓝色" />
-      </AkGroup>
+      <TaGroup title="基础用法">
+        <TaDivider />
+      </TaGroup>
+      <TaGroup title="带文本">
+        <TaDivider title="文本" />
+      </TaGroup>
+      <TaGroup title="虚线">
+        <TaDivider title="文本" dashed />
+      </TaGroup>
+      <TaGroup title="自定义颜色">
+        <TaDivider className="exp-divider-custom-color" title="蓝色" />
+      </TaGroup>
     </>
   )
 }

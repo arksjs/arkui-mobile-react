@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTag } from 'arkui-mobile-react'
+import { TaTag } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkTag } from 'arkui-mobile-react'
 组件导出的类型定义：
 
 ```ts
-import type { StateType, SizeType, TagPattern } from 'arkui-mobile-react'
+import type { StateType, SizeType, TagPattern } from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -29,7 +29,7 @@ import type { StateType, SizeType, TagPattern } from 'arkui-mobile-react'
 | type     | StateType  | 'default' | 否   | 标签类型                                                                           |
 | pattern  | TagPattern | 'light'   | 否   | 标签款式                                                                           |
 | color    | string     |           | 否   | 自定义色彩，支持 hex rgb hsl 等写法，详细效果[查看](../design/color.md#自定义色彩) |
-| size     | SizeType   | 'middle'  | 否   | 标签尺寸                                                                           |
+| size     | SizeType   | 'large'   | 否   | 标签尺寸                                                                           |
 | closable | boolean    | true      | 否   | 是否展示关闭按钮，只推荐在 size='large' 情况下开启                                 |
 
 ### StateType 的合法值
@@ -70,5 +70,5 @@ import type { StateType, SizeType, TagPattern } from 'arkui-mobile-react'
 ### children
 
 ```tsx
-<AkTag>标签</AkTag>
+<TaTag>标签</TaTag>
 ```

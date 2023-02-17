@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkCountUp } from 'arkui-mobile-react'
+import { TaCountUp } from 'tantalum-ui-mobile-react'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,7 +28,7 @@ import type {
   CountUpOnCancel,
   CountUpOnAnimated,
   CountUpRef
-} from 'arkui-mobile-react'
+} from 'tantalum-ui-mobile-react'
 ```
 
 ## Props
@@ -56,6 +56,6 @@ type CountUpSpeed = 'normal' | 'fast' | 'slow' | number
 
 ## Methods
 
-| 方法名   | 说明     | 参数 |
-| -------- | -------- | ---- |
-| onCancel | 取消变化 |      |
+| 方法名 | 说明             | 参数                                            |
+| ------ | ---------------- | ----------------------------------------------- |
+| cancel | 主动取消动画变化 | 取消成功（动画没结束前取消）会触发 cancel event |

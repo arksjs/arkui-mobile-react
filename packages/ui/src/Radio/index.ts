@@ -6,5 +6,4 @@ const Radio = Object.assign(_Radio, {
 })
 
 export { Radio, RadioGroup }
-
 export default Radio

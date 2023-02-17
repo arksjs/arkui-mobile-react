@@ -1,11 +1,12 @@
 import { useRef } from 'react'
-import { getNumber, rangeNumber } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
 import {
+  getNumber,
+  rangeNumber,
   addClassName,
   getRelativeOffset,
   removeClassName
-} from '../helpers/dom'
+} from '../helpers'
+import { useTouch } from '../hooks'
 import type { SlideCommonProps } from './types'
 import { getSlideClasses, getSlideStyles } from './util'
 
@@ -87,7 +88,7 @@ export function useSlide(
     valueTemp.current = newVal
 
     move({
-      value: valueTemp.current,
+      value: newVal,
       progress: value2Progress(newVal),
       $target
     })
@@ -150,23 +151,23 @@ export function useSlide(
 
     onTouchEnd(e) {
       if (coords.current) {
-        if (!coords.current.thumb && !coords.current.moved) {
+        const _coords = coords.current
+
+        if (!_coords.thumb && !_coords.moved) {
           updateByX(
-            coords.current.clientStartX -
-              coords.current.trackX -
-              coords.current.thumbW / 2,
-            coords.current
+            _coords.clientStartX - _coords.trackX - _coords.thumbW / 2,
+            _coords
           )
         }
 
-        if (coords.current.thumb) {
-          removeClassName(coords.current.$target, 'active')
+        if (_coords.thumb) {
+          removeClassName(_coords.$target, 'active')
         }
 
         end({
           value: valueTemp.current,
-          isChange: coords.current.prevValue !== valueTemp.current,
-          $target: coords.current.$target
+          isChange: _coords.prevValue !== valueTemp.current,
+          $target: _coords.$target
         })
 
         coords.current = null
