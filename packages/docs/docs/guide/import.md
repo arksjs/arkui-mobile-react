@@ -34,8 +34,8 @@ pnpm add tantalum-ui-mobile-react
 ```tsx
 import { FC } from 'react'
 import { TaButton } from 'tantalum-ui-mobile-react'
-import 'tantalum-ui-mobile-react/es/style'
-// import 'tantalum-ui-mobile-react/es/style/sass' // use sass
+import 'tantalum-ui-mobile-react/es/Button/style/index'
+// import 'tantalum-ui-mobile-react/es/Button/style/sass' // use sass
 
 const App: FC = () => (
   <div className="App">
@@ -52,7 +52,7 @@ API 调用需要先引入对应的组件，方可调用，引用方式同上。
 
 ```tsx
 import { showToast } from 'tantalum-ui-mobile-react'
-import 'tantalum-ui-mobile-react/es/Toast/style'
+import 'tantalum-ui-mobile-react/es/Toast/style/index'
 
 const App: FC = () => (
   <div className="App">
@@ -72,4 +72,11 @@ const App: FC = () => (
 )
 
 export default App
+```
+
+## 引入完整样式
+
+```ts
+import 'tantalum-ui-mobile-react/es/style/index'
+// import 'tantalum-ui-mobile-react/es/style/sass' // use sass
 ```

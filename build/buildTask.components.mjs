@@ -27,31 +27,29 @@ const externalPlugin = (esm = false) => {
   return {
     name: 'external',
     setup(build) {
-      build.onResolve(
-        {
-          filter: new RegExp(
-            `^./(${[...config.components, ...config.depComponents].join('|')})$`
-          )
-        },
-        () => ({ external: false })
-      )
+      // build.onResolve(
+      //   {
+      //     filter: new RegExp(
+      //       `^./(${[...config.components, ...config.depComponents].join('|')})$`
+      //     )
+      //   },
+      //   () => ({ external: false })
+      // )
       // Match an import called "./*" and mark it as external
       build.onResolve({ filter: /^\.\.?\// }, args => {
         let path = args.path
 
         if (esm) {
           // import add .mjs
-          if (!/[A-Za-z]+\./.test(path)) {
-            // Exclude the ./a.css
-            if (
-              /helpers|hooks|locale/.test(path) ||
-              /\/[A-Z][^/]+$/.test(path)
-            ) {
-              // add  /index.mjs
-              path += '/index.mjs'
-            } else {
-              path += '.mjs'
-            }
+          // Exclude the ./a.css
+          if (
+            /helpers|hooks|locale/.test(path) ||
+            /..\/[A-Z][^/]+$/.test(path)
+          ) {
+            // add  /index.mjs
+            path += '/index.mjs'
+          } else {
+            path += '.mjs'
           }
         }
 
@@ -67,10 +65,8 @@ const buildCompsEsm = async (entryPoints, deps) => {
     entryPoints: entryPoints,
     external: deps,
     outdir: resolve('./es/'),
-    format: 'esm',
     bundle: true,
-    target: ['es2019'],
-    platform: 'node',
+    format: 'esm',
     outExtension: { '.js': '.mjs' }
   })
 }
@@ -82,8 +78,7 @@ const buildCompsCjs = async (entryPoints, deps) => {
     external: deps,
     outdir: resolve('./lib/'),
     format: 'cjs',
-    bundle: true,
-    target: ['es2019']
+    bundle: true
   })
 }
 
@@ -99,11 +94,12 @@ export const getFilePaths = async () => {
 
   fs.promises.unlink(fileStrPath)
 
+  // .filter(function (path) {
+  //   return !/\/[A-Z][^/]+tsx/.test(path)
+  // })
+
   return fileStr
     .split(`\n`)
-    .filter(function (path) {
-      return !/\/[A-Z][^/]+tsx/.test(path)
-    })
     .filter(function (path) {
       return (
         !['style/index.ts', 'types.ts', '.d.ts', 'umd.ts', '__tests__'].some(
