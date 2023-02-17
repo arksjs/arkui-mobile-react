@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,e as p}from"./app.c046e390.js";const b='{"title":"\u4E3B\u9898\u5B9A\u5236","description":"","frontmatter":{},"headers":[],"relativePath":"guide/theme.md"}',t={},o=p("",10),e=[o];function c(l,r,u,i,k,y){return a(),s("div",null,e)}var v=n(t,[["render",c]]);export{b as __pageData,v as default};
